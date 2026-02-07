@@ -59,6 +59,8 @@ SMODS.Joker{
         return nil
     end,
 
+    --BUG: Against the Pillar boss blind, cards that are converted instantly get debuffed
+
     calculate = function(self, card, context)
         if context.before and not context.blueprint then
             local queens = 0
