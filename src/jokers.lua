@@ -52,7 +52,7 @@ SMODS.Joker{
     blueprint_compat = false,
     rarity = 2,
     cost = 6,
-    pos = { x = 2, y = 0 },
+    pos = { x = 3, y = 0 },
     atlas = 'umas',
 
     loc_vars = function(self, info_queue, card)
