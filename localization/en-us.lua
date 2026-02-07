@@ -16,8 +16,9 @@ return {
                 name = "Daiwa Scarlet",
                 text = {
                     {
-                        "fucking MILL UYORIUKSELF",
-                        "Bye Daiwa Scarlet"
+                        "Adds {C:mult}+#1#{} Mult to played",
+                        "hand's base mult for every",
+                        "{C:attention}Queen{} in your deck"
                     }
                 },
             },
@@ -56,7 +57,8 @@ return {
             a_sold_tally="#1#/#2# Sold",
             a_xmult="X#1# Mult",
             a_xmult_minus="-X#1# Mult",
-            yuri="Yuri!"
+            yuri="Yuri!",
+            queen_count="Queen Mult"
         }
     }
 }

@@ -35,15 +35,28 @@ SMODS.Joker{
     rarity = 4,
     cost = 20,
     pos = { x = 1, y = 0 },
+    config = { extra = { q_mult = 5 } },
     atlas = 'umas',
     soul_pos = { x = 1, y = 1 },
 
     loc_vars = function(self, info_queue, card)
-        return nil
+        return { vars = { card.ability.extra.q_mult } }
     end,
 
     calculate = function(self, card, context)
-        return nil
+        if context.modify_hand then
+            local queens = 0
+            if G.playing_cards then
+                for _, playing_card in ipairs(G.playing_cards) do
+                    if playing_card:get_id() == 12 then queens = queens + 1 end
+                end
+            end
+            if queens > 0 then
+                return {
+                    mult = (card.ability.extra.q_mult * queens)
+                }
+            end
+        end
     end
 }
 
@@ -60,12 +73,55 @@ SMODS.Joker{
     end,
 
     calculate = function(self, card, context)
-        if context.before and not context.blueprint then
+        if context.press_play and not context.blueprint then
+            local queens = 0
+            for _, card in ipairs(select(4,G.FUNCS.get_poker_hand_info(G.hand.highlighted))) do
+                if (card:get_id() == 11 or card:get_id() == 13) and not card.debuff then
+                    queens = queens + 1
+                    assert(SMODS.change_base(card, nil, "Queen"))
+                    card.ability.played_this_ante = card.ability.uma_old_played_this_ante
+                    SMODS.recalc_debuff(card)
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            card:juice_up()
+                            return true
+                        end
+                    }))
+                end
+            end
+            if queens > 0 then
+                return {
+                    message = localize('yuri'),
+                    colour = G.C.RED
+                }
+            end
+        end
+    end
+}
+
+
+
+
+
+
+local oldgfuncsplaycardsfromhighlighted = G.FUNCS.play_cards_from_highlighted
+---@diagnostic disable-next-line: duplicate-set-field
+G.FUNCS.play_cards_from_highlighted = function(e)
+    for k, v in pairs(G.hand.highlighted) do
+        v.ability.uma = v.ability.played_this_ante
+    end
+    return oldgfuncsplaycardsfromhighlighted(e)
+end
+
+--[[
+    calculate = function(self, card, context)
+        if context.press_play and not context.blueprint then
             local queens = 0
             for _, scored_card in ipairs(context.scoring_hand) do
                 if (scored_card:get_id() == 11 or scored_card:get_id() == 13) then
                     queens = queens + 1
                     assert(SMODS.change_base(scored_card, nil, "Queen"))
+
                     scored_card.ability.played_this_ante = scored_card.ability.uma_old_played_this_ante
                     SMODS.recalc_debuff(scored_card)
                     G.E_MANAGER:add_event(Event({
@@ -84,12 +140,4 @@ SMODS.Joker{
             end
         end
     end
-}
-
-local oldgfuncsplaycardsfromhighlighted = G.FUNCS.play_cards_from_highlighted
-G.FUNCS.play_cards_from_highlighted = function(e)
-    for k, v in pairs(G.hand.highlighted) do
-        v.ability.uma = v.ability.played_this_ante
-    end
-    return oldgfuncsplaycardsfromhighlighted(e)
-end
+    ]]--
