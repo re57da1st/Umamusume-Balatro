@@ -16,7 +16,7 @@ return {
                 name = "Daiwa Scarlet",
                 text = {
                     {
-                        "Hi Daiwa Scarlet",
+                        "fucking MILL UYORIUKSELF",
                         "Bye Daiwa Scarlet"
                     }
                 },
