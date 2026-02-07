@@ -1,0 +1,15 @@
+{
+  "id": "Umamusume",
+  "name": "Uma Jokers",
+  "display_name": "Uma Jokers",
+  "author": ["CallMeJoel", "Frisk_Scyobi"],
+  "description": "Umapyoi!!!",
+  "prefix": "uma",
+  "prefixcomment":"ABOVE PREFIX IS ADDED TO E.G. LOCALIZATION!",
+  "main_file": "Umamusume.lua",
+  "priority": 0,
+  "badge_colour": "5A8CE6",
+  "badge_text_colour": "",
+  "version": "1.0.0",
+  "dependencies": ["Steamodded (>=1.0.0~BETA-0614a)"]
+}
