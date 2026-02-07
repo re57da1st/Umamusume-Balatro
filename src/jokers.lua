@@ -59,8 +59,6 @@ SMODS.Joker{
         return nil
     end,
 
-    --BUG: Against the Pillar boss blind, cards that are converted instantly get debuffed
-
     calculate = function(self, card, context)
         if context.before and not context.blueprint then
             local queens = 0
@@ -68,6 +66,8 @@ SMODS.Joker{
                 if (scored_card:get_id() == 11 or scored_card:get_id() == 13) then
                     queens = queens + 1
                     assert(SMODS.change_base(scored_card, nil, "Queen"))
+                    scored_card.ability.played_this_ante = scored_card.ability.uma_old_played_this_ante
+                    SMODS.recalc_debuff(scored_card)
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             scored_card:juice_up()
@@ -85,3 +85,11 @@ SMODS.Joker{
         end
     end
 }
+
+local oldgfuncsplaycardsfromhighlighted = G.FUNCS.play_cards_from_highlighted
+G.FUNCS.play_cards_from_highlighted = function(e)
+    for k, v in pairs(G.hand.highlighted) do
+        v.ability.uma = v.ability.played_this_ante
+    end
+    return oldgfuncsplaycardsfromhighlighted(e)
+end
