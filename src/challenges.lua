@@ -4,7 +4,8 @@ SMODS.Challenge {
         custom = {},
         modifiers = {
             { id = 'hands', value = 67 },
-            { id = 'discards', value = 67 }
+            { id = 'discards', value = 67 },
+            { id = 'dollars', value = 676767 }
         }
     },
     jokers = {
