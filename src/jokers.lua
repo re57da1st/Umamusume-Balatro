@@ -11,7 +11,7 @@ SMODS.Joker{
     rarity = 4,
     cost = 20,
     pos = { x = 0, y = 0 },
-    config = { extra = { Xmult = 1.5 } },
+    config = { extra = { Xmult = 1.3 } },
     atlas = 'umas',
     soul_pos = { x = 0, y = 1 },
 
@@ -29,7 +29,7 @@ SMODS.Joker{
 
 }
 
---Add a (currently: #1#) to Daiwa Description
+--Balance: Increase q_mult to +8?
 
 SMODS.Joker{
     key = "daiwa",
@@ -69,12 +69,14 @@ SMODS.Joker{
     end
 }
 
+--Only rare if other queen jokers are added
+
 SMODS.Joker{
     key = "agnes",
     blueprint_compat = false,
-    rarity = 2,
-    cost = 6,
-    pos = { x = 3, y = 0 },
+    rarity = 3,
+    cost = 8,
+    pos = { x = 2, y = 0 },
     atlas = 'umas',
 
     loc_vars = function(self, info_queue, card)
@@ -110,7 +112,141 @@ SMODS.Joker{
     end
 }
 
+SMODS.Joker{
+    key = "turbo",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 2,
+    pos = { x = 3, y = 0 },
+    atlas = 'umas',
 
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end
+}
+
+SMODS.Joker{
+    key = "goldship",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 2,
+    pos = { x = 4, y = 0 },
+    atlas = 'umas',
+
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end
+}
+
+SMODS.Joker{
+    key = "oguri",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 2,
+    pos = { x = 5, y = 0 },
+    atlas = 'umas',
+
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end
+}
+
+SMODS.Joker{
+    key = "bakushin",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 2,
+    pos = { x = 6, y = 0 },
+    atlas = 'umas',
+
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end
+}
+
+SMODS.Joker{
+    key = "mambo",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 2,
+    pos = { x = 2, y = 1 },
+    atlas = 'umas',
+
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end
+}
+
+SMODS.Joker{
+    key = "chiyono",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 2,
+    pos = { x = 3, y = 1 },
+    atlas = 'umas',
+
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end
+}
+
+SMODS.Joker{
+    key = "norn",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 2,
+    pos = { x = 4, y = 1 },
+    atlas = 'umas',
+
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end
+}
+
+SMODS.Joker{
+    key = "obey",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 2,
+    pos = { x = 5, y = 1 },
+    atlas = 'umas',
+
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end
+}
 
 
 

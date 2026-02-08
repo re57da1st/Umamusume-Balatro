@@ -31,6 +31,72 @@ return {
                     "{C:attention}Jacks{} become {C:hearts}Queens{}",
                     "when scored"
                 },
+            },
+
+            j_uma_turbo = {
+                name = "Twin Turbo",
+                text = {
+                    "Twin Towers"
+                },
+            },
+
+            j_uma_goldship = {
+                name = "Golshi",
+                text = {
+                    "Golshin Golshin Golshin!",
+                    "Golshin Golshin Golshin!",
+                    "Golshin, Golshin, Gol shin shin!"
+                },
+            },
+
+            j_uma_oguri = {
+                name = "Oguri Cap",
+                text = {
+                    "Fatty"
+                },
+            },
+
+            j_uma_bakushin = {
+                name = "Sakura Bakushin O",
+                text = {
+                    "Bakushin Bakushin Bakushin!",
+                    "Bakushin Bakushin Bakushin!",
+                    "Bakushin, Bakushin, Baku shin shin!"
+                },
+            },
+
+            j_uma_mambo = {
+                name = "matikanetannhauser",
+                text = {
+                    "Mambo, Mambo!",
+                    "Omatsuri Mambo!",
+                    "Zabu Zabu, Yura Yura,",
+                    "Omatsuri Mambo!"
+                },
+            },
+
+            j_uma_chiyono = {
+                name = "Sakura Chiyono O",
+                text = {
+                    "Chi-yo, Chiyo Chiyo Chiyono O!",
+                    "Do-ki doki doki doki do-ki~?",
+                    "Chi-yo, Chiyo Chiyo Chiyono O!",
+                    "Suuki, suki suki shugi Chiyono O!"
+                },
+            },
+
+            j_uma_norn = {
+                name = "Norn Ace",
+                text = {
+                    "The 2nd most obessive horse in this mod"
+                },
+            },
+
+            j_uma_obey = {
+                name = "Obey Your Master",
+                text = {
+                    "The most American Japanese Horse girl I've ever seen"
+                },
             }
         }
     },
