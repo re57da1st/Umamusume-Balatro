@@ -267,6 +267,7 @@ Gold Ship: Smth silly
 Oguri Cap: Consume card to deckfix and add 0.1 xmult to trigger
 Bakushin: speed?
 Obey Your Master: Every played card with Diamond suit permanently gains +1-3 mult when scored
+    Card design: Episode 17, 20:30, break-through eye with peace sign over it like a magical girl
 
 
 
