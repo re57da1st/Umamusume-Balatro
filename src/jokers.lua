@@ -248,9 +248,6 @@ SMODS.Joker{
     end
 }
 
-
-
-
 local oldgfuncsplaycardsfromhighlighted = G.FUNCS.play_cards_from_highlighted
 ---@diagnostic disable-next-line: duplicate-set-field
 G.FUNCS.play_cards_from_highlighted = function(e)
@@ -259,3 +256,62 @@ G.FUNCS.play_cards_from_highlighted = function(e)
     end
     return oldgfuncsplaycardsfromhighlighted(e)
 end
+
+--[[
+
+Helios: DONE
+Daiwa: DONE
+Agnes: DONE
+Twin Turbo: Perfect Pair hand type buff (2 pairs of same card)
+Gold Ship: Smth silly
+Oguri Cap: Consume card to deckfix and add 0.1 xmult to trigger
+Bakushin: speed?
+Obey Your Master: Every played card with Diamond suit permanently gains +1-3 mult when scored
+
+
+
+Extra Mult Display (on card UI)
+	+x chips
+	+x Mult
+	+x extra chips
+	+x extra Mult
+
+Add bonus permament bonus mult
+	Add new ability called "perma_bonus_mult"
+
+	UI Ability Table
+		card.lua, line 731
+			bonus_mult = ... self.ability.perma_bonus_mult
+
+	Create function Card;get_chip_bonus_mult()
+
+new poker hand - Perfect Pair?
+	Two Flush Pair (2 sets of pairs where the suit and rank match individually)
+	100 Chips x 10 Mult
+
+Matthew ideas:
+	Goldship (his goat)
+		Scoring queens gain a random seal and enhancement
+		Gains +10 mult when a Queen is scored, shuffles all jokers before scoring
+		If hand is 4oak, randomize suits and ranks of cards, gain +50 Mult
+		Constantly plays the golshin song???
+
+		Goldship note: could have multiple abilites, randomly triggers one of them
+
+	Haru Urara:
+		Doubles chips and mult if final hand AND 0 discards left	
+	
+	Other:
+		every queen scored increases this joker by +2 chips
+		every card held in hand gives $3 at end of round but you recieve no interest
+		maybe put a card that says every queen scored has a 1 in 2 chance to give $4
+
+	Carrot tarot card
+		Create a random Horse Joker (common and uncommon)
+	Carrot spectral card
+		Create a random Horse Joker (Rare and Legendary)
+
+	Stable Deck:
+		Every Horse card trigger gives $5, and increases base boss blind by 5% - 15%
+
+]]--
