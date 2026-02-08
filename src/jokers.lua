@@ -11,7 +11,7 @@ SMODS.Joker{
     rarity = 4,
     cost = 20,
     pos = { x = 0, y = 0 },
-    config = { extra = { Xmult = 1.4 } },
+    config = { extra = { Xmult = 1.5 } },
     atlas = 'umas',
     soul_pos = { x = 0, y = 1 },
 
@@ -29,15 +29,13 @@ SMODS.Joker{
 
 }
 
---Balance: Increase q_mult to +8?
-
 SMODS.Joker{
     key = "daiwa",
     blueprint_compat = true,
     rarity = 4,
     cost = 20,
     pos = { x = 1, y = 0 },
-    config = { extra = { q_mult = 5 } },
+    config = { extra = { q_mult = 8 } },
     atlas = 'umas',
     soul_pos = { x = 1, y = 1 },
 
