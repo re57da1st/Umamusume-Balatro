@@ -18,7 +18,8 @@ return {
                     {
                         "Adds {C:mult}+#1#{} Mult to played",
                         "hand's base mult for every",
-                        "{C:attention}Queen{} in your deck"
+                        "{C:attention}Queen{} in your deck",
+                    "{C:inactive}(Currently {C:mult}+#2#{}{C:inactive})",
                     }
                 },
             },
@@ -35,9 +36,11 @@ return {
     },
     misc = {
         challenge_names = {
+            c_uma_helios_challenge = "Daitaku Helios",
+            c_uma_daiwa_challenge = "Daiwa Scarlet",
+            c_uma_agnes_challenge = "Agnes Digital",
+            c_uma_legends = "All Legends",
             c_uma_test = "Hewwo everynyan :wave:",
-            c_uma_legends = "Legends",
-            c_uma_sapper = "Sapper"
         },
 
             -- do note that when using messages such as: 
@@ -57,8 +60,7 @@ return {
             a_sold_tally="#1#/#2# Sold",
             a_xmult="X#1# Mult",
             a_xmult_minus="-X#1# Mult",
-            yuri="Yuri!",
-            queen_count="Queen Mult"
+            yuri="Yuri!"
         }
     }
 }

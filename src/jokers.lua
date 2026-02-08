@@ -29,6 +29,8 @@ SMODS.Joker{
 
 }
 
+--Add a (currently: #1#) to Daiwa Description
+
 SMODS.Joker{
     key = "daiwa",
     blueprint_compat = true,
@@ -40,7 +42,13 @@ SMODS.Joker{
     soul_pos = { x = 1, y = 1 },
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.q_mult } }
+        local queen_tally = 0
+        if G.playing_cards then
+            for _, playing_card in ipairs(G.playing_cards) do
+                if playing_card:get_id() == 12 then queen_tally = queen_tally + 1 end
+            end
+        end
+        return { vars = { card.ability.extra.q_mult, card.ability.extra.q_mult * queen_tally } }
     end,
 
     calculate = function(self, card, context)
@@ -51,6 +59,7 @@ SMODS.Joker{
                     if playing_card:get_id() == 12 then queens = queens + 1 end
                 end
             end
+
             if queens > 0 then
                 return {
                     mult = (card.ability.extra.q_mult * queens)
@@ -71,6 +80,8 @@ SMODS.Joker{
     loc_vars = function(self, info_queue, card)
         return nil
     end,
+
+    --Add compatibility with SPLASH
 
     calculate = function(self, card, context)
         if context.press_play and not context.blueprint then
@@ -112,32 +123,3 @@ G.FUNCS.play_cards_from_highlighted = function(e)
     end
     return oldgfuncsplaycardsfromhighlighted(e)
 end
-
---[[
-    calculate = function(self, card, context)
-        if context.press_play and not context.blueprint then
-            local queens = 0
-            for _, scored_card in ipairs(context.scoring_hand) do
-                if (scored_card:get_id() == 11 or scored_card:get_id() == 13) then
-                    queens = queens + 1
-                    assert(SMODS.change_base(scored_card, nil, "Queen"))
-
-                    scored_card.ability.played_this_ante = scored_card.ability.uma_old_played_this_ante
-                    SMODS.recalc_debuff(scored_card)
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            scored_card:juice_up()
-                            return true
-                        end
-                    }))
-                end
-            end
-            if queens > 0 then
-                return {
-                    message = localize('yuri'),
-                    colour = G.C.RED
-                }
-            end
-        end
-    end
-    ]]--
