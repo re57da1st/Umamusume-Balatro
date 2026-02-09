@@ -81,12 +81,10 @@ SMODS.Joker{
         return nil
     end,
 
-    --Add compatibility with SPLASH
-
     calculate = function(self, card, context)
         if context.press_play and not context.blueprint then
             local queens = 0
-            for _, card in ipairs(select(4,G.FUNCS.get_poker_hand_info(G.hand.highlighted))) do
+            for _, card in ipairs(next(find_joker('Splash')) and G.hand.highlighted or select(4,G.FUNCS.get_poker_hand_info(G.hand.highlighted))) do
                 if (card:get_id() == 11 or card:get_id() == 13) and not card.debuff then
                     queens = queens + 1
                     assert(SMODS.change_base(card, nil, "Queen"))

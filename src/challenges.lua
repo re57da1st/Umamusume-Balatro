@@ -29,7 +29,8 @@ SMODS.Challenge {
         modifiers = {}
     },
     jokers = {
-        {id = 'j_uma_agnes'}
+        {id = 'j_uma_agnes'},
+        {id = 'j_splash'}
     },
     restrictions = {}
 }
