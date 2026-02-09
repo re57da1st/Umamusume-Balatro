@@ -83,7 +83,6 @@ SMODS.Challenge {
         {id = 'j_uma_helios'},
         {id = 'j_uma_daiwa'},
         {id = 'j_uma_agnes'},
-        {id = 'j_raised_fist'},
         {id = 'j_uma_oguri'}
     },
     restrictions = {}

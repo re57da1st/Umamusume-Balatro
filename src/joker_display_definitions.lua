@@ -2,7 +2,7 @@
 
 local jd_def = JokerDisplay.Definitions
 
-jd_def["j_uma_helios"] = {-- Joker
+jd_def["j_uma_helios"] = {
     text = {
         { ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult" },
         { text = "x", scale = 0.35 },
@@ -47,6 +47,9 @@ jd_def["j_uma_daiwa"] = {
         { ref_table = "card.joker_display_values", ref_value = "daiwa", retrigger_type = "mult" }
     },
     text_config = { colour = G.C.MULT },
+    reminder_text = {
+        { text = "(Base Mult)" }
+    },
     calc_function = function(card)
         local queens = 0
         if G.playing_cards then
@@ -56,4 +59,15 @@ jd_def["j_uma_daiwa"] = {
         end
         card.joker_display_values.daiwa = queens * (card.ability.extra.q_mult or 0)
     end
+}
+
+jd_def["j_uma_oguri"] = {
+    text = {
+        { text = "+" },
+        { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "chips" },
+    },
+    text_config = { colour = G.C.CHIPS },
+    reminder_text = {
+        { text = "(Hungry)" }
+    }
 }
