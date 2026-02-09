@@ -309,9 +309,28 @@ Add bonus permament bonus mult
 	Create function Card;get_chip_bonus_mult()
 
 new poker hand - Perfect Pair?
-	Two Flush Pair (2 sets of pairs where the suit and rank match individually)
+    "2 pairs of matching suits with different ranks,",
+    "may be played with 1 other unscored card",
 	100 Chips x 10 Mult
+    35 l_chips x 3 l_mult
 
+    Process:
+        Check all cards in hand, and tally up how many of each suit there is
+        if a suit has 4+ cards then
+            then store the name of the suit [suit]
+            check all cards in hand again, and tally up each rank that matches [suit]
+            if there are 2+ entries that have 2+ ranks in hand then
+                store each matching rank that matches [rank]
+                return all cards that match [suit] and any [rank]
+            else
+                return nil
+            end
+        else
+            return nil
+        end
+
+
+        
 Matthew ideas:
 	Goldship (his goat)
 		Scoring queens gain a random seal and enhancement
@@ -338,3 +357,5 @@ Matthew ideas:
 		Every Horse card trigger gives $5, and increases base boss blind by 5% - 15%
 
 ]]--
+
+
