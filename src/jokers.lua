@@ -128,8 +128,8 @@ SMODS.Joker{
 SMODS.Joker{
     key = "goldship",
     blueprint_compat = false,
-    rarity = 1,
-    cost = 2,
+    rarity = 3,
+    cost = 8,
     pos = { x = 4, y = 0 },
     atlas = 'umas',
 

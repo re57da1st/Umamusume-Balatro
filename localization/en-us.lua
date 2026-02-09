@@ -109,6 +109,7 @@ return {
             c_uma_daiwa_challenge = "Daiwa Scarlet",
             c_uma_agnes_challenge = "Agnes Digital",
             c_uma_oguri_challenge = "Oguri Cap",
+            c_uma_goldship_challenge = "Goldship",
             c_uma_legends = "All Legends",
             c_uma_test = "Hewwo everynyan :wave:",
         },

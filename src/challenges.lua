@@ -55,6 +55,20 @@ SMODS.Challenge {
 }
 
 SMODS.Challenge {
+    key = 'goldship_challenge',
+    rules = {
+        custom = {},
+        modifiers = {}
+    },
+    jokers = {
+        {id = 'j_uma_goldship'}
+    },
+    consumeables = {},
+    vouchers = {},
+    restrictions = {}
+}
+
+SMODS.Challenge {
     key = 'legends',
     rules = {
         custom = {},
