@@ -133,6 +133,15 @@ return {
             a_xmult_minus="-X#1# Mult",
             uma_yuri="Yuri!",
             uma_oguri="Yummy!"
+        },
+        poker_hand_descriptions = {
+            ["uma_PPair"] = {
+                
+            }
+
+
+
+
         }
     }
 }
