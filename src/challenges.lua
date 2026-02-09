@@ -7,6 +7,8 @@ SMODS.Challenge {
     jokers = {
         {id = 'j_uma_helios'}
     },
+    consumeables = {},
+    vouchers = {},
     restrictions = {}
 }
 
@@ -19,6 +21,8 @@ SMODS.Challenge {
     jokers = {
         {id = 'j_uma_daiwa'}
     },
+    consumeables = {},
+    vouchers = {},
     restrictions = {}
 }
 
@@ -29,9 +33,10 @@ SMODS.Challenge {
         modifiers = {}
     },
     jokers = {
-        {id = 'j_uma_agnes'},
-        {id = 'j_splash'}
+        {id = 'j_uma_agnes'}
     },
+    consumeables = {},
+    vouchers = {},
     restrictions = {}
 }
 
@@ -44,6 +49,8 @@ SMODS.Challenge {
     jokers = {
         {id = 'j_uma_oguri'}
     },
+    consumeables = {},
+    vouchers = {},
     restrictions = {}
 }
 
@@ -65,6 +72,8 @@ SMODS.Challenge {
         {id = 'j_uma_helios', eternal = true},
         {id = 'j_uma_daiwa', eternal = true}
     },
+    consumeables = {},
+    vouchers = {},
     restrictions = {}
 }
 
@@ -86,5 +95,7 @@ SMODS.Challenge {
         {id = 'j_uma_agnes'},
         {id = 'j_uma_oguri'}
     },
+    consumeables = {},
+    vouchers = {},
     restrictions = {}
 }
