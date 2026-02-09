@@ -52,7 +52,10 @@ return {
             j_uma_oguri = {
                 name = "Oguri Cap",
                 text = {
-                    "Fatty"
+                    "On round end, {C:attention}consume{} the",
+                    "{C:attention}lowest{} rank card held in",
+                    "hand, and gain {C:chips}+#2#{} chips",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
                 },
             },
 
@@ -105,6 +108,7 @@ return {
             c_uma_helios_challenge = "Daitaku Helios",
             c_uma_daiwa_challenge = "Daiwa Scarlet",
             c_uma_agnes_challenge = "Agnes Digital",
+            c_uma_oguri_challenge = "Oguri Cap",
             c_uma_legends = "All Legends",
             c_uma_test = "Hewwo everynyan :wave:",
         },
@@ -126,7 +130,8 @@ return {
             a_sold_tally="#1#/#2# Sold",
             a_xmult="X#1# Mult",
             a_xmult_minus="-X#1# Mult",
-            yuri="Yuri!"
+            uma_yuri="Yuri!",
+            uma_oguri="Yummy!"
         }
     }
 }

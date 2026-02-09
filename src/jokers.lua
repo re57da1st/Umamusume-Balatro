@@ -102,7 +102,7 @@ SMODS.Joker{
             end
             if queens > 0 then
                 return {
-                    message = localize('yuri'),
+                    message = localize('uma_yuri'),
                     colour = G.C.RED
                 }
             end
@@ -146,18 +146,44 @@ SMODS.Joker{
 
 SMODS.Joker{
     key = "oguri",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 2,
+    blueprint_compat = true,
+    rarity = 3,
+    cost = 8,
     pos = { x = 5, y = 0 },
+    config = { extra = { chips = 0, chip_mod = 20 } },
     atlas = 'umas',
 
     loc_vars = function(self, info_queue, card)
-        return nil
+        return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod } }
     end,
 
     calculate = function(self, card, context)
-        return nil
+        if context.end_of_round then
+            local food_rank, food_ID = 15, 15
+            local food = nil
+            for i = 1, #G.hand.cards do
+                if food_ID >= G.hand.cards[i].base.id and not SMODS.has_no_rank(G.hand.cards[i]) then
+                    food_rank = G.hand.cards[i].base.nominal
+                    food_ID = G.hand.cards[i].base.id
+                    food = G.hand.cards[i]
+                end
+            end
+            if food == context.other_card and not context.blueprint then
+                SMODS.destroy_cards(food)
+                --delay(1)
+                card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
+                return {
+                    message = localize('uma_oguri'),
+                    colour = G.C.CHIPS,
+                    message_card = card
+                }
+            end
+        end
+         if context.joker_main then
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
     end
 }
 
@@ -260,7 +286,7 @@ end
 Helios: DONE
 Daiwa: DONE
 Agnes: DONE
-Twin Turbo: Perfect Pair hand type buff (2 pairs of same card)
+Twin Turbo: Perfect Pair hand type buff (2 pairs of same card, similar to Ultimate Two Pair from Cryptid)
 Gold Ship: Smth silly
 Oguri Cap: Consume card to deckfix and add 0.1 xmult to trigger
 Bakushin: speed?

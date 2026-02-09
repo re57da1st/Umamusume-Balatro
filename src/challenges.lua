@@ -35,6 +35,18 @@ SMODS.Challenge {
 }
 
 SMODS.Challenge {
+    key = 'oguri_challenge',
+    rules = {
+        custom = {},
+        modifiers = {}
+    },
+    jokers = {
+        {id = 'j_uma_oguri'}
+    },
+    restrictions = {}
+}
+
+SMODS.Challenge {
     key = 'legends',
     rules = {
         custom = {},
@@ -70,7 +82,9 @@ SMODS.Challenge {
     jokers = {
         {id = 'j_uma_helios'},
         {id = 'j_uma_daiwa'},
-        {id = 'j_uma_agnes'}
+        {id = 'j_uma_agnes'},
+        {id = 'j_raised_fist'},
+        {id = 'j_uma_oguri'}
     },
     restrictions = {}
 }
