@@ -184,11 +184,11 @@ SMODS.Joker{  --Bugs: Timer does not stop when in pause menu, Timer does not res
     rarity = 2,
     cost = 5,
     pos = { x = 6, y = 0 },
-    config = { extra = { mult = 0, mult_pot = 0, mult_add = 25, mult_mod = 1, active = false } },
+    config = { extra = { mult = 0, mult_pot = 0, mult_add = 25, mult_mod = 1, active = false, sign = "+" } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.mult, card.ability.extra.mult_pot, card.ability.extra.mult_add, card.ability.extra.mult_mod, card.ability.extra.active } }
+        return { vars = { card.ability.extra.mult, card.ability.extra.mult_pot, card.ability.extra.mult_add, card.ability.extra.mult_mod, card.ability.extra.active, card.ability.extra.sign } }
     end,
 
     calculate = function(self, card, context)
@@ -204,11 +204,12 @@ SMODS.Joker{  --Bugs: Timer does not stop when in pause menu, Timer does not res
             func = function()
                 if not card.ability.extra.active then return true end
                 card.ability.extra.mult_pot = card.ability.extra.mult_pot - card.ability.extra.mult_mod
+                if card.ability.extra.mult_pot < 0 then card.ability.extra.sign = "" else card.ability.extra.sign = "+" end
                 event.start_timer = false
             end
         }
 
-        if context.end_of_round and not context.blurprint then --End of round
+        if context.end_of_round and not context.blueprint then --End of round
             if card.ability.extra.active then
                 card.ability.extra.active = false
                 card.ability.extra.mult = math.max(0, card.ability.extra.mult + card.ability.extra.mult_pot)
@@ -220,16 +221,17 @@ SMODS.Joker{  --Bugs: Timer does not stop when in pause menu, Timer does not res
                 else
                     return nil
                 end
+                local pot = card.ability.extra.mult_pot
                 card.ability.extra.mult_pot = 0
                 return {
-                    message = message,
+                    message = message.." "..card.ability.extra.sign..pot,
                     colour = G.C.MULT,
                     message_card = card
                 }
             end
         end 
 
-        if context.setting_blind and not context.blurprint then --Start of Blind
+        if context.setting_blind and not context.blueprint then --Start of Blind
             card.ability.extra.active = true
             card.ability.extra.mult_pot = card.ability.extra.mult_add
             G.E_MANAGER:add_event(event)

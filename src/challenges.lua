@@ -96,8 +96,7 @@ SMODS.Challenge {
         modifiers = {}
     },
     jokers = {
-        {id = 'j_uma_bakushin'},
-        {id = 'j_blueprint'}
+        {id = 'j_uma_bakushin'}
     },
     consumeables = {},
     vouchers = {},

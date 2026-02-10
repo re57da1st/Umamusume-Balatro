@@ -80,16 +80,19 @@ jd_def["j_uma_bakushin"] = {
     text_config = { colour = G.C.MULT },
     reminder_text = {
         { text = "(" },
-        { text = "+" , colour = G.C.GOLD },
-        { ref_table = "card.joker_display_values", ref_value = "mult_pot", colour = G.C.GOLD },
+        { ref_table = "card.joker_display_values", ref_value = "localized_text1", colour = G.C.ORANGE },
+        { ref_table = "card.joker_display_values", ref_value = "mult_pot", colour = G.C.ORANGE },
         { text = " " },
-        { ref_table = "card.joker_display_values", ref_value = "localized_text1", colour = G.C.GOLD },
+        { ref_table = "card.joker_display_values", ref_value = "localized_text2", colour = G.C.ORANGE },
         { text = ")" }
     },
  
     calc_function = function(card)
+        local sign = "+"
+        if card.ability.extra.mult_pot < 0 then sign = "" end
         card.joker_display_values.mult = card.ability.extra.mult
         card.joker_display_values.mult_pot = card.ability.extra.mult_pot
-        card.joker_display_values.localized_text1 = localize("uma_mult_pot")
+        card.joker_display_values.localized_text1 = sign
+        card.joker_display_values.localized_text2 = localize("uma_mult_pot")
     end 
 }
