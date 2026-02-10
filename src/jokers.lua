@@ -1,10 +1,3 @@
-SMODS.Atlas({
-    key = "umas",
-    path = "j_umas.png",
-    px = 71,
-    py = 95
-})
-
 SMODS.Joker{
     key = "helios",
     blueprint_compat = true,
@@ -12,7 +5,7 @@ SMODS.Joker{
     cost = 20,
     pos = { x = 0, y = 0 },
     config = { extra = { Xmult = 1.5 } },
-    atlas = 'umas',
+    atlas = 'j_umas',
     soul_pos = { x = 0, y = 1 },
 
     loc_vars = function(self, info_queue, card)
@@ -36,7 +29,7 @@ SMODS.Joker{
     cost = 20,
     pos = { x = 1, y = 0 },
     config = { extra = { q_mult = 8 } },
-    atlas = 'umas',
+    atlas = 'j_umas',
     soul_pos = { x = 1, y = 1 },
 
     loc_vars = function(self, info_queue, card)
@@ -75,7 +68,7 @@ SMODS.Joker{
     rarity = 3,
     cost = 8,
     pos = { x = 2, y = 0 },
-    atlas = 'umas',
+    atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
         return nil
@@ -114,7 +107,7 @@ SMODS.Joker{
     rarity = 1,
     cost = 2,
     pos = { x = 3, y = 0 },
-    atlas = 'umas',
+    atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
         return nil
@@ -131,7 +124,7 @@ SMODS.Joker{
     rarity = 3,
     cost = 8,
     pos = { x = 4, y = 0 },
-    atlas = 'umas',
+    atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
         return nil
@@ -149,7 +142,7 @@ SMODS.Joker{
     cost = 8,
     pos = { x = 5, y = 0 },
     config = { extra = { chips = 0, chip_mod = 20 } },
-    atlas = 'umas',
+    atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod } }
@@ -191,7 +184,7 @@ SMODS.Joker{
     rarity = 1,
     cost = 2,
     pos = { x = 6, y = 0 },
-    atlas = 'umas',
+    atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
         return nil
@@ -208,7 +201,7 @@ SMODS.Joker{
     rarity = 1,
     cost = 2,
     pos = { x = 2, y = 1 },
-    atlas = 'umas',
+    atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
         return nil
@@ -225,7 +218,7 @@ SMODS.Joker{
     rarity = 1,
     cost = 2,
     pos = { x = 3, y = 1 },
-    atlas = 'umas',
+    atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
         return nil
@@ -242,7 +235,7 @@ SMODS.Joker{
     rarity = 1,
     cost = 2,
     pos = { x = 4, y = 1 },
-    atlas = 'umas',
+    atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
         return nil
@@ -259,7 +252,7 @@ SMODS.Joker{
     rarity = 1,
     cost = 2,
     pos = { x = 5, y = 1 },
-    atlas = 'umas',
+    atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
         return nil

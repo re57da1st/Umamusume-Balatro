@@ -41,15 +41,17 @@ SMODS.Challenge {
 }
 
 SMODS.Challenge {
-    key = 'oguri_challenge',
+    key = 'turbo_challenge',
     rules = {
         custom = {},
         modifiers = {}
     },
     jokers = {
-        {id = 'j_uma_oguri'}
+        {id = 'j_uma_turbo'}
     },
-    consumeables = {},
+    consumeables = {
+        {id = 'c_uma_twin_moons'}
+    },
     vouchers = {},
     restrictions = {}
 }
@@ -62,6 +64,20 @@ SMODS.Challenge {
     },
     jokers = {
         {id = 'j_uma_goldship'}
+    },
+    consumeables = {},
+    vouchers = {},
+    restrictions = {}
+}
+
+SMODS.Challenge {
+    key = 'oguri_challenge',
+    rules = {
+        custom = {},
+        modifiers = {}
+    },
+    jokers = {
+        {id = 'j_uma_oguri'}
     },
     consumeables = {},
     vouchers = {},
