@@ -62,9 +62,16 @@ return {
             j_uma_bakushin = {
                 name = "Sakura Bakushin O",
                 text = {
+                    "{C:mult}+#2#{} Mult at beginning of round.",
+                    "Decreases by {C:mult}-#3#{} every second",
+                    "inside a blind.",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+                    "Timer active: {C:attention}#4#{}"
+                    --[[
                     "Bakushin Bakushin Bakushin!",
                     "Bakushin Bakushin Bakushin!",
                     "Bakushin, Bakushin, Baku shin shin!"
+                    ]]
                 },
             },
 
@@ -124,6 +131,7 @@ return {
             c_uma_turbo_challenge = "Twin Turbo",
             c_uma_goldship_challenge = "Goldship",
             c_uma_oguri_challenge = "Oguri Cap",
+            c_uma_bakushin_challenge = "Sakura Bakushin O",
             c_uma_legends = "All Legends",
             c_uma_test = "Hewwo everynyan :wave:"
         },

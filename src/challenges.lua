@@ -90,6 +90,20 @@ SMODS.Challenge {
 }
 
 SMODS.Challenge {
+    key = 'bakushin_challenge',
+    rules = {
+        custom = {},
+        modifiers = {}
+    },
+    jokers = {
+        {id = 'j_uma_bakushin'}
+    },
+    consumeables = {},
+    vouchers = {},
+    restrictions = {}
+}
+
+SMODS.Challenge {
     key = 'legends',
     rules = {
         custom = {},

@@ -170,7 +170,7 @@ SMODS.Joker{
                 }
             end
         end
-         if context.joker_main then
+        if context.joker_main then
             return {
                 chips = card.ability.extra.chips
             }
@@ -178,22 +178,60 @@ SMODS.Joker{
     end
 }
 
-SMODS.Joker{
+SMODS.Joker{  --Bugs: Timer does not stop when in pause menu, Timer does not restart when exiting and returning to run
     key = "bakushin",
-    blueprint_compat = false,
+    blueprint_compat = true,
     rarity = 1,
     cost = 2,
     pos = { x = 6, y = 0 },
+    config = { extra = { mult = 0, mult_add = 100, mult_mod = 1, active = false } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
-        return nil
+        return { vars = { card.ability.extra.mult, card.ability.extra.mult_add, card.ability.extra.mult_mod, card.ability.extra.active } }
     end,
 
     calculate = function(self, card, context)
-        return nil
+        local event
+        event = Event {
+            blockable = false,
+            blocking = false,
+            pause_force = true,
+            no_delete = true,
+            trigger = "after",
+            delay = 1,
+            timer = "UPTIME",
+            func = function()
+                if not card.ability.extra.active then return true end
+                card.ability.extra.mult = math.max(0, card.ability.extra.mult - card.ability.extra.mult_mod)
+                event.start_timer = false
+            end
+        }
+
+        if context.end_of_round then
+            card.ability.extra.active = false
+        end 
+
+        if context.setting_blind then
+            card.ability.extra.active = true
+            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_add
+            G.E_MANAGER:add_event(event) 
+            return {
+                message = localize('uma_oguri'),
+                colour = G.C.MULT,
+                message_card = card
+            }
+        end
+
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
     end
 }
+
+
 
 SMODS.Joker{
     key = "mambo",
@@ -281,6 +319,10 @@ Twin Turbo: Perfect Pair hand type buff (2 pairs of same card, similar to Ultima
 Gold Ship: Smth silly
 Oguri Cap: Consume card to deckfix and add 0.1 xmult to trigger
 Bakushin: speed?
+    +#1# Mult at beginning of round.
+    Decreases by -#2# every second
+    inside a blind.
+
 Obey Your Master: Every played card with Diamond suit permanently gains +1-3 mult when scored
     Card design: Episode 17, 20:30, break-through eye with peace sign over it like a magical girl
 
