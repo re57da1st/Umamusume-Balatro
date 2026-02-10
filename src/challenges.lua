@@ -50,35 +50,12 @@ SMODS.Challenge {
     },
     jokers = {
         {id = 'j_uma_helios'},
+        {id = 'j_uma_daiwa'},
         {id = 'j_uma_turbo'}
     },
-    deck = {
-        type = 'Challenge Deck',
-        cards = {
-            { s = 'D', r = 'K'},
-            { s = 'D', r = 'K'},
-            { s = 'D', r = 'K'},
-            { s = 'D', r = 'K'},
-            { s = 'D', r = 'K'},
-            { s = 'D', r = 'K'},
-            { s = 'D', r = 'K'},
-            { s = 'D', r = 'K'},
-            { s = 'D', r = 'Q'},
-            { s = 'D', r = 'Q'},
-            { s = 'D', r = 'Q'},
-            { s = 'D', r = 'Q'},
-            { s = 'D', r = 'Q'},
-            { s = 'D', r = 'Q'},
-            { s = 'D', r = 'Q'},
-            { s = 'D', r = 'Q'},
-        }
-    },
+    deck = {},
     consumeables = {
-        {id = 'c_uma_twin_moons'},
-        {id = 'c_trance'},
-        {id = 'c_trance'},
-        {id = 'c_trance'},
-        {id = 'c_trance'}
+        {id = 'c_uma_twin_moons'}
     },
     vouchers = {},
     restrictions = {}
@@ -151,9 +128,13 @@ SMODS.Challenge {
         {id = 'j_uma_helios'},
         {id = 'j_uma_daiwa'},
         {id = 'j_uma_agnes'},
+        {id = 'j_uma_turbo'},
+        {id = 'j_uma_goldship'},
         {id = 'j_uma_oguri'}
     },
     consumeables = {},
     vouchers = {},
     restrictions = {}
 }
+
+--{ s = 'D', r = 'Q', e = 'm_steel', d = 'polychrome', g = 'Red' }
