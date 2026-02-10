@@ -71,3 +71,25 @@ jd_def["j_uma_oguri"] = {
         { text = "(Hungry)" }
     }
 }
+
+jd_def["j_uma_bakushin"] = {
+    text = {
+        { text = "+" },
+        { ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult" },
+    },
+    text_config = { colour = G.C.MULT },
+    reminder_text = {
+        { text = "(" },
+        { text = "+" , colour = G.C.GOLD },
+        { ref_table = "card.joker_display_values", ref_value = "mult_pot", colour = G.C.GOLD },
+        { text = " " },
+        { ref_table = "card.joker_display_values", ref_value = "localized_text1", colour = G.C.GOLD },
+        { text = ")" }
+    },
+ 
+    calc_function = function(card)
+        card.joker_display_values.mult = card.ability.extra.mult
+        card.joker_display_values.mult_pot = card.ability.extra.mult_pot
+        card.joker_display_values.localized_text1 = localize("uma_mult_pot")
+    end 
+}

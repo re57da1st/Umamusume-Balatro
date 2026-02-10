@@ -62,16 +62,18 @@ return {
             j_uma_bakushin = {
                 name = "Sakura Bakushin O",
                 text = {
-                    "{C:mult}+#2#{} Mult at beginning of round.",
-                    "Decreases by {C:mult}-#3#{} every second",
-                    "inside a blind.",
-                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
-                    "Timer active: {C:attention}#4#{}"
+                    
+                    "{C:attention}+#3# potential Mult{} at round begin,",
+                    "lose {C:attention}-#4# potential Mult{} per second.",
+                    "Becomes real {C:mult}Mult{} at end of round.",
+                    "{C:inactive}(Mult: {C:mult}+#1#{C:inactive}, Potential Mult: {C:attention}+#2#{C:inactive})",
                     --[[
-                    "Bakushin Bakushin Bakushin!",
-                    "Bakushin Bakushin Bakushin!",
-                    "Bakushin, Bakushin, Baku shin shin!"
-                    ]]
+                    "Mult: {C:mult}#1#{}",
+                    "Mult Pot: {C:attention}#2#{}",
+                    "Mult Add: {C:attention}#3#{}",
+                    "Mult Mod: {C:attention}#4#{}",
+                    "Active: {C:attention}#5#{}",
+                    ]]--
                 },
             },
 
@@ -150,7 +152,11 @@ return {
             a_xmult_minus="-X#1# Mult",
             uma_yuri="Yuri!",
             uma_oguri="Yummy!",
-            uma_twin_moon="Moon(s)"
+            uma_twin_moon="Moon(s)",
+            uma_bakushin1="Bakushin!",
+            uma_bakushin2="Bakushinshi-n!",
+            uma_bakushin3="Ba-...",
+            uma_mult_pot="Potential Mult"
         },
         poker_hand_descriptions = {
             uma_perfect_pair = {

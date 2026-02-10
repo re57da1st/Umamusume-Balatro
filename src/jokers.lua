@@ -181,19 +181,19 @@ SMODS.Joker{
 SMODS.Joker{  --Bugs: Timer does not stop when in pause menu, Timer does not restart when exiting and returning to run
     key = "bakushin",
     blueprint_compat = true,
-    rarity = 1,
-    cost = 2,
+    rarity = 2,
+    cost = 5,
     pos = { x = 6, y = 0 },
-    config = { extra = { mult = 0, mult_add = 100, mult_mod = 1, active = false } },
+    config = { extra = { mult = 0, mult_pot = 0, mult_add = 25, mult_mod = 1, active = false } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.mult, card.ability.extra.mult_add, card.ability.extra.mult_mod, card.ability.extra.active } }
+        return { vars = { card.ability.extra.mult, card.ability.extra.mult_pot, card.ability.extra.mult_add, card.ability.extra.mult_mod, card.ability.extra.active } }
     end,
 
     calculate = function(self, card, context)
         local event
-        event = Event {
+        event = Event { --Timer function
             blockable = false,
             blocking = false,
             pause_force = true,
@@ -203,27 +203,44 @@ SMODS.Joker{  --Bugs: Timer does not stop when in pause menu, Timer does not res
             timer = "UPTIME",
             func = function()
                 if not card.ability.extra.active then return true end
-                card.ability.extra.mult = math.max(0, card.ability.extra.mult - card.ability.extra.mult_mod)
+                card.ability.extra.mult_pot = card.ability.extra.mult_pot - card.ability.extra.mult_mod
                 event.start_timer = false
             end
         }
 
-        if context.end_of_round then
-            card.ability.extra.active = false
+        if context.end_of_round and not context.blurprint then --End of round
+            if card.ability.extra.active then
+                card.ability.extra.active = false
+                card.ability.extra.mult = math.max(0, card.ability.extra.mult + card.ability.extra.mult_pot)
+                local message
+                if  card.ability.extra.mult_pot > 0 then
+                    message =  localize('uma_bakushin2')
+                elseif  card.ability.extra.mult_pot < 0 then
+                    message =  localize('uma_bakushin3')
+                else
+                    return nil
+                end
+                card.ability.extra.mult_pot = 0
+                return {
+                    message = message,
+                    colour = G.C.MULT,
+                    message_card = card
+                }
+            end
         end 
 
-        if context.setting_blind then
+        if context.setting_blind and not context.blurprint then --Start of Blind
             card.ability.extra.active = true
-            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_add
-            G.E_MANAGER:add_event(event) 
+            card.ability.extra.mult_pot = card.ability.extra.mult_add
+            G.E_MANAGER:add_event(event)
             return {
-                message = localize('uma_oguri'),
-                colour = G.C.MULT,
+                message = localize('uma_bakushin1'),
+                colour = G.C.ATTENTION,
                 message_card = card
             }
         end
 
-        if context.joker_main then
+        if context.joker_main then --Adding cuttent mult to hand
             return {
                 mult = card.ability.extra.mult
             }
