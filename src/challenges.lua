@@ -44,13 +44,41 @@ SMODS.Challenge {
     key = 'turbo_challenge',
     rules = {
         custom = {},
-        modifiers = {}
+        modifiers = {
+            { id = 'consumable_slots', value = 4 }
+        }
     },
     jokers = {
+        {id = 'j_uma_helios'},
         {id = 'j_uma_turbo'}
     },
+    deck = {
+        type = 'Challenge Deck',
+        cards = {
+            { s = 'D', r = 'K'},
+            { s = 'D', r = 'K'},
+            { s = 'D', r = 'K'},
+            { s = 'D', r = 'K'},
+            { s = 'D', r = 'K'},
+            { s = 'D', r = 'K'},
+            { s = 'D', r = 'K'},
+            { s = 'D', r = 'K'},
+            { s = 'D', r = 'Q'},
+            { s = 'D', r = 'Q'},
+            { s = 'D', r = 'Q'},
+            { s = 'D', r = 'Q'},
+            { s = 'D', r = 'Q'},
+            { s = 'D', r = 'Q'},
+            { s = 'D', r = 'Q'},
+            { s = 'D', r = 'Q'},
+        }
+    },
     consumeables = {
-        {id = 'c_uma_twin_moons'}
+        {id = 'c_uma_twin_moons'},
+        {id = 'c_trance'},
+        {id = 'c_trance'},
+        {id = 'c_trance'},
+        {id = 'c_trance'}
     },
     vouchers = {},
     restrictions = {}

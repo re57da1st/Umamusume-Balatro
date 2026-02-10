@@ -28,7 +28,7 @@ SMODS.PokerHand {
                 end
                 if flush_count >= 4 then
                     table.insert(ret, t)
-                    return ret
+                    return parts._all_pairs
                 end
             end
             return {}
