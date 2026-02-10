@@ -130,7 +130,12 @@ SMODS.Challenge {
         {id = 'j_uma_agnes'},
         {id = 'j_uma_turbo'},
         {id = 'j_uma_goldship'},
-        {id = 'j_uma_oguri'}
+        {id = 'j_uma_oguri'},
+        {id = 'j_uma_bakushin'},
+        {id = 'j_uma_mambo'},
+        {id = 'j_uma_chiyono'},
+        {id = 'j_uma_norn'},
+        {id = 'j_uma_obey'}
     },
     consumeables = {},
     vouchers = {},
