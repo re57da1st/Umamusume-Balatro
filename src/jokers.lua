@@ -420,7 +420,7 @@ Obey Your Master: Every played card with Diamond suit permanently gains +1-3 mul
 
     	Create function Card;get_chip_bonus_mult()
 
-
+Matikanefukukitaru: TAROT CARDS~!
 
 
         
