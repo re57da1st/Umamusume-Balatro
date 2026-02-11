@@ -123,6 +123,197 @@ return {
                 },
             }
 
+        },
+        uma_Tarot = { -- If you're making regular Tarots the key will be "Tarot"
+            c_uma_chariot = {
+                name = "The Chariot",
+                text = {
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a",
+                    "{C:attention}#2#",
+                },
+            },
+            c_uma_death = {
+                name = "Death",
+                text = {
+                    "Select {C:attention}#1#{} cards,",
+                    "convert the {C:attention}left{} card",
+                    "into the {C:attention}right{} card",
+                    "{C:inactive}(Drag to rearrange)",
+                },
+            },
+            c_uma_devil = {
+                name = "The Devil",
+                text = {
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a",
+                    "{C:attention}#2#",
+                },
+            },
+            c_uma_emperor = {
+                name = "The Emperor",
+                text = {
+                    "Creates up to {C:attention}#1#",
+                    "random {C:tarot}Tarot{} cards",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+            c_uma_empress = {
+                name = "The Empress",
+                text = {
+                    "Enhances {C:attention}#1#",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+            c_uma_fool = {
+                name = "The Fool",
+                text = {
+                    "Creates the last",
+                    "{C:tarot}Tarot{} or {C:planet}Planet{} card",
+                    "used during this run",
+                    "{s:0.8,C:tarot}The Fool{s:0.8} excluded",
+                },
+            },
+            c_uma_hanged_man = {
+                name = "The Hanged Man",
+                text = {
+                    "Destroys up to",
+                    "{C:attention}#1#{} selected cards",
+                },
+            },
+            c_uma_heirophant = {
+                name = "The Hierophant",
+                text = {
+                    "Enhances {C:attention}#1#",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+            c_uma_hermit = {
+                name = "The Hermit",
+                text = {
+                    "Doubles money",
+                    "{C:inactive}(Max of {C:money}$#1#{C:inactive})",
+                },
+            },
+            c_uma_high_priestess = {
+                name = "The High Priestess",
+                text = {
+                    "Creates up to {C:attention}#1#",
+                    "random {C:planet}Planet{} cards",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+            c_uma_judgement = {
+                name = "Judgement",
+                text = {
+                    "Creates a random",
+                    "{C:attention}Joker{} card",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+            c_uma_justice = {
+                name = "Justice",
+                text = {
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a",
+                    "{C:attention}#2#",
+                },
+            },
+            c_uma_lovers = {
+                name = "The Lovers",
+                text = {
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a",
+                    "{C:attention}#2#",
+                },
+            },
+            c_uma_magician = {
+                name = "The Magician",
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+            c_uma_moon = {
+                name = "The Moon",
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+            c_uma_star = {
+                name = "The Star",
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+            c_uma_strength = {
+                name = "Strength",
+                text = {
+                    "Increases rank of",
+                    "up to {C:attention}#1#{} selected",
+                    "cards by {C:attention}1",
+                },
+            },
+            c_uma_sun = {
+                name = "The Sun",
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+            c_uma_temperance = {
+                name = "Temperance",
+                text = {
+                    "Gives the total sell",
+                    "value of all current",
+                    "Jokers {C:inactive}(Max of {C:money}$#1#{C:inactive})",
+                    "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
+                },
+            },
+            c_uma_tower = {
+                name = "The Tower",
+                text = {
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a",
+                    "{C:attention}#2#",
+                },
+            },
+            c_uma_wheel_of_fortune = {
+                name = "The Wheel of Fortune",
+                text = {
+                    "{C:green}#1# in #2#{} chance to add",
+                    "{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
+                    "{C:dark_edition}Polychrome{} edition",
+                    "to a random {C:attention}Joker",
+                },
+            },
+            c_uma_world = {
+                name = "The World",
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+        },
+        other = {
+            undiscovered_vremade_tarot = {
+                name = "Not Discovered",
+                text = {
+                    "Purchase or use",
+                    "this card in an",
+                    "unseeded run to",
+                    "learn what it does",
+                },
+            },
         }
     },
     misc = {
@@ -156,7 +347,12 @@ return {
             uma_bakushin1="Bakushin!",
             uma_bakushin2="Bakushinshi-n!",
             uma_bakushin3="Ba-...",
-            uma_mult_pot="Potential Mult"
+            uma_mult_pot="Potential Mult",
+            b_uma_tarot_cards = "Tarot Cards",
+            k_uma_tarot = "Tarot",
+        },
+        labels = {
+            uma_tarot = "Tarot",
         },
         poker_hand_descriptions = {
             uma_perfect_pair = {
