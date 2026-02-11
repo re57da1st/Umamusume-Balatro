@@ -84,6 +84,7 @@ SMODS.Challenge {
     jokers = {
         {id = 'j_uma_oguri'}
     },
+    deck = {},
     consumeables = {},
     vouchers = {},
     restrictions = {}

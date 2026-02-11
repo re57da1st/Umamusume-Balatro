@@ -165,7 +165,7 @@ SMODS.Joker{
                     food = G.hand.cards[i]
                 end
             end
-            if food == context.other_card and not context.blueprint then
+            if food and food == context.other_card and (not context.blueprint) then
                 SMODS.destroy_cards(food)
                 --delay(1)
                 card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
@@ -366,6 +366,7 @@ Daiwa: DONE
 Agnes: DONE
     Splash bug: DONE (could be done better apparently)
 Oguri Cap: DONE
+    Hungry bug: DONE
 Bakushin: DONE
     Pause menu bug: DONE 
     leave/rejoin bug: not fixed
