@@ -3,6 +3,7 @@
 SMODS.ConsumableType {
     key = 'vremade_Tarot',
     default = 'c_vremade_strength',
+    primary_colour = G.C.SET.Tarot,
     secondary_colour = G.C.SECONDARY_SET.Tarot,
     collection_rows = { 5, 6 },
     shop_rate = 4
