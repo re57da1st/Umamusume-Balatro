@@ -276,7 +276,22 @@ SMODS.Joker{
     end
 }
 
+SMODS.Joker{
+    key = "fuku",
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 2,
+    pos = { x = 2, y = 1 },
+    atlas = 'j_umas',
 
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end
+}
 
 SMODS.Joker{
     key = "mambo",
@@ -366,7 +381,7 @@ Daiwa: DONE
 Agnes: DONE
     Splash bug: DONE (could be done better apparently)
 Oguri Cap: DONE
-    Hungry bug: DONE
+    Oguri Cap no longer eats da game ^^!
 Bakushin: DONE
     Pause menu bug: DONE 
     leave/rejoin bug: not fixed
@@ -420,7 +435,7 @@ Obey Your Master: Every played card with Diamond suit permanently gains +1-3 mul
 
     	Create function Card;get_chip_bonus_mult()
 
-Matikanefukukitaru: TAROT CARDS~!
+
 
 
         
