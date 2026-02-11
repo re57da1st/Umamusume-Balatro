@@ -190,7 +190,7 @@ SMODS.Joker{
     rarity = 2,
     cost = 5,
     pos = { x = 6, y = 0 },
-    config = { extra = { mult = 0, mult_pot = 0, mult_add = 20, mult_mod = 1, active = false, sign = "+" } },
+    config = { extra = { mult = 0, mult_pot = 0, mult_add = 15, mult_mod = 0.5, active = false, sign = "+" } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
