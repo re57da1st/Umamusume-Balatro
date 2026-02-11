@@ -9,7 +9,9 @@ SMODS.Joker{
     soul_pos = { x = 0, y = 1 },
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.Xmult } }
+        return { vars = {
+                card.ability.extra.Xmult --Xmult, the value that Mult gets multiplied as when triggered
+        } }
     end,
 
     calculate = function(self, card, context)
@@ -39,7 +41,10 @@ SMODS.Joker{
                 if playing_card:get_id() == 12 then queen_tally = queen_tally + 1 end
             end
         end
-        return { vars = { card.ability.extra.q_mult, card.ability.extra.q_mult * queen_tally } }
+        return { vars = {
+            card.ability.extra.q_mult,  --Queen Mult, the amount of mult Daiwa gains per queen in the deck
+            card.ability.extra.q_mult * queen_tally  --The total amount of mult Daiwa gains
+        } }
     end,
 
     calculate = function(self, card, context)
@@ -59,8 +64,6 @@ SMODS.Joker{
         end
     end
 }
-
---Only rare if other queen jokers are added
 
 SMODS.Joker{
     key = "agnes",
@@ -145,7 +148,10 @@ SMODS.Joker{
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod } }
+        return { vars = {
+            card.ability.extra.chips, --The total amount of chips Oguri stores on the card
+            card.ability.extra.chip_mod --The amount of chips Oguri gains per card "eaten"
+        } }
     end,
 
     calculate = function(self, card, context)
@@ -178,17 +184,24 @@ SMODS.Joker{
     end
 }
 
-SMODS.Joker{  --Bugs: Timer does not stop when in pause menu, Timer does not restart when exiting and returning to run
+SMODS.Joker{
     key = "bakushin",
     blueprint_compat = true,
     rarity = 2,
     cost = 5,
     pos = { x = 6, y = 0 },
-    config = { extra = { mult = 0, mult_pot = 0, mult_add = 25, mult_mod = 1, active = false, sign = "+" } },
+    config = { extra = { mult = 0, mult_pot = 0, mult_add = 20, mult_mod = 1, active = false, sign = "+" } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.mult, card.ability.extra.mult_pot, card.ability.extra.mult_add, card.ability.extra.mult_mod, card.ability.extra.active, card.ability.extra.sign } }
+        return { vars = {
+                card.ability.extra.mult, --The Mult value the card has
+                card.ability.extra.mult_pot, --Mult potential, the value that changes with respect to time
+                card.ability.extra.mult_add, --Mult Addition, the value of Potential Mult that gets added at blind start
+                card.ability.extra.mult_mod, --Mult Mod, the amount of Potential Mult that goes down per second
+                card.ability.extra.active, --Active, Boolean state that decides if the timer continues to run
+                card.ability.extra.sign --Sign, the state of "+" or "-" that shows attached to the Potential Mult value
+        } }
     end,
 
     calculate = function(self, card, context)
@@ -202,12 +215,23 @@ SMODS.Joker{  --Bugs: Timer does not stop when in pause menu, Timer does not res
             delay = 1,
             timer = "UPTIME",
             func = function()
+                if card.ability.extra.mult_pot < 0 then
+                    card.ability.extra.sign = ""
+                else
+                    card.ability.extra.sign = "+"
+                end
                 if not card.ability.extra.active then return true end
-                card.ability.extra.mult_pot = card.ability.extra.mult_pot - card.ability.extra.mult_mod
-                if card.ability.extra.mult_pot < 0 then card.ability.extra.sign = "" else card.ability.extra.sign = "+" end
+                if not G.SETTINGS.paused then
+                    card.ability.extra.mult_pot = card.ability.extra.mult_pot - card.ability.extra.mult_mod
+                end
                 event.start_timer = false
             end
         }
+
+        if context.starting_shop and not context.blueprint then --Makes sure to stop timer in case card was debuffed at end of blind
+            card.ability.extra.active = false
+            card.ability.extra.mult_pot = 0
+        end
 
         if context.end_of_round and not context.blueprint then --End of round
             if card.ability.extra.active then
@@ -218,6 +242,7 @@ SMODS.Joker{  --Bugs: Timer does not stop when in pause menu, Timer does not res
                     message =  localize('uma_bakushin2')
                 elseif  card.ability.extra.mult_pot < 0 then
                     message =  localize('uma_bakushin3')
+                    card.children.center:set_sprite_pos({ x = 7, y = 0 })
                 else
                     return nil
                 end
@@ -229,12 +254,13 @@ SMODS.Joker{  --Bugs: Timer does not stop when in pause menu, Timer does not res
                     message_card = card
                 }
             end
-        end 
+        end
 
         if context.setting_blind and not context.blueprint then --Start of Blind
             card.ability.extra.active = true
             card.ability.extra.mult_pot = card.ability.extra.mult_add
             G.E_MANAGER:add_event(event)
+            card.children.center:set_sprite_pos({ x = 6, y = 0 })
             return {
                 message = localize('uma_bakushin1'),
                 colour = G.C.ATTENTION,
@@ -242,7 +268,7 @@ SMODS.Joker{  --Bugs: Timer does not stop when in pause menu, Timer does not res
             }
         end
 
-        if context.joker_main then --Adding cuttent mult to hand
+        if context.joker_main then --Adding current mult to hand
             return {
                 mult = card.ability.extra.mult
             }
@@ -331,57 +357,69 @@ end
 
 --[[
 
+Checklist
+
+ADD QUEEN RELATED JOKERS
+
 Helios: DONE
 Daiwa: DONE
 Agnes: DONE
-Twin Turbo: Perfect Pair hand type buff (2 pairs of same card, similar to Ultimate Two Pair from Cryptid)
-Gold Ship: Smth silly
-Oguri Cap: Consume card to deckfix and add 0.1 xmult to trigger
-Bakushin: speed?
-    +#1# Mult at beginning of round.
-    Decreases by -#2# every second
-    inside a blind.
+    Splash bug: DONE (could be done better apparently)
+Oguri Cap: DONE
+Bakushin: DONE
+    Pause menu bug: DONE 
+    leave/rejoin bug: not fixed
+    Debuff bug: DONE
 
-Obey Your Master: Every played card with Diamond suit permanently gains +1-3 mult when scored
-    Card design: Episode 17, 20:30, break-through eye with peace sign over it like a magical girl
-
-
-
-Extra Mult Display (on card UI)
-	+x chips
-	+x Mult
-	+x extra chips
-	+x extra Mult
-
-Add bonus permament bonus mult
-	Add new ability called "perma_bonus_mult"
-
-	UI Ability Table
-		card.lua, line 731
-			bonus_mult = ... self.ability.perma_bonus_mult
-
-	Create function Card;get_chip_bonus_mult()
-
-new poker hand - Perfect Pair?
-    "2 pairs of matching suits with different ranks,",
-    "may be played with 1 other unscored card",
-	100 Chips x 10 Mult
-    35 l_chips x 3 l_mult
-
-    Process:
-        Check all cards in hand, and tally up how many of each suit there is
-        if a suit has 4+ cards then
-            then store the name of the suit [suit]
-            check all cards in hand again, and tally up each rank that matches [suit]
-            if there are 2+ entries that have 2+ ranks in hand then
-                store each matching rank that matches [rank]
-                return all cards that match [suit] and any [rank]
+Twin Turbo: Buff Two Pair, and Perfect Pair more?
+    new poker hand - Perfect Pair: DONE
+        "2 pairs of matching suits with different ranks,",
+        "may be played with 1 other unscored card",
+    	100 Chips x 10 Mult
+        35 l_chips x 3 l_mult
+            
+        Process:
+            Check all cards in hand, and tally up how many of each suit there is
+            if a suit has 4+ cards then
+                then store the name of the suit [suit]
+                check all cards in hand again, and tally up each rank that matches [suit]
+                if there are 2+ entries that have 2+ ranks in hand then
+                    store each matching rank that matches [rank]
+                    return all cards that match [suit] and any [rank]
+                else
+                    return nil
+                end
             else
                 return nil
             end
-        else
-            return nil
-        end
+
+Gold Ship: Smth silly
+
+Mambo: Has base chips, mult, and Xmult, values increase as certain consumeable cards show up and are bought/used for each
+
+Chiyono O: no clue
+
+Norn Ace: no clue
+
+Obey Your Master: Every played card with Diamond suit permanently gains +1-3 mult when scored?
+    Card design: Episode 17, 20:30, break-through eye with peace sign over it like a magical girl
+
+    Extra Mult Display (on card UI)
+    	+x chips
+    	+x Mult
+    	+x extra chips
+    	+x extra Mult
+
+    Add bonus permament bonus mult
+    	Add new ability called "perma_bonus_mult"
+
+    	UI Ability Table
+    		card.lua, line 731
+    			bonus_mult = ... self.ability.perma_bonus_mult
+
+    	Create function Card;get_chip_bonus_mult()
+
+
 
 
         
