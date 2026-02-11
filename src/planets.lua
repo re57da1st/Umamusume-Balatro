@@ -2,7 +2,7 @@ SMODS.Consumable {
     key = "twin_moons",
     set = "Planet",
     cost = 3,
-    pos = { x = 0, y = 0 },
+    pos = { x = 6, y = 5 },
     config = { hand_type = 'uma_perfect_pair', softlock = true },
     atlas = 'c_umas',
 
