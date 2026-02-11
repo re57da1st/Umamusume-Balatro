@@ -16,6 +16,7 @@ SMODS.Joker{
 
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and (context.other_card:is_suit("Clubs") or context.other_card:is_suit("Diamonds")) then
+            --Checks for cards in play that are Clubs or Diamonds
             return {
                 xmult = card.ability.extra.Xmult
             }
@@ -30,35 +31,29 @@ SMODS.Joker{
     rarity = 4,
     cost = 20,
     pos = { x = 1, y = 0 },
-    config = { extra = { q_mult = 8 } },
+    config = { extra = { q_mult = 8, total_mult = 0} },
     atlas = 'j_umas',
     soul_pos = { x = 1, y = 1 },
 
     loc_vars = function(self, info_queue, card)
         local queen_tally = 0
-        if G.playing_cards then
+        if G.playing_cards then --Tally up the amount of Queens in the deck
             for _, playing_card in ipairs(G.playing_cards) do
                 if playing_card:get_id() == 12 then queen_tally = queen_tally + 1 end
             end
         end
+        card.ability.extra.total_mult = card.ability.extra.q_mult * queen_tally
         return { vars = {
             card.ability.extra.q_mult,  --Queen Mult, the amount of mult Daiwa gains per queen in the deck
-            card.ability.extra.q_mult * queen_tally  --The total amount of mult Daiwa gains
+            card.ability.extra.total_mult  --The total amount of mult Daiwa gains
         } }
     end,
 
     calculate = function(self, card, context)
-        if context.modify_hand then
-            local queens = 0
-            if G.playing_cards then
-                for _, playing_card in ipairs(G.playing_cards) do
-                    if playing_card:get_id() == 12 then queens = queens + 1 end
-                end
-            end
-
-            if queens > 0 then
+        if context.modify_hand then --Context that happens after setting the poker hand type, and before scoring cards
+            if card.ability.extra.total_mult > 0 then
                 return {
-                    mult = (card.ability.extra.q_mult * queens)
+                    mult = (card.ability.extra.total_mult)
                 }
             end
         end
@@ -187,10 +182,10 @@ SMODS.Joker{
 SMODS.Joker{
     key = "bakushin",
     blueprint_compat = true,
-    rarity = 2,
-    cost = 5,
+    rarity = 3,
+    cost = 7,
     pos = { x = 6, y = 0 },
-    config = { extra = { mult = 0, mult_pot = 0, mult_add = 15, mult_mod = 0.5, active = false, sign = "+" } },
+    config = { extra = { mult = 0, mult_pot = 0, mult_add = 10, mult_mod = 1, active = false, sign = "+", interval = 3 } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
@@ -198,9 +193,10 @@ SMODS.Joker{
                 card.ability.extra.mult, --The Mult value the card has
                 card.ability.extra.mult_pot, --Mult potential, the value that changes with respect to time
                 card.ability.extra.mult_add, --Mult Addition, the value of Potential Mult that gets added at blind start
-                card.ability.extra.mult_mod, --Mult Mod, the amount of Potential Mult that goes down per second
+                card.ability.extra.mult_mod, --Mult Mod, the amount of Potential Mult that goes down per interval
                 card.ability.extra.active, --Active, Boolean state that decides if the timer continues to run
-                card.ability.extra.sign --Sign, the state of "+" or "-" that shows attached to the Potential Mult value
+                card.ability.extra.sign, --Sign, the state of "+" or "-" that shows attached to the Potential Mult value
+                card.ability.extra.interval --Interval, How many seconds go by before Potential Mult drops
         } }
     end,
 
@@ -212,7 +208,7 @@ SMODS.Joker{
             pause_force = true,
             no_delete = true,
             trigger = "after",
-            delay = 1,
+            delay = card.ability.extra.interval,
             timer = "UPTIME",
             func = function()
                 if card.ability.extra.mult_pot < 0 then
@@ -365,6 +361,7 @@ Helios: DONE
 Daiwa: DONE
 Agnes: DONE
     Splash bug: DONE (could be done better apparently)
+    Check compatbiility with boss "only play 1 hand type"
 Oguri Cap: DONE
     Hungry bug: DONE
 Bakushin: DONE

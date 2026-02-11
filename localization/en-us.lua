@@ -64,7 +64,7 @@ return {
                 text = {
                     
                     "{C:attention}+#3# Potential Mult{} at round begin,",
-                    "lose {C:attention}-#4# Potential Mult{} per second.",
+                    "lose {C:attention}-#4# Potential Mult{} every {C:attention}#7#{} second(s).",
                     "Becomes real {C:mult}Mult{} at end of round.",
                     "{C:inactive}(Mult: {C:mult}+#1#{C:inactive}, Potential Mult: {C:attention}#6##2#{C:inactive})",
                     --[[
