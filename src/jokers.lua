@@ -273,23 +273,6 @@ SMODS.Joker{
 }
 
 SMODS.Joker{
-    key = "fuku",
-    blueprint_compat = true,
-    rarity = 1,
-    cost = 2,
-    pos = { x = 2, y = 1 },
-    atlas = 'j_umas',
-
-    loc_vars = function(self, info_queue, card)
-        return nil
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end
-}
-
-SMODS.Joker{
     key = "mambo",
     blueprint_compat = false,
     rarity = 1,
@@ -346,6 +329,23 @@ SMODS.Joker{
     rarity = 1,
     cost = 2,
     pos = { x = 5, y = 1 },
+    atlas = 'j_umas',
+
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end
+}
+
+SMODS.Joker{
+    key = "fuku",
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 2,
+    pos = { x = 8, y = 0 },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
