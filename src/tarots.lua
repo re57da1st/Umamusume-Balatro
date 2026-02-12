@@ -164,7 +164,7 @@ SMODS.Consumable {
                 func = function()
                     if G.consumeables.config.card_limit > #G.consumeables.cards then
                         play_sound('timpani')
-                        SMODS.add_card({ set = 'Planet' })
+                        SMODS.add_card({ set = 'uma_Planet' })
                         card:juice_up(0.3, 0.5)
                     end
                     return true
