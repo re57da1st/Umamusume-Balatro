@@ -6,7 +6,6 @@ SMODS.ConsumableType {
     primary_colour = G.C.SET.Tarot,
     secondary_colour = G.C.SECONDARY_SET.Tarot,
     collection_rows = { 5, 6 },
-    shop_rate = 4
 }
 --[[
     You can add a card from this ConsumableType just like you would do a normal consumable using
