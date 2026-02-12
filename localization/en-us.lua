@@ -300,7 +300,7 @@ return {
                 name = "The Wheel of Fortune",
                 text = {
                     "{C:green}#1# in #2#{} chance to add",
-                    "{C:dark_edition}Holographic{}, or",
+                    "{C:dark_edition}Holographic{} or",
                     "{C:dark_edition}Polychrome{} edition",
                     "to a random {C:attention}Joker",
                 },
