@@ -269,4 +269,35 @@ SMODS.Challenge {
     restrictions = {}
 }
 
+SMODS.Challenge {
+    key = 'testIskIdea',
+    rules = {
+        custom = {},
+        modifiers = {}
+    },
+    jokers = {},
+    consumeables = {
+                    {id = 'c_uma_chariot'},
+                    {id = 'c_uma_death'},
+                    {id = 'c_uma_devil'},
+                    {id = 'c_uma_emperor'},
+                    {id = 'c_uma_empress'},
+                    {id = 'c_uma_fool'},
+                    {id = 'c_uma_hanged_man'},
+                    {id = 'c_uma_heirophant'},
+                    {id = 'c_uma_hermit'},
+                    {id = 'c_uma_high_priestess'},
+                    {id = 'c_uma_judgement'},
+                    {id = 'c_uma_justice'},
+                    {id = 'c_uma_lovers'},
+                    {id = 'c_uma_magician'},
+                    {id = 'c_uma_strength'},
+                    {id = 'c_uma_temperance'},
+                    {id = 'c_uma_tower'},
+                    {id = 'c_uma_wheel_of_fortune'}
+    },
+    vouchers = {},
+    restrictions = {}
+}
+
 --{ s = 'D', r = 'Q', e = 'm_steel', d = 'polychrome', g = 'Red' }
