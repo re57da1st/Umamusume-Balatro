@@ -78,14 +78,14 @@ return {
             },
 
             j_uma_mambo = {
-                name = "matikanetannhauser",
+                name = "Matikanetannhauser",
                 text = {
                     "Mambo, Mambo!",
                     "Omatsuri Mambo!",
                     "Zabu Zabu, Yura Yura,",
                     "Omatsuri Mambo!"
                 },
-            },
+            },  
 
             j_uma_chiyono = {
                 name = "Sakura Chiyono O",
@@ -109,7 +109,17 @@ return {
                 text = {
                     "The most American Japanese Horse girl I've ever seen"
                 },
-            }
+            },
+
+            j_uma_fuku = {
+                name = "Matikanefukukitaru",
+                text = {
+                    "Crystal Ball Crystal Ball",
+                    "Crystal Ball Crystal Ball",
+                    "Crystal Ball Crystal Ball",
+                    "Crystal Ball Crystal Ball!"
+                },
+            },
         },
 
         Planet = {

@@ -150,7 +150,34 @@ SMODS.Challenge {
         {id = 'j_uma_mambo'},
         {id = 'j_uma_chiyono'},
         {id = 'j_uma_norn'},
-        {id = 'j_uma_obey'}
+        {id = 'j_uma_obey'},
+        {id = 'j_uma_fuku'}
+    },
+    consumeables = {},
+    vouchers = {},
+    restrictions = {}
+}
+
+SMODS.Challenge {
+    key = 'test2',
+    rules = {
+        custom = {},
+        modifiers = {
+            { id = 'hands', value = 67 },
+            { id = 'discards', value = 67 },
+            { id = 'dollars', value = 676767 },
+            { id = 'joker_slots', value = 150 },
+            { id = 'consumable_slots', value = 75 }
+        }
+    },
+    jokers = {
+        {id = 'j_uma_helios'},
+        {id = 'j_uma_daiwa'},
+        {id = 'j_uma_goldship'},
+        {id = 'j_uma_oguri'},
+        {id = 'j_uma_bakushin'},
+        {id = 'j_uma_obey'},
+        {id = 'j_uma_fuku'}
     },
     consumeables = {},
     vouchers = {},
