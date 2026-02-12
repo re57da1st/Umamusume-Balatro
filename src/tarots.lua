@@ -13,7 +13,7 @@ SMODS.ConsumableType {
     `SMODS.add_card{set = "uma_Tarot"}
 --]]
 
--- The Fool
+-- The Fool BACK
 SMODS.Consumable {
     key = 'fool',
     set = 'uma_Tarot',
@@ -76,7 +76,7 @@ SMODS.Consumable {
     set = 'uma_Tarot',
     pos = { x = 1, y = 0 },
     atlas = 'c_umas',
-    config = { max_highlighted = 2, mod_conv = 'm_lucky' },
+    config = { max_highlighted = 4, mod_conv = 'm_lucky' },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
@@ -147,7 +147,7 @@ SMODS.Consumable {
     --]]
 }
 
--- The High Priestess
+-- The High Priestess BACK
 SMODS.Consumable {
     key = 'high_priestess',
     set = 'uma_Tarot',
@@ -186,7 +186,7 @@ SMODS.Consumable {
     set = 'uma_Tarot',
     pos = { x = 3, y = 0 },
     atlas = 'c_umas',
-    config = { max_highlighted = 2, mod_conv = 'm_mult' },
+    config = { max_highlighted = 4, mod_conv = 'm_mult' },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
@@ -275,7 +275,7 @@ SMODS.Consumable {
                 func = function()
                     if G.consumeables.config.card_limit > #G.consumeables.cards then
                         play_sound('timpani')
-                        SMODS.add_card({ set = 'uma_Tarot' })
+                        SMODS.add_card({ set = 'Spectral' })
                         card:juice_up(0.3, 0.5)
                     end
                     return true
@@ -296,7 +296,7 @@ SMODS.Consumable {
     set = 'uma_Tarot',
     pos = { x = 5, y = 0 },
     atlas = 'c_umas',
-    config = { max_highlighted = 2, mod_conv = 'm_bonus' },
+    config = { max_highlighted = 4, mod_conv = 'm_bonus' },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
@@ -373,7 +373,7 @@ SMODS.Consumable {
     set = 'uma_Tarot',
     pos = { x = 6, y = 0 },
     atlas = 'c_umas',
-    config = { max_highlighted = 1, mod_conv = 'm_wild' },
+    config = { max_highlighted = 2, mod_conv = 'm_wild' },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
@@ -450,7 +450,7 @@ SMODS.Consumable {
     set = 'uma_Tarot',
     pos = { x = 7, y = 0 },
     atlas = 'c_umas',
-    config = { max_highlighted = 1, mod_conv = 'm_steel' },
+    config = { max_highlighted = 2, mod_conv = 'm_steel' },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
@@ -527,7 +527,7 @@ SMODS.Consumable {
     set = 'uma_Tarot',
     pos = { x = 8, y = 0 },
     atlas = 'c_umas',
-    config = { max_highlighted = 2, mod_conv = 'm_glass' },
+    config = { max_highlighted = 4, mod_conv = 'm_glass' },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
@@ -604,7 +604,7 @@ SMODS.Consumable {
     set = 'uma_Tarot',
     pos = { x = 9, y = 0 },
     atlas = 'c_umas',
-    config = { extra = { max = 20 } },
+    config = { extra = { max = 40 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.max } }
     end,
@@ -632,7 +632,7 @@ SMODS.Consumable {
     set = 'uma_Tarot',
     pos = { x = 0, y = 1 },
     atlas = 'c_umas',
-    config = { extra = { odds = 4 } },
+    config = { extra = { odds = 2 } },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
             'uma_wheel_of_fortune')
@@ -643,7 +643,7 @@ SMODS.Consumable {
             local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
 
             local eligible_card = pseudorandom_element(editionless_jokers, 'uma_wheel_of_fortune')
-            local edition = SMODS.poll_edition { key = "uma_wheel_of_fortune", guaranteed = true, no_negative = true, options = { 'e_polychrome', 'e_holo', 'e_foil' } }
+            local edition = SMODS.poll_edition { key = "uma_wheel_of_fortune", guaranteed = true, no_negative = true, options = { 'e_polychrome', 'e_holo'} }
 ---@diagnostic disable-next-line: need-check-nil
             eligible_card:set_edition(edition, true)
             check_for_unlock({ type = 'have_edition' })
@@ -691,7 +691,7 @@ SMODS.Consumable {
     set = 'uma_Tarot',
     pos = { x = 1, y = 1 },
     atlas = 'c_umas',
-    config = { max_highlighted = 2 },
+    config = { max_highlighted = 4 },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted } }
     end,
@@ -768,7 +768,7 @@ SMODS.Consumable {
     set = 'uma_Tarot',
     pos = { x = 2, y = 1 },
     atlas = 'c_umas',
-    config = { max_highlighted = 2 },
+    config = { max_highlighted = 4 },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted } }
     end,
@@ -807,7 +807,7 @@ SMODS.Consumable {
     set = 'uma_Tarot',
     pos = { x = 3, y = 1 },
     atlas = 'c_umas',
-    config = { max_highlighted = 2, min_highlighted = 2 },
+    config = { max_highlighted = 3, min_highlighted = 2 },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted } }
     end,
@@ -886,7 +886,7 @@ SMODS.Consumable {
     --]]
 }
 
--- Temperance
+-- Temperance UNUSED HERE, USED IN DEBUFFED
 SMODS.Consumable {
     key = 'temperance',
     set = 'uma_Tarot',
@@ -938,7 +938,7 @@ SMODS.Consumable {
     set = 'uma_Tarot',
     pos = { x = 5, y = 1 },
     atlas = 'c_umas',
-    config = { max_highlighted = 1, mod_conv = 'm_gold' },
+    config = { max_highlighted = 2, mod_conv = 'm_gold' },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
@@ -1015,7 +1015,7 @@ SMODS.Consumable {
     set = 'uma_Tarot',
     pos = { x = 6, y = 1 },
     atlas = 'c_umas',
-    config = { max_highlighted = 1, mod_conv = 'm_stone' },
+    config = { max_highlighted = 2, mod_conv = 'm_stone' },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
@@ -1086,7 +1086,7 @@ SMODS.Consumable {
     --]]
 }
 
--- The Star
+-- The Star UNUSED HERE, USED IN DEBUFFED
 SMODS.Consumable {
     key = 'star',
     set = 'uma_Tarot',
@@ -1162,7 +1162,7 @@ SMODS.Consumable {
     --]]
 }
 
--- The Moon
+-- The Moon UNUSED HERE, USED IN DEBUFFED
 SMODS.Consumable {
     key = 'moon',
     set = 'uma_Tarot',
@@ -1238,7 +1238,7 @@ SMODS.Consumable {
     --]]
 }
 
--- The Sun
+-- The Sun UNUSED HERE, USED IN DEBUFFED
 SMODS.Consumable {
     key = 'sun',
     set = 'uma_Tarot',
@@ -1326,7 +1326,7 @@ SMODS.Consumable {
             delay = 0.4,
             func = function()
                 play_sound('timpani')
-                SMODS.add_card({ set = 'Joker' })
+                SMODS.add_card({ set = 'Joker', rarity = 'Rare' })
                 card:juice_up(0.3, 0.5)
                 return true
             end
@@ -1338,7 +1338,7 @@ SMODS.Consumable {
     end
 }
 
--- The World
+-- The World UNUSED HERE, USED IN DEBUFFED
 SMODS.Consumable {
     key = 'world',
     set = 'uma_Tarot',
