@@ -147,7 +147,7 @@ return {
                 name = "Death",
                 text = {
                     "Select {C:attention}#1#{} cards,",
-                    "convert the {C:attention}left{} card",
+                    "convert the {C:attention}left{} cards",
                     "into the {C:attention}right{} card",
                     "{C:inactive}(Drag to rearrange)",
                 },
@@ -164,7 +164,7 @@ return {
                 name = "The Emperor",
                 text = {
                     "Creates up to {C:attention}#1#",
-                    "random {C:tarot}Tarot{} cards",
+                    "random {C:spectral}Spectral{} cards",
                     "{C:inactive}(Must have room)",
                 },
             },
@@ -219,7 +219,7 @@ return {
                 name = "Judgement",
                 text = {
                     "Creates a random",
-                    "{C:attention}Joker{} card",
+                    "{C:red}Rare{} {C:attention}Joker{} card",
                     "{C:inactive}(Must have room)",
                 },
             },
@@ -300,7 +300,7 @@ return {
                 name = "The Wheel of Fortune",
                 text = {
                     "{C:green}#1# in #2#{} chance to add",
-                    "{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
+                    "{C:dark_edition}Holographic{}, or",
                     "{C:dark_edition}Polychrome{} edition",
                     "to a random {C:attention}Joker",
                 },
