@@ -8,6 +8,7 @@ def scale_image(image):
     cv2.imwrite(os.path.join(p2 , image), img) #Save the image in the new directory
     return
 
-scale_image("j_umas.png")
-scale_image("c_umas.png")
-scale_image("icon.png")
+directory = os.listdir("1x/") #Read the 1x directory and store all file names in a list
+
+for x in directory: #Run the scale command for each image in the list
+    scale_image(x)
