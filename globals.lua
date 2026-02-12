@@ -6,10 +6,13 @@ G.C.UMA = {
     BLUE = HEX("0000FF"),
     GREEN = HEX("00FF00"),
     WHITE = HEX("FFFFFF"),
-    TRANSPARENT = HEX("00000000")
+    TRANSPARENT = HEX("00000000"),
+    MAMBO = HEX("4D4979"),
+    MAMBO2 = HEX("918EC3"),
+    
 }
 
--- Hooks
+
 
 local loc_colour_ref = loc_colour
 ---@diagnostic disable-next-line: lowercase-global

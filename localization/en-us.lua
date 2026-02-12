@@ -314,8 +314,41 @@ return {
                 },
             },
         },
+
+        uma_mambo_consumable = {
+
+            c_uma_mambo_boots = {
+                name = "mambo's boots",
+                text = {
+                    "Mambo boots!"
+                },
+            },
+            c_uma_mambo_hat = {
+                name = "mambo's hat",
+                text = {
+                    "Mambo hat!"
+                },
+            },
+            c_uma_mambo_plushie = {
+                name = "Mambo's Plushie",
+                text = {
+                    "Mambo Plushie!"
+                },
+            },
+        },
+
         other = {
-            undiscovered_vremade_tarot = {
+            undiscovered_uma_tarot = {
+                name = "Not Discovered",
+                text = {
+                    "Purchase or use",
+                    "this card in an",
+                    "unseeded run to",
+                    "learn what it does",
+                },
+            },
+            
+            undiscovered_uma_mambo_consumable = {
                 name = "Not Discovered",
                 text = {
                     "Purchase or use",
@@ -335,8 +368,15 @@ return {
             c_uma_goldship_challenge = "Goldship",
             c_uma_oguri_challenge = "Oguri Cap",
             c_uma_bakushin_challenge = "Sakura Bakushin O",
+            c_uma_mambo_challenge = "Matikanetannhauser",
+            c_uma_chiyono_challenge = "Sakura Chiyono O",
+            c_uma_norn_challenge = "Norn Ace",
+            c_uma_obey_challenge = "Obey Your Master",
+            c_uma_fuku_challenge = "Matikanefukukitaru",
             c_uma_legends = "All Legends",
-            c_uma_test = "Hewwo everynyan :wave:"
+            c_uma_test = "All horsies ^.^",
+            c_uma_test2 = "Everyone who's functional",
+            c_uma_test3 = "Everyone who's textured"
         },
 
         dictionary = {
@@ -360,6 +400,8 @@ return {
             uma_mult_pot="Potential Mult",
             b_uma_tarot_cards = "Tarot Cards",
             k_uma_tarot = "Tarot",
+            b_uma_mambo_consumable_cards = "Mambo Cards", --Name of the consumable category, "b_[mod]_[consumable key]_cards"
+            k_uma_mambo_consumable = "Mambo's things", --Name of the consumable in tooltip, "k_[mod]_[consumable key]"
         },
         labels = {
             uma_tarot = "Tarot",

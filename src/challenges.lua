@@ -49,8 +49,6 @@ SMODS.Challenge {
         }
     },
     jokers = {
-        {id = 'j_uma_helios'},
-        {id = 'j_uma_daiwa'},
         {id = 'j_uma_turbo'}
     },
     deck = {},
@@ -98,6 +96,69 @@ SMODS.Challenge {
     },
     jokers = {
         {id = 'j_uma_bakushin'}
+    },
+    consumeables = {},
+    vouchers = {},
+    restrictions = {}
+}
+
+SMODS.Challenge {
+    key = 'mambo_challenge',
+    rules = {
+        custom = {},
+        modifiers = {
+            { id = 'consumable_slots', value = 3 }
+        }
+    },
+    jokers = {
+        {id = 'j_uma_mambo'}
+    },
+    deck = {},
+    consumeables = {
+        {id = 'c_uma_mambo_boots'},
+        {id = 'c_uma_mambo_hat'},
+        {id = 'c_uma_mambo_plushie'}
+    },
+    vouchers = {},
+    restrictions = {}
+}
+
+SMODS.Challenge {
+    key = 'chiyono_challenge',
+    rules = {
+        custom = {},
+        modifiers = {}
+    },
+    jokers = {
+        {id = 'j_uma_chiyono'}
+    },
+    consumeables = {},
+    vouchers = {},
+    restrictions = {}
+}
+
+SMODS.Challenge {
+    key = 'norn_challenge',
+    rules = {
+        custom = {},
+        modifiers = {}
+    },
+    jokers = {
+        {id = 'j_uma_norn'}
+    },
+    consumeables = {},
+    vouchers = {},
+    restrictions = {}
+}
+
+SMODS.Challenge {
+    key = 'obey_challenge',
+    rules = {
+        custom = {},
+        modifiers = {}
+    },
+    jokers = {
+        {id = 'j_uma_obey'}
     },
     consumeables = {},
     vouchers = {},
@@ -160,6 +221,30 @@ SMODS.Challenge {
 
 SMODS.Challenge {
     key = 'test2',
+    rules = {
+        custom = {},
+        modifiers = {
+            { id = 'hands', value = 67 },
+            { id = 'discards', value = 67 },
+            { id = 'dollars', value = 676767 },
+            { id = 'joker_slots', value = 150 },
+            { id = 'consumable_slots', value = 75 }
+        }
+    },
+    jokers = {
+        {id = 'j_uma_helios'},
+        {id = 'j_uma_daiwa'},
+        {id = 'j_uma_agnes'},
+        {id = 'j_uma_oguri'},
+        {id = 'j_uma_bakushin'}
+    },
+    consumeables = {},
+    vouchers = {},
+    restrictions = {}
+}
+
+SMODS.Challenge {
+    key = 'test3',
     rules = {
         custom = {},
         modifiers = {
