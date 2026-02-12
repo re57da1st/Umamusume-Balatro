@@ -53,9 +53,12 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
-                colours = { (G.GAME.hands[card.ability.hand_type].level == 3 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
+    end,
+    use = function(self, card, area, copier)
+        SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
     end
 }
 
@@ -73,9 +76,12 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
-                colours = { (G.GAME.hands[card.ability.hand_type].level == 3 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
+    end,
+    use = function(self, card, area, copier)
+        SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
     end
 }
 
@@ -93,9 +99,12 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
-                colours = { (G.GAME.hands[card.ability.hand_type].level == 3 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
+    end,
+    use = function(self, card, area, copier)
+        SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
     end
 }
 
@@ -113,9 +122,12 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
-                colours = { (G.GAME.hands[card.ability.hand_type].level == 3 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
+    end,
+    use = function(self, card, area, copier)
+        SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
     end
 }
 
@@ -133,9 +145,12 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
-                colours = { (G.GAME.hands[card.ability.hand_type].level == 3 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
+    end,
+    use = function(self, card, area, copier)
+        SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
     end
 }
 
@@ -153,9 +168,12 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
-                colours = { (G.GAME.hands[card.ability.hand_type].level == 3 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
+    end,
+    use = function(self, card, area, copier)
+        SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
     end
 }
 
@@ -173,9 +191,12 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
-                colours = { (G.GAME.hands[card.ability.hand_type].level == 3 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
+    end,
+    use = function(self, card, area, copier)
+        SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
     end
 }
 
@@ -193,9 +214,12 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
-                colours = { (G.GAME.hands[card.ability.hand_type].level == 3 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
+    end,
+    use = function(self, card, area, copier)
+        SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
     end
 }
 
@@ -213,7 +237,7 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
-                colours = { (G.GAME.hands[card.ability.hand_type].level == 3 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
     end,
@@ -221,6 +245,9 @@ SMODS.Consumable {
         badges[#badges + 1] = create_badge(localize('k_dwarf_planet'),
             get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.uma_Planet.text_colour,
             1.2)
+    end,
+    use = function(self, card, area, copier)
+        SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
     end
 }
 
@@ -238,7 +265,7 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
-                colours = { (G.GAME.hands[card.ability.hand_type].level == 3 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
     end,
@@ -246,6 +273,9 @@ SMODS.Consumable {
         badges[#badges + 1] = create_badge(localize('k_planet_q'),
             get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.uma_Planet.text_colour,
             1.2)
+    end,
+    use = function(self, card, area, copier)
+        SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
     end
 }
 
@@ -263,7 +293,7 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
-                colours = { (G.GAME.hands[card.ability.hand_type].level == 3 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
     end,
@@ -271,6 +301,9 @@ SMODS.Consumable {
         badges[#badges + 1] = create_badge(localize('k_dwarf_planet'),
             get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.uma_Planet.text_colour,
             1.2)
+    end,
+    use = function(self, card, area, copier)
+        SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
     end
 }
 
@@ -288,7 +321,7 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
-                colours = { (G.GAME.hands[card.ability.hand_type].level == 3 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
     end,
@@ -296,5 +329,8 @@ SMODS.Consumable {
         badges[#badges + 1] = create_badge(localize('k_dwarf_planet'),
             get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.uma_Planet.text_colour,
             1.2)
+    end,
+    use = function(self, card, area, copier)
+        SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
     end
 }
