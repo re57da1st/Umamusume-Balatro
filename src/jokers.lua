@@ -372,7 +372,7 @@ SMODS.Joker{
     end
 }
 
-SMODS.Joker{
+SMODS.Joker{ --Joel nyat allowed 2 touch
     key = "obey",
     blueprint_compat = false,
     rarity = 1,
