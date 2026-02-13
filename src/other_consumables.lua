@@ -6,7 +6,7 @@ SMODS.ConsumableType {
     primary_colour = G.C.UMA.MAMBO,
     secondary_colour = G.C.UMA.MAMBO2,
     collection_rows = { 3 },
-    shop_rate = 0
+    shop_rate = 4
 }
 --[[
     You can add a card from this ConsumableType just like you would do a normal consumable using
@@ -18,21 +18,16 @@ SMODS.Consumable {
     set = 'uma_mambo_consumable',
     pos = { x = 7, y = 5 },
     atlas = 'c_umas',
+    loc_vars = function(self, info_queue, card)
+        return { vars = {
+           20
+        } }
+    end,
     use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                play_sound('timpani')
-                SMODS.add_card({ set = 'Joker' })
-                card:juice_up(0.3, 0.5)
-                return true
-            end
-        }))
-        delay(0.6)
+
     end,
     can_use = function(self, card)
-        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+        return true
     end
 }
 
@@ -41,21 +36,16 @@ SMODS.Consumable {
     set = 'uma_mambo_consumable',
     pos = { x = 8, y = 5 },
     atlas = 'c_umas',
+    loc_vars = function(self, info_queue, card)
+        return { vars = {
+           8
+        } }
+    end,
     use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                play_sound('timpani')
-                SMODS.add_card({ set = 'Joker' })
-                card:juice_up(0.3, 0.5)
-                return true
-            end
-        }))
-        delay(0.6)
+
     end,
     can_use = function(self, card)
-        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+        return true
     end
 }
 
@@ -64,20 +54,15 @@ SMODS.Consumable {
     set = 'uma_mambo_consumable',
     pos = { x = 9, y = 5 },
     atlas = 'c_umas',
+    loc_vars = function(self, info_queue, card)
+        return { vars = {
+           0.2
+        } }
+    end,
     use = function(self, card, area, copier)
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                play_sound('timpani')
-                SMODS.add_card({ set = 'Joker' })
-                card:juice_up(0.3, 0.5)
-                return true
-            end
-        }))
-        delay(0.6)
+
     end,
     can_use = function(self, card)
-        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+        return true
     end
 }

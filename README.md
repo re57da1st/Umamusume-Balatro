@@ -8,3 +8,6 @@ https://github.com/Steamodded/smods/wiki/Utility
 
 Joker Display API Documentation:
 https://github.com/nh6574/JokerDisplay/wiki
+
+Note for later with perma bonuses:
+https://github.com/Steamodded/smods/wiki/Perma-bonuses

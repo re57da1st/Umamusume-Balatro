@@ -274,18 +274,55 @@ SMODS.Joker{
 
 SMODS.Joker{
     key = "mambo",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 2,
+    blueprint_compat = true,
+    rarity = 3,
+    cost = 6,
     pos = { x = 2, y = 1 },
+    config = { extra = { chips = 20, chips_mod = 20, mult = 8, mult_mod = 8, xmult = 1.0, xmult_mod = 0.2, } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
-        return nil
+        return { vars = {
+           card.ability.extra.chips, --Starting Chips value
+           card.ability.extra.mult,  --Starting Mult  value
+           card.ability.extra.xmult, --Starting xMult value
+           card.ability.extra.chips_mod, --Chips increase value
+           card.ability.extra.mult_mod,  --Mult  increase value
+           card.ability.extra.xmult_mod  --xMult increase value
+        } }
     end,
 
     calculate = function(self, card, context)
-        return nil
+        if context.using_consumeable and context.consumeable.config.center.key == 'c_uma_mambo_boots' and not context.blueprint then
+            card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
+            return {
+                message = localize('uma_mambo_chips'),
+                colour = G.C.CHIPS,
+                message_card = card
+            }
+        elseif context.using_consumeable and context.consumeable.config.center.key == 'c_uma_mambo_hat' then
+            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
+            return {
+                message = localize('uma_mambo_mult'),
+                colour = G.C.MULT,
+                message_card = card
+            }
+        elseif context.using_consumeable and context.consumeable.config.center.key == 'c_uma_mambo_plushie' then
+            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+            return {
+                message = localize('uma_mambo_xmult'),
+                colour = G.C.MULT,
+                message_card = card
+            }
+        end
+
+        if context.joker_main then
+            return {
+                chips = card.ability.extra.chips,
+                mult = card.ability.extra.mult,
+                xmult = card.ability.extra.xmult
+            }
+        end
     end
 }
 

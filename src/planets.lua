@@ -407,7 +407,7 @@ SMODS.Consumable {
         SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
     end,
 
-        in_pool = function(self, args)
+    in_pool = function(self, args)
         return G.GAME.hands[self.config.hand_type].played > 0
     end
 }

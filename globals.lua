@@ -25,5 +25,7 @@ function loc_colour(_c, _default)
     G.ARGS.LOC_COLOURS.uma_white = G.C.UMA.WHITE
     G.ARGS.LOC_COLOURS.uma_transparent = G.C.UMA.TRANSPARENT
     G.ARGS.LOC_COLOURS.uma_potential = G.C.UMA.POT
+    G.ARGS.LOC_COLOURS.uma_col_mambo = G.C.UMA.MAMBO
+    G.ARGS.LOC_COLOURS.uma_col_mambo2 = G.C.UMA.MAMBO2
     return loc_colour_ref(_c, _default)
 end

@@ -67,23 +67,15 @@ return {
                     "lose {C:attention}-#4# Potential Mult{} every {C:attention}#7#{} second(s).",
                     "Becomes real {C:mult}Mult{} at end of round.",
                     "{C:inactive}(Mult: {C:mult}+#1#{C:inactive}, Potential Mult: {C:attention}#6##2#{C:inactive})",
-                    --[[
-                    "Mult: {C:mult}#1#{}",
-                    "Mult Pot: {C:attention}#2#{}",
-                    "Mult Add: {C:attention}#3#{}",
-                    "Mult Mod: {C:attention}#4#{}",
-                    "Active: {C:attention}#5#{}",
-                    ]]--
                 },
             },
 
             j_uma_mambo = {
                 name = "Matikanetannhauser",
                 text = {
-                    "Mambo, Mambo!",
-                    "Omatsuri Mambo!",
-                    "Zabu Zabu, Yura Yura,",
-                    "Omatsuri Mambo!"
+                    "Gives {C:chips}+#1#{} Chips and {C:mult}+#2# {X:mult,C:white}X#3#{}",
+                    " Mult. Using {C:attention}certain consumables{}",
+                    " increase these values."
                 },
             },  
 
@@ -318,21 +310,27 @@ return {
         uma_mambo_consumable = {
 
             c_uma_mambo_boots = {
-                name = "mambo's boots",
+                name = "Mambo's Boots",
                 text = {
-                    "Mambo boots!"
+                    "{C:attention}LOST AND FOUND:",
+                    "Return boots to {C:uma_col_mambo2}Mambo{} and",
+                    "gain {C:chips}+#1#{} Chips!"
                 },
             },
             c_uma_mambo_hat = {
-                name = "mambo's hat",
+                name = "Mambo's Hat",
                 text = {
-                    "Mambo hat!"
+                    "{C:attention}LOST AND FOUND:",
+                    "Return hat to {C:uma_col_mambo2}Mambo{} and",
+                    "gain {C:mult}+#1#{} Mult!"
                 },
             },
             c_uma_mambo_plushie = {
                 name = "Mambo's Plushie",
                 text = {
-                    "Mambo Plushie!"
+                    "{C:attention}LOST AND FOUND:",
+                    "Return plushie to {C:uma_col_mambo2}Mambo{} and",
+                    "gain {X:mult,C:white}x#1#{} Mult!"
                 },
             },
         },
@@ -531,6 +529,9 @@ return {
             uma_bakushin2="Bakushinshi-n!",
             uma_bakushin3="Ba-...",
             uma_mult_pot="Potential Mult",
+            uma_mambo_chips="More chips!",
+            uma_mambo_mult="More Mult!",
+            uma_mambo_xmult="More xMult!",
             b_uma_tarot_cards = "Better Tarot Cards",
             k_uma_tarot = "Tarot",
             b_uma_mambo_consumable_cards = "Mambo Cards", --Name of the consumable category, "b_[mod]_[consumable key]_cards"
