@@ -278,7 +278,7 @@ SMODS.Joker{
     rarity = 3,
     cost = 6,
     pos = { x = 2, y = 1 },
-    config = { extra = { chips = 20, chips_mod = 20, mult = 8, mult_mod = 8, xmult = 1.0, xmult_mod = 0.2, } },
+    config = { extra = { chips = 20, chips_mod = 20, mult = 8, mult_mod = 8, xmult = 1.0, xmult_mod = 0.2, consumable_rarity = 4 } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
@@ -314,6 +314,18 @@ SMODS.Joker{
                 colour = G.C.MULT,
                 message_card = card
             }
+        end
+
+        if (context.starting_shop or context.reroll_shop) and not context.blueprint then
+            Mambo_check(false)
+        end
+
+        if context.selling_self and not context.blueprint then
+            Mambo_check(true)
+        end
+
+        Mambo_check = function(sell_bool)
+            G.GAME.uma_mambo_consumable_rate = #SMODS.find_card("j_uma_mambo") - (sell_bool and 1 or 0) > 0 and card.ability.extra.consumable_rarity or 0
         end
 
         if context.joker_main then
@@ -417,6 +429,8 @@ G.FUNCS.play_cards_from_highlighted = function(e)
     end
     return oldgfuncsplaycardsfromhighlighted(e)
 end
+
+
 
 --[[
 
