@@ -343,8 +343,8 @@ SMODS.Joker{
 SMODS.Joker{
     key = "fuku",
     blueprint_compat = true,
-    rarity = 1,
-    cost = 2,
+    rarity = 3,
+    cost = 8,
     pos = { x = 8, y = 0 },
     atlas = 'j_umas',
 
