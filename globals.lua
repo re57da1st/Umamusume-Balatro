@@ -12,8 +12,6 @@ G.C.UMA = {
     
 }
 
-
-
 local loc_colour_ref = loc_colour
 ---@diagnostic disable-next-line: lowercase-global
 function loc_colour(_c, _default)

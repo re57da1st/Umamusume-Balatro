@@ -14,7 +14,7 @@ SMODS.ConsumableType {
 
 -- The Fool BACK
 SMODS.Consumable {
-    key = 'fool',
+    key = 'better_fool',
     set = 'uma_Tarot',
     pos = { x = 0, y = 0 },
     atlas = 'c_umas',
@@ -71,7 +71,7 @@ SMODS.Consumable {
 
 -- The Magician
 SMODS.Consumable {
-    key = 'magician',
+    key = 'better_magician',
     set = 'uma_Tarot',
     pos = { x = 1, y = 0 },
     atlas = 'c_umas',
@@ -148,7 +148,7 @@ SMODS.Consumable {
 
 -- The High Priestess BACK
 SMODS.Consumable {
-    key = 'high_priestess',
+    key = 'better_high_priestess',
     set = 'uma_Tarot',
     pos = { x = 2, y = 0 },
     atlas = 'c_umas',
@@ -165,6 +165,7 @@ SMODS.Consumable {
                     if G.consumeables.config.card_limit > #G.consumeables.cards then
                         play_sound('timpani')
                         SMODS.add_card({ set = 'uma_Planet' })
+                        get_current_pool()
                         card:juice_up(0.3, 0.5)
                     end
                     return true
@@ -181,7 +182,7 @@ SMODS.Consumable {
 
 -- The Empress
 SMODS.Consumable {
-    key = 'empress',
+    key = 'better_empress',
     set = 'uma_Tarot',
     pos = { x = 3, y = 0 },
     atlas = 'c_umas',
@@ -258,7 +259,7 @@ SMODS.Consumable {
 
 -- The Emperor
 SMODS.Consumable {
-    key = 'emperor',
+    key = 'better_emperor',
     set = 'uma_Tarot',
     pos = { x = 4, y = 0 },
     atlas = 'c_umas',
@@ -291,7 +292,7 @@ SMODS.Consumable {
 
 -- The Hierophant
 SMODS.Consumable {
-    key = 'heirophant',
+    key = 'better_heirophant',
     set = 'uma_Tarot',
     pos = { x = 5, y = 0 },
     atlas = 'c_umas',
@@ -368,7 +369,7 @@ SMODS.Consumable {
 
 -- The Lovers
 SMODS.Consumable {
-    key = 'lovers',
+    key = 'better_lovers',
     set = 'uma_Tarot',
     pos = { x = 6, y = 0 },
     atlas = 'c_umas',
@@ -445,7 +446,7 @@ SMODS.Consumable {
 
 -- The Chariot
 SMODS.Consumable {
-    key = 'chariot',
+    key = 'better_chariot',
     set = 'uma_Tarot',
     pos = { x = 7, y = 0 },
     atlas = 'c_umas',
@@ -522,7 +523,7 @@ SMODS.Consumable {
 
 -- Justice
 SMODS.Consumable {
-    key = 'justice',
+    key = 'better_justice',
     set = 'uma_Tarot',
     pos = { x = 8, y = 0 },
     atlas = 'c_umas',
@@ -599,7 +600,7 @@ SMODS.Consumable {
 
 -- The Hermit
 SMODS.Consumable {
-    key = 'hermit',
+    key = 'better_hermit',
     set = 'uma_Tarot',
     pos = { x = 9, y = 0 },
     atlas = 'c_umas',
@@ -627,7 +628,7 @@ SMODS.Consumable {
 
 -- The Wheel of Fortune
 SMODS.Consumable {
-    key = 'wheel_of_fortune',
+    key = 'better_wheel_of_fortune',
     set = 'uma_Tarot',
     pos = { x = 0, y = 1 },
     atlas = 'c_umas',
@@ -686,7 +687,7 @@ SMODS.Consumable {
 
 -- Strength
 SMODS.Consumable {
-    key = 'strength',
+    key = 'better_strength',
     set = 'uma_Tarot',
     pos = { x = 1, y = 1 },
     atlas = 'c_umas',
@@ -763,7 +764,7 @@ SMODS.Consumable {
 
 -- The Hanged Man
 SMODS.Consumable {
-    key = 'hanged_man',
+    key = 'better_hanged_man',
     set = 'uma_Tarot',
     pos = { x = 2, y = 1 },
     atlas = 'c_umas',
@@ -802,7 +803,7 @@ SMODS.Consumable {
 
 -- Death
 SMODS.Consumable {
-    key = 'death',
+    key = 'better_death',
     set = 'uma_Tarot',
     pos = { x = 3, y = 1 },
     atlas = 'c_umas',
@@ -887,7 +888,7 @@ SMODS.Consumable {
 
 -- Temperance UNUSED HERE, USED IN DEBUFFED
 SMODS.Consumable {
-    key = 'temperance',
+    key = 'better_temperance',
     set = 'uma_Tarot',
     pos = { x = 4, y = 1 },
     atlas = 'c_umas',
@@ -933,7 +934,7 @@ SMODS.Consumable {
 
 -- The Devil
 SMODS.Consumable {
-    key = 'devil',
+    key = 'better_devil',
     set = 'uma_Tarot',
     pos = { x = 5, y = 1 },
     atlas = 'c_umas',
@@ -1010,7 +1011,7 @@ SMODS.Consumable {
 
 -- The Tower
 SMODS.Consumable {
-    key = 'tower',
+    key = 'better_tower',
     set = 'uma_Tarot',
     pos = { x = 6, y = 1 },
     atlas = 'c_umas',
@@ -1087,7 +1088,7 @@ SMODS.Consumable {
 
 -- The Star UNUSED HERE, USED IN DEBUFFED
 SMODS.Consumable {
-    key = 'star',
+    key = 'better_star',
     set = 'uma_Tarot',
     pos = { x = 7, y = 1 },
     atlas = 'c_umas',
@@ -1163,7 +1164,7 @@ SMODS.Consumable {
 
 -- The Moon UNUSED HERE, USED IN DEBUFFED
 SMODS.Consumable {
-    key = 'moon',
+    key = 'better_moon',
     set = 'uma_Tarot',
     pos = { x = 8, y = 1 },
     atlas = 'c_umas',
@@ -1239,7 +1240,7 @@ SMODS.Consumable {
 
 -- The Sun UNUSED HERE, USED IN DEBUFFED
 SMODS.Consumable {
-    key = 'sun',
+    key = 'better_sun',
     set = 'uma_Tarot',
     pos = { x = 9, y = 1 },
     atlas = 'c_umas',
@@ -1315,7 +1316,7 @@ SMODS.Consumable {
 
 -- Judgement
 SMODS.Consumable {
-    key = 'judgement',
+    key = 'better_judgement',
     set = 'uma_Tarot',
     pos = { x = 0, y = 2 },
     atlas = 'c_umas',
@@ -1339,7 +1340,7 @@ SMODS.Consumable {
 
 -- The World UNUSED HERE, USED IN DEBUFFED
 SMODS.Consumable {
-    key = 'world',
+    key = 'better_world',
     set = 'uma_Tarot',
     pos = { x = 1, y = 2 },
     atlas = 'c_umas',

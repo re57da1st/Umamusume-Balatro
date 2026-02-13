@@ -41,7 +41,7 @@ SMODS.ConsumableType {
 
 -- Mercury
 SMODS.Consumable {
-    key = "mercury",
+    key = "better_mercury",
     set = "uma_Planet",
     cost = 3,
     pos = { x = 0, y = 3 },
@@ -53,6 +53,8 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
+                G.GAME.hands[card.ability.hand_type].l_mult * 3,
+                G.GAME.hands[card.ability.hand_type].l_chips * 3,
                 colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
@@ -64,7 +66,7 @@ SMODS.Consumable {
 
 -- Venus
 SMODS.Consumable {
-    key = "venus",
+    key = "better_venus",
     set = "uma_Planet",
     cost = 3,
     pos = { x = 1, y = 3 },
@@ -76,6 +78,8 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
+                G.GAME.hands[card.ability.hand_type].l_mult * 3,
+                G.GAME.hands[card.ability.hand_type].l_chips * 3,
                 colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
@@ -87,7 +91,7 @@ SMODS.Consumable {
 
 -- Earth
 SMODS.Consumable {
-    key = "earth",
+    key = "better_earth",
     set = "uma_Planet",
     cost = 3,
     pos = { x = 2, y = 3 },
@@ -99,6 +103,8 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
+                G.GAME.hands[card.ability.hand_type].l_mult * 3,
+                G.GAME.hands[card.ability.hand_type].l_chips * 3,
                 colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
@@ -110,7 +116,7 @@ SMODS.Consumable {
 
 -- Mars
 SMODS.Consumable {
-    key = "mars",
+    key = "better_mars",
     set = "uma_Planet",
     cost = 3,
     pos = { x = 3, y = 3 },
@@ -122,6 +128,8 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
+                G.GAME.hands[card.ability.hand_type].l_mult * 3,
+                G.GAME.hands[card.ability.hand_type].l_chips * 3,
                 colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
@@ -133,7 +141,7 @@ SMODS.Consumable {
 
 -- Jupiter
 SMODS.Consumable {
-    key = "jupiter",
+    key = "better_jupiter",
     set = "uma_Planet",
     cost = 3,
     pos = { x = 4, y = 3 },
@@ -145,6 +153,8 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
+                G.GAME.hands[card.ability.hand_type].l_mult * 3,
+                G.GAME.hands[card.ability.hand_type].l_chips * 3,
                 colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
@@ -156,7 +166,7 @@ SMODS.Consumable {
 
 -- Saturn
 SMODS.Consumable {
-    key = "saturn",
+    key = "better_saturn",
     set = "uma_Planet",
     cost = 3,
     pos = { x = 5, y = 3 },
@@ -168,6 +178,8 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
+                G.GAME.hands[card.ability.hand_type].l_mult * 3,
+                G.GAME.hands[card.ability.hand_type].l_chips * 3,
                 colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
@@ -179,7 +191,7 @@ SMODS.Consumable {
 
 -- Uranus
 SMODS.Consumable {
-    key = "uranus",
+    key = "better_uranus",
     set = "uma_Planet",
     cost = 3,
     pos = { x = 6, y = 3 },
@@ -191,6 +203,8 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
+                G.GAME.hands[card.ability.hand_type].l_mult * 3,
+                G.GAME.hands[card.ability.hand_type].l_chips * 3,
                 colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
@@ -202,7 +216,7 @@ SMODS.Consumable {
 
 -- Neptune
 SMODS.Consumable {
-    key = "neptune",
+    key = "better_neptune",
     set = "uma_Planet",
     cost = 3,
     pos = { x = 7, y = 3 },
@@ -214,7 +228,9 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
-                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) },
+                G.GAME.hands[card.ability.hand_type].l_mult * 3,
+                G.GAME.hands[card.ability.hand_type].l_chips * 3
             }
         }
     end,
@@ -225,7 +241,7 @@ SMODS.Consumable {
 
 -- Pluto
 SMODS.Consumable {
-    key = "pluto",
+    key = "better_pluto",
     set = "uma_Planet",
     cost = 3,
     pos = { x = 8, y = 3 },
@@ -237,6 +253,8 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
+                G.GAME.hands[card.ability.hand_type].l_mult * 3,
+                G.GAME.hands[card.ability.hand_type].l_chips * 3,
                 colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
@@ -253,11 +271,11 @@ SMODS.Consumable {
 
 -- Planet X
 SMODS.Consumable {
-    key = "planet_x",
+    key = "better_planet_x",
     set = "uma_Planet",
     cost = 3,
     pos = { x = 9, y = 2 },
-    config = { hand_type = 'Five of a Kind', softlock = true },
+    config = { hand_type = 'Five of a Kind'},
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -265,27 +283,34 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
+                G.GAME.hands[card.ability.hand_type].l_mult * 3,
+                G.GAME.hands[card.ability.hand_type].l_chips * 3,
                 colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
     end,
     set_card_type_badge = function(self, card, badges)
+        
         badges[#badges + 1] = create_badge(localize('k_planet_q'),
             get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.uma_Planet.text_colour,
             1.2)
     end,
     use = function(self, card, area, copier)
         SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
+    end,
+
+    in_pool = function(self, args)
+        return G.GAME.hands[self.config.hand_type].played > 0
     end
 }
 
 -- Ceres
 SMODS.Consumable {
-    key = "ceres",
+    key = "better_ceres",
     set = "uma_Planet",
     cost = 3,
     pos = { x = 8, y = 2 },
-    config = { hand_type = 'Flush House', softlock = true },
+    config = { hand_type = 'Flush House' },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -293,6 +318,8 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
+                G.GAME.hands[card.ability.hand_type].l_mult * 3,
+                G.GAME.hands[card.ability.hand_type].l_chips * 3,
                 colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
@@ -304,16 +331,20 @@ SMODS.Consumable {
     end,
     use = function(self, card, area, copier)
         SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
+    end,
+
+    in_pool = function(self, args)
+        return G.GAME.hands[self.config.hand_type].played > 0
     end
 }
 
 -- Eris
 SMODS.Consumable {
-    key = "eris",
+    key = "better_eris",
     set = "uma_Planet",
     cost = 3,
     pos = { x = 3, y = 2 },
-    config = { hand_type = 'Flush Five', softlock = true },
+    config = { hand_type = 'Flush Five' },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -321,16 +352,62 @@ SMODS.Consumable {
                 localize(card.ability.hand_type, 'poker_hands'),
                 G.GAME.hands[card.ability.hand_type].l_mult,
                 G.GAME.hands[card.ability.hand_type].l_chips,
+                G.GAME.hands[card.ability.hand_type].l_mult * 3,
+                G.GAME.hands[card.ability.hand_type].l_chips * 3,
                 colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
             }
         }
     end,
+
     set_card_type_badge = function(self, card, badges)
         badges[#badges + 1] = create_badge(localize('k_dwarf_planet'),
             get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.uma_Planet.text_colour,
             1.2)
     end,
+
     use = function(self, card, area, copier)
         SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
+    end,
+
+    in_pool = function(self, args)
+        return G.GAME.hands[self.config.hand_type].played > 0
+    end
+}
+
+--Twin Moons
+SMODS.Consumable {
+    key = "better_twin_moons",
+    set = "uma_Planet",
+    cost = 3,
+    pos = { x = 6, y = 5 },
+    config = { hand_type = 'uma_perfect_pair' },
+    atlas = 'c_umas',
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                G.GAME.hands[card.ability.hand_type].level,
+                localize(card.ability.hand_type, 'poker_hands'),
+                G.GAME.hands[card.ability.hand_type].l_mult,
+                G.GAME.hands[card.ability.hand_type].l_chips,
+                G.GAME.hands[card.ability.hand_type].l_mult * 3,
+                G.GAME.hands[card.ability.hand_type].l_chips * 3,
+                colours = { (G.GAME.hands[card.ability.hand_type].level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, G.GAME.hands[card.ability.hand_type].level)]) }
+            }
+        }
+    end,
+
+    set_card_type_badge = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('uma_twin_moon'),
+            get_type_colour(card.config.center or card.config, card), SMODS.ConsumableTypes.Planet.text_colour,
+            1.2)
+    end,
+
+    use = function(self, card, area, copier)
+        SMODS.upgrade_poker_hands({hands = card.ability.hand_type, level_up = 3})
+    end,
+
+        in_pool = function(self, args)
+        return G.GAME.hands[self.config.hand_type].played > 0
     end
 }

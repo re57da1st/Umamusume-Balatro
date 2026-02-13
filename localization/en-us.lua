@@ -134,17 +134,17 @@ return {
             }
 
         },
-        uma_Tarot = { -- If you're making regular Tarots the key will be "Tarot"
-            c_uma_chariot = {
-                name = "The Chariot",
+        uma_Tarot = {
+            c_uma_better_chariot = {
+                name = "The Better Chariot",
                 text = {
                     "Enhances {C:attention}#1#{} selected",
                     "card into a",
                     "{C:attention}#2#",
                 },
             },
-            c_uma_death = {
-                name = "Death",
+            c_uma_better_death = {
+                name = "Better Death",
                 text = {
                     "Select {C:attention}#1#{} cards,",
                     "convert the {C:attention}left{} cards",
@@ -152,32 +152,32 @@ return {
                     "{C:inactive}(Drag to rearrange)",
                 },
             },
-            c_uma_devil = {
-                name = "The Devil",
+            c_uma_better_devil = {
+                name = "The Better Devil",
                 text = {
                     "Enhances {C:attention}#1#{} selected",
                     "card into a",
                     "{C:attention}#2#",
                 },
             },
-            c_uma_emperor = {
-                name = "The Emperor",
+            c_uma_better_emperor = {
+                name = "The Better Emperor",
                 text = {
                     "Creates up to {C:attention}#1#",
                     "random {C:spectral}Spectral{} cards",
                     "{C:inactive}(Must have room)",
                 },
             },
-            c_uma_empress = {
-                name = "The Empress",
+            c_uma_better_empress = {
+                name = "The Better Empress",
                 text = {
                     "Enhances {C:attention}#1#",
                     "selected cards to",
                     "{C:attention}#2#s",
                 },
             },
-            c_uma_fool = {
-                name = "The Fool",
+            c_uma_better_fool = {
+                name = "The Better Fool",
                 text = {
                     "Creates the last",
                     "{C:tarot}Tarot{} or {C:planet}Planet{} card",
@@ -185,102 +185,102 @@ return {
                     "{s:0.8,C:tarot}The Fool{s:0.8} excluded",
                 },
             },
-            c_uma_hanged_man = {
-                name = "The Hanged Man",
+            c_uma_better_hanged_man = {
+                name = "The Better Hanged Man",
                 text = {
                     "Destroys up to",
                     "{C:attention}#1#{} selected cards",
                 },
             },
-            c_uma_heirophant = {
-                name = "The Hierophant",
+            c_uma_better_heirophant = {
+                name = "The Better Hierophant",
                 text = {
                     "Enhances {C:attention}#1#",
                     "selected cards to",
                     "{C:attention}#2#s",
                 },
             },
-            c_uma_hermit = {
-                name = "The Hermit",
+            c_uma_better_hermit = {
+                name = "The Better Hermit",
                 text = {
                     "Doubles money",
                     "{C:inactive}(Max of {C:money}$#1#{C:inactive})",
                 },
             },
-            c_uma_high_priestess = {
-                name = "The High Priestess",
+            c_uma_better_high_priestess = {
+                name = "The Better High Priestess",
                 text = {
                     "Creates up to {C:attention}#1#",
                     "random {C:planet}Planet{} cards",
                     "{C:inactive}(Must have room)",
                 },
             },
-            c_uma_judgement = {
-                name = "Judgement",
+            c_uma_better_judgement = {
+                name = "(Against my) Better Judgement",
                 text = {
                     "Creates a random",
                     "{C:red}Rare{} {C:attention}Joker{} card",
                     "{C:inactive}(Must have room)",
                 },
             },
-            c_uma_justice = {
-                name = "Justice",
+            c_uma_better_justice = {
+                name = "Better Justice",
                 text = {
                     "Enhances {C:attention}#1#{} selected",
                     "card into a",
                     "{C:attention}#2#",
                 },
             },
-            c_uma_lovers = {
-                name = "The Lovers",
+            c_uma_better_lovers = {
+                name = "The Better Lovers",
                 text = {
                     "Enhances {C:attention}#1#{} selected",
                     "card into a",
                     "{C:attention}#2#",
                 },
             },
-            c_uma_magician = {
-                name = "The Magician",
+            c_uma_better_magician = {
+                name = "The Better Magician",
                 text = {
                     "Enhances {C:attention}#1#{}",
                     "selected cards to",
                     "{C:attention}#2#s",
                 },
             },
-            c_uma_moon = {
-                name = "The Moon",
+            c_uma_better_moon = {
+                name = "The Better Moon",
                 text = {
                     "Converts up to",
                     "{C:attention}#1#{} selected cards",
                     "to {V:1}#2#{}",
                 },
             },
-            c_uma_star = {
-                name = "The Star",
+            c_uma_better_star = {
+                name = "The Better Star",
                 text = {
                     "Converts up to",
                     "{C:attention}#1#{} selected cards",
                     "to {V:1}#2#{}",
                 },
             },
-            c_uma_strength = {
-                name = "Strength",
+            c_uma_better_strength = {
+                name = "Better Strength",
                 text = {
                     "Increases rank of",
                     "up to {C:attention}#1#{} selected",
                     "cards by {C:attention}1",
                 },
             },
-            c_uma_sun = {
-                name = "The Sun",
+            c_uma_better_sun = {
+                name = "The Better Sun",
                 text = {
                     "Converts up to",
                     "{C:attention}#1#{} selected cards",
                     "to {V:1}#2#{}",
                 },
             },
-            c_uma_temperance = {
-                name = "Temperance",
+            c_uma_better_temperance = {
+                name = "Better Temperance",
                 text = {
                     "Gives the total sell",
                     "value of all current",
@@ -288,16 +288,16 @@ return {
                     "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
                 },
             },
-            c_uma_tower = {
-                name = "The Tower",
+            c_uma_better_tower = {
+                name = "The Better Tower",
                 text = {
                     "Enhances {C:attention}#1#{} selected",
                     "card into a",
                     "{C:attention}#2#",
                 },
             },
-            c_uma_wheel_of_fortune = {
-                name = "The Wheel of Fortune",
+            c_uma_better_wheel_of_fortune = {
+                name = "The Better Wheel of Fortune",
                 text = {
                     "{C:green}#1# in #2#{} chance to add",
                     "{C:dark_edition}Holographic{} or",
@@ -305,8 +305,8 @@ return {
                     "to a random {C:attention}Joker",
                 },
             },
-            c_uma_world = {
-                name = "The World",
+            c_uma_better_world = {
+                name = "The Better World",
                 text = {
                     "Converts up to",
                     "{C:attention}#1#{} selected cards",
@@ -335,6 +335,138 @@ return {
                     "Mambo Plushie!"
                 },
             },
+        },
+
+        uma_Planet = {
+            c_uma_better_mercury = {
+                name = "Better Mercury",
+                text = {
+                    "({V:1}lvl.#1#{}) Level up",
+                    "{C:attention}#2#{} 3 times",
+                    "{C:mult}+#5#{} Mult and",
+                    "{C:chips}+#6#{} chips",
+                },
+            },
+
+            c_uma_better_venus = {
+                name = "Better Venus",
+                text = {
+                    "({V:1}lvl.#1#{}) Level up",
+                    "{C:attention}#2#{} 3 times",
+                    "{C:mult}+#5#{} Mult and",
+                    "{C:chips}+#6#{} chips",
+                },
+            },
+
+            c_uma_better_earth = {
+                name = "Better Earth",
+                text = {
+                    "({V:1}lvl.#1#{}) Level up",
+                    "{C:attention}#2#{} 3 times",
+                    "{C:mult}+#5#{} Mult and",
+                    "{C:chips}+#6#{} chips",
+                },
+            },
+
+            c_uma_better_mars = {
+                name = "Better Mars",
+                text = {
+                    "({V:1}lvl.#1#{}) Level up",
+                    "{C:attention}#2#{} 3 times",
+                    "{C:mult}+#5#{} Mult and",
+                    "{C:chips}+#6#{} chips",
+                },
+            },
+
+            c_uma_better_jupiter = {
+                name = "Better Jupiter",
+                text = {
+                    "({V:1}lvl.#1#{}) Level up",
+                    "{C:attention}#2#{} 3 times",
+                    "{C:mult}+#5#{} Mult and",
+                    "{C:chips}+#6#{} chips",
+                },
+            },
+
+            c_uma_better_saturn = {
+                name = "Better Saturn",
+                text = {
+                    "({V:1}lvl.#1#{}) Level up",
+                    "{C:attention}#2#{} 3 times",
+                    "{C:mult}+#5#{} Mult and",
+                    "{C:chips}+#6#{} chips",
+                },
+            },
+
+            c_uma_better_uranus = {
+                name = "Better Uranus",
+                text = {
+                    "({V:1}lvl.#1#{}) Level up",
+                    "{C:attention}#2#{} 3 times",
+                    "{C:mult}+#5#{} Mult and",
+                    "{C:chips}+#6#{} chips",
+                },
+            },
+
+            c_uma_better_neptune = {
+                name = "Better Neptune",
+                text = {
+                    "({V:1}lvl.#1#{}) Level up",
+                    "{C:attention}#2#{} 3 times",
+                    "{C:mult}+#5#{} Mult and",
+                    "{C:chips}+#6#{} chips",
+                },
+            },
+
+            c_uma_better_pluto = {
+                name = "Better Pluto",
+                text = {
+                    "({V:1}lvl.#1#{}) Level up",
+                    "{C:attention}#2#{} 3 times",
+                    "{C:mult}+#5#{} Mult and",
+                    "{C:chips}+#6#{} chips",
+                },
+            },
+
+            c_uma_better_planet_x = {
+                name = "Better Planet X",
+                text = {
+                    "({V:1}lvl.#1#{}) Level up",
+                    "{C:attention}#2#{} 3 times",
+                    "{C:mult}+#5#{} Mult and",
+                    "{C:chips}+#6#{} chips",
+                },
+            },
+
+            c_uma_better_ceres = {
+                name = "Better Ceres",
+                text = {
+                    "({V:1}lvl.#1#{}) Level up",
+                    "{C:attention}#2#{} 3 times",
+                    "{C:mult}+#5#{} Mult and",
+                    "{C:chips}+#6#{} chips",
+                },
+            },
+
+            c_uma_better_eris = {
+                name = "Better Eris",
+                text = {
+                    "({V:1}lvl.#1#{}) Level up",
+                    "{C:attention}#2#{} 3 times",
+                    "{C:mult}+#5#{} Mult and",
+                    "{C:chips}+#6#{} chips",
+                },
+            },
+
+            c_uma_better_twin_moons = {
+                name = "Better Twin Moons",
+                text = {
+                    "({V:1}lvl.#1#{}) Level up",
+                    "{C:attention}#2#{} 3 times",
+                    "{C:mult}+#5#{} Mult and",
+                    "{C:chips}+#6#{} chips",
+                },
+            }
         },
 
         other = {
@@ -399,10 +531,12 @@ return {
             uma_bakushin2="Bakushinshi-n!",
             uma_bakushin3="Ba-...",
             uma_mult_pot="Potential Mult",
-            b_uma_tarot_cards = "Tarot Cards",
+            b_uma_tarot_cards = "Better Tarot Cards",
             k_uma_tarot = "Tarot",
             b_uma_mambo_consumable_cards = "Mambo Cards", --Name of the consumable category, "b_[mod]_[consumable key]_cards"
             k_uma_mambo_consumable = "Mambo's things", --Name of the consumable in tooltip, "k_[mod]_[consumable key]"
+            b_uma_planet_cards = "Better Planet Cards",
+            k_uma_planet = "Planet",
         },
         labels = {
             uma_tarot = "Tarot",

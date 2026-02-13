@@ -166,6 +166,20 @@ SMODS.Challenge {
 }
 
 SMODS.Challenge {
+    key = 'fuku_challenge',
+    rules = {
+        custom = {},
+        modifiers = {}
+    },
+    jokers = {
+        {id = 'j_uma_fuku'}
+    },
+    consumeables = {},
+    vouchers = {},
+    restrictions = {}
+}
+
+SMODS.Challenge {
     key = 'legends',
     rules = {
         custom = {},
@@ -277,27 +291,26 @@ SMODS.Challenge {
     },
     jokers = {},
     consumeables = {
-                    {id = 'c_uma_chariot'},
-                    {id = 'c_uma_death'},
-                    {id = 'c_uma_devil'},
-                    {id = 'c_uma_emperor'},
-                    {id = 'c_uma_empress'},
-                    {id = 'c_uma_fool'},
-                    {id = 'c_uma_hanged_man'},
-                    {id = 'c_uma_heirophant'},
-                    {id = 'c_uma_hermit'},
-                    {id = 'c_uma_high_priestess'},
-                    {id = 'c_uma_judgement'},
-                    {id = 'c_uma_justice'},
-                    {id = 'c_uma_lovers'},
-                    {id = 'c_uma_magician'},
-                    {id = 'c_uma_strength'},
-                    {id = 'c_uma_temperance'},
-                    {id = 'c_uma_tower'},
-                    {id = 'c_uma_wheel_of_fortune'}
+                    {id = 'c_uma_better_chariot'},
+                    {id = 'c_uma_better_death'},
+                    {id = 'c_uma_better_devil'},
+                    {id = 'c_uma_better_emperor'},
+                    {id = 'c_uma_better_empress'},
+                    {id = 'c_uma_better_fool'},
+                    {id = 'c_uma_better_hanged_man'},
+                    {id = 'c_uma_better_heirophant'},
+                    {id = 'c_uma_better_hermit'},
+                    {id = 'c_uma_better_high_priestess'},
+                    {id = 'c_uma_better_judgement'},
+                    {id = 'c_uma_better_justice'},
+                    {id = 'c_uma_better_lovers'},
+                    {id = 'c_uma_better_magician'},
+                    {id = 'c_uma_better_strength'},
+                    {id = 'c_uma_better_temperance'},
+                    {id = 'c_uma_better_tower'},
+                    {id = 'c_uma_better_wheel_of_fortune'}
     },
     vouchers = {},
     restrictions = {}
 }
-
 --{ s = 'D', r = 'Q', e = 'm_steel', d = 'polychrome', g = 'Red' }
