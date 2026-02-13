@@ -372,23 +372,6 @@ SMODS.Joker{
     end
 }
 
-SMODS.Joker{ --Joel nyat allowed 2 touch
-    key = "obey",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 2,
-    pos = { x = 6, y = 1 },
-    atlas = 'j_umas',
-
-    loc_vars = function(self, info_queue, card)
-        return nil
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end
-}
-
 SMODS.Joker{
     key = "fuku",
     blueprint_compat = true,
@@ -433,6 +416,21 @@ end
 
 
 --[[
+
+To do list:
+    Frisk:
+        Code Twin Turbo
+        Code Goldship
+        Make Obey Your Master
+        Code Fuku
+    
+    Joel:
+        Code Chiyono O
+        Code Norn Ace
+        Retexture unfinished horses
+        Check up on bugs
+
+
 
 Checklist
 
