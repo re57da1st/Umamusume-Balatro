@@ -373,6 +373,30 @@ SMODS.Joker{
 }
 
 SMODS.Joker{
+    key = "obey",
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 5,
+    pos = { x = 6, y = 1 },
+    config = { extra = { mult = 1 } },
+    atlas = 'j_umas',
+
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) +
+                card.ability.extra.mult
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.MULT
+            }
+        end
+    end
+}
+
+SMODS.Joker{
     key = "fuku",
     blueprint_compat = true,
     rarity = 3,
@@ -421,9 +445,22 @@ To do list:
     Frisk:
         Code Twin Turbo
         Code Goldship
-        Make Obey Your Master
         Code Fuku
-    
+    Potential horses:
+        uper eek
+        air goove
+        ice ature
+        aruzensky
+        udolf
+        tamtsi
+        MEISHO DOTOOOOO
+        robo horse
+        mayano top gun
+        odka odka odka
+            queen scaling
+            lesbians
+        
+
     Joel:
         Code Chiyono O
         Code Norn Ace
@@ -478,28 +515,10 @@ Chiyono O: no clue
 
 Norn Ace: no clue
 
-Obey Your Master: Every played card with Diamond suit permanently gains +1-3 mult when scored?
-    Card design: Episode 17, 20:30, break-through eye with peace sign over it like a magical girl
-
-    Extra Mult Display (on card UI)
-    	+x chips
-    	+x Mult
-    	+x extra chips
-    	+x extra Mult
-
-    Add bonus permament bonus mult
-    	Add new ability called "perma_bonus_mult"
-
-    	UI Ability Table
-    		card.lua, line 731
-    			bonus_mult = ... self.ability.perma_bonus_mult
-
-    	Create function Card;get_chip_bonus_mult()
+Obey Your Master: no clue
 
 
 
-
-        
 Matthew ideas:
 	Goldship (his goat)
 		Scoring queens gain a random seal and enhancement
@@ -526,5 +545,3 @@ Matthew ideas:
 		Every Horse card trigger gives $5, and increases base boss blind by 5% - 15%
 
 ]]--
-
-

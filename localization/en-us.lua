@@ -99,7 +99,9 @@ return {
             j_uma_obey = {
                 name = "Obey Your Master",
                 text = {
-                    "The most American Japanese Horse girl I've ever seen"
+                    "Every played {C:attention}card{}",
+                    "permanently gains",
+                    "{C:mult}+#1#{} Mult when scored",
                 },
             },
 
