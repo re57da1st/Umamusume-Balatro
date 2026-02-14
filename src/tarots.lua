@@ -88,7 +88,7 @@ SMODS.Consumable {
     end
 }
 
--- The High Priestess BACK
+-- The High Priestess
 SMODS.Consumable {
     key = 'better_high_priestess',
     set = 'uma_better_Tarot',
