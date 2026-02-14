@@ -278,7 +278,7 @@ SMODS.Joker{
     rarity = 3,
     cost = 6,
     pos = { x = 2, y = 1 },
-    config = { extra = { chips = 20, chips_mod = 20, mult = 8, mult_mod = 8, xmult = 1.0, xmult_mod = 0.2, consumable_rarity = 4 } },
+    config = { extra = { chips = 10, chips_mod = 10, mult = 4, mult_mod = 4, xmult = 1.0, xmult_mod = 0.1, consumable_rarity = 4 } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
@@ -386,8 +386,7 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
-            context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) +
-                card.ability.extra.mult
+            context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + card.ability.extra.mult
             return {
                 message = localize('k_upgrade_ex'),
                 colour = G.C.MULT

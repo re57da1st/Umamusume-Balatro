@@ -20,7 +20,7 @@ SMODS.Consumable {
     atlas = 'c_umas',
     loc_vars = function(self, info_queue, card)
         return { vars = {
-           20
+           10
         } }
     end,
     use = function(self, card, area, copier)
@@ -38,7 +38,7 @@ SMODS.Consumable {
     atlas = 'c_umas',
     loc_vars = function(self, info_queue, card)
         return { vars = {
-           8
+           4
         } }
     end,
     use = function(self, card, area, copier)
@@ -56,7 +56,7 @@ SMODS.Consumable {
     atlas = 'c_umas',
     loc_vars = function(self, info_queue, card)
         return { vars = {
-           0.2
+           0.1
         } }
     end,
     use = function(self, card, area, copier)
