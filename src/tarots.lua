@@ -5,7 +5,7 @@ SMODS.ConsumableType {
     default = 'c_uma_better_strength',
     primary_colour = G.C.SET.Tarot,
     secondary_colour = G.C.SECONDARY_SET.Tarot,
-    collection_rows = { 5, 6 },
+    collection_rows = { 4, 5 },
 }
 
 SMODS.ConsumableType {
@@ -13,7 +13,7 @@ SMODS.ConsumableType {
     default = 'c_uma_worse_strength',
     primary_colour = G.C.SET.Tarot,
     secondary_colour = G.C.SECONDARY_SET.Tarot,
-    collection_rows = { 5, 6 },
+    collection_rows = { 4, 5 },
 }
 
 --BETTER TAROTS
