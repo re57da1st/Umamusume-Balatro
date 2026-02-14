@@ -308,9 +308,39 @@ SMODS.Challenge {
         {id = 'c_uma_better_lovers'},
         {id = 'c_uma_better_magician'},
         {id = 'c_uma_better_strength'},
-        {id = 'c_uma_better_temperance'},
         {id = 'c_uma_better_tower'},
         {id = 'c_uma_better_wheel_of_fortune'}
+    },
+    vouchers = {},
+    restrictions = {}
+}
+
+SMODS.Challenge {
+    key = 'testIskIdea2',
+    rules = {
+        custom = {},
+        modifiers = {}
+    },
+    jokers = {},
+    consumeables = {
+        {id = 'c_uma_worse_chariot'},
+        {id = 'c_uma_worse_devil'},
+        {id = 'c_uma_worse_emperor'},
+        {id = 'c_uma_worse_empress'},
+        {id = 'c_uma_worse_hanged_man'},
+        {id = 'c_uma_worse_heirophant'},
+        {id = 'c_uma_worse_hermit'},
+        {id = 'c_uma_worse_justice'},
+        {id = 'c_uma_worse_lovers'},
+        {id = 'c_uma_worse_magician'},
+        {id = 'c_uma_worse_moon'},
+        {id = 'c_uma_worse_star'},
+        {id = 'c_uma_worse_strength'},
+        {id = 'c_uma_worse_sun'},
+        {id = 'c_uma_worse_temperance'},
+        {id = 'c_uma_worse_tower'},
+        {id = 'c_uma_worse_wheel_of_fortune'},
+        {id = 'c_uma_worse_world'},
     },
     vouchers = {},
     restrictions = {}

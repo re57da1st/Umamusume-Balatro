@@ -690,7 +690,8 @@ return {
             c_uma_test = "All horsies ^.^",
             c_uma_test2 = "Everyone who's functional",
             c_uma_test3 = "Everyone who's textured",
-            c_uma_testIskIdea = "Special Tarot Tests"
+            c_uma_testIskIdea = "Special Tarot Tests",
+            c_uma_testIskIdea2 = "Non-special Tarot Tests"
         },
 
         dictionary = {
