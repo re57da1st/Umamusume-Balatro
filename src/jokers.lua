@@ -405,7 +405,7 @@ SMODS.Joker{
     atlas = 'j_umas',
 
     calculate = function(self, card, context)
-        if context.setting_blind and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+        if context.end_of_round and context.main_eval and G.GAME.chips >= G.GAME.blind.chips * 2 and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
             G.E_MANAGER:add_event(Event({
                 func = (function()
