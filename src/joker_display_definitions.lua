@@ -94,5 +94,31 @@ jd_def["j_uma_bakushin"] = {
         card.joker_display_values.mult_pot = card.ability.extra.mult_pot
         card.joker_display_values.localized_text1 = sign
         card.joker_display_values.localized_text2 = localize("uma_mult_pot")
-    end 
+    end
+}
+
+jd_def["j_uma_mambo"] = {
+    text = {
+        { text = "+", colour = G.C.CHIPS }, --chips display
+        { ref_table = "card.ability.extra", ref_value = "chips", colour = G.C.CHIPS },
+
+        { text = " ",},
+
+        { text = "+", colour = G.C.MULT }, --mult display
+        { ref_table = "card.ability.extra", ref_value = "mult", colour = G.C.MULT },
+
+        { text = " ",},
+
+        {  --xMult display
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.ability.extra", ref_value = "xmult" }
+            }
+        }
+    },
+    calc_function = function(card)
+        card.joker_display_values.chips = card.ability.extra.chips
+        card.joker_display_values.mult = card.ability.extra.mult
+        card.joker_display_values.xmult = card.ability.extra.xmult
+    end
 }
