@@ -1,8 +1,8 @@
 -- This defines a new type of consumable with key "uma_Tarot",
 -- if you want to create a regular Tarot ignore this and use set = "Tarot"
 SMODS.ConsumableType {
-    key = 'uma_Tarot',
-    default = 'c_uma_strength',
+    key = 'uma_better_Tarot',
+    default = 'c_uma_better_strength',
     primary_colour = G.C.SET.Tarot,
     secondary_colour = G.C.SECONDARY_SET.Tarot,
     collection_rows = { 5, 6 },

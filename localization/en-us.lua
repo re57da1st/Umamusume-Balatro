@@ -128,7 +128,7 @@ return {
             }
 
         },
-        uma_Tarot = {
+        uma_better_Tarot = {
             c_uma_better_chariot = {
                 name = "The Better Chariot",
                 text = {
@@ -470,7 +470,7 @@ return {
         },
 
         other = {
-            undiscovered_uma_tarot = {
+            undiscovered_uma_better_tarot = {
                 name = "Not Discovered",
                 text = {
                     "Purchase or use",
@@ -534,15 +534,15 @@ return {
             uma_mambo_chips="More chips!",
             uma_mambo_mult="More Mult!",
             uma_mambo_xmult="More xMult!",
-            b_uma_tarot_cards = "Better Tarot Cards",
-            k_uma_tarot = "Tarot",
+            b_uma_better_tarot_cards = "Better Tarot Cards",
+            k_uma_better_tarot = "Tarot",
             b_uma_mambo_consumable_cards = "Mambo Cards", --Name of the consumable category, "b_[mod]_[consumable key]_cards"
             k_uma_mambo_consumable = "Mambo's things", --Name of the consumable in tooltip, "k_[mod]_[consumable key]"
             b_uma_planet_cards = "Better Planet Cards",
             k_uma_planet = "Planet",
         },
         labels = {
-            uma_tarot = "Tarot",
+            uma_better_tarot = "Tarot",
         },
         poker_hand_descriptions = {
             uma_perfect_pair = {
