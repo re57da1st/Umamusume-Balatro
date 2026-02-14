@@ -300,14 +300,14 @@ SMODS.Joker{
                 colour = G.C.CHIPS,
                 message_card = card
             }
-        elseif context.using_consumeable and context.consumeable.config.center.key == 'c_uma_mambo_hat' then
+        elseif context.using_consumeable and context.consumeable.config.center.key == 'c_uma_mambo_hat' and not context.blueprint then
             card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
             return {
                 message = localize('uma_mambo_mult'),
                 colour = G.C.MULT,
                 message_card = card
             }
-        elseif context.using_consumeable and context.consumeable.config.center.key == 'c_uma_mambo_plushie' then
+        elseif context.using_consumeable and context.consumeable.config.center.key == 'c_uma_mambo_plushie' and not context.blueprint then
             card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
             return {
                 message = localize('uma_mambo_xmult'),
