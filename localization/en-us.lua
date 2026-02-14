@@ -63,10 +63,10 @@ return {
                 name = "Sakura Bakushin O",
                 text = {
                     
-                    "{C:attention}+#3# Potential Mult{} at round begin,",
-                    "lose {C:attention}-#4# Potential Mult{} every {C:attention}#7#{} second(s).",
+                    "{C:uma_col_bakushin}+#3# Potential Mult{} at round begin,",
+                    "lose {C:uma_col_bakushin}-#4# Potential Mult{} every {C:attention}#7#{} second(s).",
                     "Becomes real {C:mult}Mult{} at end of round.",
-                    "{C:inactive}(Mult: {C:mult}+#1#{C:inactive}, Potential Mult: {C:attention}#6##2#{C:inactive})",
+                    "{C:inactive}(Mult: {C:mult}+#1#{C:inactive}, Potential Mult: {C:uma_col_bakushin}#6##2#{C:inactive})",
                 },
             },
 

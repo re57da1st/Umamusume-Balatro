@@ -80,10 +80,10 @@ jd_def["j_uma_bakushin"] = {
     text_config = { colour = G.C.MULT },
     reminder_text = {
         { text = "(" },
-        { ref_table = "card.joker_display_values", ref_value = "localized_text1", colour = G.C.ORANGE },
-        { ref_table = "card.joker_display_values", ref_value = "mult_pot", colour = G.C.ORANGE },
+        { ref_table = "card.joker_display_values", ref_value = "localized_text1", colour = G.C.UMA.BAKUSHIN },
+        { ref_table = "card.joker_display_values", ref_value = "mult_pot", colour = G.C.UMA.BAKUSHIN },
         { text = " " },
-        { ref_table = "card.joker_display_values", ref_value = "localized_text2", colour = G.C.ORANGE },
+        { ref_table = "card.joker_display_values", ref_value = "localized_text2", colour = G.C.UMA.BAKUSHIN },
         { text = ")" }
     },
  

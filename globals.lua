@@ -9,6 +9,7 @@ G.C.UMA = {
     TRANSPARENT = HEX("00000000"),
     MAMBO = HEX("4D4979"),
     MAMBO2 = HEX("918EC3"),
+    BAKUSHIN = HEX("FF93B8")
     
 }
 
@@ -27,5 +28,6 @@ function loc_colour(_c, _default)
     G.ARGS.LOC_COLOURS.uma_potential = G.C.UMA.POT
     G.ARGS.LOC_COLOURS.uma_col_mambo = G.C.UMA.MAMBO
     G.ARGS.LOC_COLOURS.uma_col_mambo2 = G.C.UMA.MAMBO2
+    G.ARGS.LOC_COLOURS.uma_col_bakushin = G.C.UMA.BAKUSHIN
     return loc_colour_ref(_c, _default)
 end
