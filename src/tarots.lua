@@ -551,40 +551,6 @@ SMODS.Consumable {
     end
 }
 
--- The High Priestess BACK
-SMODS.Consumable {
-    key = 'worse_high_priestess',
-    set = 'uma_worse_Tarot',
-    pos = { x = 2, y = 0 },
-    atlas = 'c_umas',
-    config = { extra = { planets = 2 } },
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.planets } }
-    end,
-    use = function(self, card, area, copier)
-        for i = 1, math.min(card.ability.extra.planets, G.consumeables.config.card_limit - #G.consumeables.cards) do
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.4,
-                func = function()
-                    if G.consumeables.config.card_limit > #G.consumeables.cards then
-                        play_sound('timpani')
-                        SMODS.add_card({ set = 'uma_Planet' })
-                        get_current_pool()
-                        card:juice_up(0.3, 0.5)
-                    end
-                    return true
-                end
-            }))
-        end
-        delay(0.6)
-    end,
-    can_use = function(self, card)
-        return G.consumeables and #G.consumeables.cards < G.consumeables.config.card_limit or
-            (card.area == G.consumeables)
-    end
-}
-
 -- The Empress
 SMODS.Consumable {
     key = 'worse_empress',

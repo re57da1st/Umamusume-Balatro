@@ -309,6 +309,187 @@ return {
             },
         },
 
+        uma_worse_Tarot = {
+            c_uma_worse_chariot = {
+                name = "The Worse Chariot",
+                text = {
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a",
+                    "{C:attention}#2#",
+                },
+            },
+            c_uma_worse_death = {
+                name = "Worse Death",
+                text = {
+                    "Select {C:attention}#1#{} cards,",
+                    "convert the {C:attention}left{} cards",
+                    "into the {C:attention}right{} card",
+                    "{C:inactive}(Drag to rearrange)",
+                },
+            },
+            c_uma_worse_devil = {
+                name = "The Worse Devil",
+                text = {
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a",
+                    "{C:attention}#2#",
+                },
+            },
+            c_uma_worse_emperor = {
+                name = "The Worse Emperor",
+                text = {
+                    "Creates up to {C:attention}#1#",
+                    "random {C:spectral}Spectral{} cards",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+            c_uma_worse_empress = {
+                name = "The Worse Empress",
+                text = {
+                    "Enhances {C:attention}#1#",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+            c_uma_worse_fool = {
+                name = "The Worse Fool",
+                text = {
+                    "Creates the last",
+                    "{C:tarot}Tarot{} or {C:planet}Planet{} card",
+                    "used during this run",
+                    "{s:0.8,C:tarot}The Fool{s:0.8} excluded",
+                },
+            },
+            c_uma_worse_hanged_man = {
+                name = "The Worse Hanged Man",
+                text = {
+                    "Destroys up to",
+                    "{C:attention}#1#{} selected cards",
+                },
+            },
+            c_uma_worse_heirophant = {
+                name = "The Worse Hierophant",
+                text = {
+                    "Enhances {C:attention}#1#",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+            c_uma_worse_hermit = {
+                name = "The Worse Hermit",
+                text = {
+                    "Doubles money",
+                    "{C:inactive}(Max of {C:money}$#1#{C:inactive})",
+                },
+            },
+            c_uma_worse_high_priestess = {
+                name = "The Worse High Priestess",
+                text = {
+                    "Creates up to {C:attention}#1#",
+                    "random {C:planet}Planet{} cards",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+            c_uma_worse_judgement = {
+                name = "(Against my) Worse Judgement",
+                text = {
+                    "Creates a random",
+                    "{C:red}Rare{} {C:attention}Joker{} card",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+            c_uma_worse_justice = {
+                name = "Worse Justice",
+                text = {
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a",
+                    "{C:attention}#2#",
+                },
+            },
+            c_uma_worse_lovers = {
+                name = "The Worse Lovers",
+                text = {
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a",
+                    "{C:attention}#2#",
+                },
+            },
+            c_uma_worse_magician = {
+                name = "The Worse Magician",
+                text = {
+                    "Enhances {C:attention}#1#{}",
+                    "selected cards to",
+                    "{C:attention}#2#s",
+                },
+            },
+            c_uma_worse_moon = {
+                name = "The Worse Moon",
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+            c_uma_worse_star = {
+                name = "The Worse Star",
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+            c_uma_worse_strength = {
+                name = "Worse Strength",
+                text = {
+                    "Increases rank of",
+                    "up to {C:attention}#1#{} selected",
+                    "cards by {C:attention}1",
+                },
+            },
+            c_uma_worse_sun = {
+                name = "The Worse Sun",
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+            c_uma_worse_temperance = {
+                name = "Worse Temperance",
+                text = {
+                    "Gives the total sell",
+                    "value of all current",
+                    "Jokers {C:inactive}(Max of {C:money}$#1#{C:inactive})",
+                    "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
+                },
+            },
+            c_uma_worse_tower = {
+                name = "The Worse Tower",
+                text = {
+                    "Enhances {C:attention}#1#{} selected",
+                    "card into a",
+                    "{C:attention}#2#",
+                },
+            },
+            c_uma_worse_wheel_of_fortune = {
+                name = "The Worse Wheel of Fortune",
+                text = {
+                    "{C:green}#1# in #2#{} chance to add",
+                    "{C:dark_edition}Holographic{} or",
+                    "{C:dark_edition}Polychrome{} edition",
+                    "to a random {C:attention}Joker",
+                },
+            },
+            c_uma_worse_world = {
+                name = "The Worse World",
+                text = {
+                    "Converts up to",
+                    "{C:attention}#1#{} selected cards",
+                    "to {V:1}#2#{}",
+                },
+            },
+        },
+
         uma_mambo_consumable = {
 
             c_uma_mambo_boots = {
@@ -536,6 +717,8 @@ return {
             uma_mambo_xmult="More xMult!",
             b_uma_better_tarot_cards = "Better Tarot Cards",
             k_uma_better_tarot = "Tarot",
+            b_uma_worse_tarot_cards = "Worse Tarot Cards",
+            k_uma_worse_tarot = "Tarot",
             b_uma_mambo_consumable_cards = "Mambo Cards", --Name of the consumable category, "b_[mod]_[consumable key]_cards"
             k_uma_mambo_consumable = "Mambo's things", --Name of the consumable in tooltip, "k_[mod]_[consumable key]"
             b_uma_planet_cards = "Better Planet Cards",
@@ -543,6 +726,7 @@ return {
         },
         labels = {
             uma_better_tarot = "Tarot",
+            uma_worse_tarot = "Tarot"
         },
         poker_hand_descriptions = {
             uma_perfect_pair = {
