@@ -374,11 +374,11 @@ SMODS.Joker{
 
 SMODS.Joker{
     key = "obey",
-    blueprint_compat = false,
+    blueprint_compat = true,
     rarity = 2,
     cost = 5,
     pos = { x = 6, y = 1 },
-    config = { extra = { mult = 1 } },
+    config = { extra = { mult = 2 } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
