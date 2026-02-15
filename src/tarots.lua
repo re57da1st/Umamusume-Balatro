@@ -185,7 +185,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'better_lovers',
     set = 'uma_better_Tarot',
-    pos = { x = 6, y = 0 },
+    pos = { x = 0, y = 1 },
     atlas = 'c_umas',
     config = { max_highlighted = 2, mod_conv = 'm_wild' },
     loc_vars = function(self, info_queue, card)
@@ -198,7 +198,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'better_chariot',
     set = 'uma_better_Tarot',
-    pos = { x = 7, y = 0 },
+    pos = { x = 1, y = 1 },
     atlas = 'c_umas',
     config = { max_highlighted = 2, mod_conv = 'm_steel' },
     loc_vars = function(self, info_queue, card)
@@ -211,7 +211,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'better_justice',
     set = 'uma_better_Tarot',
-    pos = { x = 8, y = 0 },
+    pos = { x = 2, y = 1 },
     atlas = 'c_umas',
     config = { max_highlighted = 2, mod_conv = 'm_glass' },
     loc_vars = function(self, info_queue, card)
@@ -224,7 +224,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'better_hermit',
     set = 'uma_better_Tarot',
-    pos = { x = 9, y = 0 },
+    pos = { x = 3, y = 1 },
     atlas = 'c_umas',
     config = { extra = { max = 40 } },
     loc_vars = function(self, info_queue, card)
@@ -252,7 +252,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'better_wheel_of_fortune',
     set = 'uma_better_Tarot',
-    pos = { x = 0, y = 1 },
+    pos = { x = 4, y = 1 },
     atlas = 'c_umas',
     config = { extra = { odds = 2 } },
     loc_vars = function(self, info_queue, card)
@@ -311,7 +311,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'better_strength',
     set = 'uma_better_Tarot',
-    pos = { x = 1, y = 1 },
+    pos = { x = 5, y = 1 },
     atlas = 'c_umas',
     config = { max_highlighted = 4 },
     loc_vars = function(self, info_queue, card)
@@ -381,7 +381,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'better_hanged_man',
     set = 'uma_better_Tarot',
-    pos = { x = 2, y = 1 },
+    pos = { x = 0, y = 2 },
     atlas = 'c_umas',
     config = { max_highlighted = 4 },
     loc_vars = function(self, info_queue, card)
@@ -413,7 +413,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'better_death',
     set = 'uma_better_Tarot',
-    pos = { x = 3, y = 1 },
+    pos = { x = 1, y = 2 },
     atlas = 'c_umas',
     config = { max_highlighted = 3, min_highlighted = 2 },
     loc_vars = function(self, info_queue, card)
@@ -490,7 +490,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'better_devil',
     set = 'uma_better_Tarot',
-    pos = { x = 5, y = 1 },
+    pos = { x = 3, y = 2 },
     atlas = 'c_umas',
     config = { max_highlighted = 2, mod_conv = 'm_gold' },
     loc_vars = function(self, info_queue, card)
@@ -503,7 +503,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'better_tower',
     set = 'uma_better_Tarot',
-    pos = { x = 6, y = 1 },
+    pos = { x = 4, y = 2 },
     atlas = 'c_umas',
     config = { max_highlighted = 2, mod_conv = 'm_stone' },
     loc_vars = function(self, info_queue, card)
@@ -516,7 +516,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'better_judgement',
     set = 'uma_better_Tarot',
-    pos = { x = 0, y = 2 },
+    pos = { x = 2, y = 3 },
     atlas = 'c_umas',
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({
@@ -542,7 +542,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_magician',
     set = 'uma_worse_Tarot',
-    pos = { x = 11, y = 0 },
+    pos = { x = 7, y = 0 },
     atlas = 'c_umas',
     config = { max_highlighted = 4, mod_conv = 'm_lucky' },
     loc_vars = function(self, info_queue, card)
@@ -555,7 +555,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_empress',
     set = 'uma_worse_Tarot',
-    pos = { x = 13, y = 0 },
+    pos = { x = 9, y = 0 },
     atlas = 'c_umas',
     config = { max_highlighted = 4, mod_conv = 'm_mult' },
     loc_vars = function(self, info_queue, card)
@@ -568,7 +568,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_emperor',
     set = 'uma_worse_Tarot',
-    pos = { x = 14, y = 0 },
+    pos = { x = 10, y = 0 },
     atlas = 'c_umas',
     config = { extra = { tarots = 2 } },
     loc_vars = function(self, info_queue, card)
@@ -601,7 +601,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_heirophant',
     set = 'uma_worse_Tarot',
-    pos = { x = 15, y = 0 },
+    pos = { x = 11, y = 0 },
     atlas = 'c_umas',
     config = { max_highlighted = 4, mod_conv = 'm_bonus' },
     loc_vars = function(self, info_queue, card)
@@ -614,7 +614,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_lovers',
     set = 'uma_worse_Tarot',
-    pos = { x = 16, y = 0 },
+    pos = { x = 6, y = 1 },
     atlas = 'c_umas',
     config = { max_highlighted = 2, mod_conv = 'm_wild' },
     loc_vars = function(self, info_queue, card)
@@ -627,7 +627,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_chariot',
     set = 'uma_worse_Tarot',
-    pos = { x = 17, y = 0 },
+    pos = { x = 7, y = 1 },
     atlas = 'c_umas',
     config = { max_highlighted = 2, mod_conv = 'm_steel' },
     loc_vars = function(self, info_queue, card)
@@ -640,7 +640,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_justice',
     set = 'uma_worse_Tarot',
-    pos = { x = 18, y = 0 },
+    pos = { x = 8, y = 1 },
     atlas = 'c_umas',
     config = { max_highlighted = 2, mod_conv = 'm_glass' },
     loc_vars = function(self, info_queue, card)
@@ -653,7 +653,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_hermit',
     set = 'uma_worse_Tarot',
-    pos = { x = 19, y = 0 },
+    pos = { x = 9, y = 1 },
     atlas = 'c_umas',
     config = { extra = { max = 40 } },
     loc_vars = function(self, info_queue, card)
@@ -810,7 +810,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_hanged_man',
     set = 'uma_worse_Tarot',
-    pos = { x = 12, y = 1 },
+    pos = { x = 6, y = 2 },
     atlas = 'c_umas',
     config = { max_highlighted = 4 },
     loc_vars = function(self, info_queue, card)
@@ -842,7 +842,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_temperance',
     set = 'uma_worse_Tarot',
-    pos = { x = 14, y = 1 },
+    pos = { x = 8, y = 2 },
     atlas = 'c_umas',
     config = { extra = { max = 50, money = 0 } },
     loc_vars = function(self, info_queue, card)
@@ -888,7 +888,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_devil',
     set = 'uma_worse_Tarot',
-    pos = { x = 15, y = 1 },
+    pos = { x = 9, y = 2 },
     atlas = 'c_umas',
     config = { max_highlighted = 2, mod_conv = 'm_gold' },
     loc_vars = function(self, info_queue, card)
@@ -901,7 +901,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_tower',
     set = 'uma_worse_Tarot',
-    pos = { x = 16, y = 1 },
+    pos = { x = 10, y = 2 },
     atlas = 'c_umas',
     config = { max_highlighted = 2, mod_conv = 'm_stone' },
     loc_vars = function(self, info_queue, card)
@@ -914,7 +914,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_star',
     set = 'uma_worse_Tarot',
-    pos = { x = 17, y = 1 },
+    pos = { x = 11, y = 2 },
     atlas = 'c_umas',
     config = { max_highlighted = 3, suit_conv = 'Diamonds' },
     loc_vars = function(self, info_queue, card)
@@ -926,7 +926,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_moon',
     set = 'uma_worse_Tarot',
-    pos = { x = 18, y = 1 },
+    pos = { x = 6, y = 3 },
     atlas = 'c_umas',
     config = { max_highlighted = 3, suit_conv = 'Clubs' },
     loc_vars = function(self, info_queue, card)
@@ -938,7 +938,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_sun',
     set = 'uma_worse_Tarot',
-    pos = { x = 19, y = 1 },
+    pos = { x = 7, y = 3 },
     atlas = 'c_umas',
     config = { max_highlighted = 3, suit_conv = 'Hearts' },
     loc_vars = function(self, info_queue, card)
@@ -950,7 +950,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'worse_world',
     set = 'uma_worse_Tarot',
-    pos = { x = 11, y = 2 },
+    pos = { x = 9, y = 3 },
     atlas = 'c_umas',
     config = { max_highlighted = 3, suit_conv = 'Spades' },
     loc_vars = function(self, info_queue, card)

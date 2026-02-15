@@ -2,7 +2,7 @@ SMODS.Consumable {
     key = "twin_moons",
     set = "Planet",
     cost = 3,
-    pos = { x = 6, y = 5 },
+    pos = { x = 4, y = 3 },
     config = { hand_type = 'uma_perfect_pair', softlock = true },
     atlas = 'c_umas',
 
@@ -44,8 +44,10 @@ SMODS.Consumable {
     key = "better_mercury",
     set = "uma_Planet",
     cost = 3,
-    pos = { x = 0, y = 3 },
+    pos = { x = 0, y = 4 },
     config = { hand_type = 'Pair' },
+    atlas = 'c_umas',
+
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -69,8 +71,10 @@ SMODS.Consumable {
     key = "better_venus",
     set = "uma_Planet",
     cost = 3,
-    pos = { x = 1, y = 3 },
+    pos = { x = 1, y = 4 },
     config = { hand_type = 'Three of a Kind' },
+    atlas = 'c_umas',
+
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -94,8 +98,10 @@ SMODS.Consumable {
     key = "better_earth",
     set = "uma_Planet",
     cost = 3,
-    pos = { x = 2, y = 3 },
+    pos = { x = 2, y = 4 },
     config = { hand_type = 'Full House' },
+    atlas = 'c_umas',
+
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -119,8 +125,10 @@ SMODS.Consumable {
     key = "better_mars",
     set = "uma_Planet",
     cost = 3,
-    pos = { x = 3, y = 3 },
+    pos = { x = 3, y = 4 },
     config = { hand_type = 'Four of a Kind' },
+    atlas = 'c_umas',
+
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -144,8 +152,10 @@ SMODS.Consumable {
     key = "better_jupiter",
     set = "uma_Planet",
     cost = 3,
-    pos = { x = 4, y = 3 },
+    pos = { x = 4, y = 4 },
     config = { hand_type = 'Flush' },
+    atlas = 'c_umas',
+
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -169,8 +179,10 @@ SMODS.Consumable {
     key = "better_saturn",
     set = "uma_Planet",
     cost = 3,
-    pos = { x = 5, y = 3 },
+    pos = { x = 5, y = 4 },
     config = { hand_type = 'Straight' },
+    atlas = 'c_umas',
+
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -194,8 +206,10 @@ SMODS.Consumable {
     key = "better_uranus",
     set = "uma_Planet",
     cost = 3,
-    pos = { x = 6, y = 3 },
+    pos = { x = 6, y = 4 },
     config = { hand_type = 'Two Pair' },
+    atlas = 'c_umas',
+
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -219,8 +233,10 @@ SMODS.Consumable {
     key = "better_neptune",
     set = "uma_Planet",
     cost = 3,
-    pos = { x = 7, y = 3 },
+    pos = { x = 7, y = 4 },
     config = { hand_type = 'Straight Flush' },
+    atlas = 'c_umas',
+
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -244,8 +260,10 @@ SMODS.Consumable {
     key = "better_pluto",
     set = "uma_Planet",
     cost = 3,
-    pos = { x = 8, y = 3 },
+    pos = { x = 8, y = 4 },
     config = { hand_type = 'High Card' },
+    atlas = 'c_umas',
+
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -274,8 +292,10 @@ SMODS.Consumable {
     key = "better_planet_x",
     set = "uma_Planet",
     cost = 3,
-    pos = { x = 9, y = 2 },
+    pos = { x = 9, y = 4 },
     config = { hand_type = 'Five of a Kind'},
+    atlas = 'c_umas',
+
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -309,8 +329,10 @@ SMODS.Consumable {
     key = "better_ceres",
     set = "uma_Planet",
     cost = 3,
-    pos = { x = 8, y = 2 },
+    pos = { x = 10, y = 4 },
     config = { hand_type = 'Flush House' },
+    atlas = 'c_umas',
+
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -343,8 +365,10 @@ SMODS.Consumable {
     key = "better_eris",
     set = "uma_Planet",
     cost = 3,
-    pos = { x = 3, y = 2 },
+    pos = { x = 11, y = 4 },
     config = { hand_type = 'Flush Five' },
+    atlas = 'c_umas',
+
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -379,7 +403,7 @@ SMODS.Consumable {
     key = "better_twin_moons",
     set = "uma_Planet",
     cost = 3,
-    pos = { x = 6, y = 5 },
+    pos = { x = 5, y = 3 },
     config = { hand_type = 'uma_perfect_pair' },
     atlas = 'c_umas',
 

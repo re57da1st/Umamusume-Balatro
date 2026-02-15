@@ -16,7 +16,7 @@ SMODS.ConsumableType {
 SMODS.Consumable {
     key = 'mambo_boots',
     set = 'uma_mambo_consumable',
-    pos = { x = 7, y = 5 },
+    pos = { x = 10, y = 3 },
     atlas = 'c_umas',
     loc_vars = function(self, info_queue, card)
         return { vars = {
@@ -34,7 +34,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'mambo_hat',
     set = 'uma_mambo_consumable',
-    pos = { x = 8, y = 5 },
+    pos = { x = 11, y = 3 },
     atlas = 'c_umas',
     loc_vars = function(self, info_queue, card)
         return { vars = {
@@ -52,7 +52,7 @@ SMODS.Consumable {
 SMODS.Consumable {
     key = 'mambo_plushie',
     set = 'uma_mambo_consumable',
-    pos = { x = 9, y = 5 },
+    pos = { x = 12, y = 3 },
     atlas = 'c_umas',
     loc_vars = function(self, info_queue, card)
         return { vars = {
