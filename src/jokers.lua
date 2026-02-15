@@ -36,13 +36,7 @@ SMODS.Joker{
     soul_pos = { x = 1, y = 1 },
 
     loc_vars = function(self, info_queue, card)
-        local queen_tally = 0
-        if G.playing_cards then --Tally up the amount of Queens in the deck
-            for _, playing_card in ipairs(G.playing_cards) do
-                if playing_card:get_id() == 12 then queen_tally = queen_tally + 1 end
-            end
-        end
-        card.ability.extra.total_mult = card.ability.extra.q_mult * queen_tally
+        card.ability.extra.total_mult = uma_queen_tally(card.ability.extra.q_mult)
         return { vars = {
             card.ability.extra.q_mult,  --Queen Mult, the amount of mult Daiwa gains per queen in the deck
             card.ability.extra.total_mult  --The total amount of mult Daiwa gains
@@ -51,14 +45,23 @@ SMODS.Joker{
 
     calculate = function(self, card, context)
         if context.modify_hand then --Context that happens after setting the poker hand type, and before scoring cards
-            if card.ability.extra.total_mult > 0 then
                 return {
-                    mult = (card.ability.extra.total_mult)
+                    mult = uma_queen_tally(card.ability.extra.q_mult)
                 }
-            end
         end
     end
 }
+
+---@diagnostic disable-next-line: lowercase-global
+uma_queen_tally = function(mod)
+    local queen_tally = 0
+        if G.playing_cards then --Tally up the amount of Queens in the deck
+            for _, playing_card in ipairs(G.playing_cards) do
+                if playing_card:get_id() == 12 then queen_tally = queen_tally + 1 end
+            end
+        end
+    return queen_tally * mod
+end
 
 SMODS.Joker{
     key = "agnes",
