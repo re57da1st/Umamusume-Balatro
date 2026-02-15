@@ -716,6 +716,8 @@ return {
             uma_mambo_chips="More chips!",
             uma_mambo_mult="More Mult!",
             uma_mambo_xmult="More xMult!",
+            uma_fuku_good = "Good fortune!",
+            uma_fuku_bad = "Bad fortune...",
             b_uma_better_tarot_cards = "Better Tarot Cards",
             k_uma_better_tarot = "Tarot",
             b_uma_worse_tarot_cards = "Worse Tarot Cards",
