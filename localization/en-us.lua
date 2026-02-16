@@ -708,6 +708,8 @@ return {
             a_xmult_minus="-X#1# Mult",
             uma_yuri="Yuri!",
             uma_oguri="Yummy!",
+            uma_oguri_hungry="Hungry",
+            uma_oguri_full="Full!",
             uma_twin_moon="Moon(s)",
             uma_bakushin1="Bakushin!",
             uma_bakushin2="Bakushinshi-n!",

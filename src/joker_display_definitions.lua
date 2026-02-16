@@ -68,8 +68,20 @@ jd_def["j_uma_oguri"] = {
     },
     text_config = { colour = G.C.CHIPS },
     reminder_text = {
-        { text = "(Hungry)" }
-    }
+        { text = "(", colour = G.C.UI.TEXT_INACTIVE },
+        { ref_table = "card.joker_display_values", ref_value = "state" },
+        { text = ")", colour = G.C.UI.TEXT_INACTIVE }
+    },
+    calc_function = function(card)
+        card.joker_display_values.state = (card.ability.extra.state == 1 and localize('uma_oguri_full') or localize('uma_oguri_hungry'))
+    end,
+
+    style_function = function(card, text, reminder_text, extra)
+            if reminder_text and reminder_text.children and reminder_text.children[2] then
+                reminder_text.children[2].config.colour = card.ability.extra.state == 1 and G.C.GREEN or
+                    G.C.UI.TEXT_INACTIVE
+            end
+        end
 }
 
 jd_def["j_uma_bakushin"] = {

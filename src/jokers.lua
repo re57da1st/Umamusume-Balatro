@@ -142,7 +142,7 @@ SMODS.Joker{
     rarity = 3,
     cost = 8,
     pos = { x = 5, y = 0 },
-    config = { extra = { chips = 0, chip_mod = 20 } },
+    config = { extra = { chips = 0, chip_mod = 20, state = 0 } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
@@ -153,6 +153,8 @@ SMODS.Joker{
     end,
 
     calculate = function(self, card, context)
+
+        card.children.center:set_sprite_pos({ x = 5, y = card.ability.extra.state })
 
         if context.end_of_round and not context.blueprint then
             local food_rank, food_ID = 15, 15
@@ -167,7 +169,7 @@ SMODS.Joker{
             if food and food == context.other_card then
                 SMODS.destroy_cards(food)
                 card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
-                card.children.center:set_sprite_pos({ x = 5, y = 1 })
+                card.ability.extra.state = 1
                 return {
                     message = localize('uma_oguri'),
                     colour = G.C.CHIPS,
@@ -177,7 +179,7 @@ SMODS.Joker{
         end
 
         if context.setting_blind and not context.blueprint then
-            card.children.center:set_sprite_pos({ x = 5, y = 0 })
+            card.ability.extra.state = 0
         end
 
         if context.joker_main then
