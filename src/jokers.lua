@@ -15,6 +15,7 @@ SMODS.Joker{
     end,
 
     calculate = function(self, card, context)
+
         if context.individual and context.cardarea == G.play and (context.other_card:is_suit("Clubs") or context.other_card:is_suit("Diamonds")) then
             --Checks for cards in play that are Clubs or Diamonds
             return {
