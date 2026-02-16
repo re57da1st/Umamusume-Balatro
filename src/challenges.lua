@@ -203,7 +203,7 @@ SMODS.Challenge {
 }
 
 SMODS.Challenge {
-    key = 'test',
+    key = 'all',
     rules = {
         custom = {},
         modifiers = {
@@ -234,7 +234,7 @@ SMODS.Challenge {
 }
 
 SMODS.Challenge {
-    key = 'test2',
+    key = 'functional',
     rules = {
         custom = {},
         modifiers = {
@@ -261,7 +261,7 @@ SMODS.Challenge {
 }
 
 SMODS.Challenge {
-    key = 'test3',
+    key = 'textured',
     rules = {
         custom = {},
         modifiers = {
@@ -275,6 +275,7 @@ SMODS.Challenge {
     jokers = {
         {id = 'j_uma_helios'},
         {id = 'j_uma_daiwa'},
+        {id = 'j_uma_agnes'},
         {id = 'j_uma_goldship'},
         {id = 'j_uma_bakushin'},
         {id = 'j_uma_mambo'},

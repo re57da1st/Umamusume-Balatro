@@ -409,9 +409,9 @@ return {
             c_uma_worse_lovers = {
                 name = "The Worse Lovers",
                 text = {
-                    "Enhances {C:attention}#1#{} selected",
-                    "card into a",
-                    "{C:attention}#2#",
+                    "{C:green}#2# in #3#{} chance to",
+                    "enhance {C:attention}#1#{} selected",
+                    "card into a {C:attention}#4#",
                 },
             },
             c_uma_worse_magician = {
@@ -687,9 +687,9 @@ return {
             c_uma_obey_challenge = "Obey Your Master",
             c_uma_fuku_challenge = "Matikanefukukitaru",
             c_uma_legends = "All Legends",
-            c_uma_test = "All horsies ^.^",
-            c_uma_test2 = "Everyone who's functional",
-            c_uma_test3 = "Everyone who's textured",
+            c_uma_all = "All horsies ^.^",
+            c_uma_functional = "Everyone who's functional",
+            c_uma_textured = "Everyone who's textured",
             c_uma_testIskIdea = "Special Tarot Tests",
             c_uma_testIskIdea2 = "Non-special Tarot Tests"
         },

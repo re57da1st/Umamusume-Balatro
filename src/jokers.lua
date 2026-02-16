@@ -153,6 +153,22 @@ SMODS.Joker{
     end,
 
     calculate = function(self, card, context)
+
+        local event
+        event = Event { --Timer function
+            blockable = false,
+            blocking = false,
+            pause_force = true,
+            no_delete = true,
+            trigger = "after",
+            delay = 5,
+            timer = "UPTIME",
+            func = function()
+                card.children.center:set_sprite_pos({ x = 5, y = 0 })
+                event.start_timer = false
+            end
+        }
+
         if context.end_of_round then
             local food_rank, food_ID = 15, 15
             local food = nil
@@ -167,6 +183,8 @@ SMODS.Joker{
                 SMODS.destroy_cards(food)
                 --delay(1)
                 card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
+                card.children.center:set_sprite_pos({ x = 5, y = 1 })
+                G.E_MANAGER:add_event(event)
                 return {
                     message = localize('uma_oguri'),
                     colour = G.C.CHIPS,

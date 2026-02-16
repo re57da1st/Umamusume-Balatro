@@ -629,26 +629,10 @@ SMODS.Consumable {
     end,
     use = function(self, card, area, copier)
         if SMODS.pseudorandom_probability(card, 'uma_worse_lovers', 1, card.ability.extra.odds) then
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.3, 0.5)
-                return true
-            end
-        }))
-
-
-
+            print("yeah it worked")
         else
-
-
-
-
+            print("no it didn't work")
         end
-
-
     end,
 }
     --[[
