@@ -3,16 +3,16 @@
 SMODS.ConsumableType {
     key = 'uma_better_Tarot',
     default = 'c_uma_better_strength',
-    primary_colour = G.C.SET.Tarot,
-    secondary_colour = G.C.SECONDARY_SET.Tarot,
+    primary_colour = G.C.UMA.BETTER_TAROT,
+    secondary_colour = G.C.UMA.BETTER_TAROT2,
     collection_rows = { 4, 5 },
 }
 
 SMODS.ConsumableType {
     key = 'uma_worse_Tarot',
     default = 'c_uma_worse_strength',
-    primary_colour = G.C.SET.Tarot,
-    secondary_colour = G.C.SECONDARY_SET.Tarot,
+    primary_colour = G.C.UMA.WORSE_TAROT,
+    secondary_colour = G.C.UMA.WORSE_TAROT2,
     collection_rows = { 4, 5 },
 }
 

@@ -204,8 +204,8 @@ return {
             c_uma_better_high_priestess = {
                 name = "The Better High Priestess",
                 text = {
-                    "Creates up to {C:attention}#1#",
-                    "random {C:planet}Planet{} cards",
+                    "Creates up to {C:attention}#1#{} random",
+                    "{C:uma_col_better_planet2}Better Planet{} cards",
                     "{C:inactive}(Must have room)",
                 },
             },
@@ -236,8 +236,7 @@ return {
             c_uma_better_magician = {
                 name = "The Better Magician",
                 text = {
-                    "Enhances {C:attention}#1#{}",
-                    "selected cards to",
+                    "Enhances {C:attention}#1#{} selected cards to",
                     "{C:attention}#2#s",
                 },
             },
@@ -338,17 +337,16 @@ return {
             c_uma_worse_emperor = {
                 name = "The Worse Emperor",
                 text = {
-                    "Creates up to {C:attention}#1#",
-                    "random {C:spectral}Spectral{} cards",
+                    "Creates {C:attention}#1# random",
+                    "{C:uma_col_worse_tarot}Worse Tarot{} card",
                     "{C:inactive}(Must have room)",
                 },
             },
             c_uma_worse_empress = {
                 name = "The Worse Empress",
                 text = {
-                    "Enhances {C:attention}#1#",
-                    "selected cards to",
-                    "{C:attention}#2#s",
+                    "Enhances {C:attention}#1#{} selected",
+                    "card to {C:attention}#2#s",
                 },
             },
             c_uma_worse_fool = {
@@ -363,16 +361,14 @@ return {
             c_uma_worse_hanged_man = {
                 name = "The Worse Hanged Man",
                 text = {
-                    "Destroys up to",
-                    "{C:attention}#1#{} selected cards",
+                    "Destroys {C:attention}#1#{} selected card",
                 },
             },
             c_uma_worse_heirophant = {
                 name = "The Worse Hierophant",
                 text = {
-                    "Enhances {C:attention}#1#",
-                    "selected cards to",
-                    "{C:attention}#2#s",
+                    "Enhances {C:attention}#1#{} selected",
+                    "card to {C:attention}#2#s",
                 },
             },
             c_uma_worse_hermit = {
@@ -417,41 +413,36 @@ return {
             c_uma_worse_magician = {
                 name = "The Worse Magician",
                 text = {
-                    "Enhances {C:attention}#1#{}",
-                    "selected cards to",
-                    "{C:attention}#2#s",
+                    "Enhances {C:attention}#1#{} selected",
+                    "card to {C:attention}#2#s",
                 },
             },
             c_uma_worse_moon = {
                 name = "The Worse Moon",
                 text = {
-                    "Converts up to",
-                    "{C:attention}#1#{} selected cards",
-                    "to {V:1}#2#{}",
+                    "Converts {C:attention}#1#{} selected ",
+                    "card to {V:1}#2#{}",
                 },
             },
             c_uma_worse_star = {
                 name = "The Worse Star",
                 text = {
-                    "Converts up to",
-                    "{C:attention}#1#{} selected cards",
-                    "to {V:1}#2#{}",
+                    "Converts {C:attention}#1#{} selected ",
+                    "card to {V:1}#2#{}",
                 },
             },
             c_uma_worse_strength = {
                 name = "Worse Strength",
                 text = {
                     "Increases rank of",
-                    "up to {C:attention}#1#{} selected",
-                    "cards by {C:attention}1",
+                    "{C:attention}#1#{} selected card by {C:attention}1",
                 },
             },
             c_uma_worse_sun = {
                 name = "The Worse Sun",
                 text = {
-                    "Converts up to",
-                    "{C:attention}#1#{} selected cards",
-                    "to {V:1}#2#{}",
+                    "Converts {C:attention}#1#{} selected ",
+                    "card to {V:1}#2#{}",
                 },
             },
             c_uma_worse_temperance = {
@@ -474,18 +465,15 @@ return {
             c_uma_worse_wheel_of_fortune = {
                 name = "The Worse Wheel of Fortune",
                 text = {
-                    "{C:green}#1# in #2#{} chance to add",
-                    "{C:dark_edition}Holographic{} or",
-                    "{C:dark_edition}Polychrome{} edition",
-                    "to a random {C:attention}Joker",
+                    "{C:green}#1# in #2#{} chance to add {C:dark_edition}Foil{}",
+                    "edition to a random {C:attention}Joker",
                 },
             },
             c_uma_worse_world = {
                 name = "The Worse World",
                 text = {
-                    "Converts up to",
-                    "{C:attention}#1#{} selected cards",
-                    "to {V:1}#2#{}",
+                    "Converts {C:attention}#1#{} selected ",
+                    "card to {V:1}#2#{}",
                 },
             },
         },

@@ -9,8 +9,13 @@ G.C.UMA = {
     TRANSPARENT = HEX("00000000"),
     MAMBO = HEX("4D4979"),
     MAMBO2 = HEX("918EC3"),
-    BAKUSHIN = HEX("FF93B8")
-    
+    BAKUSHIN = HEX("FF93B8"),
+    WORSE_TAROT = HEX("858585"),
+    WORSE_TAROT2 = HEX("B7B7B7"),
+    BETTER_TAROT = HEX("BE785A"),
+    BETTER_TAROT2 = HEX("F7A985"),
+    BETTER_PLANET = HEX("5B64AA"),
+    BETTER_PLANET2 = HEX("848FD2")
 }
 
 local loc_colour_ref = loc_colour
@@ -29,5 +34,11 @@ function loc_colour(_c, _default)
     G.ARGS.LOC_COLOURS.uma_col_mambo = G.C.UMA.MAMBO
     G.ARGS.LOC_COLOURS.uma_col_mambo2 = G.C.UMA.MAMBO2
     G.ARGS.LOC_COLOURS.uma_col_bakushin = G.C.UMA.BAKUSHIN
+    G.ARGS.LOC_COLOURS.uma_col_worse_tarot = G.C.UMA.WORSE_TAROT
+    G.ARGS.LOC_COLOURS.uma_col_worse_tarot2 = G.C.UMA.WORSE_TAROT2
+    G.ARGS.LOC_COLOURS.uma_col_better_tarot = G.C.UMA.BETTER_TAROT
+    G.ARGS.LOC_COLOURS.uma_col_better_tarot2 = G.C.UMA.BETTER_TAROT2
+    G.ARGS.LOC_COLOURS.uma_col_better_planet = G.C.UMA.BETTER_PLANET
+    G.ARGS.LOC_COLOURS.uma_col_better_planet2 = G.C.UMA.BETTER_PLANET2
     return loc_colour_ref(_c, _default)
 end

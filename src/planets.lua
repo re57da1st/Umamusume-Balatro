@@ -29,9 +29,9 @@ SMODS.Consumable {
 -- if you want to create a regular Planet ignore this and use set = "Planet"
 SMODS.ConsumableType {
     key = 'uma_Planet',
-    default = 'c_uma_pluto',
-    primary_colour = G.C.SET.Planet,
-    secondary_colour = G.C.SECONDARY_SET.Planet,
+    default = 'c_uma_better_pluto',
+    primary_colour = G.C.UMA.BETTER_PLANET,
+    secondary_colour = G.C.UMA.BETTER_PLANET2,
     collection_rows = { 6, 6 },
 }
 --[[

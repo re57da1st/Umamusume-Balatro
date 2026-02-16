@@ -292,7 +292,9 @@ SMODS.Challenge {
     key = 'testIskIdea',
     rules = {
         custom = {},
-        modifiers = {}
+        modifiers = {
+            { id = 'consumable_slots', value = 75 }
+        }
     },
     jokers = {},
     consumeables = {
@@ -322,7 +324,9 @@ SMODS.Challenge {
     key = 'testIskIdea2',
     rules = {
         custom = {},
-        modifiers = {}
+        modifiers = {
+            { id = 'consumable_slots', value = 75 }
+        }
     },
     jokers = {},
     consumeables = {
