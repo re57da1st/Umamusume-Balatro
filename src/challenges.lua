@@ -276,6 +276,7 @@ SMODS.Challenge {
         {id = 'j_uma_helios'},
         {id = 'j_uma_daiwa'},
         {id = 'j_uma_agnes'},
+        {id = 'j_uma_oguri'},
         {id = 'j_uma_goldship'},
         {id = 'j_uma_bakushin'},
         {id = 'j_uma_mambo'},
