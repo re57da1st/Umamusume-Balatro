@@ -538,7 +538,7 @@ SMODS.Consumable {
 
 --WORSE TAROTS
 
--- The Magician
+-- The Magician D
 SMODS.Consumable {
     key = 'worse_magician',
     set = 'uma_worse_Tarot',
@@ -548,10 +548,14 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+    end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
     end
 }
 
--- The Empress
+-- The Empress D
 SMODS.Consumable {
     key = 'worse_empress',
     set = 'uma_worse_Tarot',
@@ -562,9 +566,13 @@ SMODS.Consumable {
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
+    end
 }
 
--- The Emperor
+-- The Emperor D
 SMODS.Consumable {
     key = 'worse_emperor',
     set = 'uma_worse_Tarot',
@@ -594,10 +602,14 @@ SMODS.Consumable {
     can_use = function(self, card)
         return (G.consumeables and #G.consumeables.cards < G.consumeables.config.card_limit) or
             (card.area == G.consumeables)
+    end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
     end
 }
 
--- The Hierophant
+-- The Hierophant D
 SMODS.Consumable {
     key = 'worse_heirophant',
     set = 'uma_worse_Tarot',
@@ -608,9 +620,13 @@ SMODS.Consumable {
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
+    end
 }
 
--- The Lovers
+-- The Lovers D
 SMODS.Consumable {
     key = 'worse_lovers',
     set = 'uma_worse_Tarot',
@@ -629,28 +645,61 @@ SMODS.Consumable {
     end,
     use = function(self, card, area, copier)
         if SMODS.pseudorandom_probability(card, 'uma_worse_lovers', 1, card.ability.extra.odds) then
-            print("yeah it worked")
-        else
-            print("no it didn't work")
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
         end
-    end,
-}
-    --[[
-    config = { extra = { odds = 2 } },
-    loc_vars = function(self, info_queue, card)
-        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
-            'uma_wheel_of_fortune')
-        return { vars = { numerator, denominator } }
-    end,
-    use = function(self, card, area, copier)
-        if SMODS.pseudorandom_probability(card, 'uma_wheel_of_fortune', 1, card.ability.extra.odds) then
-            local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
-
-            local eligible_card = pseudorandom_element(editionless_jokers, 'uma_wheel_of_fortune')
-            local edition = SMODS.poll_edition { key = "uma_wheel_of_fortune", guaranteed = true, no_negative = true, options = { 'e_polychrome', 'e_holo'} }
----@diagnostic disable-next-line: need-check-nil
-            eligible_card:set_edition(edition, true)
-            check_for_unlock({ type = 'have_edition' })
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    G.hand.highlighted[i]:set_ability(card.ability.mod_conv)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)      
         else
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
@@ -683,42 +732,223 @@ SMODS.Consumable {
                 end
             }))
         end
-    --]]
+    end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
+    end
+}
 
-
--- The Chariot
+-- The Chariot D
 SMODS.Consumable {
     key = 'worse_chariot',
     set = 'uma_worse_Tarot',
     pos = { x = 7, y = 1 },
     atlas = 'c_umas',
-    config = { max_highlighted = 2, mod_conv = 'm_steel' },
-    loc_vars = function(self, info_queue, card)
+    config = { max_highlighted = 1, mod_conv = 'm_steel', extra = { odds = 2 } },
+   loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
-        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'uma_worse_chariot')
+        return { vars = { 
+            card.ability.max_highlighted,
+            numerator,
+            denominator,
+            localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv }
+        } }
     end,
+    use = function(self, card, area, copier)
+        if SMODS.pseudorandom_probability(card, 'uma_worse_chariot', 1, card.ability.extra.odds) then
+            G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    G.hand.highlighted[i]:set_ability(card.ability.mod_conv)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
+        else
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    attention_text({
+                        text = localize('k_nope_ex'),
+                        scale = 1.3,
+                        hold = 1.4,
+                        major = card,
+                        backdrop_colour = G.C.SECONDARY_SET.Tarot,
+                        align = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
+                            'tm' or 'cm',
+                        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and -0.2 or 0 },
+                        silent = true
+                    })
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.06 * G.SETTINGS.GAMESPEED,
+                        blockable = false,
+                        blocking = false,
+                        func = function()
+                            play_sound('tarot2', 0.76, 0.4)
+                            return true
+                        end
+                    }))
+                    play_sound('tarot2', 1, 0.4)
+                    card:juice_up(0.3, 0.5)
+                    return true
+                end
+            }))
+        end
+    end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
+    end
 }
 
--- Justice
+-- Justice add gas sound!
 SMODS.Consumable {
     key = 'worse_justice',
     set = 'uma_worse_Tarot',
     pos = { x = 8, y = 1 },
     atlas = 'c_umas',
-    config = { max_highlighted = 2, mod_conv = 'm_glass' },
+    config = { max_highlighted = 1, mod_conv = 'm_glass', extra = {odds = 2} },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
-        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'uma_worse_justice')
+        return { vars = { 
+            card.ability.max_highlighted,
+            numerator,
+            denominator,
+            localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv }
+        } }
     end,
+        use = function(self, card, area, copier)
+          if SMODS.pseudorandom_probability(card, 'uma_worse_justice', 1, card.ability.extra.odds) then
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    G.hand.highlighted[i]:set_ability(card.ability.mod_conv)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)      
+        else
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                SMODS.destroy_cards(G.hand.highlighted)
+                return true
+            end
+        }))
+        end
+    end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
+    end
 }
-
--- The Hermit
+-- The Hermit D
 SMODS.Consumable {
     key = 'worse_hermit',
     set = 'uma_worse_Tarot',
     pos = { x = 9, y = 1 },
     atlas = 'c_umas',
-    config = { extra = { max = 40 } },
+    config = { extra = { max = 10} },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.max } }
     end,
@@ -737,10 +967,14 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return true
+    end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
     end
 }
 
--- The Wheel of Fortune
+-- The Wheel of Fortune D
 SMODS.Consumable {
     key = 'worse_wheel_of_fortune',
     set = 'uma_worse_Tarot',
@@ -796,16 +1030,20 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return next(SMODS.Edition:get_edition_cards(G.jokers, true))
+    end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
     end
 }
 
--- Strength
+-- Strength D
 SMODS.Consumable {
     key = 'worse_strength',
     set = 'uma_worse_Tarot',
     pos = { x = 11, y = 1 },
     atlas = 'c_umas',
-    config = { max_highlighted = 4 },
+    config = { max_highlighted = 1},
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted } }
     end,
@@ -867,15 +1105,19 @@ SMODS.Consumable {
         }))
         delay(0.5)
     end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
+    end
 }
 
--- The Hanged Man
+-- The Hanged Man D
 SMODS.Consumable {
     key = 'worse_hanged_man',
     set = 'uma_worse_Tarot',
     pos = { x = 6, y = 2 },
     atlas = 'c_umas',
-    config = { max_highlighted = 4 },
+    config = { max_highlighted = 1},
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted } }
     end,
@@ -899,15 +1141,19 @@ SMODS.Consumable {
         }))
         delay(0.3)
     end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
+    end
 }
 
--- Temperance UNUSED HERE, USED IN DEBUFFED
+-- Temperance D
 SMODS.Consumable {
     key = 'worse_temperance',
     set = 'uma_worse_Tarot',
     pos = { x = 8, y = 2 },
     atlas = 'c_umas',
-    config = { extra = { max = 50, money = 0 } },
+    config = { extra = { max = 10,money = 0 } },
     loc_vars = function(self, info_queue, card)
         local money = 0
         if G.jokers then
@@ -944,79 +1190,413 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         return true
+    end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
     end
 }
 
--- The Devil
+-- The Devil D
 SMODS.Consumable {
     key = 'worse_devil',
     set = 'uma_worse_Tarot',
     pos = { x = 9, y = 2 },
     atlas = 'c_umas',
-    config = { max_highlighted = 2, mod_conv = 'm_gold' },
+    config = { max_highlighted = 1,mod_conv = 'm_gold', extra = { odds = 2 } },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
-        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'uma_worse_devil')
+        return { vars = { 
+            card.ability.max_highlighted,
+            numerator,
+            denominator,
+            localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv }
+        } }
     end,
+    use = function(self, card, area, copier)
+        if SMODS.pseudorandom_probability(card, 'uma_worse_devil', 1, card.ability.extra.odds) then
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    G.hand.highlighted[i]:set_ability(card.ability.mod_conv)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)      
+        else
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    attention_text({
+                        text = localize('k_nope_ex'),
+                        scale = 1.3,
+                        hold = 1.4,
+                        major = card,
+                        backdrop_colour = G.C.SECONDARY_SET.Tarot,
+                        align = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
+                            'tm' or 'cm',
+                        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and -0.2 or 0 },
+                        silent = true
+                    })
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.06 * G.SETTINGS.GAMESPEED,
+                        blockable = false,
+                        blocking = false,
+                        func = function()
+                            play_sound('tarot2', 0.76, 0.4)
+                            return true
+                        end
+                    }))
+                    play_sound('tarot2', 1, 0.4)
+                    card:juice_up(0.3, 0.5)
+                    return true
+                end
+            }))
+        end
+    end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
+    end
 }
-
--- The Tower
+ 
+-- The Tower D
 SMODS.Consumable {
     key = 'worse_tower',
     set = 'uma_worse_Tarot',
     pos = { x = 10, y = 2 },
     atlas = 'c_umas',
-    config = { max_highlighted = 2, mod_conv = 'm_stone' },
+    config = { max_highlighted = 1, mod_conv = 'm_stone', extra = { odds = 2 } },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
-        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'uma_worse_tower')
+        return { vars = { 
+            card.ability.max_highlighted,
+            numerator,
+            denominator,
+            localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv }
+        } }
     end,
+    use = function(self, card, area, copier)
+        if SMODS.pseudorandom_probability(card, 'uma_worse_tower', 1, card.ability.extra.odds) then
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    G.hand.highlighted[i]:set_ability(card.ability.mod_conv)
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)   
+        else
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    attention_text({
+                        text = localize('k_nope_ex'),
+                        scale = 1.3,
+                        hold = 1.4,
+                        major = card,
+                        backdrop_colour = G.C.SECONDARY_SET.Tarot,
+                        align = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
+                            'tm' or 'cm',
+                        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and -0.2 or 0 },
+                        silent = true
+                    })
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.06 * G.SETTINGS.GAMESPEED,
+                        blockable = false,
+                        blocking = false,
+                        func = function()
+                            play_sound('tarot2', 0.76, 0.4)
+                            return true
+                        end
+                    }))
+                    play_sound('tarot2', 1, 0.4)
+                    card:juice_up(0.3, 0.5)
+                    return true
+                end
+            }))
+        end
+    end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
+    end
 }
 
--- The Star UNUSED HERE, USED IN DEBUFFED
+-- The Star  D
 SMODS.Consumable {
     key = 'worse_star',
     set = 'uma_worse_Tarot',
     pos = { x = 11, y = 2 },
     atlas = 'c_umas',
-    config = { max_highlighted = 3, suit_conv = 'Diamonds' },
+    config = { max_highlighted = 1, suit_conv = 'Diamonds' },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] } } }
     end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
+    end
 }
 
--- The Moon UNUSED HERE, USED IN DEBUFFED
+-- The Moon D
 SMODS.Consumable {
     key = 'worse_moon',
     set = 'uma_worse_Tarot',
     pos = { x = 6, y = 3 },
     atlas = 'c_umas',
-    config = { max_highlighted = 3, suit_conv = 'Clubs' },
+    config = { max_highlighted = 1, suit_conv = 'Clubs' },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] } } }
     end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
+    end
 }
 
--- The Sun UNUSED HERE, USED IN DEBUFFED
+-- The Sun D
 SMODS.Consumable {
     key = 'worse_sun',
     set = 'uma_worse_Tarot',
     pos = { x = 7, y = 3 },
     atlas = 'c_umas',
-    config = { max_highlighted = 3, suit_conv = 'Hearts' },
+    config = { max_highlighted = 1, suit_conv = 'Hearts' },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] } } }
     end,
+        calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
+    end
 }
 
--- The World UNUSED HERE, USED IN DEBUFFED
+-- The World D
 SMODS.Consumable {
     key = 'worse_world',
     set = 'uma_worse_Tarot',
     pos = { x = 9, y = 3 },
     atlas = 'c_umas',
-    config = { max_highlighted = 3, suit_conv = 'Spades' },
+    config = { max_highlighted = 1, suit_conv = 'Spades' },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted, localize(card.ability.suit_conv, 'suits_plural'), colours = { G.C.SUITS[card.ability.suit_conv] } } }
     end,
+    calculate = function(self, card, context)
+        card.ability.extra_value = -11
+        card:set_cost()
+    end
 }
+
+local card_can_sell_card_ref = Card.can_sell_card
+---@diagnostic disable-next-line: duplicate-set-field
+function Card:can_sell_card(context)
+    local check = card_can_sell_card_ref(self, context)
+    if check then
+        return G.GAME.dollars + self.sell_cost >= G.GAME.bankrupt_at
+    end
+    return check
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--[[
+
+-- Death
+SMODS.Consumable {
+    key = 'better_death',
+    set = 'uma_better_Tarot',
+    pos = { x = 1, y = 2 },
+    atlas = 'c_umas',
+    config = { max_highlighted = 2, min_highlighted = 2, extra = { odds = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.max_highlighted } }
+    end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i = 1, #G.hand.highlighted do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.2)
+        local rightmost = G.hand.highlighted[1]
+        for i = 1, #G.hand.highlighted do
+            if G.hand.highlighted[i].T.x > rightmost.T.x then
+                rightmost = G.hand.highlighted[i]
+            end
+        end
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    if G.hand.highlighted[i] ~= rightmost then
+                        copy_card(rightmost, G.hand.highlighted[i])
+                    end
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                G.hand:unhighlight_all()
+                return true
+            end
+        }))
+        delay(0.5)
+    end,
+}
+
+]]--
