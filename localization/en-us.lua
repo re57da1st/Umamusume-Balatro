@@ -313,9 +313,9 @@ return {
             c_uma_worse_chariot = {
                 name = "The Worse Chariot",
                 text = {
-                    "Enhances {C:attention}#1#{} selected",
-                    "card into a",
-                    "{C:attention}#2#",
+                    "{C:green}#2# in #3#{} chance to",
+                    "enhance {C:attention}#1#{} selected",
+                    "card into a {C:attention}#4#",
                 },
             },
             c_uma_worse_death = {
@@ -330,9 +330,9 @@ return {
             c_uma_worse_devil = {
                 name = "The Worse Devil",
                 text = {
-                    "Enhances {C:attention}#1#{} selected",
-                    "card into a",
-                    "{C:attention}#2#",
+                    "{C:green}#2# in #3#{} chance to",
+                    "enhance {C:attention}#1#{} selected",
+                    "card into a {C:attention}#4#",
                 },
             },
             c_uma_worse_emperor = {
@@ -401,9 +401,9 @@ return {
             c_uma_worse_justice = {
                 name = "Worse Justice",
                 text = {
-                    "Enhances {C:attention}#1#{} selected",
-                    "card into a",
-                    "{C:attention}#2#",
+                    "{C:green}#2# in #3#{} chance to",
+                    "enhance {C:attention}#1#{} selected",
+                    "card into a {C:attention}#4#",
                 },
             },
             c_uma_worse_lovers = {
@@ -466,9 +466,9 @@ return {
             c_uma_worse_tower = {
                 name = "The Worse Tower",
                 text = {
-                    "Enhances {C:attention}#1#{} selected",
-                    "card into a",
-                    "{C:attention}#2#",
+                    "{C:green}#2# in #3#{} chance to",
+                    "enhance {C:attention}#1#{} selected",
+                    "card into a {C:attention}#4#",
                 },
             },
             c_uma_worse_wheel_of_fortune = {
