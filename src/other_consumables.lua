@@ -20,7 +20,7 @@ SMODS.Consumable {
     atlas = 'c_umas',
     loc_vars = function(self, info_queue, card)
         return { vars = {
-           10
+           G.P_CENTERS.j_uma_mambo.config.extra.chips_mod
         } }
     end,
     use = function(self, card, area, copier)
@@ -38,7 +38,7 @@ SMODS.Consumable {
     atlas = 'c_umas',
     loc_vars = function(self, info_queue, card)
         return { vars = {
-           4
+           G.P_CENTERS.j_uma_mambo.config.extra.mult_mod
         } }
     end,
     use = function(self, card, area, copier)
@@ -56,7 +56,7 @@ SMODS.Consumable {
     atlas = 'c_umas',
     loc_vars = function(self, info_queue, card)
         return { vars = {
-           0.1
+           G.P_CENTERS.j_uma_mambo.config.extra.xmult_mod
         } }
     end,
     use = function(self, card, area, copier)
