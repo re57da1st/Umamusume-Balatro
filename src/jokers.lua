@@ -353,8 +353,8 @@ SMODS.Joker{
 SMODS.Joker{
     key = "chiyono",
     blueprint_compat = false,
-    rarity = 1,
-    cost = 2,
+    rarity = 3,
+    cost = 7,
     pos = { x = 3, y = 1 },
     atlas = 'j_umas',
 
