@@ -180,6 +180,24 @@ SMODS.Challenge {
 }
 
 SMODS.Challenge {
+    key = 'love_challenge',
+    rules = {
+        custom = {},
+        modifiers = {}
+    },
+    jokers = {
+        {id = 'j_uma_love'}
+    },
+    consumeables = {
+        {id = "c_sun"},
+        {id = "c_world"},
+        {id = "c_lovers"}
+    },
+    vouchers = {},
+    restrictions = {}
+}
+
+SMODS.Challenge {
     key = 'legends',
     rules = {
         custom = {},

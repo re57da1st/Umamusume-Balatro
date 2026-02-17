@@ -1,4 +1,4 @@
-SMODS.Joker{
+SMODS.Joker{ --Daitaku Helios
     key = "helios",
     blueprint_compat = true,
     rarity = 4,
@@ -26,7 +26,7 @@ SMODS.Joker{
 
 }
 
-SMODS.Joker{
+SMODS.Joker{ --Daiwa Scarlet
     key = "daiwa",
     blueprint_compat = true,
     rarity = 4,
@@ -53,18 +53,7 @@ SMODS.Joker{
     end
 }
 
----@diagnostic disable-next-line: lowercase-global
-uma_queen_tally = function(mod)
-    local queen_tally = 0
-        if G.playing_cards then --Tally up the amount of Queens in the deck
-            for _, playing_card in ipairs(G.playing_cards) do
-                if playing_card:get_id() == 12 then queen_tally = queen_tally + 1 end
-            end
-        end
-    return queen_tally * mod
-end
-
-SMODS.Joker{
+SMODS.Joker{ --Agnes Digital
     key = "agnes",
     blueprint_compat = false,
     rarity = 3,
@@ -103,7 +92,7 @@ SMODS.Joker{
     end
 }
 
-SMODS.Joker{
+SMODS.Joker{ --Twin Turbo
     key = "turbo",
     blueprint_compat = false,
     rarity = 1,
@@ -120,7 +109,7 @@ SMODS.Joker{
     end
 }
 
-SMODS.Joker{
+SMODS.Joker{ --Goldship
     key = "goldship",
     blueprint_compat = false,
     rarity = 3,
@@ -137,7 +126,7 @@ SMODS.Joker{
     end
 }
 
-SMODS.Joker{
+SMODS.Joker{ --Oguri Cap
     key = "oguri",
     blueprint_compat = true,
     rarity = 3,
@@ -191,7 +180,7 @@ SMODS.Joker{
     end
 }
 
-SMODS.Joker{
+SMODS.Joker{ --Sakura Bakushin O
     key = "bakushin",
     blueprint_compat = true,
     rarity = 3,
@@ -284,7 +273,7 @@ SMODS.Joker{
     end
 }
 
-SMODS.Joker{
+SMODS.Joker{ --Matikanetannhauser
     key = "mambo",
     blueprint_compat = true,
     rarity = 3,
@@ -350,7 +339,7 @@ SMODS.Joker{
     end
 }
 
-SMODS.Joker{
+SMODS.Joker{ --Sakura Chiyono O
     key = "chiyono",
     blueprint_compat = false,
     rarity = 3,
@@ -367,7 +356,7 @@ SMODS.Joker{
     end
 }
 
-SMODS.Joker{
+SMODS.Joker{ --Norn Ace
     key = "norn",
     blueprint_compat = false,
     rarity = 1,
@@ -384,7 +373,7 @@ SMODS.Joker{
     end
 }
 
-SMODS.Joker{
+SMODS.Joker{ --Obey Your Master
     key = "obey",
     blueprint_compat = true,
     rarity = 2,
@@ -407,7 +396,7 @@ SMODS.Joker{
     end
 }
 
-SMODS.Joker{
+SMODS.Joker{ --Matikanefukukitaru
     key = "fuku",
     blueprint_compat = true,
     rarity = 3,
@@ -458,6 +447,78 @@ SMODS.Joker{
     end
 }
 
+SMODS.Joker{ --Still in Love
+    key = "love",
+    blueprint_compat = true,
+    rarity = 3,
+    cost = 8,
+    pos = { x = 9, y = 0 },
+    config = { extra = { repetitions = 3 } },
+    atlas = 'j_umas',
+
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play and context.other_card:is_suit("Hearts") then
+            return {
+                repetitions = card.ability.extra.repetitions
+            }
+        end
+
+
+
+        if context.debuff_card and context.debuff_card.area ~= G.jokers then
+            if context.debuff_card:is_suit("Hearts") then
+                return { prevent_debuff = true }
+            else
+                return { debuff = true }
+            end
+        end
+
+        local heart_tally = 0
+        if G.playing_cards then --Tally up the amount of Queens in the deck
+            for _, playing_card in ipairs(G.playing_cards) do
+                if playing_card:is_suit("Hearts") then heart_tally = heart_tally + 1 end
+            end
+        end
+        print(heart_tally)
+
+        --I'm attempting to make a joker that debuffs all non-heart playing cards, but I want to make it
+
+        --[[
+
+        if (context.selling_card or context.using_consumeable) then
+            
+        end
+
+        
+
+        if context.individual and context.cardarea == G.play  then
+            if context.other_card:is_face() then
+                card.ability.extra.xmult = (card.ability.extra.xmult) + 0.25
+            end
+        end
+        ]]--
+    end,
+}
+
+--[[
+    you should do `context.debuff_card:is_suit('Hearts', true)`, with the `true` here making it bypass a debuff. otherwise the debuff will toggle every time its checked because debuffed cards normally dont count as their suit
+]]--
+
+---@diagnostic disable-next-line: lowercase-global
+uma_queen_tally = function(mod)
+    local queen_tally = 0
+        if G.playing_cards then --Tally up the amount of Queens in the deck
+            for _, playing_card in ipairs(G.playing_cards) do
+                if playing_card:get_id() == 12 then queen_tally = queen_tally + 1 end
+            end
+        end
+    return queen_tally * mod
+end
+
 local oldgfuncsplaycardsfromhighlighted = G.FUNCS.play_cards_from_highlighted
 ---@diagnostic disable-next-line: duplicate-set-field
 G.FUNCS.play_cards_from_highlighted = function(e)
@@ -491,12 +552,23 @@ To do list:
             lesbians
         
 
+
     Joel:
         Code Chiyono O
         Code Norn Ace
         Retexture unfinished horses
+        Fix Bakushin Bug
         Check up on bugs
 
+    Potential horses:
+        Vivlos
+        Neo universe
+        Lucky Lilac
+        Daring Tact
+        Still in Love
+            Retrigger all hearts
+            Debuffs all non-heart cards
+    
 
 
 Checklist
@@ -547,6 +619,10 @@ Norn Ace: no clue
 
 Obey Your Master: no clue
 
+
+
+
+    
 
 
 Matthew ideas:

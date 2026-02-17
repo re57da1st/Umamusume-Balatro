@@ -114,6 +114,14 @@ return {
                     "Crystal Ball Crystal Ball!"
                 },
             },
+
+            j_uma_love = {
+                name = "{C:hearts}Still in Love",
+                text = {
+                    "Retriggers all {C:hearts}Hearts{},",
+                    "debuffs all other cards"
+                },
+            },
         },
 
         Planet = {
@@ -674,6 +682,7 @@ return {
             c_uma_norn_challenge = "Norn Ace",
             c_uma_obey_challenge = "Obey Your Master",
             c_uma_fuku_challenge = "Matikanefukukitaru",
+            c_uma_love_challenge = "Still in Love",
             c_uma_legends = "All Legends",
             c_uma_all = "All horsies ^.^",
             c_uma_functional = "Everyone who's functional",
