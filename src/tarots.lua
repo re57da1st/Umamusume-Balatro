@@ -535,6 +535,8 @@ SMODS.Consumable {
     end
 }
 
+
+
 --WORSE TAROTS
 
 -- The Magician D

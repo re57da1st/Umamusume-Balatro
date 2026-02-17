@@ -174,7 +174,7 @@ return {
                 name = "The Better Fool",
                 text = {
                     "Creates the last",
-                    "{C:tarot}Tarot{} or {C:planet}Planet{} card",
+                    "{C:spectral}Spectral{}/{C:tarot}Tarot{} and {C:planet}Planet{} card",
                     "used during this run",
                     "{s:0.8,C:tarot}The Fool{s:0.8} excluded",
                 },
