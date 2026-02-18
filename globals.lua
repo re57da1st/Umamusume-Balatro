@@ -1,5 +1,3 @@
----@diagnostic disable: lowercase-global
-
 --- GLOBALS
 
 G.C.UMA = {
@@ -52,4 +50,19 @@ Uma_rank_tally = function(rank, modifier) --Tally up the amount of a certain ran
             end
         end
     return tally * (modifier and modifier or 1)
+end
+
+---@diagnostic disable: lowercase-global, need-check-nil
+
+function SMODS.current_mod.calculate(self, context)
+    if context.using_consumeable then
+        local item = context.consumeable
+        if item.ability.set == 'Planet' or item.ability.set == 'uma_Planet' then
+            G.GAME.uma_planet_card = item.config.center.key
+        elseif item.ability.set == 'Tarot' or item.ability.set == 'uma_better_Tarot' or item.ability.set == 'uma_worse_Tarot' or item.ability.set == 'Spectral' then
+            if item.config.center.key ~= 'c_fool' and item.config.center.key ~= 'c_uma_better_fool' then
+                G.GAME.uma_tarot_card = item.config.center.key
+            end
+        end
+    end
 end
