@@ -753,7 +753,7 @@ return {
 
             uma_love_1_1_obsc = "R%%r%%ge%s a%l",
             uma_love_1_2_obsc = "%%%u%%s %l% %th%% %a%d%",
-            uma_love_1_3_obsc = "%%%r%%%te% %er%a%n boss bl%n%%",
+            uma_love_1_3_obsc = "%%%r%%%te% %er%a%n bo%s bl%n%%",
             uma_love_2_1_obsc = "A pl%%i%g c%r%",
             uma_love_2_2_obsc = "th%% %s",
             uma_love_2_3_obsc = "%n%%",
