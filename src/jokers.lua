@@ -435,7 +435,7 @@ SMODS.Joker{ --Matikanefukukitaru
                 end)
             }))
             return nil, true -- This is for Joker retrigger purposes
-        elseif context.end_of_round and context.main_eval and G.GAME.chips < G.GAME.blind.chips * 2 and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+        elseif context.end_of_round and context.main_eval and G.GAME.chips < G.GAME.blind.chips * 1.5 and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
             G.E_MANAGER:add_event(Event({
                 func = (function()
