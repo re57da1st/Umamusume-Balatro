@@ -92,7 +92,7 @@ SMODS.Joker{ --Agnes Digital
     end
 }
 
-SMODS.Joker{ --Twin Turbo
+SMODS.Joker{ --Twin Turbo works wif flush house nyat perfect pair
     key = "turbo",
     blueprint_compat = false,
     rarity = 1,
@@ -101,10 +101,10 @@ SMODS.Joker{ --Twin Turbo
     atlas = 'j_umas',
     config = { extra = { mult_gain = 5, mult = 0 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.mult_gain, localize('Perfect Pair', 'poker_hands'), card.ability.extra.mult } }
+        return { vars = { card.ability.extra.mult_gain, localize('uma_perfect_pair', 'poker_hands'), card.ability.extra.mult } }
     end,
     calculate = function(self, card, context)
-        if context.before and not context.blueprint and ((context.poker_hands['Perfect Pair']) or next(context.poker_hands['Flush House'])) then
+        if context.before and not context.blueprint and (next(context.poker_hands['uma_perfect_pair']) or next(context.poker_hands['Flush House'])) then
             -- See note about SMODS Scaling Manipulation on the wiki
             card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
             return {
@@ -416,7 +416,7 @@ SMODS.Joker{ --Matikanefukukitaru
     atlas = 'j_umas',
 
     calculate = function(self, card, context)
-        if context.end_of_round and context.main_eval and G.GAME.chips >= G.GAME.blind.chips * 2 and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+        if context.end_of_round and context.main_eval and G.GAME.chips >= G.GAME.blind.chips * 1.5 and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
             G.E_MANAGER:add_event(Event({
                 func = (function()

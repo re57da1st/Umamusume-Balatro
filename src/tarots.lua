@@ -365,7 +365,7 @@ SMODS.Consumable { -- Strength
     end,
 }
 
-SMODS.Consumable { -- The Hanged Man
+SMODS.Consumable { -- The Hanged Man crashes the game
     key = 'better_hanged_man',
     set = 'uma_better_Tarot',
     pos = { x = 0, y = 2 },

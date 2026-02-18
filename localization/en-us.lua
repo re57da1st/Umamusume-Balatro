@@ -36,7 +36,10 @@ return {
             j_uma_turbo = {
                 name = "Twin Turbo",
                 text = {
-                    "Twin Towers"
+                    "This Joker gains {C:mult}+#1#{} Mult",
+                    "if played hand contains",
+                    "a {C:attention}#2#",
+                    "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult)",
                 },
             },
 
