@@ -486,7 +486,7 @@ SMODS.Joker{ --Still in Love
 
     calculate = function(self, card, context)
 
-        card.children.center:set_sprite_pos{ x = 9, y = (SMODS.find_card("j_uma_love") and 1 or 0) }
+        card.children.center:set_sprite_pos{ x = 9, y = (SMODS.find_card("j_uma_love") and 0 or 0) }
 
         if context.repetition and context.cardarea == G.play and context.other_card:is_suit("Hearts") then
             return {
@@ -568,7 +568,6 @@ To do list:
         Neo universe
         Lucky Lilac
         Daring Tact
-        Still in Love
 
 Checklist
 
