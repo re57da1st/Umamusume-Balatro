@@ -859,7 +859,7 @@ SMODS.Consumable {
     set = 'uma_worse_Tarot',
     pos = { x = 8, y = 1 },
     atlas = 'c_umas',
-    config = { max_highlighted = 1, mod_conv = 'm_glass', extra = {odds = 100} },
+    config = { max_highlighted = 1, mod_conv = 'm_glass', extra = {odds = 2} },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'uma_worse_justice')
@@ -944,6 +944,7 @@ SMODS.Consumable {
         card:set_cost()
     end
 }
+
 -- The Hermit D
 SMODS.Consumable {
     key = 'worse_hermit',
@@ -1488,16 +1489,6 @@ SMODS.Consumable {
         card:set_cost()
     end
 }
-
-local card_can_sell_card_ref = Card.can_sell_card
----@diagnostic disable-next-line: duplicate-set-field
-function Card:can_sell_card(context)
-    local check = card_can_sell_card_ref(self, context)
-    if check then
-        return G.GAME.dollars + self.sell_cost >= G.GAME.bankrupt_at
-    end
-    return check
-end
 
 
 

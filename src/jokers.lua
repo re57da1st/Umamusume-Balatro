@@ -37,7 +37,7 @@ SMODS.Joker{ --Daiwa Scarlet
     soul_pos = { x = 1, y = 1 },
 
     loc_vars = function(self, info_queue, card)
-        card.ability.extra.total_mult = uma_queen_tally(card.ability.extra.q_mult)
+        card.ability.extra.total_mult = Uma_rank_tally(12, card.ability.extra.q_mult)
         return { vars = {
             card.ability.extra.q_mult,  --Queen Mult, the amount of mult Daiwa gains per queen in the deck
             card.ability.extra.total_mult  --The total amount of mult Daiwa gains
@@ -46,9 +46,9 @@ SMODS.Joker{ --Daiwa Scarlet
 
     calculate = function(self, card, context)
         if context.modify_hand then --Context that happens after setting the poker hand type, and before scoring cards
-                return {
-                    mult = uma_queen_tally(card.ability.extra.q_mult)
-                }
+            return {
+                mult = Uma_rank_tally(12, card.ability.extra.q_mult)
+            }
         end
     end
 }
@@ -125,7 +125,7 @@ SMODS.Joker{ --Goldship
         return nil
     end
 }
-
+--Doesn't eat lowest "buffed" card if all cards lower ranked are debuffed
 SMODS.Joker{ --Oguri Cap
     key = "oguri",
     blueprint_compat = true,
@@ -179,7 +179,7 @@ SMODS.Joker{ --Oguri Cap
         end
     end
 }
-
+--Timer doesn't persist when exiting to menu
 SMODS.Joker{ --Sakura Bakushin O
     key = "bakushin",
     blueprint_compat = true,
@@ -446,7 +446,10 @@ SMODS.Joker{ --Matikanefukukitaru
         end
     end
 }
+--Should debuff wild cards to be more consistent with debuff boss blinds
+--Should debuff Smeared Joker
 
+--How to show tooltip for "Pure Hearts": table.insert(info_queue, G.P_SEALS.modprefix_key)
 SMODS.Joker{ --Still in Love
     key = "love",
     blueprint_compat = true,
@@ -467,67 +470,15 @@ SMODS.Joker{ --Still in Love
             }
         end
 
-
-
         if context.debuff_card and context.debuff_card.area ~= G.jokers then
-            if context.debuff_card:is_suit("Hearts") then
+            if context.debuff_card:is_suit("Hearts", true) and not SMODS.has_enhancement(context.debuff_card, "m_wild") then
                 return { prevent_debuff = true }
             else
                 return { debuff = true }
             end
         end
-
-        local heart_tally = 0
-        if G.playing_cards then --Tally up the amount of Queens in the deck
-            for _, playing_card in ipairs(G.playing_cards) do
-                if playing_card:is_suit("Hearts") then heart_tally = heart_tally + 1 end
-            end
-        end
-        print(heart_tally)
-
-        --I'm attempting to make a joker that debuffs all non-heart playing cards, but I want to make it
-
-        --[[
-
-        if (context.selling_card or context.using_consumeable) then
-            
-        end
-
-        
-
-        if context.individual and context.cardarea == G.play  then
-            if context.other_card:is_face() then
-                card.ability.extra.xmult = (card.ability.extra.xmult) + 0.25
-            end
-        end
-        ]]--
     end,
 }
-
---[[
-    you should do `context.debuff_card:is_suit('Hearts', true)`, with the `true` here making it bypass a debuff. otherwise the debuff will toggle every time its checked because debuffed cards normally dont count as their suit
-]]--
-
----@diagnostic disable-next-line: lowercase-global
-uma_queen_tally = function(mod)
-    local queen_tally = 0
-        if G.playing_cards then --Tally up the amount of Queens in the deck
-            for _, playing_card in ipairs(G.playing_cards) do
-                if playing_card:get_id() == 12 then queen_tally = queen_tally + 1 end
-            end
-        end
-    return queen_tally * mod
-end
-
-local oldgfuncsplaycardsfromhighlighted = G.FUNCS.play_cards_from_highlighted
----@diagnostic disable-next-line: duplicate-set-field
-G.FUNCS.play_cards_from_highlighted = function(e)
-    for k, v in pairs(G.hand.highlighted) do
-        v.ability.uma = v.ability.played_this_ante
-    end
-    return oldgfuncsplaycardsfromhighlighted(e)
-end
-
 
 
 --[[

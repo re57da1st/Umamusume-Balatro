@@ -42,3 +42,14 @@ function loc_colour(_c, _default)
     G.ARGS.LOC_COLOURS.uma_col_better_planet2 = G.C.UMA.BETTER_PLANET2
     return loc_colour_ref(_c, _default)
 end
+
+---@diagnostic disable-next-line: lowercase-global
+Uma_rank_tally = function(rank, modifier) --Tally up the amount of a certain rank in the deck
+    local tally = 0
+        if G.playing_cards then
+            for _, playing_card in ipairs(G.playing_cards) do
+                if playing_card:get_id() == rank then tally = tally + 1 end
+            end
+        end
+    return tally * (modifier and modifier or 1)
+end

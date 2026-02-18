@@ -186,7 +186,8 @@ SMODS.Challenge {
         modifiers = {}
     },
     jokers = {
-        {id = 'j_uma_love'}
+        {id = 'j_uma_love'},
+        {id = 'j_smeared'}
     },
     consumeables = {
         {id = "c_sun"},

@@ -118,7 +118,7 @@ return {
             j_uma_love = {
                 name = "{C:hearts}Still in Love",
                 text = {
-                    "Retriggers all {C:hearts}Hearts{},",
+                    "Retriggers all {C:hearts}Pure Hearts{},",
                     "debuffs all other cards"
                 },
             },
