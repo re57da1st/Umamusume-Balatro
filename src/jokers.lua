@@ -99,13 +99,24 @@ SMODS.Joker{ --Twin Turbo
     cost = 2,
     pos = { x = 3, y = 0 },
     atlas = 'j_umas',
-
+    config = { extra = { mult_gain = 5, mult = 0 } },
     loc_vars = function(self, info_queue, card)
-        return nil
+        return { vars = { card.ability.extra.mult_gain, localize('Perfect Pair', 'poker_hands'), card.ability.extra.mult } }
     end,
-
     calculate = function(self, card, context)
-        return nil
+        if context.before and not context.blueprint and ((context.poker_hands['Perfect Pair']) or next(context.poker_hands['Flush House'])) then
+            -- See note about SMODS Scaling Manipulation on the wiki
+            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.RED
+            }
+        end
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
     end
 }
 
