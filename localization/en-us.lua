@@ -194,7 +194,7 @@ return {
                     "Creates the last",
                     "{C:spectral}Spectral{}/{C:tarot}Tarot{} and {C:planet}Planet{} card",
                     "used during this run",
-                    "{s:0.8,C:tarot}The Fool{s:0.8} excluded",
+                    "{s:0.8,C:tarot}The Fools{s:0.8} excluded",
                 },
             },
             c_uma_better_hanged_man = {
@@ -693,6 +693,7 @@ return {
             }
         }
     },
+
     misc = {
         challenge_names = {
             c_uma_helios_challenge = "Daitaku Helios",
@@ -771,16 +772,19 @@ return {
             b_uma_planet_cards = "Better Planet Cards",
             k_uma_planet = "Planet",
         },
+
         labels = {
             uma_better_tarot = "Tarot",
             uma_worse_tarot = "Tarot"
         },
+
         poker_hand_descriptions = {
             uma_perfect_pair = {
                 "2 pairs of matching suits with different ranks,",
                 "may be played with 1 other unscored card"
             }
         },
+
         poker_hands = {
             uma_perfect_pair = "Perfect Pair"
         }
