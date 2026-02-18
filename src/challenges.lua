@@ -186,8 +186,7 @@ SMODS.Challenge { --Still in Love
         modifiers = {}
     },
     jokers = {
-        {id = 'j_uma_love'},
-        {id = 'j_smeared'}
+        {id = 'j_uma_love'}
     },
     consumeables = {
         {id = "c_sun"},

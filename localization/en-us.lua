@@ -118,9 +118,15 @@ return {
             j_uma_love = {
                 name = "{C:hearts}Still in Love",
                 text = {
+                    "#1# {C:hearts}Pure Hearts{},",
+                    "#2#",
+                    "{C:inactive}(#3#)"
+
+                    --[[
                     "Retriggers all {C:hearts}Pure Hearts{},",
                     "debuffs all other cards",
                     "{C:inactive}(Overwrites certain boss blinds)"
+                    ]]
                 },
             },
         },
@@ -648,7 +654,7 @@ return {
             }
         },
 
-        other = {
+        Other = {
             undiscovered_uma_better_tarot = {
                 name = "Not Discovered",
                 text = {
@@ -668,6 +674,21 @@ return {
                     "learn what it does",
                 },
             },
+
+            uma_pure_hearts = {
+                name = "{C:hearts}Pure Hearts",
+                text = {
+                    "#1#",
+                    "#2# {C:attention}#3# {C:hearts}#4#{},",
+                    "#5#",
+                    
+                    --[[
+                    "A playing card",
+                    "that is {C:attention}only {C:hearts}hearts{},",
+                    "and nothing else",
+                    ]]
+                }
+            }
         }
     },
     misc = {
@@ -720,6 +741,25 @@ return {
             uma_fuku_good = "Good fortune!",
             uma_fuku_bad = "Bad fortune...",
             uma_not_pure = "Not pure!",
+
+            uma_love_1_1 = "Retriggers all",
+            uma_love_1_2 = "debuffs all other cards",
+            uma_love_1_3 = "Overwrites certain boss blinds",
+            uma_love_2_1 = "A playing card",
+            uma_love_2_2 = "that is",
+            uma_love_2_3 = "only",
+            uma_love_2_4 = "Hearts",
+            uma_love_2_5 = "and nothing else",
+
+            uma_love_1_1_obsc = "R%%r%%ge%s a%l",
+            uma_love_1_2_obsc = "%%%u%%s %l% %th%% %a%d%",
+            uma_love_1_3_obsc = "%%%r%%%te% %er%a%n boss bl%n%%",
+            uma_love_2_1_obsc = "A pl%%i%g c%r%",
+            uma_love_2_2_obsc = "th%% %s",
+            uma_love_2_3_obsc = "%n%%",
+            uma_love_2_4_obsc = "%e%%%s",
+            uma_love_2_5_obsc = "a%% n%%%i%% %ls%",
+
             b_uma_better_tarot_cards = "Better Tarot Cards",
             k_uma_better_tarot = "Tarot",
             b_uma_worse_tarot_cards = "Worse Tarot Cards",

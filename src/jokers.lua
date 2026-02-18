@@ -446,23 +446,48 @@ SMODS.Joker{ --Matikanefukukitaru
         end
     end
 }
---Should debuff wild cards to be more consistent with debuff boss blinds
---Should debuff Smeared Joker
---How to show tooltip for "Pure Hearts": table.insert(info_queue, G.P_SEALS.modprefix_key)
+
 SMODS.Joker{ --Still in Love
     key = "love",
     blueprint_compat = true,
     rarity = 3,
     cost = 8,
     pos = { x = 9, y = 0 },
-    config = { extra = { repetitions = 1 } },
+    config = { extra = {
+        repetitions = 1,
+        desc_1_1 = "R%%r%%ge%s a%l",
+        desc_1_2 = "%%%u%%s %l% %th%% %a%d%",
+        desc_1_3 = "%%%r%%%te% %er%a%n boss bl%n%%",
+        desc_2_1 = "A pl%%i%g c%r%",
+        desc_2_2 = "th%% %s",
+        desc_2_3 = "%n%%",
+        desc_2_4 = "%e%%%s",
+        desc_2_5 = "a%% n%%%i%% %ls%"
+    } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
-        return nil
+        info_queue[#info_queue+1] = {
+            set = "Other",
+            key = "uma_pure_hearts",
+            vars = {
+                card.ability.extra.desc_2_1,
+                card.ability.extra.desc_2_2,
+                card.ability.extra.desc_2_3,
+                card.ability.extra.desc_2_4,
+                card.ability.extra.desc_2_5
+            } }
+        return {  vars = {
+            card.ability.extra.desc_1_1,
+            card.ability.extra.desc_1_2,
+            card.ability.extra.desc_1_3
+        } }
     end,
 
     calculate = function(self, card, context)
+
+        card.children.center:set_sprite_pos{ x = 9, y = (SMODS.find_card("j_uma_love") and 1 or 0) }
+
         if context.repetition and context.cardarea == G.play and context.other_card:is_suit("Hearts") then
             return {
                 repetitions = card.ability.extra.repetitions
@@ -486,6 +511,26 @@ SMODS.Joker{ --Still in Love
                     debuff = true
                 }
             end
+        end
+
+        if SMODS.find_card("j_uma_love")  then
+            card.ability.extra.desc_1_1 = localize("uma_love_1_1")
+            card.ability.extra.desc_1_2 = localize("uma_love_1_2")
+            card.ability.extra.desc_1_3 = localize("uma_love_1_3")
+            card.ability.extra.desc_2_1 = localize("uma_love_2_1")
+            card.ability.extra.desc_2_2 = localize("uma_love_2_2")
+            card.ability.extra.desc_2_3 = localize("uma_love_2_3")
+            card.ability.extra.desc_2_4 = localize("uma_love_2_4")
+            card.ability.extra.desc_2_5 = localize("uma_love_2_5")
+        else
+            card.ability.extra.desc_1_1 = localize("uma_love_1_1_obsc")
+            card.ability.extra.desc_1_2 = localize("uma_love_1_2_obsc")
+            card.ability.extra.desc_1_3 = localize("uma_love_1_3_obsc")
+            card.ability.extra.desc_2_1 = localize("uma_love_2_1_obsc")
+            card.ability.extra.desc_2_2 = localize("uma_love_2_2_obsc")
+            card.ability.extra.desc_2_3 = localize("uma_love_2_3_obsc")
+            card.ability.extra.desc_2_4 = localize("uma_love_2_4_obsc")
+            card.ability.extra.desc_2_5 = localize("uma_love_2_5_obsc")
         end
     end,
 }
