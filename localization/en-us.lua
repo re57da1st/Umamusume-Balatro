@@ -78,7 +78,7 @@ return {
                 text = {
                     "Gives {C:chips}+#1#{} Chips and {C:mult}+#2# {X:mult,C:white}X#3#{}",
                     " Mult. Using {C:attention}certain consumables{}",
-                    " increase these values."
+                    " increase these values"
                 },
             },  
 
@@ -111,10 +111,9 @@ return {
             j_uma_fuku = {
                 name = "Matikanefukukitaru",
                 text = {
-                    "Crystal Ball Crystal Ball",
-                    "Crystal Ball Crystal Ball",
-                    "Crystal Ball Crystal Ball",
-                    "Crystal Ball Crystal Ball!"
+                    "If final score is {C:attention}x#1# {}blind size,",
+                    "create a {C:uma_col_better_tarot2}Better Tarot Card{},",
+                    "else create a {C:uma_col_worse_tarot2}Worse Tarot Card"
                 },
             },
 

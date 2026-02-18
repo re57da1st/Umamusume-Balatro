@@ -413,10 +413,17 @@ SMODS.Joker{ --Matikanefukukitaru
     rarity = 3,
     cost = 8,
     pos = { x = 8, y = 0 },
+    config = { extra = { scaling = 1.5 } },
     atlas = 'j_umas',
 
+    loc_vars = function(self, info_queue, card)
+        return { vars = {
+            card.ability.extra.scaling
+        } }
+    end,
+
     calculate = function(self, card, context)
-        if context.end_of_round and context.main_eval and G.GAME.chips >= G.GAME.blind.chips * 1.5 and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+        if context.end_of_round and context.main_eval and G.GAME.chips >= G.GAME.blind.chips * card.ability.extra.scaling and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
             G.E_MANAGER:add_event(Event({
                 func = (function()
@@ -435,7 +442,7 @@ SMODS.Joker{ --Matikanefukukitaru
                 end)
             }))
             return nil, true -- This is for Joker retrigger purposes
-        elseif context.end_of_round and context.main_eval and G.GAME.chips < G.GAME.blind.chips * 1.5 and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+        elseif context.end_of_round and context.main_eval and G.GAME.chips < G.GAME.blind.chips * card.ability.extra.scaling and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
             G.E_MANAGER:add_event(Event({
                 func = (function()
