@@ -853,13 +853,13 @@ SMODS.Consumable {
     end
 }
 
--- Justice add gas sound!
+-- Justice D
 SMODS.Consumable {
     key = 'worse_justice',
     set = 'uma_worse_Tarot',
     pos = { x = 8, y = 1 },
     atlas = 'c_umas',
-    config = { max_highlighted = 1, mod_conv = 'm_glass', extra = {odds = 2} },
+    config = { max_highlighted = 1, mod_conv = 'm_glass', extra = {odds = 100} },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'uma_worse_justice')
@@ -933,6 +933,7 @@ SMODS.Consumable {
             delay = 0.2,
             func = function()
                 SMODS.destroy_cards(G.hand.highlighted)
+                play_sound('glass'..math.random(1, 6), math.random()*0.2 + 0.9,0.5)
                 return true
             end
         }))
