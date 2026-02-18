@@ -245,7 +245,8 @@ SMODS.Challenge { --All Horsies >.<
         {id = 'j_uma_chiyono'},
         {id = 'j_uma_norn'},
         {id = 'j_uma_obey'},
-        {id = 'j_uma_fuku'}
+        {id = 'j_uma_fuku'},
+        {id = 'j_uma_love'}
     },
     consumeables = {},
     vouchers = {},
@@ -272,7 +273,8 @@ SMODS.Challenge { --All functional jokers
         {id = 'j_uma_bakushin'},
         {id = 'j_uma_mambo'},
         {id = 'j_uma_obey'},
-        {id = 'j_uma_fuku'}
+        {id = 'j_uma_fuku'},
+        {id = 'j_uma_love'}
     },
     consumeables = {},
     vouchers = {},

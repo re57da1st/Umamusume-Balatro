@@ -119,7 +119,8 @@ return {
                 name = "{C:hearts}Still in Love",
                 text = {
                     "Retriggers all {C:hearts}Pure Hearts{},",
-                    "debuffs all other cards"
+                    "debuffs all other cards",
+                    "{C:inactive}(Overwrites certain boss blinds)"
                 },
             },
         },
@@ -136,6 +137,7 @@ return {
             }
 
         },
+
         uma_better_Tarot = {
             c_uma_better_chariot = {
                 name = "The Better Chariot",
@@ -717,6 +719,7 @@ return {
             uma_mambo_xmult="More xMult!",
             uma_fuku_good = "Good fortune!",
             uma_fuku_bad = "Bad fortune...",
+            uma_not_pure = "Not pure!",
             b_uma_better_tarot_cards = "Better Tarot Cards",
             k_uma_better_tarot = "Tarot",
             b_uma_worse_tarot_cards = "Worse Tarot Cards",

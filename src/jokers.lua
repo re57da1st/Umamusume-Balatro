@@ -455,7 +455,7 @@ SMODS.Joker{ --Still in Love
     rarity = 3,
     cost = 8,
     pos = { x = 9, y = 0 },
-    config = { extra = { repetitions = 3 } },
+    config = { extra = { repetitions = 1 } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
@@ -469,11 +469,22 @@ SMODS.Joker{ --Still in Love
             }
         end
 
-        if context.debuff_card and context.debuff_card.area ~= G.jokers then
+        if context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
             if context.debuff_card:is_suit("Hearts", true) and not SMODS.has_enhancement(context.debuff_card, "m_wild") then
                 return { prevent_debuff = true }
             else
                 return { debuff = true }
+            end
+        end
+
+        if context.debuff_card and context.debuff_card.area == G.jokers and not context.blueprint then
+            if context.debuff_card.config.center.key == "j_smeared" then
+                return {
+                    message = localize('uma_not_pure'),
+                    colour = G.C.SUITS["Hearts"],
+                    message_card = context.debuff_card,
+                    debuff = true
+                }
             end
         end
     end,
