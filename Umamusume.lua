@@ -1,3 +1,5 @@
+---@diagnostic disable: duplicate-set-field
+
 --Mod File Loading
 
 assert(SMODS.load_file("globals.lua"))()
@@ -7,27 +9,25 @@ assert(SMODS.load_file("src/pokerhands.lua"))()
 assert(SMODS.load_file("src/planets.lua"))()
 assert(SMODS.load_file("src/tarots.lua"))()
 assert(SMODS.load_file("src/other_consumables.lua"))()
-if JokerDisplay then
-    SMODS.load_file("src/joker_display_definitions.lua")()
-end
+if JokerDisplay then SMODS.load_file("src/joker_display_definitions.lua")() end
 
 --Atlas Definitions
 
-SMODS.Atlas({
+SMODS.Atlas({ --Mod Icon
     key = "modicon",
     path = "icon.png",
     px = 68,
     py = 68
 })
 
-SMODS.Atlas({
+SMODS.Atlas({ --Jokers
     key = "j_umas",
     path = "j_umas.png",
     px = 71,
     py = 95
 })
 
-SMODS.Atlas({
+SMODS.Atlas({ --Consumables
     key = "c_umas",
     path = "c_umas.png",
     px = 71,
@@ -37,7 +37,6 @@ SMODS.Atlas({
 --Hooks
 
 local oldgfuncsplaycardsfromhighlighted = G.FUNCS.play_cards_from_highlighted
----@diagnostic disable-next-line: duplicate-set-field
 G.FUNCS.play_cards_from_highlighted = function(e) --Agnes Hook to make sure cards don't get undairly debuffed
     for k, v in pairs(G.hand.highlighted) do
         v.ability.uma = v.ability.played_this_ante
@@ -46,7 +45,6 @@ G.FUNCS.play_cards_from_highlighted = function(e) --Agnes Hook to make sure card
 end
 
 local card_can_sell_card_ref = Card.can_sell_card
----@diagnostic disable-next-line: duplicate-set-field
 function Card:can_sell_card(context) --Hook for cards to stop negative sell values from dropping your max money below the minimum
     local check = card_can_sell_card_ref(self, context)
     if check then

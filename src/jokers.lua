@@ -448,7 +448,6 @@ SMODS.Joker{ --Matikanefukukitaru
 }
 --Should debuff wild cards to be more consistent with debuff boss blinds
 --Should debuff Smeared Joker
-
 --How to show tooltip for "Pure Hearts": table.insert(info_queue, G.P_SEALS.modprefix_key)
 SMODS.Joker{ --Still in Love
     key = "love",
@@ -480,7 +479,6 @@ SMODS.Joker{ --Still in Love
     end,
 }
 
-
 --[[
 
 To do list:
@@ -502,8 +500,6 @@ To do list:
             queen scaling
             lesbians
         
-
-
     Joel:
         Code Chiyono O
         Code Norn Ace
@@ -517,10 +513,6 @@ To do list:
         Lucky Lilac
         Daring Tact
         Still in Love
-            Retrigger all hearts
-            Debuffs all non-heart cards
-    
-
 
 Checklist
 

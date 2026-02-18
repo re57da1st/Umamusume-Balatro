@@ -1,4 +1,4 @@
-SMODS.Challenge {
+SMODS.Challenge { --Daitaku Helios
     key = 'helios_challenge',
     rules = {
         custom = {},
@@ -12,7 +12,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --Daiwa Scarlet
     key = 'daiwa_challenge',
     rules = {
         custom = {},
@@ -26,7 +26,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --Agnes Digital
     key = 'agnes_challenge',
     rules = {
         custom = {},
@@ -40,7 +40,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --Twin Turbo
     key = 'turbo_challenge',
     rules = {
         custom = {},
@@ -59,7 +59,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --Goldship
     key = 'goldship_challenge',
     rules = {
         custom = {},
@@ -73,7 +73,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --Oguri Cap
     key = 'oguri_challenge',
     rules = {
         custom = {},
@@ -88,7 +88,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --Sakura Bakushin O
     key = 'bakushin_challenge',
     rules = {
         custom = {},
@@ -102,7 +102,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --Matikanetannhauser
     key = 'mambo_challenge',
     rules = {
         custom = {},
@@ -123,7 +123,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --Sakura Chiyono O
     key = 'chiyono_challenge',
     rules = {
         custom = {},
@@ -137,7 +137,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --Norn Ace
     key = 'norn_challenge',
     rules = {
         custom = {},
@@ -151,7 +151,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --Obey Your Master
     key = 'obey_challenge',
     rules = {
         custom = {},
@@ -165,7 +165,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --Matikanefukukitaru
     key = 'fuku_challenge',
     rules = {
         custom = {},
@@ -179,7 +179,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --Still in Love
     key = 'love_challenge',
     rules = {
         custom = {},
@@ -198,7 +198,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --All Legendaries
     key = 'legends',
     rules = {
         custom = {},
@@ -221,7 +221,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --All Horsies >.<
     key = 'all',
     rules = {
         custom = {},
@@ -252,7 +252,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --All functional jokers
     key = 'functional',
     rules = {
         custom = {},
@@ -279,7 +279,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --All textures jokers
     key = 'textured',
     rules = {
         custom = {},
@@ -307,7 +307,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --Better Tarots
     key = 'testIskIdea',
     rules = {
         custom = {},
@@ -339,7 +339,7 @@ SMODS.Challenge {
     restrictions = {}
 }
 
-SMODS.Challenge {
+SMODS.Challenge { --Worse Tarots
     key = 'testIskIdea2',
     rules = {
         custom = {},
@@ -371,4 +371,6 @@ SMODS.Challenge {
     vouchers = {},
     restrictions = {}
 }
+
+--Example card definition:
 --{ s = 'D', r = 'Q', e = 'm_steel', d = 'polychrome', g = 'Red' }

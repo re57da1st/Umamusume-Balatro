@@ -1,3 +1,5 @@
+---@diagnostic disable: lowercase-global
+
 --- GLOBALS
 
 G.C.UMA = {
@@ -19,7 +21,6 @@ G.C.UMA = {
 }
 
 local loc_colour_ref = loc_colour
----@diagnostic disable-next-line: lowercase-global
 function loc_colour(_c, _default)
     if not G.ARGS.LOC_COLOURS then
         loc_colour_ref()
@@ -43,7 +44,6 @@ function loc_colour(_c, _default)
     return loc_colour_ref(_c, _default)
 end
 
----@diagnostic disable-next-line: lowercase-global
 Uma_rank_tally = function(rank, modifier) --Tally up the amount of a certain rank in the deck
     local tally = 0
         if G.playing_cards then
