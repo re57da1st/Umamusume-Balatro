@@ -24,12 +24,10 @@ SMODS.Consumable { --The Fool
     pos = { x = 0, y = 0 },
     atlas = 'c_umas',
     loc_vars = function(self, info_queue, card)
-        local uma_tarots = G.GAME.uma_tarot_card
-        local uma_planets = G.GAME.uma_planet_card
+        local uma_tarots, uma_planets = G.GAME.uma_tarot_card, G.GAME.uma_planet_card
         local uma_tarots_named = uma_tarots and localize({type = 'name_text', key = uma_tarots, set = G.P_CENTERS[uma_tarots].set}) or localize('k_none')
         local uma_planets_named = uma_planets and localize({type = 'name_text', key = uma_planets, set = G.P_CENTERS[uma_planets].set}) or localize('k_none')
-        local colour_tarots = uma_tarots and G.C.GREEN or G.C.RED
-        local colour_planets = uma_planets and G.C.GREEN or G.C.RED
+        local colour_tarots, colour_planets = uma_tarots and G.C.GREEN or G.C.RED, uma_planets and G.C.GREEN or G.C.RED
         local main_end = {
             {
                 n = G.UIT.C,

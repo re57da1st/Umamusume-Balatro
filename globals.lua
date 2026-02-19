@@ -62,3 +62,46 @@ function SMODS.current_mod.calculate(self, context) --Adds the most recently use
         end
     end
 end
+
+function SMODS.current_mod.calculate(self, context)
+    if context.after then
+        local turf_count, normal_count = 0, 0
+        for _, v in ipairs(context.scoring_hand) do
+            if next(SMODS.get_enhancements(v)) == "m_uma_turf" or next(SMODS.get_enhancements(v)) == "m_uma_blossom" then
+                turf_count = turf_count + 1
+            end
+            if next(SMODS.get_enhancements(v)) == "m_stone" or not next(SMODS.get_enhancements(v)) then
+                normal_count = normal_count + 1
+            end
+        end
+        if turf_count * normal_count > 0 then
+            local target = pseudorandom('turf',1,normal_count)
+            for _, v in ipairs(context.scoring_hand) do
+                if next(SMODS.get_enhancements(v)) == "m_stone" or not next(SMODS.get_enhancements(v)) then
+                    target = target - 1
+                    if target == 0 then
+                        if next(SMODS.get_enhancements(v)) == "m_stone" then
+                            v:set_ability('m_uma_mossy')
+                            v:juice_up()
+                            return {
+                                message = "Spread!",
+                                colour = G.C.GREEN,
+                                message_card = v,
+                                delay = 1
+                            }
+                        else
+                            v:set_ability('m_uma_turf')
+                            v:juice_up()
+                            return {
+                                message = "Spread!",
+                                colour = G.C.GREEN,
+                                message_card = v,
+                                delay = 1
+                            }
+                        end
+                    end
+                end
+            end
+        end
+    end
+end

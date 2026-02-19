@@ -660,27 +660,32 @@ return {
             m_uma_turf = {
                 name = "Turf Card",
                 text = {
-                    "{X:chips,C:white}x#1#{} Chips"
+                    "{X:chips,C:white}x#1#{} chips"
                 },
             },
 
             m_uma_blossom = {
                 name = "Blossom Card",
                 text = {
-                    "{X:chips,C:white}x#1#{} Chips"
+                    "{X:chips,C:white}x#1#{} chips"
                 },
             },
 
             m_uma_mossy = {
                 name = "Mossy Card",
                 text = {
-                    "{C:chips}+#1#{} Chips",
+                    "{C:chips}+#1#{} chips",
                     "no rank or suit",
+                },
+            },
+
+            m_uma_dirt = {
+                name = "Dirt Card",
+                text = {
+                    "muffin,,,"
                 },
             }
         },
-
-
 
         Other = {
             undiscovered_uma_better_tarot = {
