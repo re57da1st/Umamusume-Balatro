@@ -127,15 +127,85 @@ SMODS.Joker{ --Goldship
     cost = 8,
     pos = { x = 4, y = 0 },
     atlas = 'j_umas',
-
+    config = { extra = { max = 100, min = 40 } },
     loc_vars = function(self, info_queue, card)
-        return nil
+        local r_mults = {}
+        for i = card.ability.extra.min, card.ability.extra.max do
+            r_mults[#r_mults + 1] = tostring(i)
+        end
+        local loc_mult = ' ' .. (localize('k_mult')) .. ' '
+        main_start = {
+            { n = G.UIT.T, config = { text = '  +', colour = G.C.MULT, scale = 0.32 } },
+            { n = G.UIT.O, config = { object = DynaText({ string = r_mults, colours = { G.C.RED }, pop_in_rate = 9999999, silent = true, random_element = true, pop_delay = 0.5, scale = 0.32, min_cycle_time = 0 }) } },
+            {
+                n = G.UIT.O,
+                config = {
+                    object = DynaText({
+                        string = {
+                            { string = 'rand()', colour = G.C.JOKER_GREY }, { string = "#@" .. (G.deck and G.deck.cards[1] and G.deck.cards[#G.deck.cards].base.id or 11) .. (G.deck and G.deck.cards[1] and G.deck.cards[#G.deck.cards].base.suit:sub(1, 1) or 'D'), colour = G.C.RED },
+                            loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult,
+                            loc_mult, loc_mult, loc_mult, loc_mult },
+                        colours = { G.C.UI.TEXT_DARK },
+                        pop_in_rate = 9999999,
+                        silent = true,
+                        random_element = true,
+                        pop_delay = 0.2011,
+                        scale = 0.32,
+                        min_cycle_time = 0
+                    })
+                }
+            },
+        }
+        return { main_start = main_start }
     end,
 
     calculate = function(self, card, context)
-        return nil
+                if #G.jokers.cards > 0 then
+                    G.jokers:unhighlight_all()
+                    for _, joker in ipairs(G.jokers.cards) do
+                        joker:flip()
+                    end
+                    if #G.jokers.cards > 1 then
+                        G.E_MANAGER:add_event(Event({
+                            trigger = 'after',
+                            delay = 0.2,
+                            func = function()
+                                G.E_MANAGER:add_event(Event({
+                                    func = function()
+                                        G.jokers:shuffle('aajk')
+                                        play_sound('cardSlide1', 0.85)
+                                        return true
+                                    end,
+                                }))
+                                delay(0.15)
+                                G.E_MANAGER:add_event(Event({
+                                    func = function()
+                                        G.jokers:shuffle('aajk')
+                                        play_sound('cardSlide1', 1.15)
+                                        return true
+                                    end
+                                }))
+                                delay(0.15)
+                                G.E_MANAGER:add_event(Event({
+                                    func = function()
+                                        G.jokers:shuffle('aajk')
+                                        play_sound('cardSlide1', 1)
+                                        return true
+                                    end
+                                }))
+                                delay(0.5)
+                                return true
+                            end
+                        }))
+                    end
+                end
+                if context.joker_main then
+                return {
+                mult = pseudorandom('vremade_misprint', card.ability.extra.min, card.ability.extra.max)
+                }
+            end
     end
-}
+        }
 --Doesn't eat lowest "buffed" card if all cards lower ranked are debuffed
 SMODS.Joker{ --Oguri Cap
     key = "oguri",
