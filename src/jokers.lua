@@ -164,7 +164,15 @@ SMODS.Joker{ --Goldship
 
         --Choose random effect at blind start
         if context.setting_blind then
+
             card.ability.extra.randomBlind = pseudorandom('goldship', card.ability.extra.bottom, card.ability.extra.top)
+
+            if G.playing_cards then
+                for _, playing_card in ipairs(G.playing_cards) do
+                    SMODS.recalc_debuff(playing_card)
+                end
+            end
+
         end
 
         --Disable random effects at blind end
@@ -220,10 +228,10 @@ SMODS.Joker{ --Goldship
         end
 
         --Effect 2: Debuff face cards
-        if context.setting_blind and card.ability.extra.randomBlind == 2 and not context.blueprint then
+        if card.ability.extra.randomBlind == 2 and not context.blueprint then
 
             if context.debuff_card and context.debuff_card.area ~= G.jokers then
-                if context.debuff_card:is_face() then
+                if context.debuff_card:is_face(true) then
                     return { debuff = true }
                 end
             end
@@ -268,18 +276,18 @@ SMODS.Joker{ --Goldship
         end
 
         --Effect 5: Debuff Hearts
-        if context.setting_blind and card.ability.extra.randomBlind == 5 and not context.blueprint then
+        if card.ability.extra.randomBlind == 5 and not context.blueprint then
 
             if context.debuff_card and context.debuff_card.area ~= G.jokers then
                 if context.debuff_card:is_suit('Hearts', true) then
                     return { debuff = true }
                 end
             end
-            
+
         end
 
         --Effect 6: Debuff Spades
-        if context.setting_blind and card.ability.extra.randomBlind == 6 and not context.blueprint then
+        if card.ability.extra.randomBlind == 6 and not context.blueprint then
 
             if context.debuff_card and context.debuff_card.area ~= G.jokers then
                 if context.debuff_card:is_suit('Spades', true) then
@@ -290,7 +298,7 @@ SMODS.Joker{ --Goldship
         end
 
         --Effect 7: Debuff Clubs
-        if context.setting_blind and card.ability.extra.randomBlind == 7 and not context.blueprint then
+        if card.ability.extra.randomBlind == 7 and not context.blueprint then
 
             if context.debuff_card and context.debuff_card.area ~= G.jokers then
                 if context.debuff_card:is_suit('Clubs', true) then
@@ -300,7 +308,7 @@ SMODS.Joker{ --Goldship
         end
 
         --Effect 8: Debuff Diamonds
-        if context.setting_blind and card.ability.extra.randomBlind == 8 and not context.blueprint then
+        if card.ability.extra.randomBlind == 8 and not context.blueprint then
 
             if context.debuff_card and context.debuff_card.area ~= G.jokers then
                 if context.debuff_card:is_suit('Diamonds', true) then
@@ -316,11 +324,10 @@ SMODS.Joker{ --Goldship
             }
         end
 
-    print(card.ability.extra.randomBlind)
-    print('yay!!!!')
+        print(card.ability.extra.randomBlind)
+        print('yay!!!!')
     end,
 }
-
 --Doesn't eat lowest "buffed" card if all cards lower ranked are debuffed
 SMODS.Joker{ --Oguri Cap
     key = "oguri",
