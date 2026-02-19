@@ -1,6 +1,6 @@
---- GLOBALS
+-- GLOBALS
 
-G.C.UMA = {
+G.C.UMA = { --Colors Definition 1
     RED = HEX("FF0000"),
     BLACK = HEX("000000"),
     BLUE = HEX("0000FF"),
@@ -19,10 +19,8 @@ G.C.UMA = {
 }
 
 local loc_colour_ref = loc_colour
-function loc_colour(_c, _default)
-    if not G.ARGS.LOC_COLOURS then
-        loc_colour_ref()
-    end
+function loc_colour(_c, _default) --Colors Definition 2
+    if not G.ARGS.LOC_COLOURS then loc_colour_ref() end
     G.ARGS.LOC_COLOURS.uma_red = G.C.UMA.RED
     G.ARGS.LOC_COLOURS.uma_black = G.C.UMA.BLACK
     G.ARGS.LOC_COLOURS.uma_blue = G.C.UMA.BLUE
@@ -52,9 +50,7 @@ Uma_rank_tally = function(rank, modifier) --Tally up the amount of a certain ran
     return tally * (modifier and modifier or 1)
 end
 
----@diagnostic disable: lowercase-global, need-check-nil
-
-function SMODS.current_mod.calculate(self, context)
+function SMODS.current_mod.calculate(self, context) --Adds the most recently used Spectral/Tarot/Tarot+/Tarot - and Planet/Planet+ cards to trackable variables
     if context.using_consumeable then
         local item = context.consumeable
         if item.ability.set == 'Planet' or item.ability.set == 'uma_Planet' then

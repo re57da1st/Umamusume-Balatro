@@ -1,7 +1,4 @@
----@diagnostic disable: duplicate-set-field
-
 --Mod File Loading
-
 assert(SMODS.load_file("globals.lua"))()
 assert(SMODS.load_file("src/jokers.lua"))()
 assert(SMODS.load_file("src/challenges.lua"))()
@@ -12,7 +9,6 @@ assert(SMODS.load_file("src/other_consumables.lua"))()
 if JokerDisplay then SMODS.load_file("src/joker_display_definitions.lua")() end
 
 --Atlas Definitions
-
 SMODS.Atlas({ --Mod Icon
     key = "modicon",
     path = "icon.png",
@@ -35,7 +31,6 @@ SMODS.Atlas({ --Consumables
 })
 
 --Hooks
-
 local oldgfuncsplaycardsfromhighlighted = G.FUNCS.play_cards_from_highlighted
 G.FUNCS.play_cards_from_highlighted = function(e) --Agnes Hook to make sure cards don't get undairly debuffed
     for k, v in pairs(G.hand.highlighted) do

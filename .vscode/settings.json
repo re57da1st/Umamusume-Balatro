@@ -1,5 +1,10 @@
 {
     "Lua.diagnostics.globals": [
         "printTable"
+    ],
+    "Lua.diagnostics.disable": [
+        "lowercase-global",
+        "need-check-nil",
+        "duplicate-set-field"
     ]
 }
