@@ -130,6 +130,7 @@ SMODS.Challenge { --Sakura Chiyono O
         modifiers = {}
     },
     jokers = {
+        {id = 'j_uma_chiyono'},
         {id = 'j_uma_chiyono'}
     },
     consumeables = {},

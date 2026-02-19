@@ -50,7 +50,7 @@ end
 local card_can_sell_card_ref = Card.can_sell_card
 function Card:can_sell_card(context) --Hook for cards to stop negative sell values from dropping your max money below the minimum
     local check = card_can_sell_card_ref(self, context)
-    if check then
+    if check and self.sell_cost < 0 then
         return G.GAME.dollars + self.sell_cost >= G.GAME.bankrupt_at
     end
     return check

@@ -65,13 +65,48 @@ end
 
 function SMODS.current_mod.calculate(self, context) --Spread code for turf and blossom cards
     if context.after then
+
         local turf_count, normal_count = 0, 0
+        local chiyono = #find_joker('j_uma_chiyono')
+        print("Chiyono count: "..chiyono)
+        if chiyono > 0 then
+            for _ = 1, chiyono do
+                for _, v in ipairs(context.scoring_hand) do
+                    if next(SMODS.get_enhancements(v)) == "m_uma_turf" then
+                        turf_count = turf_count + 1
+                    end
+                end
+                print("turf cards: "..turf_count)
+                if turf_count > 0 then
+                    local target = pseudorandom('turf',1,turf_count)
+                    print("selecter: "..target)
+
+                    for _, v in ipairs(context.scoring_hand) do
+                        if next(SMODS.get_enhancements(v)) == "m_uma_turf" then
+                            target = target - 1
+                            if target == 0 then
+                                G.E_MANAGER:add_event(Event({
+                                    func = function()
+                                        v:set_ability('m_uma_blossom')
+                                        return {
+                                            message = localize("uma_bloom"),
+                                            colour = G.C.GREEN,
+                                            message_card = v,
+                                            delay = 1
+                                        }
+                                    end
+                                }))
+                            end
+                        end
+                    end
+                end
+            end
+        end
+        turf_count = 0
         for _, v in ipairs(context.scoring_hand) do
----@diagnostic disable-next-line: param-type-mismatch
             if next(SMODS.get_enhancements(v)) == "m_uma_turf" or next(SMODS.get_enhancements(v)) == "m_uma_blossom" then
                 turf_count = turf_count + 1
             end
----@diagnostic disable-next-line: param-type-mismatch
             if next(SMODS.get_enhancements(v)) == "m_stone" or not next(SMODS.get_enhancements(v)) then
                 normal_count = normal_count + 1
             end
@@ -79,30 +114,20 @@ function SMODS.current_mod.calculate(self, context) --Spread code for turf and b
         if turf_count * normal_count > 0 then
             local target = pseudorandom('turf',1,normal_count)
             for _, v in ipairs(context.scoring_hand) do
----@diagnostic disable-next-line: param-type-mismatch
                 if next(SMODS.get_enhancements(v)) == "m_stone" or not next(SMODS.get_enhancements(v)) then
                     target = target - 1
                     if target == 0 then
----@diagnostic disable-next-line: param-type-mismatch
                         if next(SMODS.get_enhancements(v)) == "m_stone" then
                             v:set_ability('m_uma_mossy', nil, true)
-                            --v:juice_up()
-                            return {
-                                message = "Spread!",
-                                colour = G.C.GREEN,
-                                message_card = v,
-                                delay = 1
-                            }
                         else
                             v:set_ability('m_uma_turf', nil, true)
-                            --v:juice_up()
-                            return {
-                                message = "Spread!",
-                                colour = G.C.GREEN,
-                                message_card = v,
-                                delay = 1
-                            }
                         end
+                        return {
+                            message = localize("uma_spread"),
+                            colour = G.C.GREEN,
+                            message_card = v,
+                            delay = 1
+                        }
                     end
                 end
             end

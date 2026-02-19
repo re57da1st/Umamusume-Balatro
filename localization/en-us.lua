@@ -775,6 +775,8 @@ return {
             uma_fuku_good = "Good fortune!",
             uma_fuku_bad = "Bad fortune...",
             uma_not_pure = "Not pure!",
+            uma_spread = "Spread!",
+            uma_bloom = "Bloom!",
 
             uma_love_1_1 = "Retriggers all",
             uma_love_1_2 = "debuffs all other cards",
