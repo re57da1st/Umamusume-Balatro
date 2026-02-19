@@ -6,6 +6,7 @@ assert(SMODS.load_file("src/pokerhands.lua"))()
 assert(SMODS.load_file("src/planets.lua"))()
 assert(SMODS.load_file("src/tarots.lua"))()
 assert(SMODS.load_file("src/other_consumables.lua"))()
+assert(SMODS.load_file("src/enhancements.lua"))()
 if JokerDisplay then SMODS.load_file("src/joker_display_definitions.lua")() end
 
 --Atlas Definitions
@@ -26,6 +27,13 @@ SMODS.Atlas({ --Jokers
 SMODS.Atlas({ --Consumables
     key = "c_umas",
     path = "c_umas.png",
+    px = 71,
+    py = 95
+})
+
+SMODS.Atlas({ --Consumables
+    key = "e_umas",
+    path = "e_umas.png",
     px = 71,
     py = 95
 })

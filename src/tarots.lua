@@ -845,7 +845,7 @@ SMODS.Consumable { --The Chariot
         card:set_cost()
     end
 }
-
+--Update justice description
 SMODS.Consumable { --Justice
     key = 'worse_justice',
     set = 'uma_worse_Tarot',

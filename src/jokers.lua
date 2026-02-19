@@ -684,10 +684,16 @@ To do list:
         
     Joel:
         Code Chiyono O
+            turns turf cards into blossom cards
         Code Norn Ace
         Retexture unfinished horses
         Fix Bakushin Bug
         Check up on bugs
+
+        Enhancements:
+            Turf
+                gives x1.1 xChips when scored
+                spreads to 1 random card when played with a non-turf card
 
     Potential horses:
         Vivlos
