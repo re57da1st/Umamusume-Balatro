@@ -127,7 +127,7 @@ SMODS.Joker{ --Goldship
     cost = 8,
     pos = { x = 4, y = 0 },
     atlas = 'j_umas',
-    config = { extra = { max = 100, min = 40 } },
+    config = { extra = { max = 100, min = 40, top = 4, bottom = 1}},
     loc_vars = function(self, info_queue, card)
         local r_mults = {}
         for i = card.ability.extra.min, card.ability.extra.max do
@@ -156,10 +156,13 @@ SMODS.Joker{ --Goldship
                 }
             },
         }
-        return { main_start = main_start }
+        return { main_start = main_start}
+        
     end,
 
     calculate = function(self, card, context)
+        local randomBlind = pseudorandom('goldship', card.ability.extra.bottom, card.ability.extra.top)
+            if (context.before or context.final_scoring_step or context.setting_blind) and randomBlind==1 then
                 if #G.jokers.cards > 0 then
                     G.jokers:unhighlight_all()
                     for _, joker in ipairs(G.jokers.cards) do
@@ -199,12 +202,47 @@ SMODS.Joker{ --Goldship
                         }))
                     end
                 end
+            end
+                if randomBlind==2 and context.setting_blind then
+                    debuff = { is_face = true }
+                end
+                if randomBlind==3 and context.setting_blind then
+                if context.press_play then
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.2,
+                    func = function()
+                        for i = 1, #G.play.cards do
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    G.play.cards[i]:juice_up()
+                                    return true
+                                end,
+                            }))
+                            ease_dollars(-1)
+                            delay(0.23)
+                        end
+                        return true
+                    end
+                }))
+                end
+                end
+                if randomBlind==4 and context.setting_blind then
+                                if context.stay_flipped and context.to_area == G.hand and
+                context.other_card:is_face(true) then
+                return {
+                    stay_flipped = true
+                }
+            end
+                end
                 if context.joker_main then
                 return {
                 mult = pseudorandom('vremade_misprint', card.ability.extra.min, card.ability.extra.max)
                 }
             end
-    end
+    print(randomBlind)
+    print('yay!!!!')
+            end,
         }
 --Doesn't eat lowest "buffed" card if all cards lower ranked are debuffed
 SMODS.Joker{ --Oguri Cap
