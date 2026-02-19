@@ -317,6 +317,7 @@ SMODS.Joker{ --Goldship
         end
 
     print("Effect: "..card.ability.extra.randomBlind)
+    print('yay!!!!')
     end,
 }
 
