@@ -1,8 +1,6 @@
-
-
 local jd_def = JokerDisplay.Definitions
 
-jd_def["j_uma_helios"] = {
+jd_def["j_uma_helios"] = { --Daitaku Helios
     text = {
         { ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult" },
         { text = "x", scale = 0.35 },
@@ -41,7 +39,7 @@ jd_def["j_uma_helios"] = {
     end
 }
 
-jd_def["j_uma_daiwa"] = {
+jd_def["j_uma_daiwa"] = { --Daiwa Scarlet
     text = {
         { text = "+" },
         { ref_table = "card.joker_display_values", ref_value = "daiwa", retrigger_type = "mult" }
@@ -61,7 +59,7 @@ jd_def["j_uma_daiwa"] = {
     end
 }
 
-jd_def["j_uma_oguri"] = {
+jd_def["j_uma_oguri"] = { --Oguri Cap
     text = {
         { text = "+" },
         { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "chips" },
@@ -84,7 +82,7 @@ jd_def["j_uma_oguri"] = {
         end
 }
 
-jd_def["j_uma_bakushin"] = {
+jd_def["j_uma_bakushin"] = { --Sakura Bakushin O
     text = {
         { text = "+" },
         { ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult" },
@@ -109,7 +107,7 @@ jd_def["j_uma_bakushin"] = {
     end
 }
 
-jd_def["j_uma_mambo"] = {
+jd_def["j_uma_mambo"] = { --Matikanetannhauser
     text = {
         { text = "+", colour = G.C.CHIPS }, --chips display
         { ref_table = "card.ability.extra", ref_value = "chips", colour = G.C.CHIPS },

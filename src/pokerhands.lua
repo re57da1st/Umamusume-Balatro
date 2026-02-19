@@ -36,19 +36,3 @@ SMODS.PokerHand {
         end
     end
 }
-
---seed = Z5WUAW2B
-
---[[
-
-    evaluate = function(parts, hand)
-        local new_parts = SMODS.merge_lists(parts._2)
-        if #new_parts < 4 then return nil end
-        local new_suit = new_parts[1].suit
-        for i=1,#new_parts do
-            if not new_parts[i]:is_suit(new_suit) then return nil end
-        end
-        return new_parts
-    end
-
-]]--

@@ -1,0 +1,62 @@
+calculate = function(self, card, context)
+
+    if context.setting_blind then
+        randomBlind = 1 to 4 >.<
+    end
+
+
+    
+    if not_in_blind then
+        randomBlind = 0
+    end
+
+
+
+    if randomBlind == 1 then
+        if using_consumeable then stuff  end
+
+        if shop or reroll then stuff end
+
+        if selling self then stuff end
+
+        if joker.main then stuff end
+    end
+
+
+
+    if randomBlind == 2 then
+        if using_consumeable then stuff  end
+
+        if shop or reroll then stuff end
+
+        if selling self then stuff end
+
+        if joker.main then stuff end
+    end
+
+
+
+    if randomBlind == 3 then
+        if using_consumeable then stuff  end
+
+        if shop or reroll then stuff end
+
+        if selling self then stuff end
+
+        if joker.main then stuff endstuff
+        end
+    end
+
+
+
+    if randomBlind == 4 then
+        if using_consumeable then stuff  end
+
+        if shop or reroll then stuff end
+
+        if selling self then stuff end
+
+        if joker.main then stuff end
+    end
+
+end

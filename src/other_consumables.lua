@@ -1,5 +1,3 @@
--- This defines a new type of consumable with key "uma_Tarot",
--- if you want to create a regular Tarot ignore this and use set = "Tarot"
 SMODS.ConsumableType {
     key = 'uma_mambo_consumable',
     default = 'c_uma_mambo_boots',
@@ -8,12 +6,11 @@ SMODS.ConsumableType {
     collection_rows = { 3 },
     shop_rate = 0
 }
---[[
-    You can add a card from this ConsumableType just like you would do a normal consumable using
-    `SMODS.add_card{set = "uma_Tarot"}
---]]
 
-SMODS.Consumable {
+
+
+--Mambo Cards
+SMODS.Consumable { --Mambo Boots
     key = 'mambo_boots',
     set = 'uma_mambo_consumable',
     pos = { x = 10, y = 3 },
@@ -31,7 +28,7 @@ SMODS.Consumable {
     end
 }
 
-SMODS.Consumable {
+SMODS.Consumable { --Mambo Hat
     key = 'mambo_hat',
     set = 'uma_mambo_consumable',
     pos = { x = 11, y = 3 },
@@ -49,7 +46,7 @@ SMODS.Consumable {
     end
 }
 
-SMODS.Consumable {
+SMODS.Consumable { --Mambo Plushie
     key = 'mambo_plushie',
     set = 'uma_mambo_consumable',
     pos = { x = 12, y = 3 },

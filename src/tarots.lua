@@ -1,5 +1,3 @@
--- This defines a new type of consumable with key "uma_Tarot",
--- if you want to create a regular Tarot ignore this and use set = "Tarot"
 SMODS.ConsumableType {
     key = 'uma_better_Tarot',
     default = 'c_uma_better_strength',
@@ -16,11 +14,11 @@ SMODS.ConsumableType {
     collection_rows = { 4, 5 },
 }
 
+
+
 --BETTER TAROTS
 --Check compatibility with Fortune Teller
-
---Joel do thing >.<
-SMODS.Consumable { -- The Fool
+SMODS.Consumable { --The Fool
     key = 'better_fool',
     set = 'uma_better_Tarot',
     pos = { x = 0, y = 0 },
@@ -92,7 +90,7 @@ SMODS.Consumable { -- The Fool
     end
 }
 
-SMODS.Consumable { -- The Magician
+SMODS.Consumable { --The Magician
     key = 'better_magician',
     set = 'uma_better_Tarot',
     pos = { x = 1, y = 0 },
@@ -104,7 +102,7 @@ SMODS.Consumable { -- The Magician
     end
 }
 
-SMODS.Consumable { -- The High Priestess
+SMODS.Consumable { --The High Priestess
     key = 'better_high_priestess',
     set = 'uma_better_Tarot',
     pos = { x = 2, y = 0 },
@@ -136,7 +134,7 @@ SMODS.Consumable { -- The High Priestess
     end
 }
 
-SMODS.Consumable { -- The Empress
+SMODS.Consumable { --The Empress
     key = 'better_empress',
     set = 'uma_better_Tarot',
     pos = { x = 3, y = 0 },
@@ -148,7 +146,7 @@ SMODS.Consumable { -- The Empress
     end,
 }
 
-SMODS.Consumable { -- The Emperor
+SMODS.Consumable { --The Emperor
     key = 'better_emperor',
     set = 'uma_better_Tarot',
     pos = { x = 4, y = 0 },
@@ -180,7 +178,7 @@ SMODS.Consumable { -- The Emperor
     end
 }
 
-SMODS.Consumable { -- The Hierophant
+SMODS.Consumable { --The Hierophant
     key = 'better_heirophant',
     set = 'uma_better_Tarot',
     pos = { x = 5, y = 0 },
@@ -192,7 +190,7 @@ SMODS.Consumable { -- The Hierophant
     end,
 }
 
-SMODS.Consumable { -- The Lovers
+SMODS.Consumable { --The Lovers
     key = 'better_lovers',
     set = 'uma_better_Tarot',
     pos = { x = 0, y = 1 },
@@ -204,7 +202,7 @@ SMODS.Consumable { -- The Lovers
     end,
 }
 
-SMODS.Consumable { -- The Chariot
+SMODS.Consumable { --The Chariot
     key = 'better_chariot',
     set = 'uma_better_Tarot',
     pos = { x = 1, y = 1 },
@@ -216,7 +214,7 @@ SMODS.Consumable { -- The Chariot
     end,
 }
 
-SMODS.Consumable { -- Justice
+SMODS.Consumable { --Justice
     key = 'better_justice',
     set = 'uma_better_Tarot',
     pos = { x = 2, y = 1 },
@@ -228,7 +226,7 @@ SMODS.Consumable { -- Justice
     end,
 }
 
-SMODS.Consumable { -- The Hermit
+SMODS.Consumable { --The Hermit
     key = 'better_hermit',
     set = 'uma_better_Tarot',
     pos = { x = 3, y = 1 },
@@ -255,7 +253,7 @@ SMODS.Consumable { -- The Hermit
     end
 }
 
-SMODS.Consumable { -- The Wheel of Fortune
+SMODS.Consumable { --The Wheel of Fortune
     key = 'better_wheel_of_fortune',
     set = 'uma_better_Tarot',
     pos = { x = 4, y = 1 },
@@ -313,7 +311,7 @@ SMODS.Consumable { -- The Wheel of Fortune
     end
 }
 
-SMODS.Consumable { -- Strength
+SMODS.Consumable { --Strength
     key = 'better_strength',
     set = 'uma_better_Tarot',
     pos = { x = 5, y = 1 },
@@ -382,7 +380,7 @@ SMODS.Consumable { -- Strength
     end,
 }
 
-SMODS.Consumable { -- The Hanged Man crashes the game
+SMODS.Consumable { --The Hanged Man crashes the game
     key = 'better_hanged_man',
     set = 'uma_better_Tarot',
     pos = { x = 0, y = 2 },
@@ -413,7 +411,7 @@ SMODS.Consumable { -- The Hanged Man crashes the game
     end,
 }
 
-SMODS.Consumable { -- Death
+SMODS.Consumable { --Death
     key = 'better_death',
     set = 'uma_better_Tarot',
     pos = { x = 1, y = 2 },
@@ -489,7 +487,7 @@ SMODS.Consumable { -- Death
     end,
 }
 
-SMODS.Consumable { -- The Devil
+SMODS.Consumable { --The Devil
     key = 'better_devil',
     set = 'uma_better_Tarot',
     pos = { x = 3, y = 2 },
@@ -501,7 +499,7 @@ SMODS.Consumable { -- The Devil
     end,
 }
 
-SMODS.Consumable { -- The Tower
+SMODS.Consumable { --The Tower
     key = 'better_tower',
     set = 'uma_better_Tarot',
     pos = { x = 4, y = 2 },
@@ -513,7 +511,7 @@ SMODS.Consumable { -- The Tower
     end,
 }
 
-SMODS.Consumable { -- Judgement
+SMODS.Consumable { --Judgement
     key = 'better_judgement',
     set = 'uma_better_Tarot',
     pos = { x = 2, y = 3 },
@@ -540,7 +538,7 @@ SMODS.Consumable { -- Judgement
 
 --WORSE TAROTS
 
-SMODS.Consumable { -- The Magician
+SMODS.Consumable { --The Magician
     key = 'worse_magician',
     set = 'uma_worse_Tarot',
     pos = { x = 7, y = 0 },
@@ -556,7 +554,7 @@ SMODS.Consumable { -- The Magician
     end
 }
 
-SMODS.Consumable { -- The Empress
+SMODS.Consumable { --The Empress
     key = 'worse_empress',
     set = 'uma_worse_Tarot',
     pos = { x = 9, y = 0 },
@@ -572,7 +570,7 @@ SMODS.Consumable { -- The Empress
     end
 }
 
-SMODS.Consumable { -- The Emperor
+SMODS.Consumable { --The Emperor
     key = 'worse_emperor',
     set = 'uma_worse_Tarot',
     pos = { x = 10, y = 0 },
@@ -608,7 +606,7 @@ SMODS.Consumable { -- The Emperor
     end
 }
 
-SMODS.Consumable { -- The Hierophant
+SMODS.Consumable { --The Hierophant
     key = 'worse_heirophant',
     set = 'uma_worse_Tarot',
     pos = { x = 11, y = 0 },
@@ -624,7 +622,7 @@ SMODS.Consumable { -- The Hierophant
     end
 }
 
-SMODS.Consumable { -- The Lovers
+SMODS.Consumable { --The Lovers
     key = 'worse_lovers',
     set = 'uma_worse_Tarot',
     pos = { x = 6, y = 1 },
@@ -736,7 +734,7 @@ SMODS.Consumable { -- The Lovers
     end
 }
 
-SMODS.Consumable { -- The Chariot
+SMODS.Consumable { --The Chariot
     key = 'worse_chariot',
     set = 'uma_worse_Tarot',
     pos = { x = 7, y = 1 },
@@ -848,7 +846,7 @@ SMODS.Consumable { -- The Chariot
     end
 }
 
-SMODS.Consumable { -- Justice
+SMODS.Consumable { --Justice
     key = 'worse_justice',
     set = 'uma_worse_Tarot',
     pos = { x = 8, y = 1 },
@@ -939,7 +937,7 @@ SMODS.Consumable { -- Justice
     end
 }
 
-SMODS.Consumable { -- The Hermit
+SMODS.Consumable { --The Hermit
     key = 'worse_hermit',
     set = 'uma_worse_Tarot',
     pos = { x = 9, y = 1 },
@@ -970,7 +968,7 @@ SMODS.Consumable { -- The Hermit
     end
 }
 
-SMODS.Consumable { -- The Wheel of Fortune
+SMODS.Consumable { --The Wheel of Fortune
     key = 'worse_wheel_of_fortune',
     set = 'uma_worse_Tarot',
     pos = { x = 10, y = 1 },
@@ -1032,7 +1030,7 @@ SMODS.Consumable { -- The Wheel of Fortune
     end
 }
 
-SMODS.Consumable { -- Strength
+SMODS.Consumable { --Strength
     key = 'worse_strength',
     set = 'uma_worse_Tarot',
     pos = { x = 11, y = 1 },
@@ -1105,7 +1103,7 @@ SMODS.Consumable { -- Strength
     end
 }
 
-SMODS.Consumable { -- The Hanged Man
+SMODS.Consumable { --The Hanged Man
     key = 'worse_hanged_man',
     set = 'uma_worse_Tarot',
     pos = { x = 6, y = 2 },
@@ -1140,7 +1138,7 @@ SMODS.Consumable { -- The Hanged Man
     end
 }
 
-SMODS.Consumable { -- Temperance
+SMODS.Consumable { --Temperance
     key = 'worse_temperance',
     set = 'uma_worse_Tarot',
     pos = { x = 8, y = 2 },
@@ -1189,7 +1187,7 @@ SMODS.Consumable { -- Temperance
     end
 }
 
-SMODS.Consumable { -- The Devil
+SMODS.Consumable { --The Devil
     key = 'worse_devil',
     set = 'uma_worse_Tarot',
     pos = { x = 9, y = 2 },
@@ -1301,7 +1299,7 @@ SMODS.Consumable { -- The Devil
     end
 }
  
-SMODS.Consumable { -- The Tower
+SMODS.Consumable { --The Tower
     key = 'worse_tower',
     set = 'uma_worse_Tarot',
     pos = { x = 10, y = 2 },
@@ -1413,7 +1411,7 @@ SMODS.Consumable { -- The Tower
     end
 }
 
-SMODS.Consumable { -- The Star
+SMODS.Consumable { --The Star
     key = 'worse_star',
     set = 'uma_worse_Tarot',
     pos = { x = 11, y = 2 },
@@ -1428,7 +1426,7 @@ SMODS.Consumable { -- The Star
     end
 }
 
-SMODS.Consumable { -- The Moon
+SMODS.Consumable { --The Moon
     key = 'worse_moon',
     set = 'uma_worse_Tarot',
     pos = { x = 6, y = 3 },
@@ -1443,7 +1441,7 @@ SMODS.Consumable { -- The Moon
     end
 }
 
-SMODS.Consumable { -- The Sun
+SMODS.Consumable { --The Sun
     key = 'worse_sun',
     set = 'uma_worse_Tarot',
     pos = { x = 7, y = 3 },
@@ -1458,7 +1456,7 @@ SMODS.Consumable { -- The Sun
     end
 }
 
-SMODS.Consumable { -- The World
+SMODS.Consumable { --The World
     key = 'worse_world',
     set = 'uma_worse_Tarot',
     pos = { x = 9, y = 3 },
@@ -1472,9 +1470,3 @@ SMODS.Consumable { -- The World
         card:set_cost()
     end
 }
-
---[[
-
-cummies
-
-]]--

@@ -1,4 +1,15 @@
-SMODS.Consumable {
+SMODS.ConsumableType {
+    key = 'uma_Planet',
+    default = 'c_uma_better_pluto',
+    primary_colour = G.C.UMA.BETTER_PLANET,
+    secondary_colour = G.C.UMA.BETTER_PLANET2,
+    collection_rows = { 6, 6 },
+}
+
+
+
+--Planet Cards
+SMODS.Consumable { --Twin Moons
     key = "twin_moons",
     set = "Planet",
     cost = 3,
@@ -25,22 +36,9 @@ SMODS.Consumable {
 }
 
 
--- This defines a new type of consumable with key "uma_Planet",
--- if you want to create a regular Planet ignore this and use set = "Planet"
-SMODS.ConsumableType {
-    key = 'uma_Planet',
-    default = 'c_uma_better_pluto',
-    primary_colour = G.C.UMA.BETTER_PLANET,
-    secondary_colour = G.C.UMA.BETTER_PLANET2,
-    collection_rows = { 6, 6 },
-}
---[[
-    You can add a card from this ConsumableType just like you would do a normal consumable using
-    `SMODS.add_card{set = "uma_Planet"}
---]]
 
--- Mercury
-SMODS.Consumable {
+--Better Planet Cards
+SMODS.Consumable {--Better Mercury
     key = "better_mercury",
     set = "uma_Planet",
     cost = 3,
@@ -66,8 +64,7 @@ SMODS.Consumable {
     end
 }
 
--- Venus
-SMODS.Consumable {
+SMODS.Consumable {--Better Venus
     key = "better_venus",
     set = "uma_Planet",
     cost = 3,
@@ -93,8 +90,7 @@ SMODS.Consumable {
     end
 }
 
--- Earth
-SMODS.Consumable {
+SMODS.Consumable {--Better Earth
     key = "better_earth",
     set = "uma_Planet",
     cost = 3,
@@ -120,8 +116,7 @@ SMODS.Consumable {
     end
 }
 
--- Mars
-SMODS.Consumable {
+SMODS.Consumable {--Better Mars
     key = "better_mars",
     set = "uma_Planet",
     cost = 3,
@@ -147,8 +142,7 @@ SMODS.Consumable {
     end
 }
 
--- Jupiter
-SMODS.Consumable {
+SMODS.Consumable {--Better Jupiter
     key = "better_jupiter",
     set = "uma_Planet",
     cost = 3,
@@ -174,8 +168,7 @@ SMODS.Consumable {
     end
 }
 
--- Saturn
-SMODS.Consumable {
+SMODS.Consumable {--Better Saturn
     key = "better_saturn",
     set = "uma_Planet",
     cost = 3,
@@ -201,8 +194,7 @@ SMODS.Consumable {
     end
 }
 
--- Uranus
-SMODS.Consumable {
+SMODS.Consumable {--Better Uranus
     key = "better_uranus",
     set = "uma_Planet",
     cost = 3,
@@ -228,8 +220,7 @@ SMODS.Consumable {
     end
 }
 
--- Neptune
-SMODS.Consumable {
+SMODS.Consumable {--Better Neptune
     key = "better_neptune",
     set = "uma_Planet",
     cost = 3,
@@ -255,8 +246,7 @@ SMODS.Consumable {
     end
 }
 
--- Pluto
-SMODS.Consumable {
+SMODS.Consumable {--Better Pluto
     key = "better_pluto",
     set = "uma_Planet",
     cost = 3,
@@ -287,8 +277,7 @@ SMODS.Consumable {
     end
 }
 
--- Planet X
-SMODS.Consumable {
+SMODS.Consumable {--Better Planet X
     key = "better_planet_x",
     set = "uma_Planet",
     cost = 3,
@@ -324,8 +313,7 @@ SMODS.Consumable {
     end
 }
 
--- Ceres
-SMODS.Consumable {
+SMODS.Consumable {--Better Ceres
     key = "better_ceres",
     set = "uma_Planet",
     cost = 3,
@@ -360,8 +348,7 @@ SMODS.Consumable {
     end
 }
 
--- Eris
-SMODS.Consumable {
+SMODS.Consumable {--Better Eris
     key = "better_eris",
     set = "uma_Planet",
     cost = 3,
@@ -398,8 +385,7 @@ SMODS.Consumable {
     end
 }
 
---Twin Moons
-SMODS.Consumable {
+SMODS.Consumable {--Better Twin Moons
     key = "better_twin_moons",
     set = "uma_Planet",
     cost = 3,
