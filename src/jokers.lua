@@ -127,7 +127,7 @@ SMODS.Joker{ --Goldship
     cost = 8,
     pos = { x = 4, y = 0 },
     atlas = 'j_umas',
-    config = { extra = { max = 100, min = 40, top = 4, bottom = 1}},
+    config = { extra = { max = 100, min = 40, top = 8, bottom = 1, randomBlind=0}},
     loc_vars = function(self, info_queue, card)
         local r_mults = {}
         for i = card.ability.extra.min, card.ability.extra.max do
@@ -161,8 +161,13 @@ SMODS.Joker{ --Goldship
     end,
 
     calculate = function(self, card, context)
-        local randomBlind = pseudorandom('goldship', card.ability.extra.bottom, card.ability.extra.top)
-            if (context.before or context.final_scoring_step or context.setting_blind) and randomBlind==1 then
+        if context.setting_blind then
+            card.ability.extra.randomBlind = pseudorandom('goldship', card.ability.extra.bottom, card.ability.extra.top)
+        end
+        if context.end_of_round then
+            card.ability.extra.randomBlind = 0
+        end
+            if (context.before or context.final_scoring_step or context.setting_blind) and card.ability.extra.randomBlind==1 then
                 if #G.jokers.cards > 0 then
                     G.jokers:unhighlight_all()
                     for _, joker in ipairs(G.jokers.cards) do
@@ -203,10 +208,12 @@ SMODS.Joker{ --Goldship
                     end
                 end
             end
-                if randomBlind==2 and context.setting_blind then
-                    debuff = { is_face = true }
+            if card.ability.extra.randomBlind==2 and context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
+                if context.debuff_card:is_face() then
+                return { debuff = true }
                 end
-                if randomBlind==3 and context.setting_blind then
+            end
+                if card.ability.extra.randomBlind==3 then
                 if context.press_play then
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
@@ -227,7 +234,7 @@ SMODS.Joker{ --Goldship
                 }))
                 end
                 end
-                if randomBlind==4 and context.setting_blind then
+                if card.ability.extra.randomBlind==4 then
                                 if context.stay_flipped and context.to_area == G.hand and
                 context.other_card:is_face(true) then
                 return {
@@ -235,12 +242,32 @@ SMODS.Joker{ --Goldship
                 }
             end
                 end
+            if card.ability.extra.randomBlind==5 and context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
+                if context.debuff_card:is_suit('Hearts', true) then
+                return { debuff = true }
+                end
+            end
+                        if card.ability.extra.randomBlind==6 and context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
+                if context.debuff_card:is_suit('Spades', true) then
+                return { debuff = true }
+                end
+            end
+                        if card.ability.extra.randomBlind==7 and context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
+                if context.debuff_card:is_suit('Clubs', true) then
+                return { debuff = true }
+                end
+            end
+                        if card.ability.extra.randomBlind==8 and context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
+                if context.debuff_card:is_suit('Diamonds', true) then
+                return { debuff = true }
+                end
+            end
                 if context.joker_main then
                 return {
                 mult = pseudorandom('vremade_misprint', card.ability.extra.min, card.ability.extra.max)
                 }
             end
-    print(randomBlind)
+    print(card.ability.extra.randomBlind)
     print('yay!!!!')
             end,
         }
