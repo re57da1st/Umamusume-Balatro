@@ -220,7 +220,7 @@ SMODS.Joker{ --Goldship
         end
 
         --Effect 2: Debuff face cards
-        if card.ability.extra.randomBlind == 2 and not context.blueprint then
+        if context.setting_blind and card.ability.extra.randomBlind == 2 and not context.blueprint then
 
             if context.debuff_card and context.debuff_card.area ~= G.jokers then
                 if context.debuff_card:is_face() then
@@ -268,7 +268,7 @@ SMODS.Joker{ --Goldship
         end
 
         --Effect 5: Debuff Hearts
-        if card.ability.extra.randomBlind == 5 and not context.blueprint then
+        if context.setting_blind and card.ability.extra.randomBlind == 5 and not context.blueprint then
 
             if context.debuff_card and context.debuff_card.area ~= G.jokers then
                 if context.debuff_card:is_suit('Hearts', true) then
@@ -279,7 +279,7 @@ SMODS.Joker{ --Goldship
         end
 
         --Effect 6: Debuff Spades
-        if card.ability.extra.randomBlind == 6 and not context.blueprint then
+        if context.setting_blind and card.ability.extra.randomBlind == 6 and not context.blueprint then
 
             if context.debuff_card and context.debuff_card.area ~= G.jokers then
                 if context.debuff_card:is_suit('Spades', true) then
@@ -290,7 +290,7 @@ SMODS.Joker{ --Goldship
         end
 
         --Effect 7: Debuff Clubs
-        if card.ability.extra.randomBlind == 7 and not context.blueprint then
+        if context.setting_blind and card.ability.extra.randomBlind == 7 and not context.blueprint then
 
             if context.debuff_card and context.debuff_card.area ~= G.jokers then
                 if context.debuff_card:is_suit('Clubs', true) then
@@ -300,7 +300,7 @@ SMODS.Joker{ --Goldship
         end
 
         --Effect 8: Debuff Diamonds
-        if card.ability.extra.randomBlind == 8 and not context.blueprint then
+        if context.setting_blind and card.ability.extra.randomBlind == 8 and not context.blueprint then
 
             if context.debuff_card and context.debuff_card.area ~= G.jokers then
                 if context.debuff_card:is_suit('Diamonds', true) then
@@ -316,7 +316,7 @@ SMODS.Joker{ --Goldship
             }
         end
 
-    print("Effect: "..card.ability.extra.randomBlind)
+    print(card.ability.extra.randomBlind)
     print('yay!!!!')
     end,
 }
