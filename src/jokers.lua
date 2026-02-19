@@ -161,13 +161,21 @@ SMODS.Joker{ --Goldship
     end,
 
     calculate = function(self, card, context)
+
+        --Choose random effect at blind start
         if context.setting_blind then
             card.ability.extra.randomBlind = pseudorandom('goldship', card.ability.extra.bottom, card.ability.extra.top)
         end
+
+        --Disable random effects at blind end
         if context.end_of_round then
             card.ability.extra.randomBlind = 0
         end
-            if (context.before or context.final_scoring_step or context.setting_blind) and card.ability.extra.randomBlind==1 then
+
+        --Effect 1, Flips and shuffles jokers
+        if card.ability.extra.randomBlind == 1 and not context.blueprint then
+
+            if context.before or context.final_scoring_step or context.setting_blind then
                 if #G.jokers.cards > 0 then
                     G.jokers:unhighlight_all()
                     for _, joker in ipairs(G.jokers.cards) do
@@ -208,13 +216,24 @@ SMODS.Joker{ --Goldship
                     end
                 end
             end
-            if card.ability.extra.randomBlind==2 and context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
+
+        end
+
+        --Effect 2: Debuff face cards
+        if card.ability.extra.randomBlind == 2 and not context.blueprint then
+
+            if context.debuff_card and context.debuff_card.area ~= G.jokers then
                 if context.debuff_card:is_face() then
-                return { debuff = true }
+                    return { debuff = true }
                 end
             end
-                if card.ability.extra.randomBlind==3 then
-                if context.press_play then
+
+        end
+
+        --Effect 3: $-1 per card played
+        if card.ability.extra.randomBlind == 3 and not context.blueprint then
+
+            if context.press_play then
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
                     delay = 0.2,
@@ -232,45 +251,75 @@ SMODS.Joker{ --Goldship
                         return true
                     end
                 }))
-                end
-                end
-                if card.ability.extra.randomBlind==4 then
-                                if context.stay_flipped and context.to_area == G.hand and
+            end
+
+        end
+
+        --Effect 4: Flip face cards
+        if card.ability.extra.randomBlind == 4 and not context.blueprint then
+
+            if context.stay_flipped and context.to_area == G.hand and
                 context.other_card:is_face(true) then
                 return {
                     stay_flipped = true
                 }
             end
-                end
-            if card.ability.extra.randomBlind==5 and context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
+
+        end
+
+        --Effect 5: Debuff Hearts
+        if card.ability.extra.randomBlind == 5 and not context.blueprint then
+
+            if context.debuff_card and context.debuff_card.area ~= G.jokers then
                 if context.debuff_card:is_suit('Hearts', true) then
-                return { debuff = true }
+                    return { debuff = true }
                 end
             end
-                        if card.ability.extra.randomBlind==6 and context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
+            
+        end
+
+        --Effect 6: Debuff Spades
+        if card.ability.extra.randomBlind == 6 and not context.blueprint then
+
+            if context.debuff_card and context.debuff_card.area ~= G.jokers then
                 if context.debuff_card:is_suit('Spades', true) then
-                return { debuff = true }
+                    return { debuff = true }
                 end
             end
-                        if card.ability.extra.randomBlind==7 and context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
+
+        end
+
+        --Effect 7: Debuff Clubs
+        if card.ability.extra.randomBlind == 7 and not context.blueprint then
+
+            if context.debuff_card and context.debuff_card.area ~= G.jokers then
                 if context.debuff_card:is_suit('Clubs', true) then
-                return { debuff = true }
+                    return { debuff = true }
                 end
             end
-                        if card.ability.extra.randomBlind==8 and context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
+        end
+
+        --Effect 8: Debuff Diamonds
+        if card.ability.extra.randomBlind == 8 and not context.blueprint then
+
+            if context.debuff_card and context.debuff_card.area ~= G.jokers then
                 if context.debuff_card:is_suit('Diamonds', true) then
-                return { debuff = true }
+                    return { debuff = true }
                 end
             end
-                if context.joker_main then
-                return {
+        end
+
+        --Return mult value
+        if context.joker_main then
+            return {
                 mult = pseudorandom('vremade_misprint', card.ability.extra.min, card.ability.extra.max)
-                }
-            end
-    print(card.ability.extra.randomBlind)
-    print('yay!!!!')
-            end,
-        }
+            }
+        end
+
+    print("Effect: "..card.ability.extra.randomBlind)
+    end,
+}
+
 --Doesn't eat lowest "buffed" card if all cards lower ranked are debuffed
 SMODS.Joker{ --Oguri Cap
     key = "oguri",
@@ -608,14 +657,14 @@ SMODS.Joker{ --Still in Love
     pos = { x = 9, y = 0 },
     config = { extra = {
         repetitions = 1,
-        desc_1_1 = "R%%r%%ge%s a%l",
-        desc_1_2 = "%%%u%%s %l% %th%% %a%d%",
-        desc_1_3 = "%%%r%%%te% %er%a%n boss bl%n%%",
-        desc_2_1 = "A pl%%i%g c%r%",
-        desc_2_2 = "th%% %s",
-        desc_2_3 = "%n%%",
-        desc_2_4 = "%e%%%s",
-        desc_2_5 = "a%% n%%%i%% %ls%"
+        desc_1_1 = localize("uma_love_1_1_obsc"),
+        desc_1_2 = localize("uma_love_1_2_obsc"),
+        desc_1_3 = localize("uma_love_1_3_obsc"),
+        desc_2_1 = localize("uma_love_2_1_obsc"),
+        desc_2_2 = localize("uma_love_2_2_obsc"),
+        desc_2_3 = localize("uma_love_2_3_obsc"),
+        desc_2_4 = localize("uma_love_2_4_obsc"),
+        desc_2_5 = localize("uma_love_2_5_obsc")
     } },
     atlas = 'j_umas',
 
