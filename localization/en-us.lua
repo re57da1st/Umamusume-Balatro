@@ -656,6 +656,32 @@ return {
             }
         },
 
+        Enhanced = {
+            m_uma_turf = {
+                name = "Turf Card",
+                text = {
+                    "{X:chips,C:white}x#1#{} Chips"
+                },
+            },
+
+            m_uma_blossom = {
+                name = "Blossom Card",
+                text = {
+                    "{X:chips,C:white}x#1#{} Chips"
+                },
+            },
+
+            m_uma_mossy = {
+                name = "Mossy Card",
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                    "no rank or suit",
+                },
+            }
+        },
+
+
+
         Other = {
             undiscovered_uma_better_tarot = {
                 name = "Not Discovered",
