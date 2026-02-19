@@ -127,7 +127,7 @@ SMODS.Joker{ --Goldship
     cost = 8,
     pos = { x = 4, y = 0 },
     atlas = 'j_umas',
-    config = { extra = { max = 100, min = 40, top = 8, bottom = 1, randomBlind=0}},
+    config = { extra = { max = 100, min = 40, top = 8, bottom = 1, randomBlind = 0}},
     loc_vars = function(self, info_queue, card)
         local r_mults = {}
         for i = card.ability.extra.min, card.ability.extra.max do
