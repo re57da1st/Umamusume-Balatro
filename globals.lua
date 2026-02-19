@@ -85,7 +85,7 @@ function SMODS.current_mod.calculate(self, context) --Spread code for turf and b
                     if target == 0 then
 ---@diagnostic disable-next-line: param-type-mismatch
                         if next(SMODS.get_enhancements(v)) == "m_stone" then
-                            v:set_ability('m_uma_mossy')
+                            v:set_ability('m_uma_mossy', nil, true)
                             v:juice_up()
                             return {
                                 message = "Spread!",
@@ -94,7 +94,7 @@ function SMODS.current_mod.calculate(self, context) --Spread code for turf and b
                                 delay = 1
                             }
                         else
-                            v:set_ability('m_uma_turf')
+                            v:set_ability('m_uma_turf', nil, true)
                             v:juice_up()
                             return {
                                 message = "Spread!",
