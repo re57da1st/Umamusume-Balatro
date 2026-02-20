@@ -138,6 +138,7 @@ return {
             j_uma_teio = {
                 name = "Tokai Teio",
                 text = {
+                    "{C:green}#2# in #3#{} to bake leg vv",
                     "Teio Teio Teio",
                     "Teio Teio Teio",
                     "Teio, Teio",
