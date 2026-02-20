@@ -731,7 +731,7 @@ SMODS.Joker{ --Still in Love
         desc_2_5 = "a%% n%%%i%% %ls%",
     } },
     atlas = 'j_umas',
-    soul_pos = { x = 8, y = 2 },
+    soul_pos = { x = 9, y = 2 },
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = {
@@ -754,7 +754,7 @@ SMODS.Joker{ --Still in Love
     calculate = function(self, card, context)
 
         card.children.center:set_sprite_pos{ x = 9, y = (SMODS.find_card("j_uma_love") and 1 or 0) }
-        card.children.floating_sprite:set_sprite_pos{ x = (SMODS.find_card("j_uma_love") and 9 or 8), y = 2 }
+        card.children.floating_sprite:set_sprite_pos{ x = 9, y = (SMODS.find_card("j_uma_love") and 3 or 2) }
 
         if context.repetition and context.cardarea == G.play and context.other_card:is_suit("Hearts") then
             return {
@@ -803,13 +803,12 @@ SMODS.Joker{ --Still in Love
     end,
 }
 
-
 SMODS.Joker{ --Vodka
     key = "vodka",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 2,
-    pos = { x = 4, y = 1 },
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 5,
+    pos = { x = 7, y = 1 },
     atlas = 'j_umas',
     config = { extra = { mult = 5, chips = 10} },
 
@@ -825,10 +824,6 @@ SMODS.Joker{ --Vodka
                 colour = G.C.UMA.CHULT
             }
         end
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
@@ -837,7 +832,7 @@ SMODS.Joker{ --Tokai Teio
     blueprint_compat = false,
     rarity = 1,
     cost = 2,
-    pos = { x = 4, y = 1 },
+    pos = { x = 8, y = 1 },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)

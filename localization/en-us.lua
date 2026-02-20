@@ -130,6 +130,16 @@ return {
                     ]]
                 },
             },
+
+            j_uma_vodka = {
+                name = "Vodka",
+                text = {
+                    "Every played {C:attention}Queen{}",
+                    "permanently gains",
+                    "{C:chips}+#2#{} Chips and {C:mult}+#1#{} Mult",
+                    "when scored"
+                },
+            },
         },
 
         Planet = {

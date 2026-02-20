@@ -26,6 +26,13 @@ SMODS.Atlas({ --(J)okers
     py = 95
 })
 
+SMODS.Atlas({ --Test Jokers
+    key = "test",
+    path = "j_umas_test.png",
+    px = 71,
+    py = 95
+})
+
 SMODS.Atlas({ --(C)onsumables
     key = "c_umas",
     path = "c_umas.png",
