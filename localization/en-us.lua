@@ -47,7 +47,7 @@ return {
                 name = "Goldship",
                 text = {
                     "{C:mult}+#1# {}to {C:mult}+#2# {}mult range",
-                    "Mimmicks a certain {C:attention}boss blind",
+                    "Mimics a certain {C:attention}boss blind",
                     "{C:inactive}>> #3# <<"
                 },
             },
