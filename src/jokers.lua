@@ -828,7 +828,7 @@ SMODS.Joker{ --Vodka
 }
 
 SMODS.Joker{ --Tokai Teio
-    key = "Teio",
+    key = "teio",
     blueprint_compat = false,
     rarity = 1,
     cost = 2,
