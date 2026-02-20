@@ -122,12 +122,6 @@ return {
                     "#1# {C:hearts}Pure Hearts{},",
                     "#2#",
                     "{C:inactive}(#3#)"
-
-                    --[[
-                    "Retriggers all {C:hearts}Pure Hearts{},",
-                    "debuffs all other cards",
-                    "{C:inactive}(Overwrites certain boss blinds)"
-                    ]]
                 },
             },
 
@@ -807,6 +801,8 @@ return {
             c_uma_obey_challenge = "Obey Your Master",
             c_uma_fuku_challenge = "Matikanefukukitaru",
             c_uma_love_challenge = "Still in Love",
+            c_uma_vodka_challenge = "Vodka",
+            c_uma_teio_challenge = "Tokai Teio",
             c_uma_legends = "All Legends",
             c_uma_all = "All horsies ^.^",
             c_uma_functional = "Everyone who's functional",

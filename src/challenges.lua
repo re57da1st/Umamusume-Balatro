@@ -214,6 +214,34 @@ SMODS.Challenge { --Still in Love
     restrictions = {}
 }
 
+SMODS.Challenge { --Vodka
+    key = 'vodka_challenge',
+    rules = {
+        custom = {},
+        modifiers = {}
+    },
+    jokers = {
+        {id = 'j_uma_vodka'}
+    },
+    consumeables = {},
+    vouchers = {},
+    restrictions = {}
+}
+
+SMODS.Challenge { --Tokai Teio
+    key = 'teio_challenge',
+    rules = {
+        custom = {},
+        modifiers = {}
+    },
+    jokers = {
+        {id = 'j_uma_teio'}
+    },
+    consumeables = {},
+    vouchers = {},
+    restrictions = {}
+}
+
 SMODS.Challenge { --All Legendaries
     key = 'legends',
     rules = {
