@@ -860,6 +860,7 @@ return {
             k_uma_mambo_consumable = "Mambo's things",
             b_uma_planet_cards = "Planet+ Cards",
             k_uma_planet = "Planet+",
+            k_uma_twin_turbo = 'Upgrade + Level Up!'
         },
 
         labels = {

@@ -99,7 +99,7 @@ SMODS.Joker{ --Twin Turbo works wif flush house nyat perfect pair
     cost = 2,
     pos = { x = 3, y = 0 },
     atlas = 'j_umas',
-    config = { extra = { mult_gain = 5, mult = 0 } },
+    config = { extra = { mult_gain = 5, mult = 0 }, hand_type = 'uma_perfect_pair'},
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult_gain, localize('uma_perfect_pair', 'poker_hands'), card.ability.extra.mult } }
     end,
@@ -109,7 +109,8 @@ SMODS.Joker{ --Twin Turbo works wif flush house nyat perfect pair
             -- See note about SMODS Scaling Manipulation on the wiki
             card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
             return {
-                message = localize('k_upgrade_ex'),
+                level_up = true,
+                message = localize('k_uma_twin_turbo'),
                 colour = G.C.RED
             }
         end
@@ -121,10 +122,14 @@ SMODS.Joker{ --Twin Turbo works wif flush house nyat perfect pair
     end,
 
     in_pool = function(self, args)
-        return false
+        if G.GAME.hands[self.config.hand_type].played > 0 then
+            return true
+        else
+            return false
+        end
     end
 }
---Effect 1 doesn't work
+
 SMODS.Joker{ --Goldship
     key = "goldship",
     blueprint_compat = true,
@@ -132,7 +137,7 @@ SMODS.Joker{ --Goldship
     cost = 8,
     pos = { x = 4, y = 0 },
     atlas = 'j_umas',
-    config = { extra = { max = 100, min = 40, top = 8, bottom = 1, randomBlind = 0,
+    config = { extra = { max = 100, min = 0, top = 1, bottom = 1, randomBlind = 0,
         effects = {
             "uma_goldship_no_effect",
             "uma_goldship_effect1",
@@ -172,16 +177,20 @@ SMODS.Joker{ --Goldship
                 }
         end
 
-        --Doesn't trigger before first hand
         --Effect 1, Flips and shuffles jokers
         if card.ability.extra.randomBlind == 1 and not context.blueprint then
-
-            if context.before or context.final_scoring_step or context.setting_blind then
+            if context.before or context.final_scoring_step or context.setting_blind or context.drawing_cards then
                 if #G.jokers.cards > 0 then
                     G.jokers:unhighlight_all()
                     for _, joker in ipairs(G.jokers.cards) do
                         joker:flip()
+                        if G.jokers.cards[_].facing == 'back' then
+                            stay_flipped = true
+                        else
+                            joker:flip()
+                        end
                     end
+                end
                     if #G.jokers.cards > 1 then
                         G.E_MANAGER:add_event(Event({
                             trigger = 'after',
@@ -215,7 +224,6 @@ SMODS.Joker{ --Goldship
                             end
                         }))
                     end
-                end
             end
 
         end
