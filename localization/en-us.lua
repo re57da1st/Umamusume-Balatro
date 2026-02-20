@@ -44,11 +44,11 @@ return {
             },
 
             j_uma_goldship = {
-                name = "Golshi",
+                name = "Goldship",
                 text = {
-                    "Golshin Golshin Golshin!",
-                    "Golshin Golshin Golshin!",
-                    "Golshin, Golshin, Gol shin shin!"
+                    "{C:mult}+#1# {}to {C:mult}+#2# {}mult range",
+                    "Mimmicks a certain {C:attention}boss blind",
+                    "{C:inactive}>> #3# <<"
                 },
             },
 
@@ -726,7 +726,49 @@ return {
                     "and nothing else",
                     ]]
                 }
-            }
+            },
+
+            uma_turf_related = {
+                name = "Turf-related",
+                text = {
+                    "All cards will have one",
+                    "of the following enhancements:",
+                    "{C:uma_turf}Turf{}, Dirt, Mossy, {C:uma_blossom}Blossom{}",
+                    
+                    --[[
+                    "A playing card",
+                    "that is {C:attention}only {C:hearts}hearts{},",
+                    "and nothing else",
+                    ]]
+                }
+            },
+
+            p_uma_turf_normal = {
+                name = "Turf Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:uma_turf}Turf{}-related playing",
+                    "cards to add to your deck",
+                },
+            },
+
+            p_uma_turf_jumbo = {
+                name = "Jumbo Turf Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:uma_turf}Turf{}-related playing",
+                    "cards to add to your deck",
+                },
+            },
+
+            p_uma_turf_mega = {
+                name = "Mega Turf Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to",
+                    "{C:attention}#2# {C:uma_turf}Turf{}-related playing",
+                    "cards to add to your deck",
+                },
+            },
         }
     },
 
@@ -782,6 +824,15 @@ return {
             uma_not_pure = "Not pure!",
             uma_spread = "Spread!",
             uma_bloom = "Bloom!",
+            uma_goldship_no_effect = "No effect currently",
+            uma_goldship_effect1 = "Flips and shuffles jokers",
+            uma_goldship_effect2 = "Debuff faces cards",
+            uma_goldship_effect3 = "Lose $1 per card played",
+            uma_goldship_effect4 = "All face cards are drawn face down",
+            uma_goldship_effect5 = "Debuff Spades",
+            uma_goldship_effect6 = "Debuff Hearts",
+            uma_goldship_effect7 = "Debuff Clubs",
+            uma_goldship_effect8 = "Debuff Diamonds",
 
             uma_love_1_1 = "Retriggers all",
             uma_love_1_2 = "debuffs all other cards",
@@ -805,8 +856,8 @@ return {
             k_uma_better_tarot = "Tarot+",
             b_uma_worse_tarot_cards = "Tarot- Cards",
             k_uma_worse_tarot = "Tarot-",
-            b_uma_mambo_consumable_cards = "Mambo Cards", --Name of the consumable category, "b_[mod]_[consumable key]_cards"
-            k_uma_mambo_consumable = "Mambo's things", --Name of the consumable in tooltip, "k_[mod]_[consumable key]"
+            b_uma_mambo_consumable_cards = "Mambo Cards",
+            k_uma_mambo_consumable = "Mambo's things",
             b_uma_planet_cards = "Planet+ Cards",
             k_uma_planet = "Planet+",
         },

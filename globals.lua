@@ -44,6 +44,7 @@ function loc_colour(_c, _default) --Colors Definition 2
     return loc_colour_ref(_c, _default)
 end
 
+--Global Functions
 Uma_rank_tally = function(rank, modifier) --Tally up the amount of a certain rank in the deck
     local tally = 0
         if G.playing_cards then
@@ -52,6 +53,20 @@ Uma_rank_tally = function(rank, modifier) --Tally up the amount of a certain ran
             end
         end
     return tally * (modifier and modifier or 1)
+end
+
+function Uma_weighted_picker(items, weights, seed) --Chooses a random value from {items} based on their assigned {weights}
+    local size = math.min(#items, #weights)
+    local weight_sum = 0
+    for i = 1, size do
+        weight_sum = weight_sum + weights[i]
+    end
+    local rng = pseudorandom(seed or 0)
+    for i = 1, size do
+        rng = rng - (weights[i] / weight_sum)
+        if rng <= 0 then return items[i] end
+    end
+    return items[size]
 end
 
 function SMODS.current_mod.calculate(self, context) --Adds the most recently used Spectral/Tarot/Tarot+/Tarot - and Planet/Planet+ cards to trackable variables

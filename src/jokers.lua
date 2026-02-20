@@ -127,64 +127,52 @@ SMODS.Joker{ --Twin Turbo works wif flush house nyat perfect pair
 
 SMODS.Joker{ --Goldship
     key = "goldship",
-    blueprint_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
     pos = { x = 4, y = 0 },
     atlas = 'j_umas',
-    config = { extra = { max = 100, min = 40, top = 8, bottom = 1, randomBlind = 0}},
-    loc_vars = function(self, info_queue, card)
-        local r_mults = {}
-        for i = card.ability.extra.min, card.ability.extra.max do
-            r_mults[#r_mults + 1] = tostring(i)
-        end
-        local loc_mult = ' ' .. (localize('k_mult')) .. ' '
-        main_start = {
-            { n = G.UIT.T, config = { text = '  +', colour = G.C.MULT, scale = 0.32 } },
-            { n = G.UIT.O, config = { object = DynaText({ string = r_mults, colours = { G.C.RED }, pop_in_rate = 9999999, silent = true, random_element = true, pop_delay = 0.5, scale = 0.32, min_cycle_time = 0 }) } },
-            {
-                n = G.UIT.O,
-                config = {
-                    object = DynaText({
-                        string = {
-                            { string = 'rand()', colour = G.C.JOKER_GREY }, { string = "#@" .. (G.deck and G.deck.cards[1] and G.deck.cards[#G.deck.cards].base.id or 11) .. (G.deck and G.deck.cards[1] and G.deck.cards[#G.deck.cards].base.suit:sub(1, 1) or 'D'), colour = G.C.RED },
-                            loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult, loc_mult,
-                            loc_mult, loc_mult, loc_mult, loc_mult },
-                        colours = { G.C.UI.TEXT_DARK },
-                        pop_in_rate = 9999999,
-                        silent = true,
-                        random_element = true,
-                        pop_delay = 0.2011,
-                        scale = 0.32,
-                        min_cycle_time = 0
-                    })
-                }
-            },
+    config = { extra = { max = 100, min = 40, top = 8, bottom = 1, randomBlind = 0,
+        effects = {
+            "uma_goldship_no_effect",
+            "uma_goldship_effect1",
+            "uma_goldship_effect2",
+            "uma_goldship_effect3",
+            "uma_goldship_effect4",
+            "uma_goldship_effect5",
+            "uma_goldship_effect6",
+            "uma_goldship_effect7",
+            "uma_goldship_effect8",
         }
-        return { main_start = main_start}
-        
+    }},
+
+    loc_vars = function(self, info_queue, card)
+        return { vars = {
+            card.ability.extra.min,
+            card.ability.extra.max,
+            localize(card.ability.extra.effects[card.ability.extra.randomBlind + 1])
+        } }
     end,
 
     calculate = function(self, card, context)
 
-        --Choose random effect at blind start
-        if context.setting_blind then
+        if context.setting_blind then --Choose random effect at blind start
 
             card.ability.extra.randomBlind = pseudorandom('goldship', card.ability.extra.bottom, card.ability.extra.top)
-
             if G.playing_cards then
                 for _, playing_card in ipairs(G.playing_cards) do
                     SMODS.recalc_debuff(playing_card)
                 end
             end
-
+            return {
+                    message = localize(card.ability.extra.effects[card.ability.extra.randomBlind + 1]),
+                    colour = G.C.GOLD,
+                    message_card = card,
+                    delay = 3
+                }
         end
 
-        --Disable random effects at blind end
-        if context.end_of_round then
-            card.ability.extra.randomBlind = 0
-        end
-
+        --Doesn't trigger before first hand
         --Effect 1, Flips and shuffles jokers
         if card.ability.extra.randomBlind == 1 and not context.blueprint then
 
@@ -280,22 +268,22 @@ SMODS.Joker{ --Goldship
 
         end
 
-        --Effect 5: Debuff Hearts
+        --Effect 5: Debuff Spades
         if card.ability.extra.randomBlind == 5 and not context.blueprint then
 
             if context.debuff_card and context.debuff_card.area ~= G.jokers then
-                if context.debuff_card:is_suit('Hearts', true) then
+                if context.debuff_card:is_suit('Spades', true) then
                     return { debuff = true }
                 end
             end
 
         end
 
-        --Effect 6: Debuff Spades
+        --Effect 6: Debuff Hearts
         if card.ability.extra.randomBlind == 6 and not context.blueprint then
 
             if context.debuff_card and context.debuff_card.area ~= G.jokers then
-                if context.debuff_card:is_suit('Spades', true) then
+                if context.debuff_card:is_suit('Hearts', true) then
                     return { debuff = true }
                 end
             end
@@ -322,6 +310,11 @@ SMODS.Joker{ --Goldship
             end
         end
 
+        --Disable random effects at blind end
+        if context.end_of_round then
+            card.ability.extra.randomBlind = 0
+        end
+
         --Return mult value
         if context.joker_main then
             return {
@@ -329,8 +322,8 @@ SMODS.Joker{ --Goldship
             }
         end
 
-        print(card.ability.extra.randomBlind)
-        print('yay!!!!')
+        --print(card.ability.extra.randomBlind)
+        --print('yay!!!!')
     end,
 }
 --Doesn't eat lowest "buffed" card if all cards lower ranked are debuffed
