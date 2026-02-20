@@ -163,7 +163,7 @@ SMODS.Joker{ --Goldship
 
         if context.setting_blind then --Choose random effect at blind start
 
-            card.ability.extra.randomBlind = pseudorandom('goldship', card.ability.extra.bottom, card.ability.extra.top)
+            card.ability.extra.randomBlind = 1--pseudorandom('goldship', card.ability.extra.bottom, card.ability.extra.top)
             if G.playing_cards then
                 for _, playing_card in ipairs(G.playing_cards) do
                     SMODS.recalc_debuff(playing_card)
