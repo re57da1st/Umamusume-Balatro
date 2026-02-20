@@ -831,6 +831,28 @@ SMODS.Joker{ --Vodka
         return false
     end
 }
+
+SMODS.Joker{ --Tokai Teio
+    key = "Teio",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 2,
+    pos = { x = 4, y = 1 },
+    atlas = 'j_umas',
+
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
 --[[
 
 To do list:
@@ -847,9 +869,6 @@ To do list:
         MEISHO DOTOOOOO
         robo horse
         mayano top gun
-        odka odka odka
-            queen scaling
-            lesbians
         
     Joel:
         Code Norn Ace
