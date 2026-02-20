@@ -14,6 +14,10 @@ SMODS.Enhancement { --Turf
                 xchips = card.ability.xChips
             }
         end
+    end,
+
+    in_pool = function(self, args)
+        return false
     end
 }
 
@@ -33,6 +37,10 @@ SMODS.Enhancement { --Blossom
                 xchips = card.ability.xChips
             }
         end
+    end,
+
+    in_pool = function(self, args)
+        return false
     end
 }
 
@@ -49,6 +57,10 @@ SMODS.Enhancement { --Mossy
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.bonus } }
     end,
+
+    in_pool = function(self, args)
+        return false
+    end
 }
 
 SMODS.Enhancement { --Dirt
@@ -60,4 +72,8 @@ SMODS.Enhancement { --Dirt
     loc_vars = function(self, info_queue, card)
         return { vars = { } }
     end,
+
+    in_pool = function(self, args)
+        return false
+    end
 }
