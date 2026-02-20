@@ -140,6 +140,16 @@ return {
                     "when scored"
                 },
             },
+
+            j_uma_teio = {
+                name = "Tokai Teio",
+                text = {
+                    "Teio Teio Teio",
+                    "Teio Teio Teio",
+                    "Teio, Teio",
+                    "Tei-oh oh!!!!",
+                },
+            },
         },
 
         Planet = {
