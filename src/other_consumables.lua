@@ -7,8 +7,6 @@ SMODS.ConsumableType {
     shop_rate = 0
 }
 
-
-
 --Mambo Cards
 SMODS.Consumable { --Mambo Boots
     key = 'mambo_boots',
