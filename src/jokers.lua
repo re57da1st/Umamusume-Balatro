@@ -137,7 +137,7 @@ SMODS.Joker{ --Goldship
     cost = 8,
     pos = { x = 4, y = 0 },
     atlas = 'j_umas',
-    config = { extra = { max = 100, min = 0, top = 1, bottom = 1, randomBlind = 0,
+    config = { extra = { max = 100, min = 0, top = 8, bottom = 1, randomBlind = 0,
         effects = {
             "uma_goldship_no_effect",
             "uma_goldship_effect1",
