@@ -80,15 +80,14 @@ return {
                     " Mult. Using {C:attention}certain consumables{}",
                     " increase these values"
                 },
-            },  
+            },
 
             j_uma_chiyono = {
                 name = "Sakura Chiyono O",
                 text = {
-                    "Chi-yo, Chiyo Chiyo Chiyono O!",
-                    "Do-ki doki doki doki do-ki~?",
-                    "Chi-yo, Chiyo Chiyo Chiyono O!",
-                    "Suuki, suki suki shugi Chiyono O!"
+                    "Converts a played {C:uma_turf}Turf",
+                    "card to a {C:uma_blossom}Blossom {}card",
+                    "after scoring {C:inactive}(max 1)"
                 },
             },
 
@@ -660,14 +659,20 @@ return {
             m_uma_turf = {
                 name = "Turf Card",
                 text = {
-                    "{X:chips,C:white}x#1#{} chips"
+                    "{X:chips,C:white}x#1#{} chips",
+                    "spreads {C:uma_turf}Turf {}to blank playings",
+                    "cards when {C:attention}scored together",
+                    "{C:inactive}(max 1 spread per hand)"
                 },
             },
 
             m_uma_blossom = {
                 name = "Blossom Card",
                 text = {
-                    "{X:chips,C:white}x#1#{} chips"
+                    "{X:chips,C:white}x#1#{} chips",
+                    "spreads {C:uma_turf}Turf {}to blank playings",
+                    "cards when {C:attention}scored together",
+                    "{C:inactive}(max 1 spread per hand)"
                 },
             },
 

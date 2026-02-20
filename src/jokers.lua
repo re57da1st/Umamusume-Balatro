@@ -103,6 +103,7 @@ SMODS.Joker{ --Twin Turbo works wif flush house nyat perfect pair
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult_gain, localize('uma_perfect_pair', 'poker_hands'), card.ability.extra.mult } }
     end,
+
     calculate = function(self, card, context)
         if context.before and not context.blueprint and (next(context.poker_hands['uma_perfect_pair']) or next(context.poker_hands['Flush House'])) then
             -- See note about SMODS Scaling Manipulation on the wiki
@@ -117,6 +118,10 @@ SMODS.Joker{ --Twin Turbo works wif flush house nyat perfect pair
                 mult = card.ability.extra.mult
             }
         end
+    end,
+
+    in_pool = function(self, args)
+        return false
     end
 }
 
@@ -544,18 +549,64 @@ SMODS.Joker{ --Matikanetannhauser
 
 SMODS.Joker{ --Sakura Chiyono O
     key = "chiyono",
-    blueprint_compat = false,
-    rarity = 3,
-    cost = 7,
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 5,
     pos = { x = 3, y = 1 },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
-        return nil
+
+        info_queue[#info_queue+1] = G.P_CENTERS.m_uma_turf
+        info_queue[#info_queue+1] = G.P_CENTERS.m_uma_blossom
+
     end,
 
     calculate = function(self, card, context)
-        return nil
+
+        if context.after then
+            local turf_count = 0
+            local chiyono = #find_joker('j_uma_chiyono')
+            if chiyono > 0 then
+                for iteration = 1, chiyono do
+                    turf_count = 0
+                    for _, v in ipairs(context.scoring_hand) do
+                        if SMODS.has_enhancement(v, "m_uma_turf") then
+                            turf_count = turf_count + 1
+                        end
+                    end
+
+                    
+
+                    if turf_count > 0 then
+                        local target = pseudorandom('turf',1,turf_count)
+                        for _, v in ipairs(context.scoring_hand) do
+                            if SMODS.has_enhancement(v, "m_uma_turf") then
+                                target = target - 1
+                                if target == 0 then
+                                    v:set_ability('m_uma_blossom', nil, true)
+                                    return {
+                                        message = localize('uma_bloom'),
+                                        colour = G.C.UMA.BLOSSOM,
+                                        message_card = v,
+                                        delay = 1
+                                    }
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_uma_turf') or SMODS.has_enhancement(playing_card, 'm_uma_blossom') then
+                return true
+            end
+        end
+        return false
     end
 }
 
@@ -573,6 +624,10 @@ SMODS.Joker{ --Norn Ace
 
     calculate = function(self, card, context)
         return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
     end
 }
 
@@ -665,14 +720,14 @@ SMODS.Joker{ --Still in Love
     pos = { x = 9, y = 0 },
     config = { extra = {
         repetitions = 1,
-        desc_1_1 = localize("uma_love_1_1_obsc"),
-        desc_1_2 = localize("uma_love_1_2_obsc"),
-        desc_1_3 = localize("uma_love_1_3_obsc"),
-        desc_2_1 = localize("uma_love_2_1_obsc"),
-        desc_2_2 = localize("uma_love_2_2_obsc"),
-        desc_2_3 = localize("uma_love_2_3_obsc"),
-        desc_2_4 = localize("uma_love_2_4_obsc"),
-        desc_2_5 = localize("uma_love_2_5_obsc")
+        desc_1_1 = "R%%r%%ge%s a%l",
+        desc_1_2 = "%%%u%%s %l% %th%% %a%d%",
+        desc_1_3 = "%%%r%%%te% %er%a%n bo%s bl%n%%",
+        desc_2_1 = "A pl%%i%g c%r%",
+        desc_2_2 = "th%% %s",
+        desc_2_3 = "%n%%",
+        desc_2_4 = "%e%%%s",
+        desc_2_5 = "a%% n%%%i%% %ls%",
     } },
     atlas = 'j_umas',
 
@@ -767,17 +822,10 @@ To do list:
             lesbians
         
     Joel:
-        Code Chiyono O
-            turns turf cards into blossom cards
         Code Norn Ace
         Retexture unfinished horses
         Fix Bakushin Bug
         Check up on bugs
-
-        Enhancements:
-            Turf
-                gives x1.1 xChips when scored
-                spreads to 1 random card when played with a non-turf card
 
     Potential horses:
         Vivlos
@@ -789,54 +837,13 @@ Checklist
 
 ADD QUEEN RELATED JOKERS
 
-Helios: DONE
-Daiwa: DONE
-Agnes: DONE
-    Splash bug: DONE (could be done better apparently)
-    Check compatbiility with boss "only play 1 hand type"
-Oguri Cap: DONE
-    Oguri Cap no longer eats da game ^^!
-Bakushin: DONE
-    Pause menu bug: DONE 
-    leave/rejoin bug: not fixed
-    Debuff bug: DONE
-
-Twin Turbo: Buff Two Pair, and Perfect Pair more?
-    new poker hand - Perfect Pair: DONE
-        "2 pairs of matching suits with different ranks,",
-        "may be played with 1 other unscored card",
-    	100 Chips x 10 Mult
-        35 l_chips x 3 l_mult
-            
-        Process:
-            Check all cards in hand, and tally up how many of each suit there is
-            if a suit has 4+ cards then
-                then store the name of the suit [suit]
-                check all cards in hand again, and tally up each rank that matches [suit]
-                if there are 2+ entries that have 2+ ranks in hand then
-                    store each matching rank that matches [rank]
-                    return all cards that match [suit] and any [rank]
-                else
-                    return nil
-                end
-            else
-                return nil
-            end
-
-Gold Ship: Smth silly
-
-Mambo: Has base chips, mult, and Xmult, values increase as certain consumeable cards show up and are bought/used for each
+Twin Turbo: Perfect Pair
+    Fix perfect pair to trigger properly when wild cards are in play
 
 Chiyono O: no clue
 
 Norn Ace: no clue
 
-Obey Your Master: no clue
-
-
-
-
-    
 
 
 Matthew ideas:

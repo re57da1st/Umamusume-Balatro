@@ -15,7 +15,9 @@ G.C.UMA = { --Colors Definition 1
     BETTER_TAROT = HEX("BE785A"),
     BETTER_TAROT2 = HEX("F7A985"),
     BETTER_PLANET = HEX("5B64AA"),
-    BETTER_PLANET2 = HEX("848FD2")
+    BETTER_PLANET2 = HEX("848FD2"),
+    TURF = HEX("70922D"),
+    BLOSSOM = HEX("EFA7CD")
 }
 
 local loc_colour_ref = loc_colour
@@ -37,6 +39,8 @@ function loc_colour(_c, _default) --Colors Definition 2
     G.ARGS.LOC_COLOURS.uma_col_better_tarot2 = G.C.UMA.BETTER_TAROT2
     G.ARGS.LOC_COLOURS.uma_col_better_planet = G.C.UMA.BETTER_PLANET
     G.ARGS.LOC_COLOURS.uma_col_better_planet2 = G.C.UMA.BETTER_PLANET2
+    G.ARGS.LOC_COLOURS.uma_turf = G.C.UMA.TURF
+    G.ARGS.LOC_COLOURS.uma_blossom = G.C.UMA.BLOSSOM
     return loc_colour_ref(_c, _default)
 end
 
@@ -65,66 +69,29 @@ end
 
 function SMODS.current_mod.calculate(self, context) --Spread code for turf and blossom cards
     if context.after then
-
-        local turf_count, normal_count = 0, 0
-        local chiyono = #find_joker('j_uma_chiyono')
-        print("Chiyono count: "..chiyono)
-        if chiyono > 0 then
-            for _ = 1, chiyono do
-                for _, v in ipairs(context.scoring_hand) do
-                    if next(SMODS.get_enhancements(v)) == "m_uma_turf" then
-                        turf_count = turf_count + 1
-                    end
-                end
-                print("turf cards: "..turf_count)
-                if turf_count > 0 then
-                    local target = pseudorandom('turf',1,turf_count)
-                    print("selecter: "..target)
-
-                    for _, v in ipairs(context.scoring_hand) do
-                        if next(SMODS.get_enhancements(v)) == "m_uma_turf" then
-                            target = target - 1
-                            if target == 0 then
-                                G.E_MANAGER:add_event(Event({
-                                    func = function()
-                                        v:set_ability('m_uma_blossom')
-                                        return {
-                                            message = localize("uma_bloom"),
-                                            colour = G.C.GREEN,
-                                            message_card = v,
-                                            delay = 1
-                                        }
-                                    end
-                                }))
-                            end
-                        end
-                    end
-                end
-            end
-        end
-        turf_count = 0
+        turf_count, normal_count = 0, 0
         for _, v in ipairs(context.scoring_hand) do
-            if next(SMODS.get_enhancements(v)) == "m_uma_turf" or next(SMODS.get_enhancements(v)) == "m_uma_blossom" then
+            if SMODS.has_enhancement(v, "m_uma_turf") or SMODS.has_enhancement(v, "m_uma_blossom") then
                 turf_count = turf_count + 1
             end
-            if next(SMODS.get_enhancements(v)) == "m_stone" or not next(SMODS.get_enhancements(v)) then
+            if SMODS.has_enhancement(v, "m_stone") or not next(SMODS.get_enhancements(v) or {}) then
                 normal_count = normal_count + 1
             end
         end
         if turf_count * normal_count > 0 then
             local target = pseudorandom('turf',1,normal_count)
             for _, v in ipairs(context.scoring_hand) do
-                if next(SMODS.get_enhancements(v)) == "m_stone" or not next(SMODS.get_enhancements(v)) then
+                if SMODS.has_enhancement(v, "m_stone") or not next(SMODS.get_enhancements(v) or {}) then
                     target = target - 1
                     if target == 0 then
-                        if next(SMODS.get_enhancements(v)) == "m_stone" then
+                        if SMODS.has_enhancement(v, "m_stone") then
                             v:set_ability('m_uma_mossy', nil, true)
                         else
                             v:set_ability('m_uma_turf', nil, true)
                         end
                         return {
-                            message = localize("uma_spread"),
-                            colour = G.C.GREEN,
+                            message = localize('uma_spread'),
+                            colour = G.C.UMA.TURF,
                             message_card = v,
                             delay = 1
                         }
