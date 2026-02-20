@@ -124,7 +124,7 @@ SMODS.Joker{ --Twin Turbo works wif flush house nyat perfect pair
         return false
     end
 }
-
+--Effect 1 doesn't work
 SMODS.Joker{ --Goldship
     key = "goldship",
     blueprint_compat = true,
@@ -723,6 +723,7 @@ SMODS.Joker{ --Still in Love
         desc_2_5 = "a%% n%%%i%% %ls%",
     } },
     atlas = 'j_umas',
+    soul_pos = { x = 8, y = 2 },
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = {
@@ -744,7 +745,8 @@ SMODS.Joker{ --Still in Love
 
     calculate = function(self, card, context)
 
-        card.children.center:set_sprite_pos{ x = 9, y = (SMODS.find_card("j_uma_love") and 0 or 0) }
+        card.children.center:set_sprite_pos{ x = 9, y = (SMODS.find_card("j_uma_love") and 1 or 0) }
+        card.children.floating_sprite:set_sprite_pos{ x = (SMODS.find_card("j_uma_love") and 9 or 8), y = 2 }
 
         if context.repetition and context.cardarea == G.play and context.other_card:is_suit("Hearts") then
             return {
