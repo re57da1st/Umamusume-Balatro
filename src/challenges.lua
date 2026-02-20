@@ -152,6 +152,22 @@ SMODS.Challenge { --Norn Ace
     restrictions = {}
 }
 
+SMODS.Challenge { --All Lesbians
+    key = 'oops_all_lesbians',
+    rules = {
+        custom = {},
+        modifiers = {}
+    },
+    jokers = {
+        {id = 'j_uma_daiwa'},
+        {id = 'j_uma_vodka'},
+        {id = 'j_uma_agnes'},
+    },
+    consumeables = {},
+    vouchers = {},
+    restrictions = {}
+}
+
 SMODS.Challenge { --Obey Your Master
     key = 'obey_challenge',
     rules = {

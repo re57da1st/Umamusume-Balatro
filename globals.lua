@@ -17,7 +17,8 @@ G.C.UMA = { --Colors Definition 1
     BETTER_PLANET = HEX("5B64AA"),
     BETTER_PLANET2 = HEX("848FD2"),
     TURF = HEX("70922D"),
-    BLOSSOM = HEX("EFA7CD")
+    BLOSSOM = HEX("EFA7CD"),
+    CHULT = HEX('D002F0'),
 }
 
 local loc_colour_ref = loc_colour
@@ -41,6 +42,7 @@ function loc_colour(_c, _default) --Colors Definition 2
     G.ARGS.LOC_COLOURS.uma_col_better_planet2 = G.C.UMA.BETTER_PLANET2
     G.ARGS.LOC_COLOURS.uma_turf = G.C.UMA.TURF
     G.ARGS.LOC_COLOURS.uma_blossom = G.C.UMA.BLOSSOM
+    G.ARGS.LOC_COLOURS.chult = G.C.UMA.CHULT
     return loc_colour_ref(_c, _default)
 end
 

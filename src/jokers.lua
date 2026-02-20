@@ -92,7 +92,7 @@ SMODS.Joker{ --Agnes Digital
     end
 }
 
-SMODS.Joker{ --Twin Turbo works wif flush house nyat perfect pair
+SMODS.Joker{ --Twin Turbo
     key = "turbo",
     blueprint_compat = false,
     rarity = 1,
@@ -163,7 +163,7 @@ SMODS.Joker{ --Goldship
 
         if context.setting_blind then --Choose random effect at blind start
 
-            card.ability.extra.randomBlind = 1--pseudorandom('goldship', card.ability.extra.bottom, card.ability.extra.top)
+            card.ability.extra.randomBlind = pseudorandom('goldship', card.ability.extra.bottom, card.ability.extra.top)
             if G.playing_cards then
                 for _, playing_card in ipairs(G.playing_cards) do
                     SMODS.recalc_debuff(playing_card)
@@ -803,13 +803,40 @@ SMODS.Joker{ --Still in Love
     end,
 }
 
+
+SMODS.Joker{ --Vodka
+    key = "vodka",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 2,
+    pos = { x = 4, y = 1 },
+    atlas = 'j_umas',
+    config = { extra = { mult = 5, chips = 10} },
+
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult, card.ability.extra.chips } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and context.other_card:get_id() == 12 then
+            context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + card.ability.extra.mult
+            context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) + card.ability.extra.chips
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.UMA.CHULT
+            }
+        end
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
 --[[
 
 To do list:
     Frisk:
-        Code Twin Turbo
-        Code Goldship
-        Code Fuku
+
+
     Potential horses:
         uper eek
         air goove
