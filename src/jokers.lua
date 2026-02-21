@@ -877,6 +877,8 @@ To do list:
         MEISHO DOTOOOOO
         robo horse
         mayano top gun
+        bel-woah
+        mini thelady
         
     Joel:
         Texturing:
