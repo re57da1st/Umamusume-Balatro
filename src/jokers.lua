@@ -834,23 +834,28 @@ SMODS.Joker{ --Tokai Teio
     cost = 2,
     pos = { x = 8, y = 1 },
     atlas = 'j_umas',
-    config = { extra = { odds = 2} },
+    config = { extra = { odds = 2, hospital = 0, recovery = 2, maxBuff = 2,  Xmult = 1.25} },
 
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'teio')
         return {vars = {
-            numerator, denominator
+            numerator, denominator, card.ability.extra.recovery, card.ability.extra.maxBuff, card.ability.extra.Xmult
         }}
     end,
 
     calculate = function(self, card, context)
         if context.after then
-            if SMODS.pseudorandom_probability(card, 'teio', 1, card.ability.extra.odds) then
-                print('boke leg vv')
-            else
-                print('leg safe! ^^')
+            if SMODS.pseudorandom_probability(card, 'teio', 1, card.ability.extra.odds) and card.ability.extra.maxBuff ~= 0 then
+                card.ability.extra.hospital = card.ability.extra.recovery
+                print(card.ability.extra.hospital)
+               SMODS.debuff_card(card, true, 'breakLeg')
             end
         end
+        if context.joker_main and card.ability.extra.hospital <= 0 then
+                    return {
+                        xmult = card.ability.extra.Xmult
+                    }
+                end
     end,
 
     in_pool = function(self, args)

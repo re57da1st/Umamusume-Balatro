@@ -118,3 +118,25 @@ function SMODS.current_mod.calculate(self, context) --Spread code for turf and b
         end
     end
 end
+
+
+
+
+
+
+
+function SMODS.current_mod.calculate(self, context)
+    if context.blind_defeated then
+        print("Defeated!")
+            for _, v in ipairs(SMODS.find_card('j_uma_teio', true)) do
+                print('teio found')
+                v.ability.extra.hospital = v.ability.extra.hospital - 1
+                print(v.ability.extra.hospital)
+                if v.ability.extra.hospital == 0 then
+                    SMODS.debuff_card(v, false, 'breakLeg')
+                    v.ability.extra.maxBuff = v.ability.extra.maxBuff - 1
+                    v.ability.extra.Xmult = v.ability.extra.Xmult * 2
+                end
+            end
+        end
+    end
