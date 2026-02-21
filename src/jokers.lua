@@ -867,7 +867,6 @@ SMODS.Joker{ --Tokai Teio
 To do list:
     Frisk:
 
-
     Potential horses:
         uper eek
         air goove
@@ -880,10 +879,21 @@ To do list:
         mayano top gun
         
     Joel:
+        Texturing:
+            Twin Turbo
+            Chiyono
+            Norn Ace
+            Vodka
+            Teio
+            Turf Cards
+                Turf
+                Blossom
+                Dirt
+            Boosters:
+                Add Booster variation
+
         Code Norn Ace
-        Retexture unfinished horses
-        Fix Bakushin Bug
-        Check up on bugs
+        Fix Bug(s)
 
     Potential horses:
         Vivlos
