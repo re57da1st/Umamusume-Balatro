@@ -54,6 +54,32 @@ SMODS.Atlas({ --Booster (P)acks
     py = 95
 })
 
+--Pools
+
+--Uma Jokers
+--eval SMODS.add_card({set = "uma_jokers"})
+SMODS.ObjectType({
+    key = "uma_jokers",
+    default = "j_uma_norn",
+    cards = {
+        j_uma_helios = true,
+        j_uma_daiwa = true,
+        j_uma_agnes = true,
+        j_uma_turbo = true,
+        j_uma_goldship = true,
+        j_uma_oguri = true,
+        j_uma_bakushin = true,
+        j_uma_mambo = true,
+        j_uma_chiyono = true,
+        j_uma_norn = true,
+        j_uma_obey = true,
+        j_uma_fuku = true,
+        j_uma_love = true,
+        j_uma_vodka = true,
+        j_uma_teio = true,
+    },
+})
+
 --Hooks
 local oldgfuncsplaycardsfromhighlighted = G.FUNCS.play_cards_from_highlighted
 G.FUNCS.play_cards_from_highlighted = function(e) --Agnes Hook to make sure cards don't get undairly debuffed
@@ -71,3 +97,4 @@ function Card:can_sell_card(context) --Hook for cards to stop negative sell valu
     end
     return check
 end
+

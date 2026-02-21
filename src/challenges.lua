@@ -407,7 +407,7 @@ SMODS.Challenge { --All Horsies >.<
     restrictions = {}
 }
 
-SMODS.Challenge { --All functional jokers
+SMODS.Challenge { --All functional horses
     key = 'functional',
     rules = {
         custom = {},
@@ -429,6 +429,7 @@ SMODS.Challenge { --All functional jokers
         {id = 'j_uma_bakushin'},
         {id = 'j_uma_mambo'},
         {id = 'j_uma_chiyono'},
+        {id = 'j_uma_norn'},
         {id = 'j_uma_obey'},
         {id = 'j_uma_fuku'},
         {id = 'j_uma_love'},
@@ -440,7 +441,7 @@ SMODS.Challenge { --All functional jokers
     restrictions = {}
 }
 
-SMODS.Challenge { --All textures jokers
+SMODS.Challenge { --All textures horses
     key = 'textured',
     rules = {
         custom = {},

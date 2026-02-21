@@ -613,22 +613,32 @@ SMODS.Joker{ --Sakura Chiyono O
 
 SMODS.Joker{ --Norn Ace
     key = "norn",
-    blueprint_compat = false,
+    blueprint_compat = true,
     rarity = 1,
-    cost = 2,
+    cost = 3,
     pos = { x = 4, y = 1 },
+    config = { extra = { dollars = 3, uma_count = 0 } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
-        return nil
+        return { vars = {
+            card.ability.extra.dollars,
+            card.ability.extra.dollars * card.ability.extra.uma_count
+        } }
     end,
 
     calculate = function(self, card, context)
-        return nil
+        local count = 0
+        for _, v in ipairs(G.jokers.cards) do
+            if v.config.center.pools and v.config.center.pools['uma_jokers'] then
+                count = count + 1
+            end
+        end
+        card.ability.extra.uma_count = count
     end,
 
-    in_pool = function(self, args)
-        return false
+    calc_dollar_bonus = function(self, card)
+        return card.ability.extra.dollars * card.ability.extra.uma_count
     end
 }
 
@@ -815,6 +825,7 @@ SMODS.Joker{ --Vodka
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult, card.ability.extra.chips } }
     end,
+
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card:get_id() == 12 then
             context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + card.ability.extra.mult
@@ -855,10 +866,6 @@ SMODS.Joker{ --Tokai Teio
                 }
             end
         end
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
@@ -883,13 +890,10 @@ To do list:
     Joel:
         Texturing:
             Twin Turbo
-            Chiyono
             Norn Ace
             Vodka
             Teio
             Turf Cards
-                Turf
-                Blossom
                 Dirt
             Boosters:
                 Add Booster variation
@@ -940,5 +944,4 @@ Matthew ideas:
 
 	Stable Deck:
 		Every Horse card trigger gives $5, and increases base boss blind by 5% - 15%
-
 ]]--

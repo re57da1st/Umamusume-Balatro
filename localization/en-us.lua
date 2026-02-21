@@ -94,7 +94,9 @@ return {
             j_uma_norn = {
                 name = "Norn Ace",
                 text = {
-                    "The 2nd most obessive horse in this mod"
+                    "Earn {C:money}$#1#{} per {C:attention}Uma",
+                    "joker at end of round",
+                    "{C:inactive}(currently {C:money}$#2#{C:inactive})",
                 },
             },
 
