@@ -898,7 +898,6 @@ To do list:
             Boosters:
                 Add Booster variation
 
-        Code Norn Ace
         Fix Bug(s)
 
     Potential horses:
