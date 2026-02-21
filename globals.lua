@@ -71,8 +71,8 @@ function Uma_weighted_picker(items, weights, seed) --Chooses a random value from
     return items[size]
 end
 
-function SMODS.current_mod.calculate(self, context) --Adds the most recently used Spectral/Tarot/Tarot+/Tarot - and Planet/Planet+ cards to trackable variables
-    if context.using_consumeable then
+function SMODS.current_mod.calculate(self, context)
+    if context.using_consumeable then --Adds the most recently used Spectral/Tarot/Tarot+/Tarot- and Planet/Planet+ cards to trackable variables
         local item = context.consumeable
         if item.ability.set == 'Planet' or item.ability.set == 'uma_Planet' then
             G.GAME.uma_planet_card = item.config.center.key
@@ -82,10 +82,8 @@ function SMODS.current_mod.calculate(self, context) --Adds the most recently use
             end
         end
     end
-end
 
-function SMODS.current_mod.calculate(self, context) --Spread code for turf and blossom cards
-    if context.after then
+    if context.after then --Spread code for turf and blossom cards
         turf_count, normal_count = 0, 0
         for _, v in ipairs(context.scoring_hand) do
             if SMODS.has_enhancement(v, "m_uma_turf") or SMODS.has_enhancement(v, "m_uma_blossom") then
@@ -117,26 +115,18 @@ function SMODS.current_mod.calculate(self, context) --Spread code for turf and b
             end
         end
     end
-end
 
-
-
-
-
-
-
-function SMODS.current_mod.calculate(self, context)
-    if context.blind_defeated then
-        print("Defeated!")
-            for _, v in ipairs(SMODS.find_card('j_uma_teio', true)) do
-                print('teio found')
-                v.ability.extra.hospital = v.ability.extra.hospital - 1
-                print(v.ability.extra.hospital)
-                if v.ability.extra.hospital == 0 then
-                    SMODS.debuff_card(v, false, 'breakLeg')
-                    v.ability.extra.maxBuff = v.ability.extra.maxBuff - 1
-                    v.ability.extra.Xmult = v.ability.extra.Xmult * 2
-                end
+    if context.blind_defeated then --Tokai Teio un-debuff function (Since she can't un-debuff herself)
+        --print("Defeated!")
+        for _, v in ipairs(SMODS.find_card('j_uma_teio', true)) do
+            --print('teio found')
+            v.ability.extra.hospital = v.ability.extra.hospital - 1
+            print(v.ability.extra.hospital)
+            if v.ability.extra.hospital == 0 then
+                SMODS.debuff_card(v, false, 'breakLeg')
+                v.ability.extra.maxBuff = v.ability.extra.maxBuff - 1
+                v.ability.extra.Xmult = v.ability.extra.Xmult * v.ability.extra.Xmult_mod
             end
         end
     end
+end

@@ -138,11 +138,11 @@ return {
             j_uma_teio = {
                 name = "Tokai Teio",
                 text = {
-                    "{C:green}#2# in #3#{} to bake leg vv",
-                    "Teio Teio Teio",
-                    "Teio Teio Teio",
-                    "Teio, Teio",
-                    "Tei-oh oh!!!!",
+                    "{X:mult,C:white}X#5#{} Mult",
+                    "{C:green}#1# in #2#{} chance to debuff herself",
+                    "un-debuffs after {C:attention}#3# {}blinds",
+                    "and multiplies by {X:mult,C:white}X#6#",
+                    "{C:inactive}({C:attention}#4# {C:inactive}debuffs left)",
                 },
             },
         },

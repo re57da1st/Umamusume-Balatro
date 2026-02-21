@@ -51,13 +51,68 @@ SMODS.Challenge { --Twin Turbo
     jokers = {
         {id = 'j_uma_turbo'}
     },
-    deck = {},
+    deck = {
+        type = 'Challenge Deck',
+        cards = {
+            { s = 'S', r = 'Q'},
+            { s = 'S', r = 'Q'},
+            { s = 'S', r = 'T'},
+            { s = 'S', r = 'T'},
+            { s = 'S', r = '8'},
+            { s = 'S', r = '8'},
+            { s = 'S', r = '6'},
+            { s = 'S', r = '6'},
+            { s = 'S', r = '4'},
+            { s = 'S', r = '4'},
+            { s = 'S', r = '2'},
+            { s = 'S', r = '2'},
+            { s = 'H', r = 'Q'},
+            { s = 'H', r = 'Q'},
+            { s = 'H', r = 'T'},
+            { s = 'H', r = 'T'},
+            { s = 'H', r = '8'},
+            { s = 'H', r = '8'},
+            { s = 'H', r = '6'},
+            { s = 'H', r = '6'},
+            { s = 'H', r = '4'},
+            { s = 'H', r = '4'},
+            { s = 'H', r = '2'},
+            { s = 'H', r = '2'},
+            { s = 'C', r = 'Q'},
+            { s = 'C', r = 'Q'},
+            { s = 'C', r = 'T'},
+            { s = 'C', r = 'T'},
+            { s = 'C', r = '8'},
+            { s = 'C', r = '8'},
+            { s = 'C', r = '6'},
+            { s = 'C', r = '6'},
+            { s = 'C', r = '4'},
+            { s = 'C', r = '4'},
+            { s = 'C', r = '2'},
+            { s = 'C', r = '2'},
+            { s = 'D', r = 'Q'},
+            { s = 'D', r = 'Q'},
+            { s = 'D', r = 'T'},
+            { s = 'D', r = 'T'},
+            { s = 'D', r = '8'},
+            { s = 'D', r = '8'},
+            { s = 'D', r = '6'},
+            { s = 'D', r = '6'},
+            { s = 'D', r = '4'},
+            { s = 'D', r = '4'},
+            { s = 'D', r = '2'},
+            { s = 'D', r = '2'}
+        }
+    },
     consumeables = {
         {id = 'c_uma_twin_moons'}
     },
     vouchers = {},
     restrictions = {}
 }
+
+
+--{ s = 'D', r = 'Q', e = 'm_steel', d = 'polychrome', g = 'Red' }
 
 SMODS.Challenge { --Goldship
     key = 'goldship_challenge',
