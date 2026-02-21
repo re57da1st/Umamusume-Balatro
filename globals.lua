@@ -130,3 +130,5 @@ function SMODS.current_mod.calculate(self, context)
         end
     end
 end
+
+--for _, v in ipairs(G.playing_cards) do v:set_ability('m_uma_blossom') end

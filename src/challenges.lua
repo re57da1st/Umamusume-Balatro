@@ -111,9 +111,6 @@ SMODS.Challenge { --Twin Turbo
     restrictions = {}
 }
 
-
---{ s = 'D', r = 'Q', e = 'm_steel', d = 'polychrome', g = 'Red' }
-
 SMODS.Challenge { --Goldship
     key = 'goldship_challenge',
     rules = {
@@ -185,8 +182,64 @@ SMODS.Challenge { --Sakura Chiyono O
         modifiers = {}
     },
     jokers = {
-        {id = 'j_uma_chiyono'},
         {id = 'j_uma_chiyono'}
+    },
+    deck = {
+        type = 'Challenge Deck',
+        cards = {
+            { s = 'S', r = 'A', e = 'm_uma_turf'},
+            { s = 'S', r = 'K'},
+            { s = 'S', r = 'Q'},
+            { s = 'S', r = 'J'},
+            { s = 'S', r = 'T'},
+            { s = 'S', r = '9'},
+            { s = 'S', r = '8'},
+            { s = 'S', r = '7'},
+            { s = 'S', r = '6'},
+            { s = 'S', r = '5'},
+            { s = 'S', r = '4'},
+            { s = 'S', r = '3'},
+            { s = 'S', r = '2'},
+            { s = 'H', r = 'A', e = 'm_uma_turf'},
+            { s = 'H', r = 'K'},
+            { s = 'H', r = 'Q'},
+            { s = 'H', r = 'J'},
+            { s = 'H', r = 'T'},
+            { s = 'H', r = '9'},
+            { s = 'H', r = '8'},
+            { s = 'H', r = '7'},
+            { s = 'H', r = '6'},
+            { s = 'H', r = '5'},
+            { s = 'H', r = '4'},
+            { s = 'H', r = '3'},
+            { s = 'H', r = '2'},
+            { s = 'C', r = 'A', e = 'm_uma_turf'},
+            { s = 'C', r = 'K'},
+            { s = 'C', r = 'Q'},
+            { s = 'C', r = 'J'},
+            { s = 'C', r = 'T'},
+            { s = 'C', r = '9'},
+            { s = 'C', r = '8'},
+            { s = 'C', r = '7'},
+            { s = 'C', r = '6'},
+            { s = 'C', r = '5'},
+            { s = 'C', r = '4'},
+            { s = 'C', r = '3'},
+            { s = 'C', r = '2'},
+            { s = 'D', r = 'A', e = 'm_uma_turf'},
+            { s = 'D', r = 'K'},
+            { s = 'D', r = 'Q'},
+            { s = 'D', r = 'J'},
+            { s = 'D', r = 'T'},
+            { s = 'D', r = '9'},
+            { s = 'D', r = '8'},
+            { s = 'D', r = '7'},
+            { s = 'D', r = '6'},
+            { s = 'D', r = '5'},
+            { s = 'D', r = '4'},
+            { s = 'D', r = '3'},
+            { s = 'D', r = '2'},
+        }
     },
     consumeables = {},
     vouchers = {},
