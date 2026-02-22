@@ -147,6 +147,16 @@ return {
                     "{C:inactive}({C:attention}#4# {C:inactive}debuffs left)",
                 },
             },
+
+            j_uma_mini = {
+                name = "Mini the Lady",
+                text = {
+                    "short stuff",
+                    "short stuff",
+                    "short stuff",
+                    "short stuff",
+                },
+            },
         },
 
         Planet = {

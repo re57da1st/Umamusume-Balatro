@@ -869,12 +869,13 @@ SMODS.Joker{ --Tokai Teio
     end
 }
 
-SMODS.Joker{ --mini the lady
+SMODS.Joker{ --Mini the Lady
     key = "mini",
     blueprint_compat = true,
     rarity = 2,
     cost = 5,
     pos = { x = 0, y = 2 },
+    display_size = { w = 71 * 0.7, h = 95 * 0.7 },
     atlas = 'j_umas',
     config = { extra = { odds = 1, time = 5}},
 
@@ -900,7 +901,7 @@ SMODS.Joker{ --mini the lady
                 end
             end
         end
-end
+    end
 }
 --[[
 
