@@ -1,6 +1,6 @@
 --Mod File Loading
 assert(SMODS.load_file("globals.lua"))()
-assert(SMODS.load_file("src/jokers.lua"))()
+assert(SMODS.load_file("src/jokers.lua"))() -- Jokers load here
 assert(SMODS.load_file("src/challenges.lua"))()
 assert(SMODS.load_file("src/pokerhands.lua"))()
 assert(SMODS.load_file("src/planets.lua"))()
@@ -9,7 +9,7 @@ assert(SMODS.load_file("src/other_consumables.lua"))()
 assert(SMODS.load_file("src/enhancements.lua"))()
 assert(SMODS.load_file("src/boosters.lua"))()
 
-if JokerDisplay then SMODS.load_file("src/joker_display_definitions.lua")() end
+if JokerDisplay then SMODS.load_file("src/joker_display_definitions.lua")() end --Joker Display loads here
 
 --Atlas Definitions
 SMODS.Atlas({ --Mod Icon

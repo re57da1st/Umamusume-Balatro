@@ -148,6 +148,17 @@ SMODS.Joker{ --Goldship
             "uma_goldship_effect6",
             "uma_goldship_effect7",
             "uma_goldship_effect8",
+        },
+        effects_jd = {
+            "uma_goldship_no_effect_jd",
+            "uma_goldship_effect1_jd",
+            "uma_goldship_effect2_jd",
+            "uma_goldship_effect3_jd",
+            "uma_goldship_effect4_jd",
+            "uma_goldship_effect5_jd",
+            "uma_goldship_effect6_jd",
+            "uma_goldship_effect7_jd",
+            "uma_goldship_effect8_jd",
         }
     }},
 
