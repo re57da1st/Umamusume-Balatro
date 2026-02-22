@@ -874,9 +874,9 @@ SMODS.Joker{ --mini the lady
     blueprint_compat = true,
     rarity = 2,
     cost = 5,
-    pos = { x = 7, y = 1 },
+    pos = { x = 0, y = 2 },
     atlas = 'j_umas',
-    config = { extra = { odds = 2, time = 5},
+    config = { extra = { odds = 1, time = 5}},
 
     loc_vars = function(self, info_queue, card)
         return {vars = {
@@ -886,16 +886,21 @@ SMODS.Joker{ --mini the lady
 
     calculate = function(self, card, context)
         if context.joker_main then
-            if time == 0 then
+            if card.ability.extra.time == 5 then
                 if SMODS.pseudorandom_probability(card, 'mini', 1, card.ability.extra.odds) then
-                    -- debuff random joker that ISNT mini
+                    if context.debuff_card and context.debuff_card.area == G.jokers then
+                        if context.setting_blind then
+                            return {
+                                debuff = true
+                            }
+                        end
+                    end
                 else
-                    -- retrigger joker
+                    return nil
                 end
             end
         end
 end
-}
 }
 --[[
 
