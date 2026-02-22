@@ -812,7 +812,8 @@ return {
             c_uma_textured = "Everyone who's textured",
             c_uma_testIskIdea = "Special Tarot Tests",
             c_uma_testIskIdea2 = "Non-special Tarot Tests",
-            c_uma_oops_all_lesbians = "Oops! All Lesbians!"
+            c_uma_oops_all_lesbians = "Oops! All Lesbians!",
+            c_uma_mini_challenge = "mini",
         },
 
         dictionary = {

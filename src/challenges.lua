@@ -350,6 +350,20 @@ SMODS.Challenge { --Tokai Teio
     restrictions = {}
 }
 
+SMODS.Challenge { --mini
+    key = 'mini_challenge',
+    rules = {
+        custom = {},
+        modifiers = {}
+    },
+    jokers = {
+        {id = 'j_uma_mini'}
+    },
+    consumeables = {},
+    vouchers = {},
+    restrictions = {}
+}
+
 SMODS.Challenge { --All Legendaries
     key = 'legends',
     rules = {
