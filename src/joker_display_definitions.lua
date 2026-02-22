@@ -149,69 +149,20 @@ jd_def["j_uma_turbo"] = { --Twin Turbo
         card.joker_display_values.localized_text = localize(card.ability.hand_type, 'poker_hands')
     end
 }
---[[
-jd_def["j_uma_goldship"] = { --Goldship (breaks the entire game rn)
-    text = {
-        { text = "+", colour = G.C.MULT },
-        {
-            dynatext = {
-                string = (
-                    function()
-                        local r_mult = {}
-                        for i = G.P_CENTERS["j_uma_goldship"].config.extra.min, G.P_CENTERS["j_uma_goldship"].config.extra.max do
-                            r_mult[#r_mult + 1] = tostring(i)
-                        end
-                        return r_mult
-                    end
-                )(),
-                colours = { G.C.MULT },
-                pop_in_rate = 9999999,
-                silent = true,
-                random_element = true,
-                pop_delay = 0.5,
-                scale = 0.4,
-                min_cycle_time = 0
-            }
-        }
-    }
-}
-]]
 
+--Goldship's joker display definition is inside her joker definition, due to a priority issue with dynamic text loading
 
---[[
-jd_def["j_uma_goldship"] = { --Goldship
+jd_def["j_uma_norn"] = { --Norn Ace
     text = {
-        { text = "+", colour = G.C.MULT },
-        {
-            dynatext = {
-                string = (
-                    function()
-                        local r_mult = {}
-                        if G.P_CENTERS.j_uma_goldship then
-                            for i = G.P_CENTERS.j_uma_goldship.config.extra.min, G.P_CENTERS.j_uma_goldship.config.extra.max do
-                                r_mult[#r_mult + 1] = tostring(i)
-                            end
-                        end
-                        return r_mult
-                    end
-                )(),
-                colours = { G.C.MULT },
-                pop_in_rate = 9999999,
-                silent = true,
-                random_element = true,
-                pop_delay = 0.5,
-                scale = 0.4,
-                min_cycle_time = 0
-            }
-        },
-        reminder_text = {
-            { text = "(" },
-            { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
-            { text = ")" },
-        },
+        { text = "+$" },
+        { ref_table = "card.joker_display_values", ref_value = "dollars" },
+    },
+    text_config = { colour = G.C.GOLD },
+    reminder_text = {
+        { ref_table = "card.joker_display_values", ref_value = "localized_text" },
     },
     calc_function = function(card)
-        card.joker_display_values.localized_text = "hi"--localize(G.P_CENTERS.j_uma_goldship.config.extra.effects[G.P_CENTERS.j_uma_goldship.config.extra.randomBlind + 1])
+        card.joker_display_values.dollars = card.ability.extra.dollars * card.ability.extra.uma_count
+        card.joker_display_values.localized_text = "(" .. localize("k_round") .. ")"
     end
 }
-]]

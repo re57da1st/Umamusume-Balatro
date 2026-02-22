@@ -1,3 +1,4 @@
+--Joker definitions
 SMODS.Joker{ --Daitaku Helios
     key = "helios",
     blueprint_compat = true,
@@ -160,7 +161,7 @@ SMODS.Joker{ --Goldship
             "uma_goldship_effect7_jd",
             "uma_goldship_effect8_jd",
         }
-    }},
+    } },
 
     loc_vars = function(self, info_queue, card)
         return { vars = {
@@ -344,6 +345,42 @@ SMODS.Joker{ --Goldship
         --print(card.ability.extra.randomBlind)
         --print('yay!!!!')
     end,
+
+    joker_display_def = function(JokerDisplay)
+        return {
+            text = {
+                { text = "+", colour = G.C.MULT },
+                {
+                    dynatext = {
+                        string = (
+                            function()
+                                local r_mult = {}
+                                for i = G.P_CENTERS.j_uma_goldship.config.extra.min, G.P_CENTERS.j_uma_goldship.config.extra.max do
+                                    r_mult[#r_mult + 1] = tostring(i)
+                                end
+                                return r_mult
+                            end
+                        )(),
+                        colours = { G.C.MULT },
+                        pop_in_rate = 9999999,
+                        silent = true,
+                        random_element = true,
+                        pop_delay = 0.5,
+                        scale = 0.4,
+                        min_cycle_time = 0
+                    }
+                }
+            },
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
+                { text = ")" },
+            },
+            calc_function = function(card)
+                card.joker_display_values.localized_text = localize(card.ability.extra.effects_jd[card.ability.extra.randomBlind + 1])
+            end
+        }
+    end
 }
 --Doesn't eat lowest "buffed" card if all cards lower ranked are debuffed
 SMODS.Joker{ --Oguri Cap
@@ -822,6 +859,48 @@ SMODS.Joker{ --Still in Love
             card.ability.extra.desc_2_5 = localize("uma_love_2_5_obsc")
         end
     end,
+
+    joker_display_def = function(JokerDisplay)
+        return {
+            text = {
+                {
+                    dynatext = {
+                        string = (
+                            function()
+                                local text = "You're mine..."
+                                local hash = "@#$%&"
+                                local set = {}
+                                local loops = 10
+                                for _=1, loops do
+                                    local text2 = text
+                                    --set[#set + 1] = text2
+                                    for _=1, 3--[[( string.len(text) / 3 )]] do
+                                        local char = pseudorandom('test', 1, string.len(text))
+                                        local junk = pseudorandom('test', 1, string.len(hash))
+                                        text2 =
+                                            tostring(string.sub(text2, 1, char - string.len(text2) - 2)) ..
+                                            tostring(string.sub( hash, junk, ( junk - string.len( hash ) - 1) )) ..
+                                            tostring(char == string.len(text2) and "" or string.sub(text2, char - string.len(text2)))
+                                        set[#set + 1] = text
+                                        set[#set + 1] = text2
+                                    end
+                                end
+                                return set
+                            end
+                        )(),
+                        colours = { G.C.MULT },
+                        pop_in_rate = 9999999,
+                        silent = true,
+                        random_element = true,
+                        pop_delay = 0.3,
+                        scale = 0.4,
+                        min_cycle_time = 0
+                    }
+                }
+            },
+            text_config = { colour = G.C.RED }
+        }
+    end
 }
 
 SMODS.Joker{ --Vodka
@@ -1280,9 +1359,6 @@ To do list:
         Daring Tact
 
     Joker Display:
-        Goldship
-        Norn Ace
-        Fuku?
         Still in Love?
         Vodka?
         Teio
