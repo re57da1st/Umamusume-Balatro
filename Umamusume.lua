@@ -77,6 +77,23 @@ SMODS.ObjectType({
         j_uma_love = true,
         j_uma_vodka = true,
         j_uma_teio = true,
+
+        --Move above once complete
+        j_uma_mini = true,
+        j_uma_creek = true,
+        j_uma_air = true,
+        j_uma_nature = true,
+        j_uma_maruzensky = true,
+        j_uma_rudolf = true,
+        j_uma_tamamo = true,
+        j_uma_meisho = true,
+        j_uma_bourbon = true,
+        j_uma_mayano = true,
+        j_uma_belno = true,
+        j_uma_vivlos = true,
+        j_uma_neo = true,
+        j_uma_lilac = true,
+        j_uma_tact = true,
     },
 })
 
@@ -97,4 +114,3 @@ function Card:can_sell_card(context) --Hook for cards to stop negative sell valu
     end
     return check
 end
-

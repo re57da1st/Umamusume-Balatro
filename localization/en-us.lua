@@ -157,6 +157,104 @@ return {
                     "short stuff",
                 },
             },
+
+            j_uma_creek = {
+                name = "Super Creek",
+                text = {
+                    "stuff",
+                },
+            },
+
+            j_uma_air = {
+                name = "Air Groove",
+                text = {
+                    "stuff",
+                },
+            },
+
+            j_uma_nature = {
+                name = "Nice Nature",
+                text = {
+                    "stuff",
+                },
+            },
+
+            j_uma_maruzensky = {
+                name = "Maruzensky",
+                text = {
+                    "stuff",
+                },
+            },
+
+            j_uma_rudolf = {
+                name = "Symboli Rudolf",
+                text = {
+                    "stuff",
+                },
+            },
+
+            j_uma_tamamo = {
+                name = "Tamamo Cross",
+                text = {
+                    "stuff",
+                },
+            },
+
+            j_uma_meisho = {
+                name = "Meisho Doto",
+                text = {
+                    "stuff",
+                },
+            },
+
+            j_uma_bourbon = {
+                name = "Mihono Bourbon",
+                text = {
+                    "stuff",
+                },
+            },
+
+            j_uma_mayano = {
+                name = "Mayano Top Gun",
+                text = {
+                    "stuff",
+                },
+            },
+
+            j_uma_belno = {
+                name = "Belno Light",
+                text = {
+                    "stuff",
+                },
+            },
+
+            j_uma_vivlos = {
+                name = "Vivlos",
+                text = {
+                    "stuff",
+                },
+            },
+
+            j_uma_neo = {
+                name = "Neo Universe",
+                text = {
+                    "stuff",
+                },
+            },
+
+            j_uma_lilac = {
+                name = "Lucky Lilac",
+                text = {
+                    "stuff",
+                },
+            },
+
+            j_uma_tact = {
+                name = "Daring Tact",
+                text = {
+                    "stuff",
+                },
+            },
         },
 
         Planet = {
@@ -855,6 +953,7 @@ return {
             uma_not_pure = "Not pure!",
             uma_spread = "Spread!",
             uma_bloom = "Bloom!",
+            
             uma_goldship_no_effect = "No effect currently",
             uma_goldship_effect1 = "Flips and shuffles jokers",
             uma_goldship_effect2 = "Debuff faces cards",
@@ -864,6 +963,16 @@ return {
             uma_goldship_effect6 = "Debuff Hearts",
             uma_goldship_effect7 = "Debuff Clubs",
             uma_goldship_effect8 = "Debuff Diamonds",
+
+            uma_goldship_no_effect_jd = "No effect",
+            uma_goldship_effect1_jd = "Flips + shuffles",
+            uma_goldship_effect2_jd = "Debuff faces",
+            uma_goldship_effect3_jd = "-$1 per card played",
+            uma_goldship_effect4_jd = "Face cards face down",
+            uma_goldship_effect5_jd = "Debuff Spades",
+            uma_goldship_effect6_jd = "Debuff Hearts",
+            uma_goldship_effect7_jd = "Debuff Clubs",
+            uma_goldship_effect8_jd = "Debuff Diamonds",
 
             uma_love_1_1 = "Retriggers all",
             uma_love_1_2 = "debuffs all other cards",

@@ -877,12 +877,12 @@ SMODS.Joker{ --Mini the Lady
     pos = { x = 0, y = 2 },
     display_size = { w = 71 * 0.7, h = 95 * 0.7 },
     atlas = 'j_umas',
-    config = { extra = { odds = 1, time = 5}},
+    config = { extra = { odds = 1, time = 5} },
 
     loc_vars = function(self, info_queue, card)
         return {vars = {
             card.ability.extra.odds
-        }}
+        } }
     end,
 
     calculate = function(self, card, context)
@@ -903,6 +903,346 @@ SMODS.Joker{ --Mini the Lady
         end
     end
 }
+
+
+
+--Definitions for when they're ready
+SMODS.Joker{ --Super Creek
+    key = "creek",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 1, y = 2 },
+    atlas = 'j_umas',
+    config = { extra = { } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Air Groove
+    key = "air",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 2, y = 2 },
+    atlas = 'j_umas',
+    config = { extra = { } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Nice Nature
+    key = "nature",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 3, y = 2 },
+    atlas = 'j_umas',
+    config = { extra = { } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Maruzensky
+    key = "maruzensky",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 4, y = 2 },
+    atlas = 'j_umas',
+    config = { extra = { } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Symboli Rudolf
+    key = "rudolf",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 0, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Tamamo Cross
+    key = "tamamo",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 1, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Meisho Doto
+    key = "meisho",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 2, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Mihono Bourbon
+    key = "bourbon",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 3, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Mayano Top Gun
+    key = "mayano",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 4, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Belno Light
+    key = "belno",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 0, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Vivlos
+    key = "vivlos",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 1, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Neo Universe
+    key = "neo",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 2, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Lucky Lilac
+    key = "lilac",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 3, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Daring Tact
+    key = "tact",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 4, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
 --[[
 
 To do list:
@@ -922,23 +1262,30 @@ To do list:
         mini thelady
         
     Joel:
-        Texturing:
-            Twin Turbo
-            Norn Ace
-            Vodka
-            Teio
-            Turf Cards
-                Dirt
-            Boosters:
-                Add Booster variation
-
-        Fix Bug(s)
-
     Potential horses:
         Vivlos
         Neo universe
         Lucky Lilac
         Daring Tact
+
+    Joker Display:
+        Goldship
+        Norn Ace
+        Fuku?
+        Still in Love?
+        Vodka?
+        Teio
+
+    Texturing:
+        The rest of the horses (prioritize complete jokers)
+        Turf Cards
+            Dirt
+        Boosters:
+            Add Booster variation
+
+    Fix all bugs stated
+
+    
 
 Checklist
 

@@ -132,3 +132,86 @@ jd_def["j_uma_mambo"] = { --Matikanetannhauser
         card.joker_display_values.xmult = card.ability.extra.xmult
     end
 }
+
+jd_def["j_uma_turbo"] = { --Twin Turbo
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.MULT },
+    reminder_text = {
+        { text = "(" },
+        { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
+        { text = ")" },
+    },
+    calc_function = function(card)
+        card.joker_display_values.mult = card.ability.extra.mult
+        card.joker_display_values.localized_text = localize(card.ability.hand_type, 'poker_hands')
+    end
+}
+--[[
+jd_def["j_uma_goldship"] = { --Goldship (breaks the entire game rn)
+    text = {
+        { text = "+", colour = G.C.MULT },
+        {
+            dynatext = {
+                string = (
+                    function()
+                        local r_mult = {}
+                        for i = G.P_CENTERS["j_uma_goldship"].config.extra.min, G.P_CENTERS["j_uma_goldship"].config.extra.max do
+                            r_mult[#r_mult + 1] = tostring(i)
+                        end
+                        return r_mult
+                    end
+                )(),
+                colours = { G.C.MULT },
+                pop_in_rate = 9999999,
+                silent = true,
+                random_element = true,
+                pop_delay = 0.5,
+                scale = 0.4,
+                min_cycle_time = 0
+            }
+        }
+    }
+}
+]]
+
+
+--[[
+jd_def["j_uma_goldship"] = { --Goldship
+    text = {
+        { text = "+", colour = G.C.MULT },
+        {
+            dynatext = {
+                string = (
+                    function()
+                        local r_mult = {}
+                        if G.P_CENTERS.j_uma_goldship then
+                            for i = G.P_CENTERS.j_uma_goldship.config.extra.min, G.P_CENTERS.j_uma_goldship.config.extra.max do
+                                r_mult[#r_mult + 1] = tostring(i)
+                            end
+                        end
+                        return r_mult
+                    end
+                )(),
+                colours = { G.C.MULT },
+                pop_in_rate = 9999999,
+                silent = true,
+                random_element = true,
+                pop_delay = 0.5,
+                scale = 0.4,
+                min_cycle_time = 0
+            }
+        },
+        reminder_text = {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
+            { text = ")" },
+        },
+    },
+    calc_function = function(card)
+        card.joker_display_values.localized_text = "hi"--localize(G.P_CENTERS.j_uma_goldship.config.extra.effects[G.P_CENTERS.j_uma_goldship.config.extra.randomBlind + 1])
+    end
+}
+]]
