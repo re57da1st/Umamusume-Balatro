@@ -37,6 +37,7 @@ return {
                 name = "Twin Turbo",
                 text = {
                     "This Joker gains {C:mult}+#1#{} Mult",
+                    "and levels up {C:attention}played hand",
                     "if played hand contains",
                     "a {C:attention}#2#",
                     "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult)",
@@ -87,7 +88,8 @@ return {
                 text = {
                     "Converts a played {C:uma_turf}Turf",
                     "card to a {C:uma_blossom}Blossom {}card",
-                    "after scoring {C:inactive}(max 1)"
+                    "after scoring",
+                    "{C:inactive}(max 1 per hand)"
                 },
             },
 

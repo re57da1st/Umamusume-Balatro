@@ -1359,8 +1359,6 @@ To do list:
         Daring Tact
 
     Joker Display:
-        Still in Love?
-        Vodka?
         Teio
 
     Texturing:
