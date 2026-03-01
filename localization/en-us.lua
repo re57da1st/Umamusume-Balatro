@@ -249,7 +249,9 @@ return {
             j_uma_neo = {
                 name = "Neo Universe",
                 text = {
-                    "stuff",
+                    "Create a {C:planet}Planet{} card",
+                    "when {C:attention}Blind{} is selected",
+                    "{C:inactive}(Must have room)",
                 },
             },
 

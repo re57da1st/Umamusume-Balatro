@@ -254,6 +254,6 @@ jd_def["j_uma_lilac"] = {
         end
         card.joker_display_values.count = count
         card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { (G.GAME and G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
-        card.joker_display_values.localized_text = "Wild Cards"
+        card.joker_display_values.localized_text = "Lucky Cards"
     end
 }

@@ -1025,6 +1025,39 @@ SMODS.Joker{ --Lucky Lilac
     end
 }
 
+SMODS.Joker{ --Neo Universe
+    key = "neo",
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 6,
+    pos = { x = 2, y = 4 },
+    atlas = 'j_umas',
+
+    calculate = function(self, card, context)
+        if context.setting_blind and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+            G.E_MANAGER:add_event(Event({
+                func = (function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            SMODS.add_card {
+                                set = 'Planet',
+                                key_append = 'planet'
+                            }
+                            G.GAME.consumeable_buffer = 0
+                            return true
+                        end
+                    }))
+                    SMODS.calculate_effect({ message = localize('k_plus_planet'), colour = G.C.WHITE },
+                        context.blueprint_card or card)
+                    return true
+                end)
+            }))
+            return nil, true 
+        end
+    end,
+}
+
 SMODS.Joker{ --Mini the Lady
     key = "mini",
     blueprint_compat = true,
@@ -1313,30 +1346,6 @@ SMODS.Joker{ --Vivlos
     rarity = 1,
     cost = 3,
     pos = { x = 1, y = 4 },
-    atlas = 'j_umas',
-    config = { extra = { } },
-
-    loc_vars = function(self, info_queue, card)
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Joker{ --Neo Universe
-    key = "neo",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 2, y = 4 },
     atlas = 'j_umas',
     config = { extra = { } },
 
