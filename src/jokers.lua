@@ -373,7 +373,7 @@ SMODS.Joker{ --Goldship
             },
             reminder_text = {
                 { text = "(" },
-                { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
+                { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = lighten(G.C.FILTER, 0.35) },
                 { text = ")" },
             },
             calc_function = function(card)
@@ -994,6 +994,37 @@ SMODS.Joker { --Haru Urara
     end
 }
 
+SMODS.Joker{ --Lucky Lilac
+    key = "lilac",
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 3, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { odds = 5, chips = 50 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'uma_lilac')
+        return { vars = { numerator, denominator, card.ability.extra.chips } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_lucky') and
+            SMODS.pseudorandom_probability(card, 'uma_lilac', 1, card.ability.extra.odds) then
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
+    end,
+
+    in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_lucky') then
+                return true
+            end
+        end
+        return false
+    end
+}
+
 SMODS.Joker{ --Mini the Lady
     key = "mini",
     blueprint_compat = true,
@@ -1026,6 +1057,10 @@ SMODS.Joker{ --Mini the Lady
                 end
             end
         end
+    end,
+
+    in_pool = function(self, args)
+        return false
     end
 }
 
@@ -1302,30 +1337,6 @@ SMODS.Joker{ --Neo Universe
     rarity = 1,
     cost = 3,
     pos = { x = 2, y = 4 },
-    atlas = 'j_umas',
-    config = { extra = { } },
-
-    loc_vars = function(self, info_queue, card)
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Joker{ --Lucky Lilac
-    key = "lilac",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 3, y = 4 },
     atlas = 'j_umas',
     config = { extra = { } },
 

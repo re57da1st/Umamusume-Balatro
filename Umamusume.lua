@@ -78,6 +78,7 @@ SMODS.ObjectType({
         j_uma_vodka = true,
         j_uma_teio = true,
         j_uma_haru = true,
+        j_uma_lilac = true,
 
         --Move above once complete
         j_uma_mini = true,
@@ -93,7 +94,6 @@ SMODS.ObjectType({
         j_uma_belno = true,
         j_uma_vivlos = true,
         j_uma_neo = true,
-        j_uma_lilac = true,
         j_uma_tact = true,
     },
 })

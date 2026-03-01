@@ -141,7 +141,7 @@ jd_def["j_uma_turbo"] = { --Twin Turbo
     text_config = { colour = G.C.MULT },
     reminder_text = {
         { text = "(" },
-        { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
+        { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = lighten(G.C.FILTER, 0.35) },
         { text = ")" },
     },
     calc_function = function(card)
@@ -181,7 +181,7 @@ jd_def["j_uma_vodka"] = { --Tokai Teio
     },
     reminder_text = {
         { text = "(" },
-        { text = "Queens", colour = G.C.FILTER },
+        { text = "Queens", colour = lighten(G.C.FILTER, 0.35) },
         { text = ")" }
     },
     calc_function = function(card)
@@ -201,7 +201,7 @@ jd_def["j_uma_teio"] = { --Tokai Teio
     },
     reminder_text = {
         { text = "(" },
-        { ref_table = "card.joker_display_values", ref_value = "maxBuff", colour = G.C.FILTER },
+        { ref_table = "card.joker_display_values", ref_value = "maxBuff", colour = lighten(G.C.FILTER, 0.35) },
         { text = " debuffs left)" }
     },
     extra = {
@@ -215,5 +215,45 @@ jd_def["j_uma_teio"] = { --Tokai Teio
     calc_function = function(card)
         card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { (G.GAME and G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
         card.joker_display_values.maxBuff = card.ability.extra.maxBuff
+    end
+}
+
+jd_def["j_uma_lilac"] = {
+    text = {
+        { ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "chips" },
+        { text = "x",                              scale = 0.35 },
+        { text = "+", colour = G.C.CHIPS },
+        { ref_table = "card.ability.extra", ref_value = "chips", colour = G.C.CHIPS }
+    },
+    reminder_text = {
+        { text = "(" },
+        { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = lighten(G.C.FILTER, 0.35) },
+        { text = ")" }
+    },
+    extra = {
+        {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds" },
+            { text = ")" },
+        }
+    },
+    extra_config = { colour = G.C.GREEN, scale = 0.3 },
+    calc_function = function(card)
+        local count = 0
+        if G.play then
+            local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+            if text ~= 'Unknown' then
+                for _, scoring_card in pairs(scoring_hand) do
+                    if SMODS.has_enhancement(scoring_card, 'm_lucky') then
+                        count = count + JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+                    end
+                end
+            end
+        else
+            count = 3
+        end
+        card.joker_display_values.count = count
+        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { (G.GAME and G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+        card.joker_display_values.localized_text = "Wild Cards"
     end
 }

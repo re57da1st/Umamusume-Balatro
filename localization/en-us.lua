@@ -256,7 +256,9 @@ return {
             j_uma_lilac = {
                 name = "Lucky Lilac",
                 text = {
-                    "stuff",
+                    "{C:green}#1# in #2#{} chance for",
+                    "{C:attention}lucky{} cards to give",
+                    "{C:blue}#3#{} Chips when scored",
                 },
             },
 
