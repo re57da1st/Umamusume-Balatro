@@ -959,6 +959,41 @@ SMODS.Joker{ --Tokai Teio
     end
 }
 
+SMODS.Joker { --Haru Urara
+    key = "haru",
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    pos = { x = 5, y = 2 },
+    atlas = 'j_umas',
+    config = { extra = { odds = 2, repetitions = 1 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'uma_haru')
+        return { vars = {
+            numerator,
+            denominator
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_uma_dirt')
+            and SMODS.pseudorandom_probability(card, 'uma_haru', 1, card.ability.extra.odds) then
+            return {
+                repetitions = card.ability.extra.repetitions
+            }
+        end
+    end,
+
+    in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_uma_dirt') then
+                return true
+            end
+        end
+        return false
+    end
+}
+
 SMODS.Joker{ --Mini the Lady
     key = "mini",
     blueprint_compat = true,

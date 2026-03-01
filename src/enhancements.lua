@@ -72,7 +72,7 @@ SMODS.Enhancement { --Mossy
 SMODS.Enhancement { --Dirt
     key = 'dirt',
     pos = { x = 3, y = 0 },
-    config = { mult = 5 },
+    config = { mult = 6 },
     atlas = 'e_umas',
     replace_base_card = true,
     no_rank = true,

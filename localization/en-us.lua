@@ -150,6 +150,15 @@ return {
                 },
             },
 
+            j_uma_haru = {
+                name = "Haru Urara",
+                text = {
+                    "{C:green}#1# in #2#{} chance",
+                    "to retrigger each",
+                    "played {C:attention}dirt{} card",
+                },
+            },
+
             j_uma_mini = {
                 name = "Mini the Lady",
                 text = {
@@ -163,7 +172,7 @@ return {
             j_uma_creek = {
                 name = "Super Creek",
                 text = {
-                    "stuff",
+                    "BIIIIIIIG stuff",
                 },
             },
 
@@ -814,7 +823,8 @@ return {
             m_uma_dirt = {
                 name = "Dirt Card",
                 text = {
-                    "muffin,,,"
+                    "{C:mult}+#1#{} mult",
+                    "no rank or suit",
                 },
             }
         },
@@ -1002,7 +1012,9 @@ return {
             k_uma_mambo_consumable = "Mambo's things",
             b_uma_planet_cards = "Planet+ Cards",
             k_uma_planet = "Planet+",
-            k_uma_twin_turbo = 'Upgrade + Level Up!'
+            k_uma_twin_turbo = 'Upgrade + Level Up!',
+
+            k_uma_turf_pack = 'Turf Pack'
         },
 
         labels = {

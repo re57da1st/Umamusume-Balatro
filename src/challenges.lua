@@ -350,7 +350,7 @@ SMODS.Challenge { --Tokai Teio
     restrictions = {}
 }
 
-SMODS.Challenge { --mini
+SMODS.Challenge { --Mini the Lady
     key = 'mini_challenge',
     rules = {
         custom = {},

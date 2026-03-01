@@ -77,6 +77,7 @@ SMODS.ObjectType({
         j_uma_love = true,
         j_uma_vodka = true,
         j_uma_teio = true,
+        j_uma_haru = true,
 
         --Move above once complete
         j_uma_mini = true,

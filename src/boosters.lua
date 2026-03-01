@@ -7,7 +7,7 @@ SMODS.Booster { --Normal Turf Pack
     pos = { x = 0, y = 0 },
     atlas = 'p_umas',
     config = { extra = 3, choose = 1 },
-    group_key = "k_umg_turf_pack",
+    group_key = "k_uma_turf_pack",
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = {
@@ -65,7 +65,7 @@ SMODS.Booster { --Jumbo Turf Pack
     pos = { x = 1, y = 0 },
     atlas = 'p_umas',
     config = { extra = 5, choose = 1 },
-    group_key = "k_umg_turf_pack",
+    group_key = "k_uma_turf_pack",
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = {
@@ -123,7 +123,7 @@ SMODS.Booster { --Mega Turf Pack
     pos = { x = 2, y = 0 },
     atlas = 'p_umas',
     config = { extra = 5, choose = 2 },
-    group_key = "k_umg_turf_pack",
+    group_key = "k_uma_turf_pack",
 
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = {
@@ -181,9 +181,9 @@ uma_turf_pack_poll = function() --Utilize the Uma Weighted Function to hold all 
         "m_uma_blossom"
     }
     local weights = {
-        12,
-        8,
-        4,
+        14,
+        5,
+        5,
         1
     }
     return Uma_weighted_picker(items, weights, "turf_pack")
