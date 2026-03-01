@@ -5,7 +5,9 @@ SMODS.Enhancement { --Turf
     atlas = 'e_umas',
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.xChips } }
+        return { vars = {
+            card.ability.xChips
+        } }
     end,
 
     calculate = function(self, card, context)
@@ -28,7 +30,9 @@ SMODS.Enhancement { --Blossom
     atlas = 'e_umas',
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.xChips } }
+        return { vars = {
+            card.ability.xChips
+        } }
     end,
 
     calculate = function(self, card, context)
@@ -55,7 +59,9 @@ SMODS.Enhancement { --Mossy
     always_scores = true,
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.bonus } }
+        return { vars = {
+            card.ability.bonus
+        } }
     end,
 
     in_pool = function(self, args)
@@ -66,11 +72,17 @@ SMODS.Enhancement { --Mossy
 SMODS.Enhancement { --Dirt
     key = 'dirt',
     pos = { x = 3, y = 0 },
-    config = { },
+    config = { mult = 5 },
     atlas = 'e_umas',
+    replace_base_card = true,
+    no_rank = true,
+    no_suit = true,
+    always_scores = true,
 
     loc_vars = function(self, info_queue, card)
-        return { vars = { } }
+        return { vars = {
+            card.ability.mult
+        } }
     end,
 
     in_pool = function(self, args)

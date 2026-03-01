@@ -181,10 +181,10 @@ uma_turf_pack_poll = function() --Utilize the Uma Weighted Function to hold all 
         "m_uma_blossom"
     }
     local weights = {
-        17,--12,
-        0, --8,
-        7, --4,
-        1  --1
+        12,
+        8,
+        4,
+        1
     }
     return Uma_weighted_picker(items, weights, "turf_pack")
 end
