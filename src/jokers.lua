@@ -38,7 +38,7 @@ SMODS.Joker{ --Daiwa Scarlet
     soul_pos = { x = 1, y = 1 },
 
     loc_vars = function(self, info_queue, card)
-        card.ability.extra.total_mult = Uma_rank_tally(12, card.ability.extra.q_mult)
+        card.ability.extra.total_mult = Uma_rank_tally(12, nil, card.ability.extra.q_mult)
         return { vars = {
             card.ability.extra.q_mult,  --Queen Mult, the amount of mult Daiwa gains per queen in the deck
             card.ability.extra.total_mult  --The total amount of mult Daiwa gains
@@ -48,7 +48,7 @@ SMODS.Joker{ --Daiwa Scarlet
     calculate = function(self, card, context)
         if context.modify_hand then --Context that happens after setting the poker hand type, and before scoring cards
             return {
-                mult = Uma_rank_tally(12, card.ability.extra.q_mult)
+                mult = Uma_rank_tally(12, nil, card.ability.extra.q_mult)
             }
         end
     end

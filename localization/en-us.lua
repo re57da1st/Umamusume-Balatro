@@ -795,6 +795,28 @@ return {
             }
         },
 
+        uma_test_github = {
+            c_uma_push = {
+                name = "Push",
+                text = {
+                    "Combine {C:attention}2{} cards together,",
+                    "adding their ranks",
+                    "and all {C:attention}modifiers{}",
+                    "{C:inactive}(Aces are considered low)"
+                },
+            },
+
+            c_uma_pull = {
+                name = "Pull",
+                text = {
+                    "Split {C:attention}1{} card into {C:attention}2{},",
+                    "totaling the original rank",
+                    "and distributing all {C:attention}modifiers{}",
+                    "{C:inactive}(Aces are considered high)",
+                },
+            },
+        },
+
         Enhanced = {
             m_uma_turf = {
                 name = "Turf Card",
@@ -1016,6 +1038,8 @@ return {
             k_uma_mambo_consumable = "Mambo's things",
             b_uma_planet_cards = "Planet+ Cards",
             k_uma_planet = "Planet+",
+            b_uma_test_github_cards = "Github Cards",
+            k_uma_test_github = "Github",
             k_uma_twin_turbo = 'Upgrade + Level Up!',
 
             k_uma_turf_pack = 'Turf Pack'

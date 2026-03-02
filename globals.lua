@@ -47,14 +47,16 @@ function loc_colour(_c, _default) --Colors Definition 2
 end
 
 --Global Functions
-Uma_rank_tally = function(rank, modifier) --Tally up the amount of a certain rank in the deck
+Uma_rank_tally = function(rank, area, modifier) --Tally up the amount of a certain rank in the deck
+    if not area then area = G.playing_cards end
+    if not modifier then modifier = 1 end
     local tally = 0
-        if G.playing_cards then
-            for _, playing_card in ipairs(G.playing_cards) do
+        if area then
+            for _, playing_card in ipairs(area) do
                 if playing_card:get_id() == rank then tally = tally + 1 end
             end
         end
-    return tally * (modifier and modifier or 1)
+    return tally * modifier
 end
 
 function Uma_weighted_picker(items, weights, seed) --Chooses a random value from {items} based on their assigned {weights}
