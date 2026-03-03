@@ -1377,7 +1377,7 @@ SMODS.Joker{ --Vivlos
     end,
 
     in_pool = function(self, args)
-        return true
+        return false
     end
 }
 
