@@ -285,7 +285,7 @@ return {
 
         },
 
-        uma_better_Tarot = {
+        fuku_cards = {
             c_uma_better_chariot = {
                 name = "The Chariot{C:green}+",
                 text = {
@@ -463,9 +463,11 @@ return {
                     "to {V:1}#2#{}",
                 },
             },
-        },
 
-        uma_worse_Tarot = {
+
+
+
+
             c_uma_worse_chariot = {
                 name = "The Chariot{C:red}-",
                 text = {
@@ -633,37 +635,11 @@ return {
                     "card to {V:1}#2#{}",
                 },
             },
-        },
 
-        uma_mambo_consumable = {
 
-            c_uma_mambo_boots = {
-                name = "Mambo's Boots",
-                text = {
-                    "{C:attention}LOST AND FOUND:",
-                    "Return boots to {C:uma_col_mambo2}Mambo{} and",
-                    "gain {C:chips}+#1#{} Chips!"
-                },
-            },
-            c_uma_mambo_hat = {
-                name = "Mambo's Hat",
-                text = {
-                    "{C:attention}LOST AND FOUND:",
-                    "Return hat to {C:uma_col_mambo2}Mambo{} and",
-                    "gain {C:mult}+#1#{} Mult!"
-                },
-            },
-            c_uma_mambo_plushie = {
-                name = "Mambo's Plushie",
-                text = {
-                    "{C:attention}LOST AND FOUND:",
-                    "Return plushie to {C:uma_col_mambo2}Mambo{} and",
-                    "gain {X:mult,C:white}x#1#{} Mult!"
-                },
-            },
-        },
 
-        uma_Planet = {
+
+
             c_uma_better_mercury = {
                 name = "Mercury{C:green}+",
                 text = {
@@ -795,7 +771,36 @@ return {
             }
         },
 
-        uma_test_github = {
+        uma_ccs = {
+            c_uma_mambo_boots = {
+                name = "Mambo's Boots",
+                text = {
+                    "{C:attention}LOST AND FOUND:",
+                    "Return boots to {C:uma_col_mambo2}Mambo{} and",
+                    "gain {C:chips}+#1#{} Chips!"
+                },
+            },
+            c_uma_mambo_hat = {
+                name = "Mambo's Hat",
+                text = {
+                    "{C:attention}LOST AND FOUND:",
+                    "Return hat to {C:uma_col_mambo2}Mambo{} and",
+                    "gain {C:mult}+#1#{} Mult!"
+                },
+            },
+            c_uma_mambo_plushie = {
+                name = "Mambo's Plushie",
+                text = {
+                    "{C:attention}LOST AND FOUND:",
+                    "Return plushie to {C:uma_col_mambo2}Mambo{} and",
+                    "gain {X:mult,C:white}x#1#{} Mult!"
+                },
+            },
+
+
+
+
+
             c_uma_push = {
                 name = "Push",
                 text = {
@@ -991,6 +996,7 @@ return {
             uma_not_pure = "Not pure!",
             uma_spread = "Spread!",
             uma_bloom = "Bloom!",
+            uma_twin_turbo_trigger = 'Upgrade + Level Up!',
             
             uma_goldship_no_effect = "No effect currently",
             uma_goldship_effect1 = "Flips and shuffles jokers",
@@ -1030,24 +1036,22 @@ return {
             uma_love_2_4_obsc = "%e%%%s",
             uma_love_2_5_obsc = "a%% n%%%i%% %ls%",
 
-            b_uma_better_tarot_cards = "Tarot+ Cards",
-            k_uma_better_tarot = "Tarot+",
-            b_uma_worse_tarot_cards = "Tarot- Cards",
-            k_uma_worse_tarot = "Tarot-",
-            b_uma_mambo_consumable_cards = "Mambo Cards",
-            k_uma_mambo_consumable = "Mambo's things",
-            b_uma_planet_cards = "Planet+ Cards",
-            k_uma_planet = "Planet+",
-            b_uma_test_github_cards = "Github Cards",
-            k_uma_test_github = "Github",
-            k_uma_twin_turbo = 'Upgrade + Level Up!',
+            k_uma_turf_pack = 'Turf Pack',
 
-            k_uma_turf_pack = 'Turf Pack'
+            uma_tarot_plus = "Tarot+",
+            uma_tarot_minus = "Tarot-",
+            uma_planet_plus = "Planet+",
+            uma_dwarf_planet_plus = "Dwarf Planet+",
+            uma_X_planet_plus = "Planet+?",
+            uma_twin_moon_plus = "Moon(s)+",
+            uma_mambo_cards_loc = "Mambo's things",
+            uma_family_tree_loc = "Family Tree",
+
+            b_fuku_cards_cards = "Vanilla+",
+            b_uma_ccs_cards = "Uma Assorted",
         },
 
         labels = {
-            uma_better_tarot = "Tarot+",
-            uma_worse_tarot = "Tarot-"
         },
 
         poker_hand_descriptions = {

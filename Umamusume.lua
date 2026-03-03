@@ -1,15 +1,15 @@
 --Mod File Loading
 assert(SMODS.load_file("globals.lua"))()
-assert(SMODS.load_file("src/jokers.lua"))() -- Jokers load here
+assert(SMODS.load_file("src/jokers.lua"))()
 assert(SMODS.load_file("src/challenges.lua"))()
 assert(SMODS.load_file("src/pokerhands.lua"))()
+assert(SMODS.load_file("src/fuku.lua"))()
 assert(SMODS.load_file("src/planets.lua"))()
-assert(SMODS.load_file("src/tarots.lua"))()
 assert(SMODS.load_file("src/other_consumables.lua"))()
 assert(SMODS.load_file("src/enhancements.lua"))()
 assert(SMODS.load_file("src/boosters.lua"))()
 
-if JokerDisplay then SMODS.load_file("src/joker_display_definitions.lua")() end --Joker Display loads here
+if JokerDisplay then SMODS.load_file("src/joker_display_definitions.lua")() end
 
 --Atlas Definitions
 SMODS.Atlas({ --Mod Icon
@@ -95,6 +95,75 @@ SMODS.ObjectType({
         j_uma_belno = true,
         j_uma_vivlos = true,
         j_uma_tact = true,
+    }
+})
+
+SMODS.ObjectType({
+    key = "uma_tarot_plus",
+    default = "c_uma_better_strength",
+    cards = {
+        c_uma_better_fool = true,
+        c_uma_better_magician = true,
+        c_uma_better_high_priestess = true,
+        c_uma_better_empress = true,
+        c_uma_better_emperor = true,
+        c_uma_better_heirophant = true,
+        c_uma_better_chariot = true,
+        c_uma_better_better_lovers = true,
+        c_uma_better_justice = true,
+        c_uma_better_hermit = true,
+        c_uma_better_wheel_of_fortune = true,
+        c_uma_better_strength = true,
+        c_uma_better_hanged_man = true,
+        c_uma_better_death = true,
+        c_uma_better_devil = true,
+        c_uma_better_tower = true,
+        c_uma_better_judgement = true,
+    }
+})
+
+SMODS.ObjectType({
+    key = "uma_tarot_minus",
+    default = "c_uma_worse_strength",
+    cards = {
+        c_uma_worse_magician = true,
+        c_uma_worse_empress = true,
+        c_uma_worse_emperor = true,
+        c_uma_worse_heirophant = true,
+        c_uma_worse_lovers = true,
+        c_uma_worse_chariot = true,
+        c_uma_worse_justice = true,
+        c_uma_worse_hermit = true,
+        c_uma_worse_wheel_of_fortune = true,
+        c_uma_worse_strength = true,
+        c_uma_worse_hanged_man = true,
+        c_uma_worse_temperance = true,
+        c_uma_worse_devil = true,
+        c_uma_worse_tower = true,
+        c_uma_worse_star = true,
+        c_uma_worse_moon = true,
+        c_uma_worse_sun = true,
+        c_uma_worse_world = true,
+    }
+})
+
+SMODS.ObjectType({
+    key = "uma_planet_plus",
+    default = "c_uma_better_pluto",
+    cards = {
+        c_uma_better_mercury = true,
+        c_uma_better_venus = true,
+        c_uma_better_earth = true,
+        c_uma_better_mars = true,
+        c_uma_better_jupiter = true,
+        c_uma_better_saturn = true,
+        c_uma_better_uranus = true,
+        c_uma_better_neptune = true,
+        c_uma_better_pluto = true,
+        c_uma_better_planet_x = true,
+        c_uma_better_ceres = true,
+        c_uma_better_eris = true,
+        c_uma_better_twin_moons = true,
     }
 })
 

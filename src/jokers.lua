@@ -111,7 +111,7 @@ SMODS.Joker{ --Twin Turbo
             card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
             return {
                 level_up = true,
-                message = localize('k_uma_twin_turbo'),
+                message = localize('uma_twin_turbo_trigger'),
                 colour = G.C.RED
             }
         end
@@ -536,7 +536,7 @@ SMODS.Joker{ --Matikanetannhauser
     rarity = 3,
     cost = 6,
     pos = { x = 2, y = 1 },
-    config = { extra = { chips = 10, chips_mod = 10, mult = 4, mult_mod = 4, xmult = 1.0, xmult_mod = 0.1, consumable_rarity = 4 } },
+    config = { extra = { chips = 10, chips_mod = 10, mult = 4, mult_mod = 4, xmult = 1.0, xmult_mod = 0.1 } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
@@ -583,7 +583,8 @@ SMODS.Joker{ --Matikanetannhauser
         end
 
         Mambo_check = function(sell_bool)
-            G.GAME.uma_mambo_consumable_rate = #SMODS.find_card("j_uma_mambo") - (sell_bool and 1 or 0) > 0 and card.ability.extra.consumable_rarity or 0
+            G.GAME.mambo_subset = #SMODS.find_card("j_uma_mambo") - (sell_bool and 1 or 0) > 0 and true or false
+            Uma_CSS_check()
         end
 
         if context.joker_main then
@@ -736,7 +737,7 @@ SMODS.Joker{ --Matikanefukukitaru
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             SMODS.add_card {
-                                set = 'uma_better_Tarot',
+                                set = 'uma_tarot_plus',
                             }
                             G.GAME.consumeable_buffer = 0
                             return true
@@ -755,7 +756,7 @@ SMODS.Joker{ --Matikanefukukitaru
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             SMODS.add_card {
-                                set = 'uma_worse_Tarot',
+                                set = 'uma_tarot_minus',
                             }
                             G.GAME.consumeable_buffer = 0
                             return true
@@ -1099,6 +1100,8 @@ SMODS.Joker{ --Mini the Lady
 
 
 
+
+
 --Definitions for when they're ready
 SMODS.Joker{ --Super Creek
     key = "creek",
@@ -1356,11 +1359,25 @@ SMODS.Joker{ --Vivlos
     end,
 
     calculate = function(self, card, context)
+
+        if (context.starting_shop or context.reroll_shop) and not context.blueprint then
+            Family_Tree_check(false)
+        end
+
+        if context.selling_self and not context.blueprint then
+            Family_Tree_check(true)
+        end
+
+        Family_Tree_check = function(sell_bool)
+            G.GAME.family_tree_subset = #SMODS.find_card("j_uma_vivlos") - (sell_bool and 1 or 0) > 0 and true or false
+            Uma_CSS_check()
+        end
+
         return nil
     end,
 
     in_pool = function(self, args)
-        return false
+        return true
     end
 }
 

@@ -1,24 +1,15 @@
 SMODS.ConsumableType {
-    key = 'uma_mambo_consumable',
-    default = 'c_uma_mambo_boots',
+    key = 'uma_ccs',
     primary_colour = G.C.UMA.MAMBO,
     secondary_colour = G.C.UMA.MAMBO2,
-    collection_rows = { 3 },
+    collection_rows = { 5 },
     shop_rate = 0
-}
-
-SMODS.ConsumableType {
-    key = 'uma_test_github',
-    primary_colour = HEX("168536"),
-    secondary_colour = HEX("12EA51"),
-    collection_rows = { 2 },
-    shop_rate = 999
 }
 
 --Mambo Cards
 SMODS.Consumable { --Mambo Boots
     key = 'mambo_boots',
-    set = 'uma_mambo_consumable',
+    set = 'uma_ccs',
     pos = { x = 10, y = 3 },
     atlas = 'c_umas',
 
@@ -33,12 +24,20 @@ SMODS.Consumable { --Mambo Boots
 
     can_use = function(self, card)
         return true
+    end,
+
+    in_pool = function(self, args)
+        return G.GAME.mambo_subset
+    end,
+
+    set_card_type_badge = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('uma_mambo_cards_loc'), G.C.UMA.MAMBO2, G.C.UMA.WHITE, 1.2)
     end
 }
 
 SMODS.Consumable { --Mambo Hat
     key = 'mambo_hat',
-    set = 'uma_mambo_consumable',
+    set = 'uma_ccs',
     pos = { x = 11, y = 3 },
     atlas = 'c_umas',
 
@@ -53,12 +52,20 @@ SMODS.Consumable { --Mambo Hat
 
     can_use = function(self, card)
         return true
+    end,
+
+    in_pool = function(self, args)
+        return G.GAME.mambo_subset
+    end,
+
+    set_card_type_badge = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('uma_mambo_cards_loc'), G.C.UMA.MAMBO2, G.C.UMA.WHITE, 1.2)
     end
 }
 
 SMODS.Consumable { --Mambo Plushie
     key = 'mambo_plushie',
-    set = 'uma_mambo_consumable',
+    set = 'uma_ccs',
     pos = { x = 12, y = 3 },
     atlas = 'c_umas',
 
@@ -73,13 +80,23 @@ SMODS.Consumable { --Mambo Plushie
 
     can_use = function(self, card)
         return true
+    end,
+
+    in_pool = function(self, args)
+        return G.GAME.mambo_subset
+    end,
+
+    set_card_type_badge = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('uma_mambo_cards_loc'), G.C.UMA.MAMBO2, G.C.UMA.WHITE, 1.2)
     end
 }
+
+
 
 --Github Cards
 SMODS.Consumable { --Push
     key = 'push',
-    set = 'uma_test_github',
+    set = 'uma_ccs',
     pos = { x = 12, y = 0 },
     atlas = 'c_umas',
 
@@ -119,12 +136,20 @@ SMODS.Consumable { --Push
             if value <= 14 then return true end
             return false
         end
+    end,
+
+    in_pool = function(self, args)
+        return G.GAME.family_tree_subset
+    end,
+
+    set_card_type_badge = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('uma_family_tree_loc'), G.C.UMA.FAMILY_TREE2, G.C.UMA.WHITE, 1.2)
     end
 }
 
 SMODS.Consumable { --pull
     key = 'pull',
-    set = 'uma_test_github',
+    set = 'uma_ccs',
     pos = { x = 12, y = 1 },
     atlas = 'c_umas',
 
@@ -160,5 +185,13 @@ SMODS.Consumable { --pull
     can_use = function(self, card)
         if #G.hand.highlighted == 1 then return true end
         return false
+    end,
+
+    in_pool = function(self, args)
+        return G.GAME.family_tree_subset
+    end,
+
+    set_card_type_badge = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('uma_family_tree_loc'), G.C.UMA.FAMILY_TREE2, G.C.UMA.WHITE, 1.2)
     end
 }

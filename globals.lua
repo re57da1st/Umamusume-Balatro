@@ -16,6 +16,8 @@ G.C.UMA = { --Colors Definition 1
     BETTER_TAROT2 = HEX("F7A985"),
     BETTER_PLANET = HEX("5B64AA"),
     BETTER_PLANET2 = HEX("848FD2"),
+    BETTER_FAMILY_TREE = HEX("168536"),
+    BETTER_FAMILY_TREE2 = HEX("12EA51"),
     TURF = HEX("70922D"),
     BLOSSOM = HEX("EFA7CD"),
     CHULT = HEX('D002F0'),
@@ -40,6 +42,8 @@ function loc_colour(_c, _default) --Colors Definition 2
     G.ARGS.LOC_COLOURS.uma_col_better_tarot2 = G.C.UMA.BETTER_TAROT2
     G.ARGS.LOC_COLOURS.uma_col_better_planet = G.C.UMA.BETTER_PLANET
     G.ARGS.LOC_COLOURS.uma_col_better_planet2 = G.C.UMA.BETTER_PLANET2
+    G.ARGS.LOC_COLOURS.uma_col_better_family_tree = G.C.UMA.BETTER_FAMILY_TREE
+    G.ARGS.LOC_COLOURS.uma_col_better_family_tree2 = G.C.UMA.BETTER_FAMILY_TREE2
     G.ARGS.LOC_COLOURS.uma_turf = G.C.UMA.TURF
     G.ARGS.LOC_COLOURS.uma_blossom = G.C.UMA.BLOSSOM
     G.ARGS.LOC_COLOURS.chult = G.C.UMA.CHULT
@@ -47,7 +51,7 @@ function loc_colour(_c, _default) --Colors Definition 2
 end
 
 --Global Functions
-Uma_rank_tally = function(rank, area, modifier) --Tally up the amount of a certain rank in the deck
+function Uma_rank_tally(rank, area, modifier) --Tally up the amount of a certain rank in the deck
     if not area then area = G.playing_cards end
     if not modifier then modifier = 1 end
     local tally = 0
@@ -71,6 +75,15 @@ function Uma_weighted_picker(items, weights, seed) --Chooses a random value from
         if rng <= 0 then return items[i] end
     end
     return items[size]
+end
+
+function Uma_CSS_check()
+    local test = false
+
+    if G.GAME.mambo_subset then test = true end
+    if G.GAME.family_tree_subset then test = true end
+
+    G.GAME.uma_ccs_rate = test and 4 or 0
 end
 
 function SMODS.current_mod.calculate(self, context)
