@@ -95,7 +95,7 @@ SMODS.ObjectType({
         j_uma_belno = true,
         j_uma_vivlos = true,
         j_uma_tact = true,
-    },
+    }
 })
 
 --Hooks

@@ -12,7 +12,7 @@ SMODS.ConsumableType {
     primary_colour = HEX("168536"),
     secondary_colour = HEX("12EA51"),
     collection_rows = { 2 },
-    shop_rate = 1
+    shop_rate = 999
 }
 
 --Mambo Cards
