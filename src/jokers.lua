@@ -550,6 +550,16 @@ SMODS.Joker{ --Matikanetannhauser
         } }
     end,
 
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.mambo_subset = true
+        Uma_CSS_check()
+    end,
+
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.mambo_subset = (#SMODS.find_card("j_uma_mambo") > 0) and true or false
+        Uma_CSS_check()
+    end,
+
     calculate = function(self, card, context)
         if context.using_consumeable and context.consumeable.config.center.key == 'c_uma_mambo_boots' and not context.blueprint then
             card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
@@ -572,19 +582,6 @@ SMODS.Joker{ --Matikanetannhauser
                 colour = G.C.MULT,
                 message_card = card
             }
-        end
-
-        if (context.starting_shop or context.reroll_shop) and not context.blueprint then
-            Mambo_check(false)
-        end
-
-        if context.selling_self and not context.blueprint then
-            Mambo_check(true)
-        end
-
-        Mambo_check = function(sell_bool)
-            G.GAME.mambo_subset = #SMODS.find_card("j_uma_mambo") - (sell_bool and 1 or 0) > 0 and true or false
-            Uma_CSS_check()
         end
 
         if context.joker_main then
@@ -1358,21 +1355,17 @@ SMODS.Joker{ --Vivlos
         } }
     end,
 
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.family_tree_subset = true
+        Uma_CSS_check()
+    end,
+
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.family_tree_subset = (#SMODS.find_card("j_uma_vivlos") > 0) and true or false
+        Uma_CSS_check()
+    end,
+
     calculate = function(self, card, context)
-
-        if (context.starting_shop or context.reroll_shop) and not context.blueprint then
-            Family_Tree_check(false)
-        end
-
-        if context.selling_self and not context.blueprint then
-            Family_Tree_check(true)
-        end
-
-        Family_Tree_check = function(sell_bool)
-            G.GAME.family_tree_subset = #SMODS.find_card("j_uma_vivlos") - (sell_bool and 1 or 0) > 0 and true or false
-            Uma_CSS_check()
-        end
-
         return nil
     end,
 
