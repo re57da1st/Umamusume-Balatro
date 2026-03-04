@@ -970,7 +970,7 @@ SMODS.Consumable { --The Chariot
         badges[#badges + 1] = create_badge(localize('uma_tarot_minus'), G.C.UMA.WORSE_TAROT2, G.C.UMA.WHITE, 1.2)
     end
 }
---Update justice description
+
 SMODS.Consumable { --Justice
     key = 'worse_justice',
     set = 'fuku_cards',
@@ -1047,15 +1047,15 @@ SMODS.Consumable { --Justice
             }))
             delay(0.5)
         else
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.2,
-            func = function()
-                SMODS.destroy_cards(G.hand.highlighted)
-                play_sound('glass'..math.random(1, 6), math.random()*0.2 + 0.9,0.5)
-                return true
-            end
-        }))
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.2,
+                func = function()
+                    SMODS.destroy_cards(G.hand.highlighted)
+                    play_sound('glass'..math.random(1, 6), math.random()*0.2 + 0.9,0.5)
+                    return true
+                end
+            }))
         end
     end,
 

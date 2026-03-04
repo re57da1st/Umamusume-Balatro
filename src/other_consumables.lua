@@ -2,7 +2,7 @@ SMODS.ConsumableType {
     key = 'uma_ccs',
     primary_colour = G.C.UMA.MAMBO,
     secondary_colour = G.C.UMA.MAMBO2,
-    collection_rows = { 5 },
+    collection_rows = { 3, 2 },
     shop_rate = 0
 }
 

@@ -21,7 +21,7 @@ SMODS.Booster { --Normal Turf Pack
     end,
 
     ease_background_colour = function(self)
-        ease_background_colour_blind(G.STATES.STANDARD_PACK)
+        ease_background_colour{new_colour = lighten(G.C.UMA.TURF, 0.3), special_colour = darken(G.C.UMA.TURF, 0.5)}
     end,
 
     particles = function(self)
@@ -33,7 +33,7 @@ SMODS.Booster { --Normal Turf Pack
             speed = 0.2,
             padding = -1,
             attach = G.ROOM_ATTACH,
-            colours = { G.C.BLACK, G.C.RED },
+            colours = { G.C.UMA.TURF, darken(G.C.UMA.TURF, 0.2), G.C.UMA.BLOSSOM },
             fill = true
         })
         G.booster_pack_sparkles.fade_alpha = 1
@@ -79,7 +79,7 @@ SMODS.Booster { --Jumbo Turf Pack
     end,
 
     ease_background_colour = function(self)
-        ease_background_colour_blind(G.STATES.STANDARD_PACK)
+        ease_background_colour{new_colour = lighten(G.C.UMA.TURF, 0.3), special_colour = darken(G.C.UMA.TURF, 0.5)}
     end,
 
     particles = function(self)
@@ -91,7 +91,7 @@ SMODS.Booster { --Jumbo Turf Pack
             speed = 0.2,
             padding = -1,
             attach = G.ROOM_ATTACH,
-            colours = { G.C.BLACK, G.C.RED },
+            colours = { G.C.UMA.TURF, darken(G.C.UMA.TURF, 0.2), G.C.UMA.BLOSSOM },
             fill = true
         })
         G.booster_pack_sparkles.fade_alpha = 1
@@ -137,7 +137,7 @@ SMODS.Booster { --Mega Turf Pack
     end,
 
     ease_background_colour = function(self)
-        ease_background_colour_blind(G.STATES.STANDARD_PACK)
+        ease_background_colour{new_colour = lighten(G.C.UMA.TURF, 0.3), special_colour = darken(G.C.UMA.TURF, 0.5)}
     end,
 
     particles = function(self)
@@ -149,7 +149,7 @@ SMODS.Booster { --Mega Turf Pack
             speed = 0.2,
             padding = -1,
             attach = G.ROOM_ATTACH,
-            colours = { G.C.BLACK, G.C.RED },
+            colours = { G.C.UMA.TURF, darken(G.C.UMA.TURF, 0.2), G.C.UMA.BLOSSOM },
             fill = true
         })
         G.booster_pack_sparkles.fade_alpha = 1

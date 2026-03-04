@@ -559,6 +559,7 @@ return {
                     "{C:green}#2# in #3#{} chance to",
                     "enhance {C:attention}#1#{} selected",
                     "card into a {C:attention}#4#",
+                    "else, {C:attention}destroy{} selected card"
                 },
             },
             c_uma_worse_lovers = {
@@ -802,7 +803,7 @@ return {
 
 
             c_uma_push = {
-                name = "Push",
+                name = "Posterity",
                 text = {
                     "Combine {C:attention}2{} cards together,",
                     "adding their ranks",
@@ -812,7 +813,7 @@ return {
             },
 
             c_uma_pull = {
-                name = "Pull",
+                name = "Pedigree",
                 text = {
                     "Split {C:attention}1{} card into {C:attention}2{},",
                     "totaling the original rank",

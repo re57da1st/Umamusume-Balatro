@@ -20,6 +20,7 @@ G.C.UMA = { --Colors Definition 1
     BETTER_FAMILY_TREE2 = HEX("12EA51"),
     TURF = HEX("70922D"),
     BLOSSOM = HEX("EFA7CD"),
+    DIRT = HEX("966C4A"),
     CHULT = HEX('D002F0'),
 }
 
@@ -46,6 +47,7 @@ function loc_colour(_c, _default) --Colors Definition 2
     G.ARGS.LOC_COLOURS.uma_col_better_family_tree2 = G.C.UMA.BETTER_FAMILY_TREE2
     G.ARGS.LOC_COLOURS.uma_turf = G.C.UMA.TURF
     G.ARGS.LOC_COLOURS.uma_blossom = G.C.UMA.BLOSSOM
+    G.ARGS.LOC_COLOURS.uma_dirt = G.C.UMA.DIRT
     G.ARGS.LOC_COLOURS.chult = G.C.UMA.CHULT
     return loc_colour_ref(_c, _default)
 end
