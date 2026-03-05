@@ -146,6 +146,20 @@ function SMODS.current_mod.calculate(self, context)
             end
         end
     end
+
+    if G.GAME.modifiers['uma_tax'] then --(un)Stable Income challenge code
+        if context.ending_shop and G.GAME.dollars >= 15 and #G.jokers.cards < G.jokers.config.card_limit then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.2,
+                func = function()
+                    ease_dollars(-5)
+                    SMODS.add_card({set = "uma_jokers"})
+                    return true
+                end
+            }))
+        end
+    end
 end
 
 --for _, v in ipairs(G.playing_cards) do v:set_ability('m_uma_blossom') end

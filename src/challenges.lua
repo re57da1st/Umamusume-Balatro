@@ -549,5 +549,21 @@ SMODS.Challenge { --Worse Tarots
     restrictions = {}
 }
 
+SMODS.Challenge {
+    key = 'unstable_income',
+    rules = {
+        custom = {
+            { id = 'uma_tax', value = true },
+            { id = 'uma_tax_2', value = true },
+        }
+    },
+    jokers = {
+    },
+    consumeables = {
+    },
+    vouchers = {
+    }
+}
+
 --Example card definition:
 --{ s = 'D', r = 'Q', e = 'm_steel', d = 'polychrome', g = 'Red' }

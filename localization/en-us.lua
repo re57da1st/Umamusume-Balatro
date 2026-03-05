@@ -966,6 +966,16 @@ return {
             c_uma_testIskIdea2 = "Non-special Tarot Tests",
             c_uma_oops_all_lesbians = "Oops! All Lesbians!",
             c_uma_mini_challenge = "mini",
+            c_uma_unstable_income = "(un)Stable Income",
+        },
+
+        v_text = {
+            ch_c_uma_tax = {
+                "At the end of the shop, if you have {C:attention}$15{} or more,"
+            },
+            ch_c_uma_tax_2 = {
+                "lose {C:attention}$5{} and create a random {C:attention}Uma{} joker {C:inactive}(must have room){}"
+            }
         },
 
         dictionary = {

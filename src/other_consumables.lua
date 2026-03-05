@@ -93,12 +93,13 @@ SMODS.Consumable { --Mambo Plushie
 
 
 
---Github Cards
-SMODS.Consumable { --Push
-    key = 'push',
+--Family Tree Cards
+SMODS.Consumable { --Posterity
+    key = 'posterity',
     set = 'uma_ccs',
     pos = { x = 12, y = 0 },
     atlas = 'c_umas',
+    soul_pos = { x = 13, y = 0 },
 
     loc_vars = function(self, info_queue, card)
         return nil
@@ -147,11 +148,12 @@ SMODS.Consumable { --Push
     end
 }
 
-SMODS.Consumable { --pull
-    key = 'pull',
+SMODS.Consumable { --pedigree
+    key = 'pedigree',
     set = 'uma_ccs',
     pos = { x = 12, y = 1 },
     atlas = 'c_umas',
+    soul_pos = { x = 13, y = 1 },
 
     loc_vars = function(self, info_queue, card)
         return nil
@@ -163,8 +165,8 @@ SMODS.Consumable { --pull
         local values = {pseudorandom('pull', 1, value - 1)}
         values[#values + 1] = value - values[1]
         local ranks = {"Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"}
-        local suit, enhancement, seal, edition = {}, {nil, nil}, {nil, nil}, {nil, nil}
-        suit = hand[1].base.suit
+        local suit = hand[1].base.suit
+        local enhancement, seal, edition = {nil, nil}, {nil, nil}, {nil, nil}
         enhancement[pseudorandom('enhancement_choose', 1, 2)] = hand[1].config.center.key
         if hand[1].seal then seal[pseudorandom('seal_choose', 1, 2)] = hand[1].seal end
         if hand[1].edition then edition[pseudorandom('edition_choose', 1, 2)] = hand[1].edition.key end

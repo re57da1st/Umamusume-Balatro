@@ -735,6 +735,7 @@ SMODS.Joker{ --Matikanefukukitaru
                         func = function()
                             SMODS.add_card {
                                 set = 'uma_tarot_plus',
+                                area = G.consumeables
                             }
                             G.GAME.consumeable_buffer = 0
                             return true
@@ -754,6 +755,7 @@ SMODS.Joker{ --Matikanefukukitaru
                         func = function()
                             SMODS.add_card {
                                 set = 'uma_tarot_minus',
+                                area = G.consumeables
                             }
                             G.GAME.consumeable_buffer = 0
                             return true
