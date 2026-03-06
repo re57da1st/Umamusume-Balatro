@@ -163,13 +163,13 @@ function SMODS.current_mod.calculate(self, context)
     end
 
     --(un)Stable Income challenge code
-    if G.GAME.modifiers['uma_tax'] then
-        if context.ending_shop and G.GAME.dollars >= G.GAME.modifiers.uma_tax and #G.jokers.cards < G.jokers.config.card_limit then
+    if G.GAME.modifiers['unstable_income'] then
+        if context.ending_shop and G.GAME.dollars >= G.GAME.modifiers.unstable_income[1] and #G.jokers.cards < G.jokers.config.card_limit then
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
                 delay = 0.2,
                 func = function()
-                    ease_dollars( math.floor(G.GAME.dollars * (G.GAME.modifiers.uma_tax_2 / -100) ) )
+                    ease_dollars( math.floor(G.GAME.dollars * (G.GAME.modifiers.unstable_income[2] / -100) ) )
                     SMODS.add_card({set = "uma_jokers"})
                     return true
                 end

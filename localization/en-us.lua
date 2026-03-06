@@ -970,15 +970,17 @@ return {
         },
 
         v_text = {
-            ch_c_uma_tax = {
-               "At the end of the shop, if you have {C:attention}$#1#{} or more,"
+            ch_c_unstable_income_loc1 = {
+               "At the end of the shop, if you have {C:attention}$"
+               ..(SMODS.Challenge and SMODS.Challenge.obj_table.c_uma_unstable_income.rules.custom[1].value[1] or "nil")..
+               "{} or more,"
             },
-            ch_c_uma_tax_2 = {
-                "lose {C:attention}#1#%{} and create a random {C:attention}Uma{} joker {C:inactive}(must have room){}"
+            ch_c_unstable_income_loc2 = {
+                "lose {C:attention}"
+                ..(SMODS.Challenge and SMODS.Challenge.obj_table.c_uma_unstable_income.rules.custom[1].value[2] or "nil")..
+                "%{} and create a random {C:attention}Uma{} joker {C:inactive}(must have room){}"
             }
         },
-        --
-        --
 
         dictionary = {
             a_chips="+#1#",

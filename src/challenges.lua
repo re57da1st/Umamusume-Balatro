@@ -554,8 +554,9 @@ SMODS.Challenge {
     key = 'unstable_income',
     rules = {
         custom = {
-            { id = 'uma_tax', value = 20 },
-            { id = 'uma_tax_2', value = 50 },
+            { id = 'unstable_income', value = { 20, 50 } },
+            { id = 'unstable_income_loc1', },
+            { id = 'unstable_income_loc2', },
         }
     },
     jokers = {
