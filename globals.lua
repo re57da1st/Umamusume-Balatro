@@ -1,6 +1,7 @@
 -- GLOBALS
 
-G.C.UMA = { --Colors Definition 1
+--Colors Definition 1
+G.C.UMA = {
     RED = HEX("FF0000"),
     BLACK = HEX("000000"),
     BLUE = HEX("0000FF"),
@@ -24,8 +25,9 @@ G.C.UMA = { --Colors Definition 1
     CHULT = HEX('D002F0'),
 }
 
+--Colors Definition 2
 local loc_colour_ref = loc_colour
-function loc_colour(_c, _default) --Colors Definition 2
+function loc_colour(_c, _default)
     if not G.ARGS.LOC_COLOURS then loc_colour_ref() end
     G.ARGS.LOC_COLOURS.uma_red = G.C.UMA.RED
     G.ARGS.LOC_COLOURS.uma_black = G.C.UMA.BLACK
@@ -52,8 +54,12 @@ function loc_colour(_c, _default) --Colors Definition 2
     return loc_colour_ref(_c, _default)
 end
 
+
+
 --Global Functions
-function Uma_rank_tally(rank, area, modifier) --Tally up the amount of a certain rank in the deck
+
+--Tally up the amount of a certain rank in the deck
+function Uma_rank_tally(rank, area, modifier)
     if not area then area = G.playing_cards end
     if not modifier then modifier = 1 end
     local tally = 0
@@ -65,7 +71,8 @@ function Uma_rank_tally(rank, area, modifier) --Tally up the amount of a certain
     return tally * modifier
 end
 
-function Uma_weighted_picker(items, weights, seed) --Chooses a random value from {items} based on their assigned {weights}
+--Chooses a random value from {items} based on their assigned {weights}
+function Uma_weighted_picker(items, weights, seed)
     local size = math.min(#items, #weights)
     local weight_sum = 0
     for i = 1, size do
@@ -79,17 +86,24 @@ function Uma_weighted_picker(items, weights, seed) --Chooses a random value from
     return items[size]
 end
 
+--Enable/disable different subsets within the "Uma Assorted" set
 function Uma_CSS_check()
     local test = false
 
     if G.GAME.mambo_subset then test = true end
     if G.GAME.family_tree_subset then test = true end
 
-    G.GAME.uma_ccs_rate = test and 999 or 0
+    G.GAME.uma_ccs_rate = test and 4 or 0
 end
 
+
+
+--Constantly running code for other required effects
+
 function SMODS.current_mod.calculate(self, context)
-    if context.using_consumeable then --Adds the most recently used Spectral/Tarot/Tarot+/Tarot- and Planet/Planet+ cards to trackable variables
+
+    --Adds the most recently used Spectral/Tarot/Tarot+/Tarot- and Planet/Planet+ cards to trackable variables
+    if context.using_consumeable then
         local item = context.consumeable
         if item.ability.set == 'Planet' or item.ability.set == 'uma_Planet' then
             G.GAME.uma_planet_card = item.config.center.key
@@ -100,7 +114,8 @@ function SMODS.current_mod.calculate(self, context)
         end
     end
 
-    if context.after then --Spread code for turf and blossom cards
+    --Spread code for turf and blossom cards
+    if context.after then
         turf_count, normal_count = 0, 0
         for _, v in ipairs(context.scoring_hand) do
             if SMODS.has_enhancement(v, "m_uma_turf") or SMODS.has_enhancement(v, "m_uma_blossom") then
@@ -133,12 +148,12 @@ function SMODS.current_mod.calculate(self, context)
         end
     end
 
-    if context.blind_defeated then --Tokai Teio un-debuff function (Since she can't un-debuff herself)
+    --Tokai Teio un-debuff function (Since she can't un-debuff herself)
+    if context.blind_defeated then
         --print("Defeated!")
         for _, v in ipairs(SMODS.find_card('j_uma_teio', true)) do
             --print('teio found')
             v.ability.extra.hospital = v.ability.extra.hospital - 1
-            print(v.ability.extra.hospital)
             if v.ability.extra.hospital == 0 then
                 SMODS.debuff_card(v, false, 'breakLeg')
                 v.ability.extra.maxBuff = v.ability.extra.maxBuff - 1
@@ -147,19 +162,19 @@ function SMODS.current_mod.calculate(self, context)
         end
     end
 
-    if G.GAME.modifiers['uma_tax'] then --(un)Stable Income challenge code
-        if context.ending_shop and G.GAME.dollars >= 15 and #G.jokers.cards < G.jokers.config.card_limit then
+    --(un)Stable Income challenge code
+    if G.GAME.modifiers['uma_tax'] then
+        if context.ending_shop and G.GAME.dollars >= G.GAME.modifiers.uma_tax and #G.jokers.cards < G.jokers.config.card_limit then
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
                 delay = 0.2,
                 func = function()
-                    ease_dollars(-5)
+                    ease_dollars( math.floor(G.GAME.dollars * (G.GAME.modifiers.uma_tax_2 / -100) ) )
                     SMODS.add_card({set = "uma_jokers"})
                     return true
                 end
             }))
         end
     end
-end
 
---for _, v in ipairs(G.playing_cards) do v:set_ability('m_uma_blossom') end
+end

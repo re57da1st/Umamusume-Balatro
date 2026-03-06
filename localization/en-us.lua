@@ -802,7 +802,7 @@ return {
 
 
 
-            c_uma_push = {
+            c_uma_posterity = {
                 name = "Posterity",
                 text = {
                     "Combine {C:attention}2{} cards together,",
@@ -812,7 +812,7 @@ return {
                 },
             },
 
-            c_uma_pull = {
+            c_uma_pedigree = {
                 name = "Pedigree",
                 text = {
                     "Split {C:attention}1{} card into {C:attention}2{},",
@@ -971,12 +971,14 @@ return {
 
         v_text = {
             ch_c_uma_tax = {
-                "At the end of the shop, if you have {C:attention}$15{} or more,"
+               "At the end of the shop, if you have {C:attention}$#1#{} or more,"
             },
             ch_c_uma_tax_2 = {
-                "lose {C:attention}$5{} and create a random {C:attention}Uma{} joker {C:inactive}(must have room){}"
+                "lose {C:attention}#1#%{} and create a random {C:attention}Uma{} joker {C:inactive}(must have room){}"
             }
         },
+        --
+        --
 
         dictionary = {
             a_chips="+#1#",

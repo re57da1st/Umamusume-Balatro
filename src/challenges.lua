@@ -1,3 +1,4 @@
+--[[
 SMODS.Challenge { --Daitaku Helios
     key = 'helios_challenge',
     rules = {
@@ -548,13 +549,13 @@ SMODS.Challenge { --Worse Tarots
     vouchers = {},
     restrictions = {}
 }
-
+]]
 SMODS.Challenge {
     key = 'unstable_income',
     rules = {
         custom = {
-            { id = 'uma_tax', value = true },
-            { id = 'uma_tax_2', value = true },
+            { id = 'uma_tax', value = 20 },
+            { id = 'uma_tax_2', value = 50 },
         }
     },
     jokers = {
