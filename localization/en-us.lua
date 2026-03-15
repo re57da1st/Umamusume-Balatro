@@ -96,7 +96,7 @@ return {
             j_uma_norn = {
                 name = "Norn Ace",
                 text = {
-                    "Earn {C:money}$#1#{} per {C:attention}Uma",
+                    "Earn {C:money}$#1#{} per {C:uma_rainbow}Uma",
                     "joker at end of round",
                     "{C:inactive}(currently {C:money}$#2#{C:inactive})",
                 },
@@ -821,6 +821,19 @@ return {
                     "{C:inactive}(Aces are considered high)",
                 },
             },
+
+
+
+
+
+            c_uma_ssr_ticket = {
+                name = "SSR Ticket",
+                text = {
+                    "Choose {C:attention}any{} {C:uma_rainbow}Uma{} Joker",
+                    "to create",
+                    "{C:inactive}(Must have room){}"
+                },
+            },
         },
 
         Enhanced = {
@@ -894,6 +907,34 @@ return {
                     "that is {C:attention}only {C:hearts}hearts{},",
                     "and nothing else",
                     ]]
+                }
+            },
+
+            uma_race_stats = {
+                name = "Placings:",
+                text = {
+                    "1st: {C:attention}#1#",
+                    "2nd: {C:attention}#2#",
+                    "3rd: {C:attention}#3#",
+                    "Total: {C:attention}#4#{} races"
+                }
+            },
+
+            uma_race_stats_renamed = {
+                name = "Placings:",
+                text = {
+                    "{C:inactive}(#5#)",
+                    "1st: {C:attention}#1#",
+                    "2nd: {C:attention}#2#",
+                    "3rd: {C:attention}#3#",
+                    "Total: {C:attention}#4#{} races"
+                }
+            },
+
+            uma_race_stats_no_record = {
+                name = "Placings:",
+                text = {
+                    "No Race Record"
                 }
             },
 

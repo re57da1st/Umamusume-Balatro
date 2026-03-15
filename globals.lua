@@ -25,6 +25,25 @@ G.C.UMA = {
     CHULT = HEX('D002F0'),
 }
 
+SMODS.Gradient {
+    key = "rainbow",
+    colours = {
+        HEX("e75110"),
+        HEX("f9c231"),
+        HEX("ffe022"),
+        HEX("f3f700"),
+        HEX("b5f318"),
+        HEX("c5f09f"),
+        HEX("6bd3bd"),
+        HEX("80b2ec"),
+        HEX("3f89e4"),
+        HEX("313cde"),
+        HEX("9492d6"),
+        HEX("efa6b5"),
+    },
+    cycle = 5
+}
+
 --Colors Definition 2
 local loc_colour_ref = loc_colour
 function loc_colour(_c, _default)

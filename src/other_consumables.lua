@@ -2,7 +2,7 @@ SMODS.ConsumableType {
     key = 'uma_ccs',
     primary_colour = G.C.UMA.MAMBO,
     secondary_colour = G.C.UMA.MAMBO2,
-    collection_rows = { 3, 2 },
+    collection_rows = { 3, 4 },
     shop_rate = 0
 }
 
@@ -195,5 +195,59 @@ SMODS.Consumable { --pedigree
 
     set_card_type_badge = function(self, card, badges)
         badges[#badges + 1] = create_badge(localize('uma_family_tree_loc'), G.C.UMA.FAMILY_TREE2, G.C.UMA.WHITE, 1.2)
+    end
+}
+
+
+
+--Uma Creation
+SMODS.Consumable { --Test Consumable
+    key = 'ssr_ticket',
+    cost = 15,
+    set = 'uma_ccs',
+    pos = { x = 13, y = 3 },
+    atlas = 'c_umas',
+    --soul_pos = { x = 13, y = 2 },
+
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    use = function(self, card, area, copier)
+
+        G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.SETTINGS.paused = true
+                G.FUNCS.overlay_menu{
+                    config = {no_esc = true},
+                    definition = SMODS.uma_card_collection_UIBox(
+                        G.P_CENTER_POOLS.uma_jokers,
+                        {5, 5, 5},
+                        {
+                            no_materialize = true, 
+                            modify_card = function(card, center)
+                                Uma_create_select_card_ui(card, G.jokers)
+                            end,
+                            h_mod = 1.05,
+                        }
+                    ),
+                }
+                return true
+            end
+        }))
+
+    end,
+
+    can_use = function(self, card)
+        return G.jokers and #G.jokers.cards < G.jokers.config.card_limit
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end,
+
+    set_card_type_badge = function(self, card, badges)
+        badges[#badges + 1] = create_badge("Carrot", SMODS.Gradients.uma_rainbow, G.C.UMA.WHITE, 1.2)
     end
 }

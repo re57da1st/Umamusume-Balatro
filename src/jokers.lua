@@ -5,11 +5,27 @@ SMODS.Joker{ --Daitaku Helios
     rarity = 4,
     cost = 20,
     pos = { x = 0, y = 0 },
-    config = { extra = { Xmult = 1.5 } },
+    config = { extra = { Xmult = 1.5, race = {
+        r1 = 10,
+        r2 = 6,
+        r3 = 1,
+        rt = 35
+    } } },
     atlas = 'j_umas',
     soul_pos = { x = 0, y = 1 },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return { vars = {
                 card.ability.extra.Xmult --Xmult, the value that Mult gets multiplied as when triggered
         } }
@@ -33,11 +49,27 @@ SMODS.Joker{ --Daiwa Scarlet
     rarity = 4,
     cost = 20,
     pos = { x = 1, y = 0 },
-    config = { extra = { q_mult = 8, total_mult = 0} },
+    config = { extra = { q_mult = 8, total_mult = 0, race = {
+        r1 = 8,
+        r2 = 4,
+        r3 = 0,
+        rt = 12
+    } } },
     atlas = 'j_umas',
     soul_pos = { x = 1, y = 1 },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         card.ability.extra.total_mult = Uma_rank_tally(12, nil, card.ability.extra.q_mult)
         return { vars = {
             card.ability.extra.q_mult,  --Queen Mult, the amount of mult Daiwa gains per queen in the deck
@@ -60,9 +92,26 @@ SMODS.Joker{ --Agnes Digital
     rarity = 3,
     cost = 8,
     pos = { x = 2, y = 0 },
+    config = { extra = { race = {
+        r1 = 12,
+        r2 = 5,
+        r3 = 4,
+        rt = 32
+    } } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return nil
     end,
 
@@ -100,8 +149,24 @@ SMODS.Joker{ --Twin Turbo
     cost = 2,
     pos = { x = 3, y = 0 },
     atlas = 'j_umas',
-    config = { extra = { mult_gain = 5, mult = 0 }, hand_type = 'uma_perfect_pair'},
+    config = { extra = { mult_gain = 5, mult = 0, race = {
+        r1 = 6,
+        r2 = 2,
+        r3 = 0,
+        rt = 33
+    } }, hand_type = 'uma_perfect_pair' },
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return { vars = { card.ability.extra.mult_gain, localize('uma_perfect_pair', 'poker_hands'), card.ability.extra.mult } }
     end,
 
@@ -131,7 +196,7 @@ SMODS.Joker{ --Twin Turbo
     end
 }
 
-SMODS.Joker{ --Goldship
+SMODS.Joker{ --Gold ship
     key = "goldship",
     blueprint_compat = true,
     rarity = 3,
@@ -160,10 +225,27 @@ SMODS.Joker{ --Goldship
             "uma_goldship_effect6_jd",
             "uma_goldship_effect7_jd",
             "uma_goldship_effect8_jd",
+        },
+        race = {
+            r1 = 13,
+            r2 = 3,
+            r3 = 2,
+            rt = 28
         }
     } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return { vars = {
             card.ability.extra.min,
             card.ability.extra.max,
@@ -389,10 +471,26 @@ SMODS.Joker{ --Oguri Cap
     rarity = 3,
     cost = 8,
     pos = { x = 5, y = 0 },
-    config = { extra = { chips = 0, chip_mod = 20, state = 0 } },
+    config = { extra = { chips = 0, chip_mod = 20, state = 0, race = {
+        r1 = 22,
+        r2 = 6,
+        r3 = 1,
+        rt = 32
+    } } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return { vars = {
             card.ability.extra.chips, --The total amount of chips Oguri stores on the card
             card.ability.extra.chip_mod --The amount of chips Oguri gains per card "eaten"
@@ -443,10 +541,26 @@ SMODS.Joker{ --Sakura Bakushin O
     rarity = 3,
     cost = 7,
     pos = { x = 6, y = 0 },
-    config = { extra = { mult = 0, mult_pot = 0, mult_add = 10, mult_mod = 1, active = false, sign = "+", interval = 3 } },
+    config = { extra = { mult = 0, mult_pot = 0, mult_add = 10, mult_mod = 1, active = false, sign = "+", interval = 3, race = {
+        r1 = 11,
+        r2 = 2,
+        r3 = 1,
+        rt = 21
+    } } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return { vars = {
                 card.ability.extra.mult, --The Mult value the card has
                 card.ability.extra.mult_pot, --Mult potential, the value that changes with respect to time
@@ -536,10 +650,26 @@ SMODS.Joker{ --Matikanetannhauser
     rarity = 3,
     cost = 6,
     pos = { x = 2, y = 1 },
-    config = { extra = { chips = 10, chips_mod = 10, mult = 4, mult_mod = 4, xmult = 1.0, xmult_mod = 0.1 } },
+    config = { extra = { chips = 10, chips_mod = 10, mult = 4, mult_mod = 4, xmult = 1.0, xmult_mod = 0.1, race = {
+        r1 = 8,
+        r2 = 2,
+        r3 = 2,
+        rt = 32
+    } } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return { vars = {
            card.ability.extra.chips, --Starting Chips value
            card.ability.extra.mult,  --Starting Mult  value
@@ -601,11 +731,28 @@ SMODS.Joker{ --Sakura Chiyono O
     cost = 5,
     pos = { x = 3, y = 1 },
     atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 5,
+        r2 = 1,
+        r3 = 1,
+        rt = 10
+    } } },
 
     loc_vars = function(self, info_queue, card)
 
         info_queue[#info_queue+1] = G.P_CENTERS.m_uma_turf
         info_queue[#info_queue+1] = G.P_CENTERS.m_uma_blossom
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
 
     end,
 
@@ -663,10 +810,28 @@ SMODS.Joker{ --Norn Ace
     rarity = 1,
     cost = 3,
     pos = { x = 4, y = 1 },
-    config = { extra = { dollars = 3, uma_count = 0 } },
+    config = { extra = { dollars = 3, uma_count = 0, race = {
+        r1 = 2,
+        r2 = 2,
+        r3 = 2,
+        rt = 40,
+        name = "Ace Brown"
+    } } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats_renamed",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt,
+                    card.ability.extra.race.name
+                } }
+        end
         return { vars = {
             card.ability.extra.dollars,
             card.ability.extra.dollars * card.ability.extra.uma_count
@@ -694,10 +859,28 @@ SMODS.Joker{ --Obey Your Master
     rarity = 2,
     cost = 5,
     pos = { x = 6, y = 1 },
-    config = { extra = { mult = 2 } },
+    config = { extra = { mult = 2, race = {
+        r1 = 5,
+        r2 = 5,
+        r3 = 5,
+        rt = 40,
+        name = "Pay the Butler"
+    } } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats_renamed",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt,
+                    card.ability.extra.race.name
+                } }
+        end
         return { vars = { card.ability.extra.mult } }
     end,
     calculate = function(self, card, context)
@@ -717,10 +900,26 @@ SMODS.Joker{ --Matikanefukukitaru
     rarity = 3,
     cost = 8,
     pos = { x = 8, y = 0 },
-    config = { extra = { scaling = 1.5 } },
+    config = { extra = { scaling = 1.5, race = {
+        r1 = 6,
+        r2 = 4,
+        r3 = 1,
+        rt = 22
+    } } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return { vars = {
             card.ability.extra.scaling
         } }
@@ -787,6 +986,12 @@ SMODS.Joker{ --Still in Love
         desc_2_3 = "%n%%",
         desc_2_4 = "%e%%%s",
         desc_2_5 = "a%% n%%%i%% %ls%",
+        race = {
+            r1 = 5,
+            r2 = 2,
+            r3 = 1,
+            rt = 16
+        }
     } },
     atlas = 'j_umas',
     soul_pos = { x = 9, y = 2 },
@@ -802,6 +1007,17 @@ SMODS.Joker{ --Still in Love
                 card.ability.extra.desc_2_4,
                 card.ability.extra.desc_2_5
             } }
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return {  vars = {
             card.ability.extra.desc_1_1,
             card.ability.extra.desc_1_2,
@@ -910,9 +1126,25 @@ SMODS.Joker{ --Vodka
     cost = 5,
     pos = { x = 7, y = 1 },
     atlas = 'j_umas',
-    config = { extra = { mult = 5, chips = 10} },
+    config = { extra = { mult = 5, chips = 10, race = {
+        r1 = 10,
+        r2 = 5,
+        r3 = 3,
+        rt = 26
+    } } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return { vars = { card.ability.extra.mult, card.ability.extra.chips } }
     end,
 
@@ -935,9 +1167,25 @@ SMODS.Joker{ --Tokai Teio
     cost = 6,
     pos = { x = 8, y = 1 },
     atlas = 'j_umas',
-    config = { extra = { odds = 8, hospital = 0, recovery = 2, maxBuff = 2,  Xmult = 1.25, Xmult_mod = 2} },
+    config = { extra = { odds = 8, hospital = 0, recovery = 2, maxBuff = 2,  Xmult = 1.25, Xmult_mod = 2, race = {
+        r1 = 9,
+        r2 = 0,
+        r3 = 0,
+        rt = 12
+    } } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'teio')
         return {vars = {
             numerator, denominator, card.ability.extra.recovery, card.ability.extra.maxBuff, card.ability.extra.Xmult, card.ability.extra.Xmult_mod
@@ -966,8 +1214,24 @@ SMODS.Joker { --Haru Urara
     cost = 4,
     pos = { x = 5, y = 2 },
     atlas = 'j_umas',
-    config = { extra = { odds = 2, repetitions = 1 } },
+    config = { extra = { odds = 2, repetitions = 1, race = {
+        r1 = 0,
+        r2 = 5,
+        r3 = 7,
+        rt = 113
+    } } },
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'uma_haru')
         return { vars = {
             numerator,
@@ -1001,8 +1265,24 @@ SMODS.Joker{ --Lucky Lilac
     cost = 3,
     pos = { x = 3, y = 4 },
     atlas = 'j_umas',
-    config = { extra = { odds = 5, chips = 50 } },
+    config = { extra = { odds = 5, chips = 50, race = {
+        r1 = 7,
+        r2 = 4,
+        r3 = 3,
+        rt = 19
+    } } },
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'uma_lilac')
         return { vars = { numerator, denominator, card.ability.extra.chips } }
     end,
@@ -1032,6 +1312,27 @@ SMODS.Joker{ --Neo Universe
     cost = 6,
     pos = { x = 2, y = 4 },
     atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 7,
+        r2 = 0,
+        r3 = 3,
+        rt = 13
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return nil
+    end,
 
     calculate = function(self, card, context)
         if context.setting_blind and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
@@ -1053,7 +1354,7 @@ SMODS.Joker{ --Neo Universe
                     return true
                 end)
             }))
-            return nil, true 
+            return nil, true
         end
     end,
 }
@@ -1066,9 +1367,16 @@ SMODS.Joker{ --Mini the Lady
     pos = { x = 0, y = 2 },
     display_size = { w = 71 * 0.7, h = 95 * 0.7 },
     atlas = 'j_umas',
-    config = { extra = { odds = 1, time = 5} },
+    config = { extra = { odds = 1, time = 5 } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats_no_record",
+                vars = { }
+            }
+        end
         return {vars = {
             card.ability.extra.odds
         } }
@@ -1109,9 +1417,25 @@ SMODS.Joker{ --Super Creek
     cost = 3,
     pos = { x = 1, y = 2 },
     atlas = 'j_umas',
-    config = { extra = { } },
+    config = { extra = { race = {
+        r1 = 8,
+        r2 = 2,
+        r3 = 2,
+        rt = 16
+    } } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return {vars = {
             nil
         } }
@@ -1133,9 +1457,25 @@ SMODS.Joker{ --Air Groove
     cost = 3,
     pos = { x = 2, y = 2 },
     atlas = 'j_umas',
-    config = { extra = { } },
+    config = { extra = { race = {
+        r1 = 9,
+        r2 = 5,
+        r3 = 3,
+        rt = 19
+    } } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return {vars = {
             nil
         } }
@@ -1157,9 +1497,25 @@ SMODS.Joker{ --Nice Nature
     cost = 3,
     pos = { x = 3, y = 2 },
     atlas = 'j_umas',
-    config = { extra = { } },
+    config = { extra = { race = {
+        r1 = 7,
+        r2 = 6,
+        r3 = 8,
+        rt = 41
+    } } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return {vars = {
             nil
         } }
@@ -1181,9 +1537,25 @@ SMODS.Joker{ --Maruzensky
     cost = 3,
     pos = { x = 4, y = 2 },
     atlas = 'j_umas',
-    config = { extra = { } },
+    config = { extra = { race = {
+        r1 = 8,
+        r2 = 0,
+        r3 = 0,
+        rt = 8
+    } } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return {vars = {
             nil
         } }
@@ -1205,9 +1577,25 @@ SMODS.Joker{ --Symboli Rudolf
     cost = 3,
     pos = { x = 0, y = 3 },
     atlas = 'j_umas',
-    config = { extra = { } },
+    config = { extra = { race = {
+        r1 = 13,
+        r2 = 1,
+        r3 = 1,
+        rt = 16
+    } } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return {vars = {
             nil
         } }
@@ -1229,9 +1617,25 @@ SMODS.Joker{ --Tamamo Cross
     cost = 3,
     pos = { x = 1, y = 3 },
     atlas = 'j_umas',
-    config = { extra = { } },
+    config = { extra = { race = {
+        r1 = 9,
+        r2 = 3,
+        r3 = 2,
+        rt = 18
+    } } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return {vars = {
             nil
         } }
@@ -1253,9 +1657,25 @@ SMODS.Joker{ --Meisho Doto
     cost = 3,
     pos = { x = 2, y = 3 },
     atlas = 'j_umas',
-    config = { extra = { } },
+    config = { extra = { race = {
+        r1 = 10,
+        r2 = 8,
+        r3 = 2,
+        rt = 27
+    } } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return {vars = {
             nil
         } }
@@ -1277,9 +1697,25 @@ SMODS.Joker{ --Mihono Bourbon
     cost = 3,
     pos = { x = 3, y = 3 },
     atlas = 'j_umas',
-    config = { extra = { } },
+    config = { extra = { race = {
+        r1 = 7,
+        r2 = 1,
+        r3 = 0,
+        rt = 8
+    } } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return {vars = {
             nil
         } }
@@ -1301,9 +1737,25 @@ SMODS.Joker{ --Mayano Top Gun
     cost = 3,
     pos = { x = 4, y = 3 },
     atlas = 'j_umas',
-    config = { extra = { } },
+    config = { extra = { race = {
+        r1 = 8,
+        r2 = 4,
+        r3 = 5,
+        rt = 21
+    } } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return {vars = {
             nil
         } }
@@ -1325,9 +1777,27 @@ SMODS.Joker{ --Belno Light
     cost = 3,
     pos = { x = 0, y = 4 },
     atlas = 'j_umas',
-    config = { extra = { } },
+    config = { extra = { race = {
+        r1 = 10,
+        r2 = 11,
+        r3 = 3,
+        rt = 45,
+        name = "Twin Bee"
+    } } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats_renamed",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt,
+                    card.ability.extra.race.name
+                } }
+        end
         return {vars = {
             nil
         } }
@@ -1349,9 +1819,25 @@ SMODS.Joker{ --Vivlos
     cost = 3,
     pos = { x = 1, y = 4 },
     atlas = 'j_umas',
-    config = { extra = { } },
+    config = { extra = { race = {
+        r1 = 4,
+        r2 = 6,
+        r3 = 0,
+        rt = 17
+    } } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return {vars = {
             nil
         } }
@@ -1383,9 +1869,25 @@ SMODS.Joker{ --Daring Tact
     cost = 3,
     pos = { x = 4, y = 4 },
     atlas = 'j_umas',
-    config = { extra = { } },
+    config = { extra = { race = {
+        r1 = 5,
+        r2 = 1,
+        r3 = 3,
+        rt = 13
+    } } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
         return {vars = {
             nil
         } }
