@@ -1,3 +1,5 @@
+---@diagnostic disable: undefined-global, undefined-field, param-type-mismatch
+
 function Uma_create_select_card_ui(card, area, extra_data, select_func)
     select_func = select_func or "uma_select"
     extra_data = extra_data or {}
