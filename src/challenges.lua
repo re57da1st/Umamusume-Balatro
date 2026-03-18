@@ -550,6 +550,20 @@ SMODS.Challenge { --Worse Tarots
     restrictions = {}
 }
 ]]
+
+SMODS.Challenge {
+    key = 'horse',
+    rules = {
+    },
+    jokers = {
+    },
+    consumeables = {
+        {id = 'c_uma_ssr_ticket'}
+    },
+    vouchers = {
+    }
+}
+
 SMODS.Challenge {
     key = 'unstable_income',
     rules = {
