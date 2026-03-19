@@ -841,7 +841,7 @@ return {
                 name = "Turf Card",
                 text = {
                     "{X:chips,C:white}x#1#{} chips",
-                    "spreads {C:uma_turf}Turf {}to blank playings",
+                    "spreads {C:uma_turf}Turf {}to blank playing",
                     "cards when {C:attention}scored together",
                     "{C:inactive}(max 1 spread per hand)"
                 },
@@ -851,7 +851,7 @@ return {
                 name = "Blossom Card",
                 text = {
                     "{X:chips,C:white}x#1#{} chips",
-                    "spreads {C:uma_turf}Turf {}to blank playings",
+                    "spreads {C:uma_turf}Turf {}to blank playing",
                     "cards when {C:attention}scored together",
                     "{C:inactive}(max 1 spread per hand)"
                 },
