@@ -163,6 +163,8 @@ return {
                 name = "Mini the Lady",
                 text = {
                 "On {C:attention}final hand{} of round,",
+                "if current chips is less",
+                "than {C:attention}#2#%{} of required chips,",
                 "reduce blind size by {C:attention}#1#%{}"
                 },
             },

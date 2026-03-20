@@ -1362,8 +1362,8 @@ SMODS.Joker{ --Neo Universe
 SMODS.Joker{ --Mini the Lady
     key = "mini",
     blueprint_compat = true,
-    rarity = 2,
-    cost = 5,
+    rarity = 1,
+    cost = 3,
     pos = { x = 0, y = 2 },
     display_size = { w = 71 * 0.7, h = 95 * 0.7 },
     atlas = 'j_umas',
@@ -1378,7 +1378,8 @@ SMODS.Joker{ --Mini the Lady
             }
         end
         return {vars = {
-            card.ability.extra.reduction
+            card.ability.extra.reduction,
+            card.ability.extra.percent
         } }
     end,
 
