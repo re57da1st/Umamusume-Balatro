@@ -284,6 +284,16 @@ return {
 
         },
 
+        Blind = {
+            bl_uma_frisk_blind = {
+                name = "Frisk's Blind",
+                text = {
+                    "Testing text!",
+                    "Haiiiiii :3 ^^",
+                },
+            },
+        },
+
         fuku_cards = {
             c_uma_better_chariot = {
                 name = "The Chariot{C:green}+",

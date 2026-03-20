@@ -1,14 +1,26 @@
+CssAPI = {
+    config = {
+        mambo_rate = 4,
+        family_tree_rate = 1.25
+    }
+}
+
 SMODS.ConsumableType {
     key = 'uma_ccs',
     primary_colour = G.C.UMA.MAMBO,
     secondary_colour = G.C.UMA.MAMBO2,
     collection_rows = { 3, 4 },
-    shop_rate = 0
+    shop_rate = 0,
+    rarities = {
+        {key = 1, weight = CssAPI.config.mambo_rate},
+        {key = 2, weight = CssAPI.config.family_tree_rate}
+    }
 }
 
 --Mambo Cards
 SMODS.Consumable { --Mambo Boots
     key = 'mambo_boots',
+    rarity = 1,
     set = 'uma_ccs',
     pos = { x = 10, y = 3 },
     atlas = 'c_umas',
@@ -37,6 +49,7 @@ SMODS.Consumable { --Mambo Boots
 
 SMODS.Consumable { --Mambo Hat
     key = 'mambo_hat',
+    rarity = 1,
     set = 'uma_ccs',
     pos = { x = 11, y = 3 },
     atlas = 'c_umas',
@@ -65,6 +78,7 @@ SMODS.Consumable { --Mambo Hat
 
 SMODS.Consumable { --Mambo Plushie
     key = 'mambo_plushie',
+    rarity = 1,
     set = 'uma_ccs',
     pos = { x = 12, y = 3 },
     atlas = 'c_umas',
@@ -96,6 +110,7 @@ SMODS.Consumable { --Mambo Plushie
 --Family Tree Cards
 SMODS.Consumable { --Posterity
     key = 'posterity',
+    rarity = 2,
     set = 'uma_ccs',
     pos = { x = 12, y = 0 },
     atlas = 'c_umas',
@@ -150,6 +165,7 @@ SMODS.Consumable { --Posterity
 
 SMODS.Consumable { --pedigree
     key = 'pedigree',
+    rarity = 2,
     set = 'uma_ccs',
     pos = { x = 12, y = 1 },
     atlas = 'c_umas',

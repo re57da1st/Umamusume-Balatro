@@ -9,6 +9,7 @@ assert(SMODS.load_file("src/other_consumables.lua"))()
 assert(SMODS.load_file("src/enhancements.lua"))()
 assert(SMODS.load_file("src/boosters.lua"))()
 assert(SMODS.load_file("src/interface.lua"))()
+assert(SMODS.load_file("src/blind.lua"))()
 
 if JokerDisplay then SMODS.load_file("src/joker_display_definitions.lua")() end
 

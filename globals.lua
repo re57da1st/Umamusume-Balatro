@@ -112,7 +112,10 @@ function Uma_CSS_check()
     if G.GAME.mambo_subset then test = true end
     if G.GAME.family_tree_subset then test = true end
 
-    G.GAME.uma_ccs_rate = test and 4 or 0
+    G.GAME.uma_ccs_rate = (
+        (G.GAME.mambo_subset and CssAPI.config.mambo_rate or 0) +
+        (G.GAME.family_tree_subset and CssAPI.config.family_tree_rate or 0)
+    )
 end
 
 
