@@ -196,7 +196,7 @@ SMODS.Joker{ --Twin Turbo
     end
 }
 
-SMODS.Joker{ --Gold ship
+SMODS.Joker{ --Gold ship, maybe change the fact she can choose the same boss blind 2 copy as the one being played
     key = "goldship",
     blueprint_compat = true,
     rarity = 3,
@@ -1383,20 +1383,9 @@ SMODS.Joker{ --Mini the Lady
     end,
 
     calculate = function(self, card, context)
-        if context.joker_main then
-            if card.ability.extra.time == 5 then
-                if SMODS.pseudorandom_probability(card, 'mini', 1, card.ability.extra.odds) then
-                    if context.debuff_card and context.debuff_card.area == G.jokers then
-                        if context.setting_blind then
-                            return {
-                                debuff = true
-                            }
-                        end
-                    end
-                else
-                    return nil
-                end
-            end
+        if context.joker_main and G.GAME.current_round.hands_left == 0 then
+                
+
         end
     end,
 
@@ -1405,6 +1394,47 @@ SMODS.Joker{ --Mini the Lady
     end
 }
 
+SMODS.Joker{ --Belno Light, takes a blind before choosing a blueprint_compat joker and giving it a perma +1 retrigger, can choose the same joker twice, nyat her dough
+    key = "belno",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 0, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 10,
+        r2 = 11,
+        r3 = 3,
+        rt = 45,
+        name = "Twin Bee"
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats_renamed",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt,
+                    card.ability.extra.race.name
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
 
 
 
@@ -1754,48 +1784,6 @@ SMODS.Joker{ --Mayano Top Gun
                     card.ability.extra.race.r2,
                     card.ability.extra.race.r3,
                     card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Joker{ --Belno Light
-    key = "belno",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 0, y = 4 },
-    atlas = 'j_umas',
-    config = { extra = { race = {
-        r1 = 10,
-        r2 = 11,
-        r3 = 3,
-        rt = 45,
-        name = "Twin Bee"
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats_renamed",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt,
-                    card.ability.extra.race.name
                 } }
         end
         return {vars = {
