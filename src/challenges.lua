@@ -581,5 +581,23 @@ SMODS.Challenge {
     }
 }
 
+
+SMODS.Challenge {
+    key = 'love_challenge',
+    rules = {
+        modifiers = {
+            { id = "discards", value = 4}
+        }
+    },
+    jokers = {
+        { id = "j_uma_love", eternal = true}
+    },
+    consumeables = {
+        { id = "c_sun"}
+    },
+    vouchers = {
+    }
+}
+
 --Example card definition:
 --{ s = 'D', r = 'Q', e = 'm_steel', d = 'polychrome', g = 'Red' }
