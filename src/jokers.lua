@@ -1359,7 +1359,7 @@ SMODS.Joker{ --Neo Universe
     end,
 }
 
-SMODS.Joker{ --Mini the Lady
+SMODS.Joker{ --Mini the Lady, if last hand, blind size like,,,,,10% or sum
     key = "mini",
     blueprint_compat = true,
     rarity = 2,
@@ -1383,9 +1383,10 @@ SMODS.Joker{ --Mini the Lady
     end,
 
     calculate = function(self, card, context)
-        if context.joker_main and G.GAME.current_round.hands_left == 0 then
-                
-
+        if context.press_play and G.GAME.current_round.hands_left == 1 then
+            G.GAME.blind.chips = G.GAME.blind.chips * 0.9
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            print(G.GAME.blind.chips)
         end
     end,
 
