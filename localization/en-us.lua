@@ -290,8 +290,8 @@ return {
             bl_uma_frisk_blind = {
                 name = "Frisk's Blind",
                 text = {
-                    "Testing text!",
-                    "Haiiiiii :3 ^^",
+                    "Increases blind size by 25%",
+                    "after each hand played",
                 },
             },
         },
@@ -1019,6 +1019,7 @@ return {
             c_uma_oops_all_lesbians = "Oops! All Lesbians!",
             c_uma_mini_challenge = "mini",
             c_uma_unstable_income = "(un)Stable Income",
+            c_uma_horse = "Choose your Uma!",
         },
 
         v_text = {

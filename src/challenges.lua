@@ -551,7 +551,7 @@ SMODS.Challenge { --Worse Tarots
 }
 ]]
 
-SMODS.Challenge {
+SMODS.Challenge {--Choose your Uma!
     key = 'horse',
     rules = {
     },
@@ -564,7 +564,7 @@ SMODS.Challenge {
     }
 }
 
-SMODS.Challenge {
+SMODS.Challenge {--Unstable Income
     key = 'unstable_income',
     rules = {
         custom = {
@@ -581,8 +581,7 @@ SMODS.Challenge {
     }
 }
 
-
-SMODS.Challenge {
+SMODS.Challenge {--Still in Love Challenge
     key = 'love_challenge',
     rules = {
         modifiers = {
