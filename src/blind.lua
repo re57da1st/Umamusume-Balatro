@@ -10,6 +10,7 @@ SMODS.Blind {
         if not blind.disabled then
             if context.hand_drawn and not context.first_hand_drawn then
                 G.GAME.blind.chips = 50
+                G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
             end
         end
     end,
