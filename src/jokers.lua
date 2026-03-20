@@ -1359,7 +1359,7 @@ SMODS.Joker{ --Neo Universe
     end,
 }
 
-SMODS.Joker{ --Mini the Lady, if last hand, blind size like,,,,,10% or sum
+SMODS.Joker{ --Mini the Lady
     key = "mini",
     blueprint_compat = true,
     rarity = 2,
@@ -1367,7 +1367,7 @@ SMODS.Joker{ --Mini the Lady, if last hand, blind size like,,,,,10% or sum
     pos = { x = 0, y = 2 },
     display_size = { w = 71 * 0.7, h = 95 * 0.7 },
     atlas = 'j_umas',
-    config = { extra = { reduction = 10 } },
+    config = { extra = { reduction = 10, percent = 50 } },
 
     loc_vars = function(self, info_queue, card)
         if G.GAME.show_placings then
@@ -1383,15 +1383,11 @@ SMODS.Joker{ --Mini the Lady, if last hand, blind size like,,,,,10% or sum
     end,
 
     calculate = function(self, card, context)
-        if context.press_play and G.GAME.current_round.hands_left == 1 then
+        if context.press_play and G.GAME.current_round.hands_left == 1 and G.GAME.chips / G.GAME.blind.chips <= card.ability.extra.percent / 100 then
             G.GAME.blind.chips = G.GAME.blind.chips * (100 - card.ability.extra.reduction) / 100
             G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
             print(G.GAME.blind.chips)
         end
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
