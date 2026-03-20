@@ -1367,7 +1367,7 @@ SMODS.Joker{ --Mini the Lady, if last hand, blind size like,,,,,10% or sum
     pos = { x = 0, y = 2 },
     display_size = { w = 71 * 0.7, h = 95 * 0.7 },
     atlas = 'j_umas',
-    config = { extra = { odds = 1, time = 5 } },
+    config = { extra = { reduction = 10 } },
 
     loc_vars = function(self, info_queue, card)
         if G.GAME.show_placings then
@@ -1378,13 +1378,13 @@ SMODS.Joker{ --Mini the Lady, if last hand, blind size like,,,,,10% or sum
             }
         end
         return {vars = {
-            card.ability.extra.odds
+            card.ability.extra.reduction
         } }
     end,
 
     calculate = function(self, card, context)
         if context.press_play and G.GAME.current_round.hands_left == 1 then
-            G.GAME.blind.chips = G.GAME.blind.chips * 0.9
+            G.GAME.blind.chips = G.GAME.blind.chips * (100 - card.ability.extra.reduction) / 100
             G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
             print(G.GAME.blind.chips)
         end

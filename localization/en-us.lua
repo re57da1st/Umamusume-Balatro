@@ -162,10 +162,8 @@ return {
             j_uma_mini = {
                 name = "Mini the Lady",
                 text = {
-                    "short stuff",
-                    "short stuff",
-                    "short stuff",
-                    "short stuff",
+                "On {C:attention}final hand{} of round,",
+                "reduce blind size by {C:attention}#1#%{}"
                 },
             },
 
@@ -173,6 +171,7 @@ return {
                 name = "Super Creek",
                 text = {
                     "BIIIIIIIG stuff",
+                    "{C:inactive}This message was brought to you by Frisk{}"
                 },
             },
 
