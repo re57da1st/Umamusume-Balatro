@@ -3,9 +3,10 @@ SMODS.Blind {
     key = "frisk_blind",
     dollars = 8,
     mult = 2,
-    pos = { x = 0, y = 26 },
+    pos = { x = 0, y = 0 },
+    atlas = 'bl_umas',
     boss = { showdown = true },
-    boss_colour = HEX("009cfd"),
+    boss_colour = HEX("fb00ff"),
     calculate = function(self, blind, context)
         if not blind.disabled then
             if context.hand_drawn and not context.first_hand_drawn then
@@ -14,5 +15,4 @@ SMODS.Blind {
             end
         end
     end,
-
 }

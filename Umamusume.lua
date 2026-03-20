@@ -55,7 +55,7 @@ SMODS.Atlas({ --Booster (P)acks
     px = 71,
     py = 95
 })
---[[
+
 SMODS.Atlas({ --Booster (P)acks
     key = "bl_umas",
     path = "bl_umas.png",
@@ -65,7 +65,7 @@ SMODS.Atlas({ --Booster (P)acks
     animate = true,
     atlas_table = "ANIMATION_ATLAS"
 })
-]]--
+
 --Pools
 
 --Uma Jokers
