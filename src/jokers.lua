@@ -1037,7 +1037,8 @@ SMODS.Joker{ --Still in Love
         end
 
         if context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
-            if context.debuff_card:is_suit("Hearts", true) and not SMODS.has_enhancement(context.debuff_card, "m_wild") then
+            if context.debuff_card:is_suit("Hearts", true) and not SMODS.has_enhancement(context.debuff_card, "m_wild") and
+            (G.GAME.blind.config.blind.key ~= "bl_final_leaf" or G.GAME.blind.disabled) then
                 return { prevent_debuff = true }
             else
                 return { debuff = true }

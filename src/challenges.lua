@@ -580,7 +580,7 @@ SMODS.Challenge {--Unstable Income
     vouchers = {
     }
 }
-
+--[[
 SMODS.Challenge {--Still in Love Challenge
     key = 'love_challenge',
     rules = {
@@ -597,6 +597,6 @@ SMODS.Challenge {--Still in Love Challenge
     vouchers = {
     }
 }
-
+]]--
 --Example card definition:
 --{ s = 'D', r = 'Q', e = 'm_steel', d = 'polychrome', g = 'Red' }
