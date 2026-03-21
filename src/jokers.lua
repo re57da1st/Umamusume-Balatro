@@ -808,7 +808,7 @@ SMODS.Joker{ --Norn Ace
     key = "norn",
     blueprint_compat = true,
     rarity = 1,
-    cost = 3,
+    cost = 5,
     pos = { x = 4, y = 1 },
     config = { extra = { dollars = 3, uma_count = 0, race = {
         r1 = 2,
@@ -1162,7 +1162,7 @@ SMODS.Joker{ --Vodka
 
 SMODS.Joker{ --Tokai Teio
     key = "teio",
-    blueprint_compat = false,
+    blueprint_compat = true,
     rarity = 2,
     cost = 6,
     pos = { x = 8, y = 1 },
@@ -1193,16 +1193,18 @@ SMODS.Joker{ --Tokai Teio
     end,
 
     calculate = function(self, card, context)
-        if context.joker_main then
+        if context.press_play and not context.blueprint then
             if SMODS.pseudorandom_probability(card, 'teio', 1, card.ability.extra.odds) and card.ability.extra.maxBuff ~= 0 then
                 card.ability.extra.hospital = card.ability.extra.recovery
-                print(card.ability.extra.hospital)
-               SMODS.debuff_card(card, true, 'breakLeg')
-            else
-                return {
-                    xmult = card.ability.extra.Xmult
-                }
+                --print(card.ability.extra.hospital)
+                SMODS.debuff_card(card, true, 'breakLeg')
             end
+        end
+
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.Xmult
+            }
         end
     end
 }
@@ -1307,7 +1309,7 @@ SMODS.Joker{ --Lucky Lilac
 
 SMODS.Joker{ --Neo Universe
     key = "neo",
-    blueprint_compat = false,
+    blueprint_compat = true,
     rarity = 2,
     cost = 6,
     pos = { x = 2, y = 4 },

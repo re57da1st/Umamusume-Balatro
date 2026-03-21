@@ -26,7 +26,7 @@ SMODS.Enhancement { --Turf
 SMODS.Enhancement { --Blossom
     key = 'blossom',
     pos = { x = 1, y = 0 },
-    config = { xChips = 1.2 },
+    config = { xChips = 1.25 },
     atlas = 'e_umas',
 
     loc_vars = function(self, info_queue, card)
