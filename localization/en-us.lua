@@ -1,5 +1,15 @@
 return {
     descriptions = {
+        Back = {
+            b_uma_ura = {
+                name = "URA Deck",
+                text = {
+                    "{C:uma_rainbow}Uma{} jokers appear",
+                    "{C:attention}2X{} more often"
+                }
+            },
+        },
+
         Joker = {
             j_uma_helios = {
                 name = "Daitaku Helios",
@@ -1031,7 +1041,7 @@ return {
             ch_c_unstable_income_loc2 = {
                 "lose {C:attention}"
                 ..(SMODS.Challenge and SMODS.Challenge.obj_table.c_uma_unstable_income.rules.custom[1].value[2] or "nil")..
-                "%{} and create a random {C:attention}Uma{} joker {C:inactive}(must have room){}"
+                "%{} and create a random {C:uma_rainbow}Uma{} joker {C:inactive}(must have room){}"
             }
         },
 

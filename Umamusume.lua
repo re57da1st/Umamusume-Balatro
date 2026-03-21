@@ -10,6 +10,7 @@ assert(SMODS.load_file("src/enhancements.lua"))()
 assert(SMODS.load_file("src/boosters.lua"))()
 assert(SMODS.load_file("src/interface.lua"))()
 assert(SMODS.load_file("src/blind.lua"))()
+assert(SMODS.load_file("src/backs.lua"))()
 
 if JokerDisplay then SMODS.load_file("src/joker_display_definitions.lua")() end
 
@@ -56,7 +57,7 @@ SMODS.Atlas({ --Booster (P)acks
     py = 95
 })
 
-SMODS.Atlas({ --Booster (P)acks
+SMODS.Atlas({ --Boss (Bl)inds
     key = "bl_umas",
     path = "bl_umas.png",
     px = 34,
@@ -64,6 +65,13 @@ SMODS.Atlas({ --Booster (P)acks
     frames = 21,
     animate = true,
     atlas_table = "ANIMATION_ATLAS"
+})
+
+SMODS.Atlas({ --Card (B)acks (decks)
+    key = "b_umas",
+    path = "b_umas.png",
+    px = 71,
+    py = 95
 })
 
 --Pools
@@ -92,9 +100,9 @@ SMODS.ObjectType({
         j_uma_haru = true,
         j_uma_lilac = true,
         j_uma_neo = true,
+        j_uma_mini = true,
 
         --Move above once complete
-        j_uma_mini = true,
         j_uma_creek = true,
         j_uma_air = true,
         j_uma_nature = true,
@@ -182,7 +190,7 @@ SMODS.ObjectType({
 --Hooks
 local oldgfuncsplaycardsfromhighlighted = G.FUNCS.play_cards_from_highlighted
 G.FUNCS.play_cards_from_highlighted = function(e) --Agnes Hook to make sure cards don't get undairly debuffed
-    for k, v in pairs(G.hand.highlighted) do
+    for _, v in pairs(G.hand.highlighted) do
         v.ability.uma = v.ability.played_this_ante
     end
     return oldgfuncsplaycardsfromhighlighted(e)
@@ -195,4 +203,17 @@ function Card:can_sell_card(context) --Hook for cards to stop negative sell valu
         return G.GAME.dollars + self.sell_cost >= G.GAME.bankrupt_at
     end
     return check
+end
+
+local oldgetcurrentpool = get_current_pool
+function get_current_pool(_type, _rarity, _legendary, _append) --Add each uma joker into the shop pool a 2nd time (2x more common) on URA deck
+    local g, _pool_key = oldgetcurrentpool(_type, _rarity, _legendary, _append)
+    if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_ura' then
+        for _, v in pairs(copy_table(g)) do
+            if v ~= 'UNAVAILABLE' and G.P_CENTERS[v] and G.P_CENTERS[v].set == 'Joker' and G.P_CENTERS[v].original_mod and G.P_CENTERS[v].original_mod.id == 'uma' then
+                table.insert(g, v)
+            end
+        end
+    end
+    return g, _pool_key
 end

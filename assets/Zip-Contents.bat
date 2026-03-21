@@ -1,0 +1,1 @@
+7z.exe a -tzip Umamusume.zip -xr!Other -xr!.git
