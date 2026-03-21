@@ -1387,7 +1387,10 @@ SMODS.Joker{ --Mini the Lady
         if context.press_play and G.GAME.current_round.hands_left == 1 and G.GAME.chips / G.GAME.blind.chips <= card.ability.extra.percent / 100 then
             G.GAME.blind.chips = G.GAME.blind.chips * (100 - card.ability.extra.reduction) / 100
             G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-            print(G.GAME.blind.chips)
+            return {
+                message = localize('uma_mini'),
+                colour = HEX("dfd858")
+            }
         end
     end
 }
@@ -1433,7 +1436,6 @@ SMODS.Joker{ --Belno Light, takes a blind before choosing a blueprint_compat jok
         return false
     end
 }
-
 
 
 

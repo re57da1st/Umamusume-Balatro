@@ -114,9 +114,9 @@ return {
             j_uma_fuku = {
                 name = "Matikanefukukitaru",
                 text = {
-                    "If final score is {C:attention}x#1# {}blind size,",
-                    "create a {C:uma_col_better_tarot2}Better Tarot Card{},",
-                    "else create a {C:uma_col_worse_tarot2}Worse Tarot Card"
+                    "If final score is {C:attention}x#1# {}blind",
+                    "size, create a {C:uma_col_better_tarot2}Tarot+{} card,",
+                    "else create a {C:uma_col_worse_tarot2}Tarot-{} card"
                 },
             },
 
@@ -163,8 +163,8 @@ return {
                 name = "Mini the Lady",
                 text = {
                 "On {C:attention}final hand{} of round,",
-                "if current chips is less",
-                "than {C:attention}#2#%{} of required chips,",
+                "if current score is less",
+                "than {C:attention}#2#%{} of blind size,",
                 "reduce blind size by {C:attention}#1#%{}"
                 },
             },
@@ -1065,6 +1065,7 @@ return {
             uma_spread = "Spread!",
             uma_bloom = "Bloom!",
             uma_twin_turbo_trigger = 'Upgrade + Level Up!',
+            uma_mini = 'Blind reduced!',
             
             uma_goldship_no_effect = "No effect currently",
             uma_goldship_effect1 = "Flips and shuffles jokers",
