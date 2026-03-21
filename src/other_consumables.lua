@@ -5,6 +5,8 @@ CssAPI = {
     }
 }
 
+G.GAME.family_tree_subset = true
+
 SMODS.ConsumableType {
     key = 'uma_ccs',
     primary_colour = G.C.UMA.MAMBO,

@@ -1,0 +1,1 @@
+7z.exe a -tzip Umamusume.zip -xr!Other -xr!.git -xr!.vscode -xr!Zip-Contents.bat -xr!.gitattributes -xr!README.md -xr!1x_to_2x.py -xr!Scale-Images.batopka
