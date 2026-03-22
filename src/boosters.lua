@@ -2,6 +2,9 @@
 SMODS.Booster { --Normal Turf Pack
     key = "turf_normal",
     weight = 2,
+    get_weight = function(self, weight, object_type)
+        return CssAPI.defaults.turf_pack_rate.normal * CssAPI.gamerate
+    end,
     kind = 'uma_turf',
     cost = 4,
     pos = { x = 0, y = 0 },
@@ -60,6 +63,9 @@ SMODS.Booster { --Normal Turf Pack
 SMODS.Booster { --Jumbo Turf Pack
     key = "turf_jumbo",
     weight = 1,
+    get_weight = function(self, weight, object_type)
+        return CssAPI.defaults.turf_pack_rate.jumbo * CssAPI.gamerate
+    end,
     kind = 'uma_turf',
     cost = 6,
     pos = { x = 1, y = 0 },
@@ -118,6 +124,9 @@ SMODS.Booster { --Jumbo Turf Pack
 SMODS.Booster { --Mega Turf Pack
     key = "turf_mega",
     weight = 0.25,
+    get_weight = function(self, weight, object_type)
+        return CssAPI.defaults.turf_pack_rate.mega * CssAPI.gamerate
+    end,
     kind = 'uma_turf',
     cost = 8,
     pos = { x = 2, y = 0 },

@@ -210,7 +210,7 @@ function get_current_pool(_type, _rarity, _legendary, _append) --Add each uma jo
     local g, _pool_key = oldgetcurrentpool(_type, _rarity, _legendary, _append)
     if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_ura' then
         for _, v in pairs(copy_table(g)) do
-            if v ~= 'UNAVAILABLE' and G.P_CENTERS[v] and G.P_CENTERS[v].set == 'Joker' and G.P_CENTERS[v].original_mod and G.P_CENTERS[v].original_mod.id == 'uma' then
+            if v ~= 'UNAVAILABLE' and G.P_CENTERS[v] and (G.P_CENTERS[v].set == 'Joker' or G.P_CENTERS[v].set == 'Consumeable') and G.P_CENTERS[v].original_mod and G.P_CENTERS[v].original_mod.id == 'uma' then
                 table.insert(g, v)
             end
         end

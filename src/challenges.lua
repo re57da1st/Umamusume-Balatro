@@ -600,3 +600,18 @@ SMODS.Challenge {--Still in Love Challenge
 ]]--
 --Example card definition:
 --{ s = 'D', r = 'Q', e = 'm_steel', d = 'polychrome', g = 'Red' }
+
+SMODS.Challenge:take_ownership('c_fragile_1',
+    {
+        restrictions = {
+            banned_cards = {
+                {id = 'p_uma_turf_normal', ids = {
+                    'p_uma_turf_normal',
+                    'p_uma_turf_jumbo',
+                    'p_uma_turf_mega'
+                }}
+            }
+        }
+    },
+    true
+)

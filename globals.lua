@@ -107,21 +107,17 @@ end
 
 --Enable/disable different subsets within the "Uma Assorted" set
 function Uma_CSS_check()
-    local test = false
-
-    if G.GAME.mambo_subset then test = true end
-    if G.GAME.family_tree_subset then test = true end
-
     G.GAME.uma_ccs_rate = (
-        (G.GAME.mambo_subset and CssAPI.config.mambo_rate or 0) +
-        (G.GAME.family_tree_subset and CssAPI.config.family_tree_rate or 0)
+        (
+            (G.GAME.mambo_subset and CssAPI.defaults.mambo_rate or 0) +
+            (G.GAME.family_tree_subset and CssAPI.defaults.family_tree_rate or 0)
+        ) * CssAPI.gamerate
     )
 end
 
 
 
 --Constantly running code for other required effects
-
 function SMODS.current_mod.calculate(self, context)
 
     --Adds the most recently used Spectral/Tarot/Tarot+/Tarot- and Planet/Planet+ cards to trackable variables
@@ -199,4 +195,19 @@ function SMODS.current_mod.calculate(self, context)
         end
     end
 
+end
+
+function SMODS.current_mod.reset_game_globals()
+
+    --Doubles the size of the consumable rate to make cards 2x more likely
+    CssAPI.gamerate = 1
+    if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_ura' then
+        CssAPI.gamerate = 9999
+    end
+
+    --Any consumables that should be ON by default at the beginning of the run
+    G.GAME.family_tree_subset = true
+
+    --Update the consumable rate to match new changes
+    Uma_CSS_check()
 end

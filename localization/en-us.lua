@@ -4,8 +4,8 @@ return {
             b_uma_ura = {
                 name = "URA Deck",
                 text = {
-                    "{C:uma_rainbow}Uma{} jokers appear",
-                    "{C:attention}2X{} more often"
+                    "All {C:uma_rainbow}Uma{}-related items",
+                    "appear {C:attention}2X{} more often"
                 }
             },
         },

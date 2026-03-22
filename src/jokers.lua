@@ -894,6 +894,7 @@ SMODS.Joker{ --Obey Your Master
     end
 }
 
+--Make her work with: Fortune Teller, Constellation, and Satellite
 SMODS.Joker{ --Matikanefukukitaru
     key = "fuku",
     blueprint_compat = true,

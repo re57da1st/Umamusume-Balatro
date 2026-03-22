@@ -1,14 +1,3 @@
---[[
-SMODS.ConsumableType {
-    key = 'uma_Planet',
-    default = 'c_uma_better_pluto',
-    primary_colour = G.C.UMA.BETTER_PLANET,
-    secondary_colour = G.C.UMA.BETTER_PLANET2,
-    collection_rows = { 6, 6 },
-}
-]]
-
-
 --Planet Cards
 SMODS.Consumable { --Twin Moons
     key = "twin_moons",
