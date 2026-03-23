@@ -601,7 +601,7 @@ SMODS.Challenge {--Still in Love Challenge
 --Example card definition:
 --{ s = 'D', r = 'Q', e = 'm_steel', d = 'polychrome', g = 'Red' }
 
-
+--[[
 old_challenge = SMODS.Challenges.c_fragile_1.restrictions
 
 my_banned_cards =
@@ -620,3 +620,51 @@ SMODS.Challenge:take_ownership('c_fragile_1',
     {restrictions = old_challenge},
     true
 )
+]]
+
+local challenge_name = "c_fragile_1"
+
+local bans = {
+    cards = {
+        {id = 'p_uma_turf_normal', ids = {
+        'p_uma_turf_normal',
+        'p_uma_turf_jumbo',
+        'p_uma_turf_mega'
+        }},
+        {id = 'c_uma_pedigree'}
+    },
+    tags = {},
+    other = {}
+}
+
+local old_data = SMODS.Challenges[challenge_name]
+
+if not old_data.restrictions then
+    old_data.restrictions = {}
+end
+
+for _, v in pairs({"banned_cards", "banned_tags", "banned_other"}) do
+    if not old_data.restrictions[v] then
+        old_data.restrictions[v] = {}
+    end
+end
+
+if next(bans.cards) ~= nil then
+    for _, v in pairs(bans.cards) do
+        table.insert(old_data.restrictions.banned_cards, v)
+    end
+end
+
+if next(bans.tags) ~= nil then
+    for _, v in pairs(bans.tags) do
+        table.insert(old_data.restrictions.banned_tags, v)
+    end
+end
+
+if next(bans.other) ~= nil then
+    for _, v in pairs(bans.other) do
+        table.insert(old_data.restrictions.banned_other, v)
+    end
+end
+
+SMODS.Challenge:take_ownership(challenge_name, old_data, true)
