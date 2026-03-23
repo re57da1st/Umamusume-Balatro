@@ -202,7 +202,7 @@ function SMODS.current_mod.reset_game_globals()
     --Doubles the size of the consumable rate to make cards 2x more likely
     CssAPI.gamerate = 1
     if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_ura' then
-        CssAPI.gamerate = 9999
+        CssAPI.gamerate = 2
     end
 
     --Any consumables that should be ON by default at the beginning of the run

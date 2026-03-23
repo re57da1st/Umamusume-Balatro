@@ -602,15 +602,21 @@ SMODS.Challenge {--Still in Love Challenge
 --{ s = 'D', r = 'Q', e = 'm_steel', d = 'polychrome', g = 'Red' }
 
 
-local oldfragile = SMODS.Challenges.c_fragile_1.restrictions
-local my_banned_cards =
+old_challenge = SMODS.Challenges.c_fragile_1.restrictions
+
+my_banned_cards =
     {id = 'p_uma_turf_normal', ids = {
         'p_uma_turf_normal',
         'p_uma_turf_jumbo',
         'p_uma_turf_mega'
     }}
-table.insert(oldfragile.banned_cards, my_banned_cards)
+table.insert(old_challenge.banned_cards, my_banned_cards)
+
+my_banned_cards =
+    {id = 'c_uma_pedigree'}
+table.insert(old_challenge.banned_cards, my_banned_cards)
+
 SMODS.Challenge:take_ownership('c_fragile_1',
-    {restrictions = oldfragile},
+    {restrictions = old_challenge},
     true
 )
