@@ -1835,16 +1835,6 @@ SMODS.Joker{ --Vivlos
         } }
     end,
 
-    add_to_deck = function(self, card, from_debuff)
-        G.GAME.family_tree_subset = true
-        Uma_CSS_check()
-    end,
-
-    remove_from_deck = function(self, card, from_debuff)
-        G.GAME.family_tree_subset = (#SMODS.find_card("j_uma_vivlos") > 0) and true or false
-        Uma_CSS_check()
-    end,
-
     calculate = function(self, card, context)
         return nil
     end,
@@ -1866,6 +1856,86 @@ SMODS.Joker{ --Daring Tact
         r2 = 1,
         r3 = 3,
         rt = 13
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --T.M. Opera O
+    key = "opera",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 5, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 14,
+        r2 = 6,
+        r3 = 3,
+        rt = 26
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Forever Young
+    key = "ebeyan",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 5, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 11,
+        r2 = 0,
+        r3 = 3,
+        rt = 14
     } } },
 
     loc_vars = function(self, info_queue, card)

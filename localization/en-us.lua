@@ -281,6 +281,29 @@ return {
                     "stuff",
                 },
             },
+
+            j_uma_opera = {
+                name = "T.M. Opera O",
+                text = {
+                    "T.M. Opera O!",
+                    "Let's hear it now for T.M. Opera O!",
+                    "The most powerful, beautiful, ",
+                    "glorious ray of light in the world!",
+
+                    "I bring my unlimited love to you, as well!",
+                    "That is my fate as king...",
+                    "The fate of T.M. Opera O!",
+
+                    "T.M. Opera O!",
+                },
+            },
+
+            j_uma_ebeyan = {
+                name = "Forever Young",
+                text = {
+                    "next race march 28th!!!",
+                },
+            },
         },
 
         Planet = {
