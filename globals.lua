@@ -123,7 +123,7 @@ function Uma_update_max_hands()
     else
         G.GAME.round_resets.hands = G.GAME.uma_max_hands
     end
-    G.GAME.current_round.hands_left = G.GAME.round_resets.hand
+    G.GAME.current_round.hands_left = G.GAME.round_resets.hands
 
 end
 
