@@ -115,6 +115,15 @@ function Uma_CSS_check()
     )
 end
 
+function Uma_update_max_hands()
+
+    if G.GAME.uma_max_hands_buffer == 0 then
+        G.GAME.round_resets.hands = G.GAME.uma_default_hands
+        G.GAME.current_round.hands_left = G.GAME.round_resets.hands
+    end
+
+end
+
 
 
 --Constantly running code for other required effects
@@ -195,9 +204,17 @@ function SMODS.current_mod.calculate(self, context)
         end
     end
 
+     if G.GAME.uma_max_hands and G.GAME.uma_max_hands_buffer > 0 then
+        G.GAME.round_resets.hands = G.GAME.uma_max_hands
+        G.GAME.current_round.hands_left = G.GAME.round_resets.hands
+    end
+
 end
 
 function SMODS.current_mod.reset_game_globals()
+
+    G.GAME.uma_max_hands_buffer = 0
+    G.GAME.uma_default_hands = G.GAME.round_resets.hands
 
     --Doubles the size of the consumable rate to make cards 2x more likely
     CssAPI.gamerate = 1
