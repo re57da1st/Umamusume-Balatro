@@ -1571,7 +1571,7 @@ SMODS.Joker{ --Maruzensky
     cost = 3,
     pos = { x = 4, y = 2 },
     atlas = 'j_umas',
-    config = { { extra = { hands = 1 } },
+    config = { extra = { hands = 1 } ,
     { race = {
         r1 = 8,
         r2 = 0,
