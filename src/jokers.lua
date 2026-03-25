@@ -1571,7 +1571,8 @@ SMODS.Joker{ --Maruzensky
     cost = 3,
     pos = { x = 4, y = 2 },
     atlas = 'j_umas',
-    config = { extra = { race = {
+    config = { { extra = { hands = 1 } },
+    { race = {
         r1 = 8,
         r2 = 0,
         r3 = 0,
@@ -1595,6 +1596,13 @@ SMODS.Joker{ --Maruzensky
         } }
     end,
 
+        add_to_deck = function(self, card, from_debuff)
+        G.hand:change_size(card.ability.extra.hands)
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.hand:change_size(-card.ability.extra.hands)
+    end,
+    
     calculate = function(self, card, context)
         return nil
     end,
@@ -1964,7 +1972,7 @@ SMODS.Joker{ --Forever Young
     end
 }
 
-SMODS.Joker{ --Gold City
+SMODS.Joker{ --Gold City, spend 10 dollars to draw X amount of cards to ur hand
     key = "g_city",
     blueprint_compat = false,
     rarity = 1,
@@ -2020,8 +2028,7 @@ To do list:
         robo horse
         mayano top gun
         bel-woah
-        mini thelady
-        
+
     Joel:
     Potential horses:
         Vivlos
