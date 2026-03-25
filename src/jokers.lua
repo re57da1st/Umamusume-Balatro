@@ -1597,10 +1597,12 @@ SMODS.Joker{ --Maruzensky
     end,
 
         add_to_deck = function(self, card, from_debuff)
-        ease_hands_played(card.ability.extra.hands)
+        G.GAME.round_resets.hands = card.ability.extra.hands
+        G.GAME.current_round.hands_left = card.ability.extra.hands
     end,
     remove_from_deck = function(self, card, from_debuff)
-        return nil
+        G.GAME.round_resets.hands = card.ability.extra.hands
+        G.GAME.current_round.hands_left = card.ability.extra.hands
     end,
     
     calculate = function(self, card, context)
