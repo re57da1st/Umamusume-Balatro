@@ -304,6 +304,13 @@ return {
                     "next race march 28th!!!",
                 },
             },
+
+            j_uma_g_city = {
+                name = "Gold City",
+                text = {
+                    "stuff",
+                },
+            },
         },
 
         Planet = {

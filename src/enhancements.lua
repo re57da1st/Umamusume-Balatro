@@ -78,6 +78,7 @@ SMODS.Enhancement { --Dirt
     no_rank = true,
     no_suit = true,
     always_scores = true,
+    
 
     loc_vars = function(self, info_queue, card)
         return { vars = {

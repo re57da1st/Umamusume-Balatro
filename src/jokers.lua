@@ -1964,6 +1964,46 @@ SMODS.Joker{ --Forever Young
     end
 }
 
+SMODS.Joker{ --Gold City
+    key = "g_city",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 6, y = 2 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 3,
+        r2 = 4,
+        r3 = 3,
+        rt = 20
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
 --[[
 
 To do list:
