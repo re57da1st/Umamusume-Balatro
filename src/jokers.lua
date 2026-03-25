@@ -1605,7 +1605,7 @@ SMODS.Joker{ --Maruzensky
             G.GAME.uma_max_hands = card.ability.extra.hands
         end
         Uma_update_max_hands()
-        G.hand:change_size(G.hand.config.card_limit)
+        G.hand.config.card_limit = G.hand.config.card_limit * 2
 
         print("added!")
         --[[
@@ -1619,7 +1619,7 @@ SMODS.Joker{ --Maruzensky
 
         G.GAME.uma_max_hands_buffer = G.GAME.uma_max_hands_buffer - 1
         Uma_update_max_hands()
-        G.hand:change_size(-G.hand.config.card_limit / 2)
+        G.hand.config.card_limit = G.hand.config.card_limit / 2
 
         print("removed!")
         --[[
