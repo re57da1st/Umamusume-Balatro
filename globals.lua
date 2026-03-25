@@ -119,7 +119,7 @@ function Uma_update_max_hands()
 
     if G.GAME.uma_max_hands_buffer == 0 then
         G.GAME.round_resets.hands = G.GAME.uma_default_hands
-        G.GAME.uma_max_hands = 999
+        G.GAME.uma_max_hands = nil
     else
         G.GAME.round_resets.hands = G.GAME.uma_max_hands
     end
@@ -207,7 +207,7 @@ function SMODS.current_mod.calculate(self, context)
         end
     end
 
-     if G.GAME.uma_max_hands then
+     if G.GAME.uma_max_hands and G.GAME.current_round.hands_left then
         if G.GAME.current_round.hands_left > G.GAME.uma_max_hands and G.GAME.uma_max_hands_buffer > 0 then
             Uma_update_max_hands()
         end
