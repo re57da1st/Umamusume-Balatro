@@ -207,8 +207,8 @@ function SMODS.current_mod.calculate(self, context)
         end
     end
 
-     if G.GAME.uma_max_hands then
-        if G.GAME.current_round.hands_left > G.GAME.uma_max_hands and G.GAME.uma_max_hands_buffer > 0 then
+     if G.GAME.uma_max_hand then
+        if G.GAME.current_round.hands_left > G.GAME.uma_max_hand and G.GAME.uma_max_hands_buffer > 0 then
             Uma_update_max_hands()
         end
     end
