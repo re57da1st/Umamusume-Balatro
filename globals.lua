@@ -119,7 +119,7 @@ function Uma_update_max_hands()
 
     if G.GAME.uma_max_hands_buffer == 0 then
         G.GAME.round_resets.hands = G.GAME.uma_default_hands
-        G.GAME.uma_max_hands = nil
+        G.GAME.uma_max_hands = 999
     else
         G.GAME.round_resets.hands = G.GAME.uma_max_hands
     end
@@ -219,6 +219,7 @@ function SMODS.current_mod.reset_game_globals()
 
     G.GAME.uma_max_hands_buffer = 0
     G.GAME.uma_default_hands = G.GAME.round_resets.hands
+    Uma_update_max_hands()
 
     --Doubles the size of the consumable rate to make cards 2x more likely
     CssAPI.gamerate = 1
