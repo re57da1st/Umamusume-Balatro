@@ -1631,10 +1631,6 @@ SMODS.Joker{ --Maruzensky
     calculate = function(self, card, context)
         return nil
     end,
-
-    in_pool = function(self, args)
-        return false
-    end
 }
 
 SMODS.Joker{ --Symboli Rudolf
