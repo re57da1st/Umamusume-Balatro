@@ -1399,6 +1399,75 @@ SMODS.Joker{ --Mini the Lady
     end
 }
 
+SMODS.Joker{ --Maruzensky
+    key = "maruzensky",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 4, y = 2 },
+    atlas = 'j_umas',
+    config = { extra = { hands = 1, size = 2, race = {
+        r1 = 8,
+        r2 = 0,
+        r3 = 0,
+        rt = 8
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    add_to_deck = function(self, card, from_debuff)
+        print("start adding!")
+
+        G.GAME.uma_max_hands_buffer = G.GAME.uma_max_hands_buffer + 1
+        print("max buffer: "..G.GAME.uma_max_hands_buffer)
+        if G.GAME.uma_max_hands then
+            G.GAME.uma_max_hands = math.min(G.GAME.uma_max_hands, card.ability.extra.hands)
+        else
+            G.GAME.uma_max_hands = card.ability.extra.hands
+        end
+        Uma_update_max_hands(G.hand.config.card_limit * 2)
+
+        print("added!")
+        --[[
+        card.ability.extra.oghands = G.GAME.round_resets.hands
+        G.GAME.round_resets.hands = card.ability.extra.hands
+        G.GAME.current_round.hands_left = card.ability.extra.hands
+        ]]
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        print("start removing!")
+
+        G.GAME.uma_max_hands_buffer = G.GAME.uma_max_hands_buffer - 1
+        print("max buffer: "..G.GAME.uma_max_hands_buffer)
+        Uma_update_max_hands(G.hand.config.card_limit / 2)
+
+        print("removed!")
+        --[[
+        G.GAME.round_resets.hands = card.ability.extra.oghands
+        G.GAME.current_round.hands_left = card.ability.extra.oghands
+        ]]
+    end,
+    
+    calculate = function(self, card, context)
+        return nil
+    end,
+}
+
 SMODS.Joker{ --Belno Light, takes a blind before choosing a blueprint_compat joker and giving it a perma +1 retrigger, can choose the same joker twice, nyat her dough
     key = "belno",
     blueprint_compat = false,
@@ -1562,75 +1631,6 @@ SMODS.Joker{ --Nice Nature
     in_pool = function(self, args)
         return false
     end
-}
-
-SMODS.Joker{ --Maruzensky
-    key = "maruzensky",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 4, y = 2 },
-    atlas = 'j_umas',
-    config = { extra = { hands = 1, size = 2, race = {
-        r1 = 8,
-        r2 = 0,
-        r3 = 0,
-        rt = 8
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    add_to_deck = function(self, card, from_debuff)
-        print("start adding!")
-
-        G.GAME.uma_max_hands_buffer = G.GAME.uma_max_hands_buffer + 1
-        if G.GAME.uma_max_hands then
-            G.GAME.uma_max_hands = math.min(G.GAME.uma_max_hands, card.ability.extra.hands)
-        else
-            G.GAME.uma_max_hands = card.ability.extra.hands
-        end
-        Uma_update_max_hands()
-        G.hand.config.card_limit = G.hand.config.card_limit * 2
-
-        print("added!")
-        --[[
-        card.ability.extra.oghands = G.GAME.round_resets.hands
-        G.GAME.round_resets.hands = card.ability.extra.hands
-        G.GAME.current_round.hands_left = card.ability.extra.hands
-        ]]
-    end,
-    remove_from_deck = function(self, card, from_debuff)
-        print("start removing!")
-
-        G.GAME.uma_max_hands_buffer = G.GAME.uma_max_hands_buffer - 1
-        Uma_update_max_hands()
-        G.hand.config.card_limit = G.hand.config.card_limit / 2
-
-        print("removed!")
-        --[[
-        G.GAME.round_resets.hands = card.ability.extra.oghands
-        G.GAME.current_round.hands_left = card.ability.extra.oghands
-        ]]
-    end,
-    
-    calculate = function(self, card, context)
-        return nil
-    end,
 }
 
 SMODS.Joker{ --Symboli Rudolf

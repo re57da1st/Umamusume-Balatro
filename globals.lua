@@ -115,15 +115,22 @@ function Uma_CSS_check()
     )
 end
 
-function Uma_update_max_hands()
+--Updates the max number of hands you can play, set by G.GAME.uma_max_hands
+function Uma_update_max_hands(max_hands)
+    if max_hands then
+        G.hand.config.card_limit = max_hands
+    end
 
-    if G.GAME.uma_max_hands_buffer == 0 then
+    print("max hand test")
+
+    if G.GAME.uma_max_hands_buffer <= 0 then
+    G.GAME.uma_max_hands_buffer = 0
         G.GAME.round_resets.hands = G.GAME.uma_default_hands
         G.GAME.uma_max_hands = nil
     else
         G.GAME.round_resets.hands = G.GAME.uma_max_hands
+        G.GAME.current_round.hands_left = G.GAME.round_resets.hands
     end
-    G.GAME.current_round.hands_left = G.GAME.round_resets.hands
 
 end
 
@@ -215,6 +222,7 @@ function SMODS.current_mod.calculate(self, context)
 
 end
 
+--Code that runs at the beginning of every run
 function SMODS.current_mod.reset_game_globals()
 
     G.GAME.uma_max_hands_buffer = 0
