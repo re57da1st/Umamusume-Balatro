@@ -1430,36 +1430,23 @@ SMODS.Joker{ --Maruzensky
     end,
 
     add_to_deck = function(self, card, from_debuff)
-        print("start adding!")
-
+        --print("start adding!")
         G.GAME.uma_max_hands_buffer = G.GAME.uma_max_hands_buffer + 1
-        print("max buffer: "..G.GAME.uma_max_hands_buffer)
+        --print("max buffer: "..G.GAME.uma_max_hands_buffer)
         if G.GAME.uma_max_hands then
             G.GAME.uma_max_hands = math.min(G.GAME.uma_max_hands, card.ability.extra.hands)
         else
             G.GAME.uma_max_hands = card.ability.extra.hands
         end
         Uma_update_max_hands(G.hand.config.card_limit * 2)
-
-        print("added!")
-        --[[
-        card.ability.extra.oghands = G.GAME.round_resets.hands
-        G.GAME.round_resets.hands = card.ability.extra.hands
-        G.GAME.current_round.hands_left = card.ability.extra.hands
-        ]]
+        --print("added!")
     end,
     remove_from_deck = function(self, card, from_debuff)
-        print("start removing!")
-
+        --print("start removing!")
         G.GAME.uma_max_hands_buffer = G.GAME.uma_max_hands_buffer - 1
-        print("max buffer: "..G.GAME.uma_max_hands_buffer)
+        --print("max buffer: "..G.GAME.uma_max_hands_buffer)
         Uma_update_max_hands(G.hand.config.card_limit / 2)
-
-        print("removed!")
-        --[[
-        G.GAME.round_resets.hands = card.ability.extra.oghands
-        G.GAME.current_round.hands_left = card.ability.extra.oghands
-        ]]
+        --print("removed!")
     end,
     
     calculate = function(self, card, context)

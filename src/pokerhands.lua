@@ -21,11 +21,10 @@ SMODS.PokerHand {
         if #hand < 4 then return ret else
             for j = 1, #suits do
                 local t = {}
----@diagnostic disable-next-line: need-check-nil
                 local suit = suits[j]
                 local flush_count = 0
-                for i=1, #hand do
-                    if hand[i]:is_suit(suit, nil, true) then flush_count = flush_count + 1;  t[#t+1] = hand[i] end 
+                for i=1, #SMODS.merge_lists(parts._2) do
+                    if SMODS.merge_lists(parts._2)[i]:is_suit(suit, nil, true) then flush_count = flush_count + 1;  t[#t+1] = SMODS.merge_lists(parts._2)[i] end 
                 end
                 if flush_count >= 4 then
                     table.insert(ret, t)

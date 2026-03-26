@@ -28,18 +28,14 @@ G.C.UMA = {
 SMODS.Gradient {
     key = "rainbow",
     colours = {
-        HEX("e75110"),
-        HEX("f9c231"),
-        HEX("ffe022"),
-        HEX("f3f700"),
-        HEX("b5f318"),
-        HEX("c5f09f"),
-        HEX("6bd3bd"),
-        HEX("80b2ec"),
-        HEX("3f89e4"),
-        HEX("313cde"),
-        HEX("9492d6"),
-        HEX("efa6b5"),
+        HEX("bf0000"),
+        HEX("bf8f00"),
+        HEX("60bf00"),
+        HEX("00bf30"),
+        HEX("00bfbf"),
+        HEX("0030bf"),
+        HEX("6000bf"),
+        HEX("bf008f")
     },
     cycle = 5
 }
@@ -120,9 +116,7 @@ function Uma_update_max_hands(max_hands)
     if max_hands then
         G.hand.config.card_limit = max_hands
     end
-
-    print("max hand test")
-
+    --print("max hand test")
     if G.GAME.uma_max_hands_buffer <= 0 then
     G.GAME.uma_max_hands_buffer = 0
         G.GAME.round_resets.hands = G.GAME.uma_default_hands
@@ -214,7 +208,8 @@ function SMODS.current_mod.calculate(self, context)
         end
     end
 
-     if G.GAME.uma_max_hands and G.GAME.current_round.hands_left then
+    --Limit your hands if G.GAME.uma_max_hands is set and G.GAME.uma_max_hands_buffer is filled
+    if G.GAME.uma_max_hands and G.GAME.current_round.hands_left then
         if G.GAME.current_round.hands_left > G.GAME.uma_max_hands and G.GAME.uma_max_hands_buffer > 0 then
             Uma_update_max_hands()
         end
@@ -225,6 +220,7 @@ end
 --Code that runs at the beginning of every run
 function SMODS.current_mod.reset_game_globals()
 
+    --Set up max hand values
     G.GAME.uma_max_hands_buffer = 0
     G.GAME.uma_default_hands = G.GAME.round_resets.hands
     Uma_update_max_hands()
