@@ -1663,7 +1663,7 @@ SMODS.Joker{ --Air Groove
     end
 }
 
-SMODS.Joker{ --Nice Nature
+SMODS.Joker{ --Nice Nature, scales on debuffed cards (still in love synergy. . . x x)
     key = "nature",
     blueprint_compat = false,
     rarity = 1,
@@ -1703,7 +1703,7 @@ SMODS.Joker{ --Nice Nature
     end
 }
 
-SMODS.Joker{ --Symboli Rudolf
+SMODS.Joker{ --Symboli Rudolf, scales off of rounds passed and bosses passed, smth like every roung passed gives X chips while everyboss gives 2X chips or mult wtv
     key = "rudolf",
     blueprint_compat = false,
     rarity = 1,
@@ -1783,7 +1783,7 @@ SMODS.Joker{ --Tamamo Cross
     end
 }
 
-SMODS.Joker{ --Meisho Doto
+SMODS.Joker{ --Meisho Doto, every boss blind, does smth
     key = "meisho",
     blueprint_compat = false,
     rarity = 1,
@@ -1823,7 +1823,7 @@ SMODS.Joker{ --Meisho Doto
     end
 }
 
-SMODS.Joker{ --T.M. Opera O
+SMODS.Joker{ --T.M. Opera O, every single blind is considered a boss blind
     key = "opera",
     blueprint_compat = false,
     rarity = 1,
@@ -2064,6 +2064,19 @@ SMODS.Joker{ --Gold City, spend 10 dollars to draw X amount of cards to ur hand
 }
 
 --[[
+
+perfect pair doesnt WORK
+
+H Q
+H Q
+H 2
+B 2
+H 5
+
+counts as perfect pair when its NYAT!
+
+
+
 
 To do list:
     Frisk:

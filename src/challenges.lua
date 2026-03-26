@@ -558,7 +558,8 @@ SMODS.Challenge {--Choose your Uma!
     jokers = {
     },
     consumeables = {
-        {id = 'c_uma_ssr_ticket'}
+        {id = 'c_uma_ssr_ticket'
+    }
     },
     vouchers = {
     }
