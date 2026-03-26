@@ -268,7 +268,7 @@ SMODS.Consumable { --pedigree
 --Uma Creation
 SMODS.Consumable { --SSR Ticket
     key = 'ssr_ticket',
-    cost = 15,
+    cost = 0,
     set = 'uma_ccs',
     pos = { x = 13, y = 3 },
     atlas = 'c_umas',
