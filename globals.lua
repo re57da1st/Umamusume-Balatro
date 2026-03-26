@@ -21,7 +21,7 @@ G.C.UMA = {
     BETTER_FAMILY_TREE2 = HEX("12EA51"),
     TURF = HEX("70922D"),
     BLOSSOM = HEX("EFA7CD"),
-    DIRT = HEX("966C4A"),
+    DIRT = HEX("AA6F40"),
     CHULT = HEX('D002F0'),
 }
 

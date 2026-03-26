@@ -302,7 +302,9 @@ return {
             j_uma_ebeyan = {
                 name = "Forever Young",
                 text = {
-                    "next race march 28th!!!",
+                    "Each {C:attention}Ace{} and {C:uma_dirt}Dirt{} card",
+                    "gives {X:mult,C:white}X#1#{} Mult when",
+                    "scored or held in hand",
                 },
             },
 
@@ -920,8 +922,10 @@ return {
             m_uma_dirt = {
                 name = "Dirt Card",
                 text = {
-                    "{C:mult}+#1#{} mult",
-                    "no rank or suit",
+                    "Gives {C:mult}Mult{} equal to",
+                    "number of {C:uma_dirt}Dirt{} cards",
+                    "in {C:attention}scoring hand{}",
+                    "Always scores"
                 },
             }
         },

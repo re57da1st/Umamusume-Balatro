@@ -48,6 +48,39 @@ SMODS.Enhancement { --Blossom
     end
 }
 
+SMODS.Enhancement { --Dirt
+    key = 'dirt',
+    pos = { x = 3, y = 0 },
+    atlas = 'e_umas',
+    always_scores = true,
+
+    loc_vars = function(self, info_queue, card)
+        return { vars = {
+            card.ability.mult
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.main_scoring and context.cardarea == G.play then
+
+            dirt_tally = 0
+            for _, v in ipairs(context.scoring_hand) do
+                if SMODS.has_enhancement(v, "m_uma_dirt") then
+                    dirt_tally = dirt_tally + 1
+                end
+            end
+
+            return {
+                mult = dirt_tally
+            }
+        end
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
 SMODS.Enhancement { --Mossy
     key = 'mossy',
     pos = { x = 2, y = 0 },
@@ -61,28 +94,6 @@ SMODS.Enhancement { --Mossy
     loc_vars = function(self, info_queue, card)
         return { vars = {
             card.ability.bonus
-        } }
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Enhancement { --Dirt
-    key = 'dirt',
-    pos = { x = 3, y = 0 },
-    config = { mult = 6 },
-    atlas = 'e_umas',
-    replace_base_card = true,
-    no_rank = true,
-    no_suit = true,
-    always_scores = true,
-    
-
-    loc_vars = function(self, info_queue, card)
-        return { vars = {
-            card.ability.mult
         } }
     end,
 

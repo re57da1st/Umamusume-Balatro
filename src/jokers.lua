@@ -1467,6 +1467,90 @@ SMODS.Joker{ --Maruzensky
     end,
 }
 
+SMODS.Joker{ --Forever Young
+    key = "ebeyan",
+    blueprint_compat = true,
+    rarity = 3,
+    cost = 8,
+    pos = { x = 5, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { xmult = 1.3, race = {
+        r1 = 11,
+        r2 = 0,
+        r3 = 3,
+        rt = 14
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            card.ability.extra.xmult
+        } }
+    end,
+
+    calculate = function(self, card, context)
+
+        local eventTrigger = Event({ func = function()
+            return {x_mult = card.ability.extra.xmult}
+        end })
+
+        local eventDebuffed = Event({ func = function()
+                return {message = localize('k_debuffed'), colour = G.C.RED}
+        end })
+
+        local EbeyanEventBuffer = {}
+
+        if context.individual and (context.cardarea == G.hand or context.scoring_hand) and not context.end_of_round and context.other_card:get_id() == 14 then
+            if not context.other_card.debuff then
+                EbeyanEventBuffer.x_mult = card.ability.extra.xmult
+            else
+                EbeyanEventBuffer.message = localize('k_debuffed')
+                EbeyanEventBuffer.colour = G.C.RED
+            end
+        end
+
+        if context.individual and (context.cardarea == G.hand or context.scoring_hand) and not context.end_of_round and SMODS.has_enhancement(context.other_card, "m_uma_dirt") then
+            if next(EbeyanEventBuffer) == nil then  
+                if not context.other_card.debuff then
+                    EbeyanEventBuffer.x_mult = card.ability.extra.xmult
+                else
+                    EbeyanEventBuffer.message = localize('k_debuffed')
+                    EbeyanEventBuffer.colour = G.C.RED
+                end
+            else
+                EbeyanEventBuffer.extra = {}
+                if not context.other_card.debuff then
+                    EbeyanEventBuffer.extra.x_mult = card.ability.extra.xmult
+                else
+                    EbeyanEventBuffer.extra.message = localize('k_debuffed')
+                    EbeyanEventBuffer.extra.colour = G.C.RED
+                end
+            end
+        end
+
+        if next(EbeyanEventBuffer) ~= nil then
+            return EbeyanEventBuffer
+        end
+    end,
+
+    in_pool = function(self, args)
+        return true
+    end
+}
+
+
+
+--In progress Jokers
 SMODS.Joker{ --Belno Light, takes a blind before choosing a blueprint_compat joker and giving it a perma +1 retrigger, can choose the same joker twice, nyat her dough
     key = "belno",
     blueprint_compat = false,
@@ -1752,6 +1836,46 @@ SMODS.Joker{ --Meisho Doto
     end
 }
 
+SMODS.Joker{ --T.M. Opera O
+    key = "opera",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 5, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 14,
+        r2 = 6,
+        r3 = 3,
+        rt = 26
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
 SMODS.Joker{ --Mihono Bourbon
     key = "bourbon",
     blueprint_compat = false,
@@ -1884,86 +2008,6 @@ SMODS.Joker{ --Daring Tact
         r2 = 1,
         r3 = 3,
         rt = 13
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Joker{ --T.M. Opera O
-    key = "opera",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 5, y = 3 },
-    atlas = 'j_umas',
-    config = { extra = { race = {
-        r1 = 14,
-        r2 = 6,
-        r3 = 3,
-        rt = 26
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Joker{ --Forever Young
-    key = "ebeyan",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 5, y = 4 },
-    atlas = 'j_umas',
-    config = { extra = { race = {
-        r1 = 11,
-        r2 = 0,
-        r3 = 3,
-        rt = 14
     } } },
 
     loc_vars = function(self, info_queue, card)
