@@ -648,7 +648,7 @@ SMODS.Joker{ --Matikanetannhauser
     key = "mambo",
     blueprint_compat = true,
     rarity = 3,
-    cost = 6,
+    cost = 7,
     pos = { x = 2, y = 1 },
     config = { extra = { chips = 10, chips_mod = 10, mult = 4, mult_mod = 4, xmult = 1.0, xmult_mod = 0.1, race = {
         r1 = 8,
@@ -893,7 +893,6 @@ SMODS.Joker{ --Obey Your Master
         end
     end
 }
-
 --Make her work with: Fortune Teller, Constellation, and Satellite
 SMODS.Joker{ --Matikanefukukitaru
     key = "fuku",
@@ -1266,7 +1265,7 @@ SMODS.Joker{ --Lucky Lilac
     key = "lilac",
     blueprint_compat = true,
     rarity = 1,
-    cost = 3,
+    cost = 5,
     pos = { x = 3, y = 4 },
     atlas = 'j_umas',
     config = { extra = { odds = 5, chips = 50, race = {
@@ -1402,11 +1401,11 @@ SMODS.Joker{ --Mini the Lady
 SMODS.Joker{ --Maruzensky
     key = "maruzensky",
     blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
+    rarity = 3,
+    cost = 7,
     pos = { x = 4, y = 2 },
     atlas = 'j_umas',
-    config = { extra = { hands = 1, size = 2, race = {
+    config = { extra = { hands = 1, race = {
         r1 = 8,
         r2 = 0,
         r3 = 0,
@@ -1426,7 +1425,7 @@ SMODS.Joker{ --Maruzensky
                 } }
         end
         return {vars = {
-            nil
+            card.ability.extra.hands
         } }
     end,
 

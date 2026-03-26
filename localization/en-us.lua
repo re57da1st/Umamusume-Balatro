@@ -204,7 +204,8 @@ return {
             j_uma_maruzensky = {
                 name = "Maruzensky",
                 text = {
-                    "stuff",
+                    "{C:attention}Double{} hand size,",
+                    "max hands capped at {C:blue}#1#{}"
                 },
             },
 
