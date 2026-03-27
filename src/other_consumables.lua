@@ -313,6 +313,6 @@ SMODS.Consumable { --SSR Ticket
     end,
 
     set_card_type_badge = function(self, card, badges)
-        badges[#badges + 1] = create_badge("Carrot", SMODS.Gradients.uma_rainbow, G.C.UMA.WHITE, 1.2)
+        badges[#badges + 1] = create_badge("SSR Ticket", SMODS.Gradients.uma_rainbow, G.C.UMA.WHITE, 1.2)
     end
 }
