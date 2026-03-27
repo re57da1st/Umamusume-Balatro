@@ -1404,7 +1404,7 @@ SMODS.Joker{ --Mini the Lady
         end
     end
 }
-
+--game crashes if maru is chosen by crimson heart with joker display turned on
 SMODS.Joker{ --Maruzensky
     key = "maruzensky",
     blueprint_compat = false,
