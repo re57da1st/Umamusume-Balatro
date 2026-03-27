@@ -2104,3 +2104,105 @@ SMODS.Consumable {--Better Twin Moons
         return G.GAME.hands[self.config.hand_type].played > 0
     end
 }
+
+uma_tarot_plus_directory = {
+    "c_uma_better_fool",
+    "c_uma_better_magician",
+    "c_uma_better_high_priestess",
+    "c_uma_better_empress",
+    "c_uma_better_emperor",
+    "c_uma_better_heirophant",
+    "c_uma_better_lovers",
+    "c_uma_better_chariot",
+    "c_uma_better_justice",
+    "c_uma_better_hermit",
+    "c_uma_better_wheel_of_fortune",
+    "c_uma_better_strength",
+    "c_uma_better_hanged_man",
+    "c_uma_better_death",
+    "c_uma_better_devil",
+    "c_uma_better_tower",
+    "c_uma_better_judgement"
+}
+
+uma_tarot_minus_directory = {
+    "c_uma_worse_magician",
+    "c_uma_worse_empress",
+    "c_uma_worse_emperor",
+    "c_uma_worse_heirophant",
+    "c_uma_worse_lovers",
+    "c_uma_worse_chariot",
+    "c_uma_worse_justice",
+    "c_uma_worse_hermit",
+    "c_uma_worse_wheel_of_fortune",
+    "c_uma_worse_strength",
+    "c_uma_worse_hanged_man",
+    "c_uma_worse_temperance",
+    "c_uma_worse_devil",
+    "c_uma_worse_tower",
+    "c_uma_worse_star",
+    "c_uma_worse_moon",
+    "c_uma_worse_sun",
+    "c_uma_worse_world"
+}
+
+uma_planet_plus_directory = {
+    "c_uma_better_mercury",
+    "c_uma_better_venus",
+    "c_uma_better_earth",
+    "c_uma_better_mars",
+    "c_uma_better_jupiter",
+    "c_uma_better_saturn",
+    "c_uma_better_uranus",
+    "c_uma_better_neptune",
+    "c_uma_better_pluto",
+    "c_uma_better_planet_x",
+    "c_uma_better_ceres",
+    "c_uma_better_eris",
+    "c_uma_better_twin_moons"
+}
+
+SMODS.Joker:take_ownership("j_satellite", {
+    loc_vars = function(self, info_queue, card)
+        local planets_used = 0
+        local planet_bool
+        for k, v in pairs(G.GAME.consumeable_usage) do
+            planet_bool = Uma_check_table_for_string(k, uma_planet_plus_directory)
+            if (v.set == 'Planet' or planet_bool) then
+                planets_used = planets_used + 1
+            end
+        end
+        return { vars = { card.ability.extra, planets_used * card.ability.extra } }
+    end,
+    calc_dollar_bonus = function(self, card)
+        local planets_used = 0
+        local planet_bool
+        for k, v in pairs(G.GAME.consumeable_usage) do
+            planet_bool = Uma_check_table_for_string(k, uma_planet_plus_directory)
+            if (v.set == 'Planet' or planet_bool) then
+                planets_used = planets_used + 1
+            end
+        end
+        return planets_used > 0 and planets_used * card.ability.extra or nil
+    end
+}, true)
+
+SMODS.Joker:take_ownership("j_constellation", {
+    calculate = function(self, card, context)
+        if context.using_consumeable and not context.blueprint then
+        local item = context.consumeable
+        local planet_bool = Uma_check_table_for_string(item.ability.name, uma_planet_plus_directory)
+            if (context.consumeable.ability.set == 'Planet' or planet_bool) then
+                card.ability.x_mult = card.ability.x_mult + card.ability.extra
+                return {
+                    message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.x_mult } }
+                }
+            end
+        end
+        if context.joker_main then
+            return {
+                Xmult = card.ability.x_mult
+            }
+        end
+    end
+}, true)

@@ -128,6 +128,15 @@ function Uma_update_max_hands(max_hands)
 
 end
 
+function Uma_check_table_for_string(string, table)
+    for i, _ in pairs(table) do
+        if string == table[i] then
+            return true
+        end
+    end
+    return false
+end
+
 
 
 --Constantly running code for other required effects
@@ -136,9 +145,14 @@ function SMODS.current_mod.calculate(self, context)
     --Adds the most recently used Spectral/Tarot/Tarot+/Tarot- and Planet/Planet+ cards to trackable variables
     if context.using_consumeable then
         local item = context.consumeable
-        if item.ability.set == 'Planet' or item.ability.set == 'uma_Planet' then
+
+        local tarot_bool = Uma_check_table_for_string(item.ability.name, uma_tarot_plus_directory) or
+            Uma_check_table_for_string(item.ability.name, uma_tarot_minus_directory)
+        local planet_bool = Uma_check_table_for_string(item.ability.name, uma_planet_plus_directory)
+
+        if item.ability.set == 'Planet' or planet_bool then
             G.GAME.uma_planet_card = item.config.center.key
-        elseif item.ability.set == 'Tarot' or item.ability.set == 'uma_better_Tarot' or item.ability.set == 'uma_worse_Tarot' or item.ability.set == 'Spectral' then
+        elseif item.ability.set == 'Tarot' or tarot_bool or item.ability.set == 'Spectral' then
             if item.config.center.key ~= 'c_fool' and item.config.center.key ~= 'c_uma_better_fool' then
                 G.GAME.uma_tarot_card = item.config.center.key
             end
@@ -149,7 +163,7 @@ function SMODS.current_mod.calculate(self, context)
     if context.after then
         turf_count, normal_count = 0, 0
         for _, v in ipairs(context.scoring_hand) do
-            if SMODS.has_enhancement(v, "m_uma_turf") or SMODS.has_enhancement(v, "m_uma_blossom") then
+            if (SMODS.has_enhancement(v, "m_uma_turf") or SMODS.has_enhancement(v, "m_uma_blossom")) and not v.debuff then
                 turf_count = turf_count + 1
             end
             if SMODS.has_enhancement(v, "m_stone") or not next(SMODS.get_enhancements(v) or {}) then
@@ -215,7 +229,25 @@ function SMODS.current_mod.calculate(self, context)
         end
     end
 
+    --Increase tarot and planet usage total if using a Tarot+, Tarot- or Planet+ card
+    if context.using_consumeable then
+        local name = context.consumeable.ability.name
+
+        local tarot_bool = Uma_check_table_for_string(name, uma_tarot_plus_directory) or
+            Uma_check_table_for_string(name, uma_tarot_minus_directory)
+        local planet_bool = Uma_check_table_for_string(name, uma_planet_plus_directory)
+
+        if tarot_bool then
+            G.GAME.consumeable_usage_total.tarot = G.GAME.consumeable_usage_total.tarot + 1
+        end
+        if planet_bool then
+            G.GAME.consumeable_usage_total.planet = G.GAME.consumeable_usage_total.planet + 1
+        end
+    end
+
 end
+
+
 
 --Code that runs at the beginning of every run
 function SMODS.current_mod.reset_game_globals()
@@ -236,4 +268,5 @@ function SMODS.current_mod.reset_game_globals()
 
     --Update the consumable rate to match new changes
     Uma_CSS_check()
+
 end

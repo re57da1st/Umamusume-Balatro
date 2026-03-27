@@ -464,7 +464,7 @@ SMODS.Joker{ --Gold ship, maybe change the fact she can choose the same boss bli
         }
     end
 }
---Doesn't eat lowest "buffed" card if all cards lower ranked are debuffed
+
 SMODS.Joker{ --Oguri Cap
     key = "oguri",
     blueprint_compat = true,
@@ -505,7 +505,7 @@ SMODS.Joker{ --Oguri Cap
             local food_rank, food_ID = 15, 15
             local food = nil
             for i = 1, #G.hand.cards do
-                if food_ID >= G.hand.cards[i].base.id and not SMODS.has_no_rank(G.hand.cards[i]) then
+                if food_ID >= G.hand.cards[i].base.id and not SMODS.has_no_rank(G.hand.cards[i]) and not G.hand.cards[i].debuff then
                     food_rank = G.hand.cards[i].base.nominal
                     food_ID = G.hand.cards[i].base.id
                     food = G.hand.cards[i]
@@ -534,7 +534,7 @@ SMODS.Joker{ --Oguri Cap
         end
     end
 }
---Timer doesn't persist when exiting to menu
+
 SMODS.Joker{ --Sakura Bakushin O
     key = "bakushin",
     blueprint_compat = true,
@@ -624,9 +624,16 @@ SMODS.Joker{ --Sakura Bakushin O
             end
         end
 
-        if context.setting_blind and not context.blueprint then --Start of Blind
+        if (context.setting_blind and not context.blueprint and not card.ability.extra.active) or --Start of Blind
+        (G.GAME.blind and G.GAME.blind.in_blind and not card.ability.extra.active) then --Middle of blind without a timer running
+
             card.ability.extra.active = true
-            card.ability.extra.mult_pot = card.ability.extra.mult_add
+            if card.ability.extra.resume then
+                card.ability.extra.resume = nil
+            else
+                card.ability.extra.mult_pot = card.ability.extra.mult_add
+            end
+
             G.E_MANAGER:add_event(event)
             card.children.center:set_sprite_pos({ x = 6, y = 0 })
             return {
@@ -893,7 +900,7 @@ SMODS.Joker{ --Obey Your Master
         end
     end
 }
---Make her work with: Fortune Teller, Constellation, and Satellite
+
 SMODS.Joker{ --Matikanefukukitaru
     key = "fuku",
     blueprint_compat = true,

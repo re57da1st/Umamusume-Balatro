@@ -220,3 +220,19 @@ function get_current_pool(_type, _rarity, _legendary, _append) --Add each uma jo
     end
     return g, _pool_key
 end
+
+local oldstartrun = Game.start_run
+function Game:start_run(args) --If the run was left mid-blind, retrigger all bakushin timers upon entering again
+    local g = oldstartrun(self, args)
+
+    if G.jokers.cards then
+        for k, v in ipairs(G.jokers.cards) do
+            print(v.label)
+            if v.label == "j_uma_bakushin" then
+                v.ability.extra.resume = true
+                v.ability.extra.active = false
+            end
+        end
+    end
+    return g
+end
