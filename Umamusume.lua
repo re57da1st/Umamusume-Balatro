@@ -226,8 +226,7 @@ function Game:start_run(args) --If the run was left mid-blind, retrigger all bak
     local g = oldstartrun(self, args)
 
     if G.jokers.cards then
-        for k, v in ipairs(G.jokers.cards) do
-            print(v.label)
+        for _, v in ipairs(G.jokers.cards) do
             if v.label == "j_uma_bakushin" then
                 v.ability.extra.resume = true
                 v.ability.extra.active = false

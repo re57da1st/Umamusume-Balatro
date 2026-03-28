@@ -2070,20 +2070,47 @@ SMODS.Joker{ --Gold City, spend 10 dollars to draw X amount of cards to ur hand
     end
 }
 
+SMODS.Joker{ --Admire Groove
+    key = "aruvu",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 6, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 8,
+        r2 = 1,
+        r3 = 3,
+        rt = 21
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
 --[[
-
-perfect pair doesnt WORK
-
-H Q
-H Q
-H 2
-B 2
-H 5
-
-counts as perfect pair when its NYAT!
-
-
-
 
 To do list:
     Frisk:
@@ -2103,12 +2130,10 @@ To do list:
     Joel:
     Potential horses:
         Vivlos
-        Neo universe
-        Lucky Lilac
         Daring Tact
 
     Joker Display:
-        Teio
+        whoever else we've made man idk
 
     Texturing:
         The rest of the horses (prioritize complete jokers)
@@ -2128,34 +2153,9 @@ ADD QUEEN RELATED JOKERS
 Twin Turbo: Perfect Pair
     Fix perfect pair to trigger properly when wild cards are in play
 
-Chiyono O: no clue
-
-Norn Ace: no clue
-
-
-
 Matthew ideas:
-	Goldship (his goat)
-		Scoring queens gain a random seal and enhancement
-		Gains +10 mult when a Queen is scored, shuffles all jokers before scoring
-		If hand is 4oak, randomize suits and ranks of cards, gain +50 Mult
-		Constantly plays the golshin song???
-
-		Goldship note: could have multiple abilites, randomly triggers one of them
-
-	Haru Urara:
-		Doubles chips and mult if final hand AND 0 discards left	
-	
 	Other:
 		every queen scored increases this joker by +2 chips
 		every card held in hand gives $3 at end of round but you recieve no interest
 		maybe put a card that says every queen scored has a 1 in 2 chance to give $4
-
-	Carrot tarot card
-		Create a random Horse Joker (common and uncommon)
-	Carrot spectral card
-		Create a random Horse Joker (Rare and Legendary)
-
-	Stable Deck:
-		Every Horse card trigger gives $5, and increases base boss blind by 5% - 15%
 ]]--

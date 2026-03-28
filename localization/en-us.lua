@@ -314,6 +314,13 @@ return {
                     "stuff",
                 },
             },
+
+            j_uma_aruvu = {
+                name = "Admire Groove",
+                text = {
+                    "stuff",
+                },
+            },
         },
 
         Planet = {

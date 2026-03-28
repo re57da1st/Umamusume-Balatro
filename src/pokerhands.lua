@@ -1,4 +1,4 @@
---Check into weird triggers
+--Perfect Pair
 SMODS.PokerHand {
     key = "perfect_pair",
     visible = true,
