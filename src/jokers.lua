@@ -2070,7 +2070,7 @@ SMODS.Joker{ --Gold City, spend 10 dollars to draw X amount of cards to ur hand
     end
 }
 
-SMODS.Joker{ --Admire Groove
+SMODS.Joker{ --Admire Groove, Each played cllub card, vlaue goes up, any other card,. value goes down
     key = "aruvu",
     blueprint_compat = false,
     rarity = 1,
