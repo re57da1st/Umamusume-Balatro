@@ -145,8 +145,8 @@ SMODS.Joker{ --Agnes Digital
 SMODS.Joker{ --Twin Turbo
     key = "turbo",
     blueprint_compat = false,
-    rarity = 1,
-    cost = 2,
+    rarity = 2,
+    cost = 5,
     pos = { x = 3, y = 0 },
     atlas = 'j_umas',
     config = { extra = { mult_gain = 5, mult = 0, race = {
