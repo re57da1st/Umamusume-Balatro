@@ -61,17 +61,16 @@ SMODS.Enhancement { --Dirt
     end,
 
     calculate = function(self, card, context)
+        if context.press_play then
+            G.GAME.uma_dirt_value = 0
+        end
+
         if context.main_scoring and context.cardarea == G.play then
 
-            dirt_tally = 0
-            for _, v in ipairs(context.scoring_hand) do
-                if SMODS.has_enhancement(v, "m_uma_dirt") then
-                    dirt_tally = dirt_tally + 1
-                end
-            end
+            G.GAME.uma_dirt_value = G.GAME.uma_dirt_value + 1
 
             return {
-                mult = dirt_tally
+                mult = G.GAME.uma_dirt_value
             }
         end
     end,

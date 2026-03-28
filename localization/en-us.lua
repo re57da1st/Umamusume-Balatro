@@ -931,7 +931,7 @@ return {
                 text = {
                     "Gives {C:mult}Mult{} equal to",
                     "number of {C:uma_dirt}Dirt{} cards",
-                    "in {C:attention}scoring hand{}",
+                    "scored in this {C:attention}hand{}",
                     "Always scores"
                 },
             }
