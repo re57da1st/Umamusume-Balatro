@@ -1470,9 +1470,9 @@ SMODS.Joker{ --Forever Young
     atlas = 'j_umas',
     config = { extra = { xmult = 1.3, race = {
         r1 = 11,
-        r2 = 0,
+        r2 = 1,
         r3 = 3,
-        rt = 14
+        rt = 15
     } } },
 
     loc_vars = function(self, info_queue, card)
@@ -2144,7 +2144,7 @@ To do list:
 
     Fix all bugs stated
 
-    
+
 
 Checklist
 

@@ -128,6 +128,7 @@ function Uma_update_max_hands(max_hands)
 
 end
 
+--Checks a provided table to see if the provided string inside
 function Uma_check_table_for_string(string, table)
     for i, _ in pairs(table) do
         if string == table[i] then

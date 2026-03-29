@@ -46,7 +46,7 @@ SMODS.Booster { --Normal Turf Pack
     create_card = function(self, card, i)
         local _edition = SMODS.poll_edition { key = "vremade_standard_edition" .. G.GAME.round_resets.ante, mod = 2, no_negative = true }
         local _seal = SMODS.poll_seal({ mod = 10 })
-        local _enhancement = uma_turf_pack_poll()
+        local _enhancement = Uma_turf_pack_poll()
         return {
             set = "Playing Card",
             edition = _edition,
@@ -107,7 +107,7 @@ SMODS.Booster { --Jumbo Turf Pack
     create_card = function(self, card, i)
         local _edition = SMODS.poll_edition { key = "vremade_standard_edition" .. G.GAME.round_resets.ante, mod = 2, no_negative = true }
         local _seal = SMODS.poll_seal({ mod = 10 })
-        local _enhancement = uma_turf_pack_poll()
+        local _enhancement = Uma_turf_pack_poll()
         return {
             set = "Playing Card",
             edition = _edition,
@@ -168,7 +168,7 @@ SMODS.Booster { --Mega Turf Pack
     create_card = function(self, card, i)
         local _edition = SMODS.poll_edition { key = "vremade_standard_edition" .. G.GAME.round_resets.ante, mod = 2, no_negative = true }
         local _seal = SMODS.poll_seal({ mod = 10 })
-        local _enhancement = uma_turf_pack_poll()
+        local _enhancement = Uma_turf_pack_poll()
         return {
             set = "Playing Card",
             edition = _edition,
@@ -182,7 +182,7 @@ SMODS.Booster { --Mega Turf Pack
     end
 }
 
-uma_turf_pack_poll = function() --Utilize the Uma Weighted Function to hold all Enhancement data for all Turf Packs in one place
+Uma_turf_pack_poll = function() --Utilize the Uma Weighted Function to hold all Enhancement data for all Turf Packs in one place
     local items = {
         "m_uma_turf",
         "m_uma_dirt",
