@@ -1466,8 +1466,9 @@ SMODS.Joker{ --Forever Young
     blueprint_compat = true,
     rarity = 3,
     cost = 8,
-    pos = { x = 5, y = 4 },
+    pos = { x = 8, y = 2 },
     atlas = 'j_umas',
+    soul_pos = { x = 8, y = 3 },
     config = { extra = { xmult = 1.3, race = {
         r1 = 11,
         r2 = 1,
