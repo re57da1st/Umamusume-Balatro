@@ -196,7 +196,7 @@ SMODS.Joker{ --Twin Turbo
     end
 }
 
-SMODS.Joker{ --Gold ship, maybe change the fact she can choose the same boss blind 2 copy as the one being played
+SMODS.Joker{ --Gold ship
     key = "goldship",
     blueprint_compat = true,
     rarity = 3,
@@ -225,6 +225,16 @@ SMODS.Joker{ --Gold ship, maybe change the fact she can choose the same boss bli
             "uma_goldship_effect6_jd",
             "uma_goldship_effect7_jd",
             "uma_goldship_effect8_jd",
+        },
+        blinds = {
+            "bl_final_acorn",
+            "bl_plant",
+            "bl_tooth",
+            "bl_mark",
+            "bl_goad",
+            "bl_head",
+            "bl_club",
+            "bl_window"
         },
         race = {
             r1 = 13,
@@ -257,18 +267,33 @@ SMODS.Joker{ --Gold ship, maybe change the fact she can choose the same boss bli
 
         if context.setting_blind then --Choose random effect at blind start
 
-            card.ability.extra.randomBlind = pseudorandom('goldship', card.ability.extra.bottom, card.ability.extra.top)
+            local index = nil
+            for i = 1, #card.ability.extra.blinds do
+                if G.GAME.blind.config.blind.key == card.ability.extra.blinds[i] then
+                    index = i
+                end
+                if not index then
+                    card.ability.extra.randomBlind = pseudorandom('goldship', card.ability.extra.bottom, card.ability.extra.top)
+                else
+                    card.ability.extra.randomBlind = pseudorandom('goldship', card.ability.extra.bottom, card.ability.extra.top - 1)
+                    if card.ability.extra.randomBlind >= index then
+                        card.ability.extra.randomBlind = card.ability.extra.randomBlind + 1
+                    end
+                end
+            end
+
             if G.playing_cards then
                 for _, playing_card in ipairs(G.playing_cards) do
                     SMODS.recalc_debuff(playing_card)
                 end
             end
+
             return {
-                    message = localize(card.ability.extra.effects[card.ability.extra.randomBlind + 1]),
-                    colour = G.C.GOLD,
-                    message_card = card,
-                    delay = 3
-                }
+                message = localize(card.ability.extra.effects[card.ability.extra.randomBlind + 1]),
+                colour = G.C.GOLD,
+                message_card = card,
+                delay = 3
+            }
         end
 
         --Effect 1, Flips and shuffles jokers
