@@ -118,6 +118,7 @@ SMODS.ObjectType({
         j_uma_opera = true,
         j_uma_ebeyan = true,
         j_uma_g_city = true,
+        j_uma_aruvu = true,
     }
 })
 

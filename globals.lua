@@ -138,6 +138,35 @@ function Uma_check_table_for_string(string, table)
     return false
 end
 
+--Add bans to pre-existing challenges non-destructively
+function Uma_Challenge_ban(challenge, bans)
+    local old_data = SMODS.Challenges[challenge]
+    if not old_data.restrictions then
+        old_data.restrictions = {}
+    end
+    for _, v in pairs({"banned_cards", "banned_tags", "banned_other"}) do
+        if not old_data.restrictions[v] then
+            old_data.restrictions[v] = {}
+        end
+    end
+    if next(bans.cards) ~= nil then
+        for _, v in pairs(bans.cards) do
+            table.insert(old_data.restrictions.banned_cards, v)
+        end
+    end
+    if next(bans.tags) ~= nil then
+        for _, v in pairs(bans.tags) do
+            table.insert(old_data.restrictions.banned_tags, v)
+        end
+    end
+    if next(bans.other) ~= nil then
+        for _, v in pairs(bans.other) do
+            table.insert(old_data.restrictions.banned_other, v)
+        end
+    end
+    SMODS.Challenge:take_ownership(challenge, old_data, true)
+end
+
 
 
 --Constantly running code for other required effects

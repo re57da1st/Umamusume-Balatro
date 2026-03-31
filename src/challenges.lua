@@ -1,556 +1,3 @@
---[[
-SMODS.Challenge { --Daitaku Helios
-    key = 'helios_challenge',
-    rules = {
-        custom = {},
-        modifiers = {}
-    },
-    jokers = {
-        {id = 'j_uma_helios'}
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Daiwa Scarlet
-    key = 'daiwa_challenge',
-    rules = {
-        custom = {},
-        modifiers = {}
-    },
-    jokers = {
-        {id = 'j_uma_daiwa'}
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Agnes Digital
-    key = 'agnes_challenge',
-    rules = {
-        custom = {},
-        modifiers = {}
-    },
-    jokers = {
-        {id = 'j_uma_agnes'}
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Twin Turbo
-    key = 'turbo_challenge',
-    rules = {
-        custom = {},
-        modifiers = {
-            { id = 'consumable_slots', value = 4 }
-        }
-    },
-    jokers = {
-        {id = 'j_uma_turbo'}
-    },
-    deck = {
-        type = 'Challenge Deck',
-        cards = {
-            { s = 'S', r = 'Q'},
-            { s = 'S', r = 'Q'},
-            { s = 'S', r = 'T'},
-            { s = 'S', r = 'T'},
-            { s = 'S', r = '8'},
-            { s = 'S', r = '8'},
-            { s = 'S', r = '6'},
-            { s = 'S', r = '6'},
-            { s = 'S', r = '4'},
-            { s = 'S', r = '4'},
-            { s = 'S', r = '2'},
-            { s = 'S', r = '2'},
-            { s = 'H', r = 'Q'},
-            { s = 'H', r = 'Q'},
-            { s = 'H', r = 'T'},
-            { s = 'H', r = 'T'},
-            { s = 'H', r = '8'},
-            { s = 'H', r = '8'},
-            { s = 'H', r = '6'},
-            { s = 'H', r = '6'},
-            { s = 'H', r = '4'},
-            { s = 'H', r = '4'},
-            { s = 'H', r = '2'},
-            { s = 'H', r = '2'},
-            { s = 'C', r = 'Q'},
-            { s = 'C', r = 'Q'},
-            { s = 'C', r = 'T'},
-            { s = 'C', r = 'T'},
-            { s = 'C', r = '8'},
-            { s = 'C', r = '8'},
-            { s = 'C', r = '6'},
-            { s = 'C', r = '6'},
-            { s = 'C', r = '4'},
-            { s = 'C', r = '4'},
-            { s = 'C', r = '2'},
-            { s = 'C', r = '2'},
-            { s = 'D', r = 'Q'},
-            { s = 'D', r = 'Q'},
-            { s = 'D', r = 'T'},
-            { s = 'D', r = 'T'},
-            { s = 'D', r = '8'},
-            { s = 'D', r = '8'},
-            { s = 'D', r = '6'},
-            { s = 'D', r = '6'},
-            { s = 'D', r = '4'},
-            { s = 'D', r = '4'},
-            { s = 'D', r = '2'},
-            { s = 'D', r = '2'}
-        }
-    },
-    consumeables = {
-        {id = 'c_uma_twin_moons'}
-    },
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Goldship
-    key = 'goldship_challenge',
-    rules = {
-        custom = {},
-        modifiers = {}
-    },
-    jokers = {
-        {id = 'j_uma_goldship'}
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Oguri Cap
-    key = 'oguri_challenge',
-    rules = {
-        custom = {},
-        modifiers = {}
-    },
-    jokers = {
-        {id = 'j_uma_oguri'}
-    },
-    deck = {},
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Sakura Bakushin O
-    key = 'bakushin_challenge',
-    rules = {
-        custom = {},
-        modifiers = {}
-    },
-    jokers = {
-        {id = 'j_uma_bakushin'}
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Matikanetannhauser
-    key = 'mambo_challenge',
-    rules = {
-        custom = {},
-        modifiers = {
-            { id = 'consumable_slots', value = 3 }
-        }
-    },
-    jokers = {
-        {id = 'j_uma_mambo'}
-    },
-    deck = {},
-    consumeables = {
-        {id = 'c_uma_mambo_boots'},
-        {id = 'c_uma_mambo_hat'},
-        {id = 'c_uma_mambo_plushie'}
-    },
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Sakura Chiyono O
-    key = 'chiyono_challenge',
-    rules = {
-        custom = {},
-        modifiers = {}
-    },
-    jokers = {
-        {id = 'j_uma_chiyono'}
-    },
-    deck = {
-        type = 'Challenge Deck',
-        cards = {
-            { s = 'S', r = 'A', e = 'm_uma_turf'},
-            { s = 'S', r = 'K'},
-            { s = 'S', r = 'Q'},
-            { s = 'S', r = 'J'},
-            { s = 'S', r = 'T'},
-            { s = 'S', r = '9'},
-            { s = 'S', r = '8'},
-            { s = 'S', r = '7'},
-            { s = 'S', r = '6'},
-            { s = 'S', r = '5'},
-            { s = 'S', r = '4'},
-            { s = 'S', r = '3'},
-            { s = 'S', r = '2'},
-            { s = 'H', r = 'A', e = 'm_uma_turf'},
-            { s = 'H', r = 'K'},
-            { s = 'H', r = 'Q'},
-            { s = 'H', r = 'J'},
-            { s = 'H', r = 'T'},
-            { s = 'H', r = '9'},
-            { s = 'H', r = '8'},
-            { s = 'H', r = '7'},
-            { s = 'H', r = '6'},
-            { s = 'H', r = '5'},
-            { s = 'H', r = '4'},
-            { s = 'H', r = '3'},
-            { s = 'H', r = '2'},
-            { s = 'C', r = 'A', e = 'm_uma_turf'},
-            { s = 'C', r = 'K'},
-            { s = 'C', r = 'Q'},
-            { s = 'C', r = 'J'},
-            { s = 'C', r = 'T'},
-            { s = 'C', r = '9'},
-            { s = 'C', r = '8'},
-            { s = 'C', r = '7'},
-            { s = 'C', r = '6'},
-            { s = 'C', r = '5'},
-            { s = 'C', r = '4'},
-            { s = 'C', r = '3'},
-            { s = 'C', r = '2'},
-            { s = 'D', r = 'A', e = 'm_uma_turf'},
-            { s = 'D', r = 'K'},
-            { s = 'D', r = 'Q'},
-            { s = 'D', r = 'J'},
-            { s = 'D', r = 'T'},
-            { s = 'D', r = '9'},
-            { s = 'D', r = '8'},
-            { s = 'D', r = '7'},
-            { s = 'D', r = '6'},
-            { s = 'D', r = '5'},
-            { s = 'D', r = '4'},
-            { s = 'D', r = '3'},
-            { s = 'D', r = '2'},
-        }
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Norn Ace
-    key = 'norn_challenge',
-    rules = {
-        custom = {},
-        modifiers = {}
-    },
-    jokers = {
-        {id = 'j_uma_norn'}
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --All Lesbians
-    key = 'oops_all_lesbians',
-    rules = {
-        custom = {},
-        modifiers = {}
-    },
-    jokers = {
-        {id = 'j_uma_daiwa'},
-        {id = 'j_uma_vodka'},
-        {id = 'j_uma_agnes'},
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Obey Your Master
-    key = 'obey_challenge',
-    rules = {
-        custom = {},
-        modifiers = {}
-    },
-    jokers = {
-        {id = 'j_uma_obey'}
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Matikanefukukitaru
-    key = 'fuku_challenge',
-    rules = {
-        custom = {},
-        modifiers = {}
-    },
-    jokers = {
-        {id = 'j_uma_fuku'}
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Still in Love
-    key = 'love_challenge',
-    rules = {
-        custom = {},
-        modifiers = {}
-    },
-    jokers = {
-        {id = 'j_uma_love'}
-    },
-    consumeables = {
-        {id = "c_sun"},
-        {id = "c_world"},
-        {id = "c_lovers"}
-    },
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Vodka
-    key = 'vodka_challenge',
-    rules = {
-        custom = {},
-        modifiers = {}
-    },
-    jokers = {
-        {id = 'j_uma_vodka'}
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Tokai Teio
-    key = 'teio_challenge',
-    rules = {
-        custom = {},
-        modifiers = {}
-    },
-    jokers = {
-        {id = 'j_uma_teio'}
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Mini the Lady
-    key = 'mini_challenge',
-    rules = {
-        custom = {},
-        modifiers = {}
-    },
-    jokers = {
-        {id = 'j_uma_mini'}
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --All Legendaries
-    key = 'legends',
-    rules = {
-        custom = {},
-        modifiers = {
-            { id = 'joker_slots', value = 7 },
-        }
-    },
-
-    jokers = {
-        {id = 'j_caino', eternal = true},
-        {id = 'j_triboulet', eternal = true},
-        {id = 'j_yorick', eternal = true},
-        {id = 'j_chicot', eternal = true},
-        {id = 'j_perkeo', eternal = true},
-        {id = 'j_uma_helios', eternal = true},
-        {id = 'j_uma_daiwa', eternal = true}
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --All Horsies >.<
-    key = 'all',
-    rules = {
-        custom = {},
-        modifiers = {
-            { id = 'hands', value = 67 },
-            { id = 'discards', value = 67 },
-            { id = 'dollars', value = 676767 },
-            { id = 'joker_slots', value = 150 },
-            { id = 'consumable_slots', value = 75 }
-        }
-    },
-    jokers = {
-        {id = 'j_uma_helios'},
-        {id = 'j_uma_daiwa'},
-        {id = 'j_uma_agnes'},
-        {id = 'j_uma_turbo'},
-        {id = 'j_uma_goldship'},
-        {id = 'j_uma_oguri'},
-        {id = 'j_uma_bakushin'},
-        {id = 'j_uma_mambo'},
-        {id = 'j_uma_chiyono'},
-        {id = 'j_uma_norn'},
-        {id = 'j_uma_obey'},
-        {id = 'j_uma_fuku'},
-        {id = 'j_uma_love'},
-        {id = 'j_uma_vodka'},
-        {id = 'j_uma_teio'}
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --All functional horses
-    key = 'functional',
-    rules = {
-        custom = {},
-        modifiers = {
-            { id = 'hands', value = 67 },
-            { id = 'discards', value = 67 },
-            { id = 'dollars', value = 676767 },
-            { id = 'joker_slots', value = 150 },
-            { id = 'consumable_slots', value = 75 }
-        }
-    },
-    jokers = {
-        {id = 'j_uma_helios'},
-        {id = 'j_uma_daiwa'},
-        {id = 'j_uma_agnes'},
-        {id = 'j_uma_turbo'},
-        {id = 'j_uma_goldship'},
-        {id = 'j_uma_oguri'},
-        {id = 'j_uma_bakushin'},
-        {id = 'j_uma_mambo'},
-        {id = 'j_uma_chiyono'},
-        {id = 'j_uma_norn'},
-        {id = 'j_uma_obey'},
-        {id = 'j_uma_fuku'},
-        {id = 'j_uma_love'},
-        {id = 'j_uma_vodka'},
-        {id = 'j_uma_teio'}
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --All textures horses
-    key = 'textured',
-    rules = {
-        custom = {},
-        modifiers = {
-            { id = 'hands', value = 67 },
-            { id = 'discards', value = 67 },
-            { id = 'dollars', value = 676767 },
-            { id = 'joker_slots', value = 150 },
-            { id = 'consumable_slots', value = 75 }
-        }
-    },
-    jokers = {
-        {id = 'j_uma_helios'},
-        {id = 'j_uma_daiwa'},
-        {id = 'j_uma_agnes'},
-        {id = 'j_uma_goldship'},
-        {id = 'j_uma_oguri'},
-        {id = 'j_uma_bakushin'},
-        {id = 'j_uma_mambo'},
-        {id = 'j_uma_obey'},
-        {id = 'j_uma_fuku'},
-        {id = 'j_uma_love'},
-    },
-    consumeables = {},
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Better Tarots
-    key = 'testIskIdea',
-    rules = {
-        custom = {},
-        modifiers = {
-            { id = 'consumable_slots', value = 75 }
-        }
-    },
-    jokers = {},
-    consumeables = {
-        {id = 'c_uma_better_chariot'},
-        {id = 'c_uma_better_death'},
-        {id = 'c_uma_better_devil'},
-        {id = 'c_uma_better_emperor'},
-        {id = 'c_uma_better_empress'},
-        {id = 'c_uma_better_fool'},
-        {id = 'c_uma_better_hanged_man'},
-        {id = 'c_uma_better_heirophant'},
-        {id = 'c_uma_better_hermit'},
-        {id = 'c_uma_better_high_priestess'},
-        {id = 'c_uma_better_judgement'},
-        {id = 'c_uma_better_justice'},
-        {id = 'c_uma_better_lovers'},
-        {id = 'c_uma_better_magician'},
-        {id = 'c_uma_better_strength'},
-        {id = 'c_uma_better_tower'},
-        {id = 'c_uma_better_wheel_of_fortune'}
-    },
-    vouchers = {},
-    restrictions = {}
-}
-
-SMODS.Challenge { --Worse Tarots
-    key = 'testIskIdea2',
-    rules = {
-        custom = {},
-        modifiers = {
-            { id = 'consumable_slots', value = 75 }
-        }
-    },
-    jokers = {},
-    consumeables = {
-        {id = 'c_uma_worse_chariot'},
-        {id = 'c_uma_worse_devil'},
-        {id = 'c_uma_worse_emperor'},
-        {id = 'c_uma_worse_empress'},
-        {id = 'c_uma_worse_hanged_man'},
-        {id = 'c_uma_worse_heirophant'},
-        {id = 'c_uma_worse_hermit'},
-        {id = 'c_uma_worse_justice'},
-        {id = 'c_uma_worse_lovers'},
-        {id = 'c_uma_worse_magician'},
-        {id = 'c_uma_worse_moon'},
-        {id = 'c_uma_worse_star'},
-        {id = 'c_uma_worse_strength'},
-        {id = 'c_uma_worse_sun'},
-        {id = 'c_uma_worse_temperance'},
-        {id = 'c_uma_worse_tower'},
-        {id = 'c_uma_worse_wheel_of_fortune'},
-        {id = 'c_uma_worse_world'},
-    },
-    vouchers = {},
-    restrictions = {}
-}
-]]
-
 SMODS.Challenge {--Choose your Uma!
     key = 'horse',
     rules = {
@@ -580,51 +27,71 @@ SMODS.Challenge {--Unstable Income
     vouchers = {
     }
 }
---[[
-SMODS.Challenge {--Still in Love Challenge
-    key = 'love_challenge',
+
+SMODS.Challenge {--Unstable Income
+    key = 'all_horses',
     rules = {
-        modifiers = {
-            { id = "discards", value = 4}
-        }
     },
     jokers = {
-        { id = "j_uma_love", eternal = true}
+        {id = 'j_uma_norn'},
+        {id = 'j_uma_haru'},
+        {id = 'j_uma_lilac'},
+        {id = 'j_uma_mini'},
+
+        {id = 'j_uma_spacer'},
+
+        {id = 'j_uma_turbo'},
+        {id = 'j_uma_chiyono'},
+        {id = 'j_uma_obey'},
+        {id = 'j_uma_vodka'},
+        {id = 'j_uma_teio'},
+        {id = 'j_uma_neo'},
+
+        {id = 'j_uma_spacer'},
+
+        {id = 'j_uma_agnes'},
+        {id = 'j_uma_goldship'},
+        {id = 'j_uma_oguri'},
+        {id = 'j_uma_bakushin'},
+        {id = 'j_uma_mambo'},
+        {id = 'j_uma_fuku'},
+        {id = 'j_uma_love'},
+        {id = 'j_uma_maruzensky'},
+        {id = 'j_uma_ebeyan'},
+
+        {id = 'j_uma_spacer'},
+
+        {id = 'j_uma_helios'},
+        {id = 'j_uma_daiwa'},
+
+        {id = 'j_uma_spacer'},
+
+        {id = 'j_uma_belno'},
+        {id = 'j_uma_creek'},
+        {id = 'j_uma_air'},
+        {id = 'j_uma_nature'},
+        {id = 'j_uma_rudolf'},
+        {id = 'j_uma_tamamo'},
+        {id = 'j_uma_meisho'},
+        {id = 'j_uma_opera'},
+        {id = 'j_uma_bourbon'},
+        {id = 'j_uma_mayano'},
+        {id = 'j_uma_vivlos'},
+        {id = 'j_uma_tact'},
+        {id = 'j_uma_g_city'},
+        {id = 'j_uma_aruvu'}
     },
     consumeables = {
-        { id = "c_sun"}
     },
     vouchers = {
     }
 }
-]]--
+
+
 --Example card definition:
 --{ s = 'D', r = 'Q', e = 'm_steel', d = 'polychrome', g = 'Red' }
 
---[[
-old_challenge = SMODS.Challenges.c_fragile_1.restrictions
-
-my_banned_cards =
-    {id = 'p_uma_turf_normal', ids = {
-        'p_uma_turf_normal',
-        'p_uma_turf_jumbo',
-        'p_uma_turf_mega'
-    }}
-table.insert(old_challenge.banned_cards, my_banned_cards)
-
-my_banned_cards =
-    {id = 'c_uma_pedigree'}
-table.insert(old_challenge.banned_cards, my_banned_cards)
-
-SMODS.Challenge:take_ownership('c_fragile_1',
-    {restrictions = old_challenge},
-    true
-)
-]]
-
-local challenge_name = "c_fragile_1"
-
-local bans = {
+Uma_Challenge_ban("c_fragile_1", {
     cards = {
         {id = 'p_uma_turf_normal', ids = {
         'p_uma_turf_normal',
@@ -635,36 +102,6 @@ local bans = {
     },
     tags = {},
     other = {}
-}
+})
 
-local old_data = SMODS.Challenges[challenge_name]
 
-if not old_data.restrictions then
-    old_data.restrictions = {}
-end
-
-for _, v in pairs({"banned_cards", "banned_tags", "banned_other"}) do
-    if not old_data.restrictions[v] then
-        old_data.restrictions[v] = {}
-    end
-end
-
-if next(bans.cards) ~= nil then
-    for _, v in pairs(bans.cards) do
-        table.insert(old_data.restrictions.banned_cards, v)
-    end
-end
-
-if next(bans.tags) ~= nil then
-    for _, v in pairs(bans.tags) do
-        table.insert(old_data.restrictions.banned_tags, v)
-    end
-end
-
-if next(bans.other) ~= nil then
-    for _, v in pairs(bans.other) do
-        table.insert(old_data.restrictions.banned_other, v)
-    end
-end
-
-SMODS.Challenge:take_ownership(challenge_name, old_data, true)

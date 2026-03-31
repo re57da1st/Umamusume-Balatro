@@ -2185,3 +2185,26 @@ Matthew ideas:
 		every card held in hand gives $3 at end of round but you recieve no interest
 		maybe put a card that says every queen scored has a 1 in 2 chance to give $4
 ]]--
+
+SMODS.Joker{ --Spacer
+    key = "spacer",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 9, y = 5 },
+    display_size = { w = 71, h = 95 * 1.5 },
+    atlas = 'j_umas',
+    config = {},
+
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}

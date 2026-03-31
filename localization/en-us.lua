@@ -11,6 +11,15 @@ return {
         },
 
         Joker = {
+            j_uma_spacer = {
+                name = "Spacer",
+                text = {
+                    "This joker is a spacer joker",
+                    "It's only here to separate",
+                    "joker rarities in a challenge",
+                },
+            },
+
             j_uma_helios = {
                 name = "Daitaku Helios",
                 text = {
@@ -1047,31 +1056,9 @@ return {
 
     misc = {
         challenge_names = {
-            c_uma_helios_challenge = "Daitaku Helios",
-            c_uma_daiwa_challenge = "Daiwa Scarlet",
-            c_uma_agnes_challenge = "Agnes Digital",
-            c_uma_turbo_challenge = "Twin Turbo",
-            c_uma_goldship_challenge = "Goldship",
-            c_uma_oguri_challenge = "Oguri Cap",
-            c_uma_bakushin_challenge = "Sakura Bakushin O",
-            c_uma_mambo_challenge = "Matikanetannhauser",
-            c_uma_chiyono_challenge = "Sakura Chiyono O",
-            c_uma_norn_challenge = "Norn Ace",
-            c_uma_obey_challenge = "Obey Your Master",
-            c_uma_fuku_challenge = "Matikanefukukitaru",
-            c_uma_love_challenge = "Still in Love",
-            c_uma_vodka_challenge = "Vodka",
-            c_uma_teio_challenge = "Tokai Teio",
-            c_uma_legends = "All Legends",
-            c_uma_all = "All horsies ^.^",
-            c_uma_functional = "Everyone who's functional",
-            c_uma_textured = "Everyone who's textured",
-            c_uma_testIskIdea = "Special Tarot Tests",
-            c_uma_testIskIdea2 = "Non-special Tarot Tests",
-            c_uma_oops_all_lesbians = "Oops! All Lesbians!",
-            c_uma_mini_challenge = "mini",
             c_uma_unstable_income = "(un)Stable Income",
             c_uma_horse = "Choose your Uma!",
+            c_uma_all_horses = "ALL the horses",
         },
 
         v_text = {
