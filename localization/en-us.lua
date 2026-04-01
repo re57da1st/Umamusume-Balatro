@@ -263,7 +263,7 @@ return {
             j_uma_vivlos = {
                 name = "Vivlos",
                 text = {
-                    "All scored cards gain",
+                    "All scoring cards gain",
                     "a {C:wealth}Wealth{} sticker",
                 },
             },
