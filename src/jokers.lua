@@ -27,7 +27,7 @@ SMODS.Joker{ --Daitaku Helios
                 } }
         end
         return { vars = {
-                card.ability.extra.Xmult --Xmult, the value that Mult gets multiplied as when triggered
+            card.ability.extra.Xmult --Xmult, the value that Mult gets multiplied as when triggered
         } }
     end,
 
@@ -587,13 +587,13 @@ SMODS.Joker{ --Sakura Bakushin O
                 } }
         end
         return { vars = {
-                card.ability.extra.mult, --The Mult value the card has
-                card.ability.extra.mult_pot, --Mult potential, the value that changes with respect to time
-                card.ability.extra.mult_add, --Mult Addition, the value of Potential Mult that gets added at blind start
-                card.ability.extra.mult_mod, --Mult Mod, the amount of Potential Mult that goes down per interval
-                card.ability.extra.active, --Active, Boolean state that decides if the timer continues to run
-                card.ability.extra.sign, --Sign, the state of "+" or "-" that shows attached to the Potential Mult value
-                card.ability.extra.interval --Interval, How many seconds go by before Potential Mult drops
+            card.ability.extra.mult, --The Mult value the card has
+            card.ability.extra.mult_pot, --Mult potential, the value that changes with respect to time
+            card.ability.extra.mult_add, --Mult Addition, the value of Potential Mult that gets added at blind start
+            card.ability.extra.mult_mod, --Mult Mod, the amount of Potential Mult that goes down per interval
+            card.ability.extra.active, --Active, Boolean state that decides if the timer continues to run
+            card.ability.extra.sign, --Sign, the state of "+" or "-" that shows attached to the Potential Mult value
+            card.ability.extra.interval --Interval, How many seconds go by before Potential Mult drops
         } }
     end,
 
@@ -1568,6 +1568,58 @@ SMODS.Joker{ --Forever Young
     end
 }
 
+SMODS.Joker{ --Vivlos
+    key = "vivlos",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 1, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 4,
+        r2 = 6,
+        r3 = 0,
+        rt = 17
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = {
+            set = "Other",
+            key = "uma_wealth",
+            vars = {
+                SMODS.Sticker.obj_table.uma_wealth.config.extra.money
+            } }
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return { vars = {
+            nil
+        } }
+    end,
+    calculate = function(self, card, context)
+        if context.before then
+            for _, v in ipairs(context.scoring_hand) do
+                v:add_sticker('uma_wealth', true)
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        v:juice_up()
+                        return true
+                    end
+                }))
+            end
+        end
+        return nil
+    end
+}
+
 
 
 --In progress Jokers
@@ -1948,46 +2000,6 @@ SMODS.Joker{ --Mayano Top Gun
         r2 = 4,
         r3 = 5,
         rt = 21
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Joker{ --Vivlos
-    key = "vivlos",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 1, y = 4 },
-    atlas = 'j_umas',
-    config = { extra = { race = {
-        r1 = 4,
-        r2 = 6,
-        r3 = 0,
-        rt = 17
     } } },
 
     loc_vars = function(self, info_queue, card)

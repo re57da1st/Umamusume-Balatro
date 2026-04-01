@@ -263,7 +263,8 @@ return {
             j_uma_vivlos = {
                 name = "Vivlos",
                 text = {
-                    "stuff",
+                    "All scored cards gain",
+                    "a {C:wealth}Wealth{} sticker",
                 },
             },
 
@@ -1051,6 +1052,15 @@ return {
                     "cards to add to your deck",
                 },
             },
+
+            uma_wealth = {
+                name = "Wealth",
+                text = {
+                    "Gives {C:money}$#1#{} when scored",
+                    "If card doesn't score next",
+                    "blind, sticker {C:attention}disappears{}"
+                },
+            },
         }
     },
 
@@ -1160,6 +1170,7 @@ return {
         },
 
         labels = {
+            uma_wealth = "Wealth"
         },
 
         poker_hand_descriptions = {

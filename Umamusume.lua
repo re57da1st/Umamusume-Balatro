@@ -11,6 +11,7 @@ assert(SMODS.load_file("src/boosters.lua"))()
 assert(SMODS.load_file("src/interface.lua"))()
 assert(SMODS.load_file("src/blind.lua"))()
 assert(SMODS.load_file("src/backs.lua"))()
+assert(SMODS.load_file("src/stickers.lua"))()
 
 if JokerDisplay then SMODS.load_file("src/joker_display_definitions.lua")() end
 
@@ -67,9 +68,16 @@ SMODS.Atlas({ --Boss (Bl)inds
     atlas_table = "ANIMATION_ATLAS"
 })
 
-SMODS.Atlas({ --Card (B)acks (decks)
+SMODS.Atlas({ --Card (B)acks [also known as "decks"]
     key = "b_umas",
     path = "b_umas.png",
+    px = 71,
+    py = 95
+})
+
+SMODS.Atlas({ --(St)ickers
+    key = "st_umas",
+    path = "st_umas.png",
     px = 71,
     py = 95
 })
@@ -101,22 +109,22 @@ SMODS.ObjectType({
         j_uma_lilac = true,
         j_uma_neo = true,
         j_uma_mini = true,
+        j_uma_maruzensky = true,
+        j_uma_ebeyan = true,
+        j_uma_vivlos = true,
 
         --Move above once complete
         j_uma_creek = true,
         j_uma_air = true,
         j_uma_nature = true,
-        j_uma_maruzensky = true,
         j_uma_rudolf = true,
         j_uma_tamamo = true,
         j_uma_meisho = true,
         j_uma_bourbon = true,
         j_uma_mayano = true,
         j_uma_belno = true,
-        j_uma_vivlos = true,
         j_uma_tact = true,
         j_uma_opera = true,
-        j_uma_ebeyan = true,
         j_uma_g_city = true,
         j_uma_aruvu = true,
     }

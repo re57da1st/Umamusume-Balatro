@@ -1,5 +1,4 @@
--- Frisk's Blind
-SMODS.Blind {
+SMODS.Blind { -- Frisk's Blind
     key = "frisk_blind",
     dollars = 8,
     mult = 2,

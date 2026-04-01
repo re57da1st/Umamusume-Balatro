@@ -1,4 +1,3 @@
-
 SMODS.Booster { --Normal Turf Pack
     key = "turf_normal",
     weight = 2,

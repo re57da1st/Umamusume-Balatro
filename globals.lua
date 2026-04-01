@@ -22,7 +22,8 @@ G.C.UMA = {
     TURF = HEX("70922D"),
     BLOSSOM = HEX("EFA7CD"),
     DIRT = HEX("AA6F40"),
-    CHULT = HEX('D002F0'),
+    CHULT = HEX("D002F0"),
+    WEALTH = HEX("EFAD29")
 }
 
 SMODS.Gradient {
@@ -66,6 +67,7 @@ function loc_colour(_c, _default)
     G.ARGS.LOC_COLOURS.uma_blossom = G.C.UMA.BLOSSOM
     G.ARGS.LOC_COLOURS.uma_dirt = G.C.UMA.DIRT
     G.ARGS.LOC_COLOURS.chult = G.C.UMA.CHULT
+    G.ARGS.LOC_COLOURS.wealth = G.C.UMA.WEALTH
     return loc_colour_ref(_c, _default)
 end
 
@@ -272,6 +274,26 @@ function SMODS.current_mod.calculate(self, context)
         end
         if planet_bool then
             G.GAME.consumeable_usage_total.planet = G.GAME.consumeable_usage_total.planet + 1
+        end
+    end
+
+    --Reset the "safe" state of cards with a Wealth sticker at round start
+    if context.setting_blind then
+        for _, v in ipairs(G.playing_cards) do
+            if v.ability["uma_wealth"] then
+                v.ability["uma_wealth"].extra.safe = false
+            end
+        end
+    end
+
+    --Removes all Wealth stickers not marked as "safe"
+    if context.end_of_round then
+        for _, v in ipairs(G.playing_cards) do
+            if v.ability["uma_wealth"] then
+                if v.ability["uma_wealth"].extra.safe ~= true then
+                    v:remove_sticker("uma_wealth", true)
+                end
+            end
         end
     end
 

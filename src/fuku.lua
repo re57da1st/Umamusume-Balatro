@@ -1,4 +1,4 @@
-SMODS.ConsumableType {
+SMODS.ConsumableType { --Fuku Cards
     key = 'fuku_cards',
     primary_colour = G.C.UMA.BETTER_TAROT,
     secondary_colour = G.C.UMA.BETTER_TAROT2,

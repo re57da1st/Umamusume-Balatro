@@ -1,5 +1,4 @@
--- Stable deck
-SMODS.Back {
+SMODS.Back { -- Stable deck
     key = "ura",
     pos = { x = 0, y = 0 },
     config = {  },
