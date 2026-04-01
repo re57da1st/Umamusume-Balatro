@@ -169,7 +169,7 @@ jd_def["j_uma_norn"] = { --Norn Ace
 
 --Still in Love's joker display definition is inside her joker definition, due to a priority issue with dynamic text loading
 
-jd_def["j_uma_vodka"] = { --Tokai Teio
+jd_def["j_uma_vodka"] = { --Vodka
     text = {
         { text = "+", colour = G.C.CHIPS },
         { ref_table = "card.ability.extra", ref_value = "chips", colour = G.C.CHIPS },
@@ -218,7 +218,7 @@ jd_def["j_uma_teio"] = { --Tokai Teio
     end
 }
 
-jd_def["j_uma_lilac"] = {
+jd_def["j_uma_lilac"] = { --Lucky Lilac
     text = {
         { ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "chips" },
         { text = "x",                              scale = 0.35 },
@@ -255,5 +255,79 @@ jd_def["j_uma_lilac"] = {
         card.joker_display_values.count = count
         card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { (G.GAME and G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
         card.joker_display_values.localized_text = "Lucky Cards"
+    end
+}
+
+jd_def["j_uma_ebeyan"] = {
+    text = {
+        {
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.joker_display_values", ref_value = "x_mult", retrigger_type = "exp" }
+            }
+        }
+    },
+    calc_function = function(card)
+        local playing_hand = next(G.play.cards)
+        local count = 0
+        for _, playing_card in ipairs(G.hand.cards) do
+            if not (playing_card.facing == 'back') and not playing_card.debuff and playing_card:get_id() and playing_card:get_id() == 14 then
+                count = count + JokerDisplay.calculate_card_triggers(playing_card, nil, true)
+            end
+            if not (playing_card.facing == 'back') and not playing_card.debuff and playing_card:get_id() and SMODS.has_enhancement(playing_card, "m_uma_dirt") then
+                count = count + JokerDisplay.calculate_card_triggers(playing_card, nil, true)
+            end
+        end
+
+        for _, playing_card in ipairs(G.play.cards) do
+            if not (playing_card.facing == 'back') and not playing_card.debuff and playing_card:get_id() and playing_card:get_id() == 14 then
+                count = count + JokerDisplay.calculate_card_triggers(playing_card, nil, true)
+            end
+            if not (playing_card.facing == 'back') and not playing_card.debuff and playing_card:get_id() and SMODS.has_enhancement(playing_card, "m_uma_dirt") then
+                count = count + JokerDisplay.calculate_card_triggers(playing_card, nil, true)
+            end
+        end
+        card.joker_display_values.x_mult = card.ability.extra.xmult ^ count
+    end
+}
+
+jd_def["j_uma_haru"] = {
+    text = {
+        { ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult" },
+        { text = "x retriggers", scale = 0.35 }
+    },
+    reminder_text = {
+        { text = "(" },
+        { ref_table = "card.joker_display_values", ref_value = "localized_text" },
+        { text = ")" }
+    },
+    extra = {
+        {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds" },
+            { text = ")" },
+        }
+    },
+    extra_config = { colour = G.C.GREEN, scale = 0.3 },
+    calc_function = function(card)
+        local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+        local count = 0
+        if text ~= 'Unknown' then
+            for _, scoring_card in pairs(scoring_hand) do
+                if SMODS.has_enhancement(scoring_card, "m_uma_dirt") then
+                    count = count +
+                        JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+                end
+            end
+        end
+        card.joker_display_values.count = count
+        local numerator, denominator = 1, card.ability.extra.odds
+        if SMODS then numerator, denominator = SMODS.get_probability_vars(card, numerator, denominator, 'bloodstone') end
+        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+        card.joker_display_values.localized_text = "Dirt"
+    end,
+    style_function = function(card, text, reminder_text, extra)
+        local suit_node = reminder_text and reminder_text.children and reminder_text.children[2]
+        if suit_node then suit_node.config.colour = lighten(G.C.UMA.DIRT, 0.35) end
     end
 }
