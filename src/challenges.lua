@@ -46,6 +46,7 @@ SMODS.Challenge {--Unstable Income
         {id = 'j_uma_vodka'},
         {id = 'j_uma_teio'},
         {id = 'j_uma_neo'},
+        {id = 'j_uma_vivlos'},
 
         {id = 'j_uma_spacer'},
 
@@ -76,7 +77,6 @@ SMODS.Challenge {--Unstable Income
         {id = 'j_uma_opera'},
         {id = 'j_uma_bourbon'},
         {id = 'j_uma_mayano'},
-        {id = 'j_uma_vivlos'},
         {id = 'j_uma_tact'},
         {id = 'j_uma_g_city'},
         {id = 'j_uma_aruvu'}

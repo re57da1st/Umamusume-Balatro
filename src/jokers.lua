@@ -1571,8 +1571,8 @@ SMODS.Joker{ --Forever Young
 SMODS.Joker{ --Vivlos
     key = "vivlos",
     blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
+    rarity = 2,
+    cost = 6,
     pos = { x = 1, y = 4 },
     atlas = 'j_umas',
     config = { extra = { race = {
