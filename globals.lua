@@ -277,20 +277,13 @@ function SMODS.current_mod.calculate(self, context)
         end
     end
 
-    --Reset the "safe" state of cards with a Wealth sticker at round start
-    if context.setting_blind then
+    --Updates the status of Wealth stickers at end of round based on their "safe" marking
+    if context.end_of_round and context.main_eval then
         for _, v in ipairs(G.playing_cards) do
             if v.ability["uma_wealth"] then
-                v.ability["uma_wealth"].extra.safe = false
-            end
-        end
-    end
-
-    --Removes all Wealth stickers not marked as "safe"
-    if context.end_of_round then
-        for _, v in ipairs(G.playing_cards) do
-            if v.ability["uma_wealth"] then
-                if v.ability["uma_wealth"].extra.safe ~= true then
+                if v.ability["uma_wealth"].extra.safe then
+                    v.ability["uma_wealth"].extra.safe = false
+                else
                     v:remove_sticker("uma_wealth", true)
                 end
             end
