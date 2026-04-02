@@ -213,6 +213,8 @@ function SMODS.current_mod.calculate(self, context)
                         else
                             v:set_ability('m_uma_turf', nil, true)
                         end
+                        G.GAME.uma_global_counts.spread = G.GAME.uma_global_counts.spread + 1
+                        print(G.GAME.uma_global_counts)
                         return {
                             message = localize('uma_spread'),
                             colour = G.C.UMA.TURF,
@@ -295,23 +297,30 @@ end
 
 
 --Code that runs at the beginning of every run
-function SMODS.current_mod.reset_game_globals()
+function SMODS.current_mod.reset_game_globals(run_start)
 
-    --Set up max hand values
-    G.GAME.uma_max_hands_buffer = 0
-    G.GAME.uma_default_hands = G.GAME.round_resets.hands
-    Uma_update_max_hands()
+    if run_start then
+        --Set up max hand values
+        G.GAME.uma_max_hands_buffer = 0
+        G.GAME.uma_default_hands = G.GAME.round_resets.hands
+        Uma_update_max_hands()
 
-    --Doubles the size of the consumable rate to make cards 2x more likely
-    CssAPI.gamerate = 1
-    if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_ura' then
-        CssAPI.gamerate = 2
+        --Doubles the size of the consumable rate to make cards 2x more likely on URA Deck
+        CssAPI.gamerate = 1
+        if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_ura' then
+            CssAPI.gamerate = 2
+        end
+
+        --Any consumables that should be ON by default at the beginning of the run
+        G.GAME.family_tree_subset = true
+
+        --Update the consumable rate to match new changes
+        Uma_CSS_check()
+
+        --Set up global count values for the run
+        G.GAME.uma_global_counts = {}
+        G.GAME.uma_global_counts.spread = 0
+        G.GAME.uma_global_counts.bloom = 0
     end
-
-    --Any consumables that should be ON by default at the beginning of the run
-    G.GAME.family_tree_subset = true
-
-    --Update the consumable rate to match new changes
-    Uma_CSS_check()
 
 end

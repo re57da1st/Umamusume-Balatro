@@ -289,7 +289,10 @@ return {
             j_uma_tact = {
                 name = "Daring Tact",
                 text = {
-                    "stuff",
+                    "Gives {C:mult}+#1#{} Mult for",
+                    "every {C:uma_turf}spread{} and {C:uma_blossom}bloom{}",
+                    "triggered this run",
+                    "{C:inactive}(currently {C:mult}+#2#{C:inactive} Mult)",
                 },
             },
 
@@ -1185,3 +1188,9 @@ return {
         }
     }
 }
+
+--[[
+Gives +1 Mult for every spread and bloom trigger this run (Currently +0 Mult)
+Gives +1 Mult for every time a turf card spread or bloomed this run (Currently +0 Mult)
+Gives +1 Mult for every time a card has bloomed or spread this run (Currently +0 Mult)
+]]

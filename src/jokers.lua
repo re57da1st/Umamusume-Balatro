@@ -811,6 +811,8 @@ SMODS.Joker{ --Sakura Chiyono O
                                 target = target - 1
                                 if target == 0 then
                                     v:set_ability('m_uma_blossom', nil, true)
+                                    G.GAME.uma_global_counts.bloom = G.GAME.uma_global_counts.bloom + 1
+                                    print(G.GAME.uma_global_counts)
                                     return {
                                         message = localize('uma_bloom'),
                                         colour = G.C.UMA.BLOSSOM,
@@ -2028,14 +2030,14 @@ SMODS.Joker{ --Mayano Top Gun
     end
 }
 
-SMODS.Joker{ --Daring Tact
+SMODS.Joker{ --Daring Tact, gives +1 mult for every spread and bloom trigger this run
     key = "tact",
     blueprint_compat = false,
     rarity = 1,
     cost = 3,
     pos = { x = 4, y = 4 },
     atlas = 'j_umas',
-    config = { extra = { race = {
+    config = { extra = { increment = 1, current = 0, race = {
         r1 = 5,
         r2 = 1,
         r3 = 3,
@@ -2043,6 +2045,11 @@ SMODS.Joker{ --Daring Tact
     } } },
 
     loc_vars = function(self, info_queue, card)
+        if G.GAME.uma_global_counts then
+            card.ability.extra.current = (G.GAME.uma_global_counts.spread + G.GAME.uma_global_counts.bloom) * card.ability.extra.increment
+        else
+            card.ability.extra.current = 0
+        end
         if G.GAME.show_placings then
             info_queue[#info_queue+1] = {
                 set = "Other",
@@ -2055,12 +2062,18 @@ SMODS.Joker{ --Daring Tact
                 } }
         end
         return {vars = {
-            nil
+            card.ability.extra.increment,
+            card.ability.extra.current
         } }
     end,
 
     calculate = function(self, card, context)
-        return nil
+        if context.joker_main then
+            card.ability.extra.current = (G.GAME.uma_global_counts.spread + G.GAME.uma_global_counts.bloom) * card.ability.extra.increment
+            return {
+                mult = card.ability.extra.current
+            }
+        end
     end,
 
     in_pool = function(self, args)
@@ -2108,7 +2121,7 @@ SMODS.Joker{ --Gold City, spend 10 dollars to draw X amount of cards to ur hand
     end
 }
 
-SMODS.Joker{ --Admire Groove, Each played cllub card, vlaue goes up, any other card,. value goes down
+SMODS.Joker{ --Admire Groove, Each played club card, value goes up, any other card, value goes down
     key = "aruvu",
     blueprint_compat = false,
     rarity = 1,
