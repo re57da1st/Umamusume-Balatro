@@ -172,7 +172,6 @@ SMODS.Joker{ --Twin Turbo
 
     calculate = function(self, card, context)
         if context.before and not context.blueprint and (next(context.poker_hands['uma_perfect_pair']) or next(context.poker_hands['Flush House'])) then
-            -- See note about SMODS Scaling Manipulation on the wiki
             card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
             return {
                 level_up = true,
@@ -1946,14 +1945,14 @@ SMODS.Joker{ --Tamamo Cross
     end
 }
 
-SMODS.Joker{ --Meisho Doto, every boss blind, does smth
+SMODS.Joker{ --Meisho Doto, every boss blind defeated, +chips +mult
     key = "meisho",
     blueprint_compat = false,
     rarity = 1,
     cost = 3,
     pos = { x = 2, y = 3 },
     atlas = 'j_umas',
-    config = { extra = { race = {
+    config = { extra = { basemult = 0, basechips = 0, mult = 10, chips = 25, race = {
         r1 = 10,
         r2 = 8,
         r3 = 2,
@@ -1978,7 +1977,16 @@ SMODS.Joker{ --Meisho Doto, every boss blind, does smth
     end,
 
     calculate = function(self, card, context)
-        return nil
+        if context.beat_boss and context.end_of_round and context.main_eval then
+            card.ability.extra.basemult = card.ability.extra.basemult + card.ability.extra.mult
+            card.ability.extra.basechips = card.ability.extra.basechips + card.ability.extra.chips
+        end
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.basemult,
+                chips = card.ability.extra.basechips
+            }
+        end
     end,
 
     in_pool = function(self, args)
@@ -2018,7 +2026,9 @@ SMODS.Joker{ --T.M. Opera O, every single blind is considered a boss blind
     end,
 
     calculate = function(self, card, context)
-        return nil
+        if context.end_of_round and context.main_eval then --context.final_scoring_step,,,,maybe
+            context.beat_boss = true
+        end
     end,
 
     in_pool = function(self, args)
@@ -2153,7 +2163,7 @@ SMODS.Joker{ --Admire Groove, Each played club card, value goes up, any other ca
     cost = 3,
     pos = { x = 6, y = 3 },
     atlas = 'j_umas',
-    config = { extra = { race = {
+    config = { extra = { basemult = 0, addmult = 10, subtractmult = 5, suit = 'Clubs', race = {
         r1 = 8,
         r2 = 1,
         r3 = 3,
@@ -2178,8 +2188,10 @@ SMODS.Joker{ --Admire Groove, Each played club card, value goes up, any other ca
     end,
 
     calculate = function(self, card, context)
-        return nil
-    end,
+            return nil
+        end,
+
+
 
     in_pool = function(self, args)
         return false
