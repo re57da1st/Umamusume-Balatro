@@ -1622,6 +1622,82 @@ SMODS.Joker{ --Vivlos
     end
 }
 
+SMODS.Joker{ --Daring Tact
+    key = "tact",
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 5,
+    pos = { x = 4, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { increment = 1, current = 0, race = {
+        r1 = 5,
+        r2 = 1,
+        r3 = 3,
+        rt = 13
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.uma_global_counts then
+            card.ability.extra.current = (G.GAME.uma_global_counts.spread + G.GAME.uma_global_counts.bloom) * card.ability.extra.increment
+        else
+            card.ability.extra.current = 0
+        end
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            card.ability.extra.increment,
+            card.ability.extra.current
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.joker_main then
+            card.ability.extra.current = (G.GAME.uma_global_counts.spread + G.GAME.uma_global_counts.bloom) * card.ability.extra.increment
+            return {
+                mult = card.ability.extra.current
+            }
+        end
+    end
+}
+
+
+
+
+
+SMODS.Joker{ --Spacer
+    key = "spacer",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 9, y = 5 },
+    display_size = { w = 71, h = 95 * 1.1 },
+    atlas = 'j_umas',
+    config = {},
+
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+
+
 
 
 --In progress Jokers
@@ -2030,57 +2106,6 @@ SMODS.Joker{ --Mayano Top Gun
     end
 }
 
-SMODS.Joker{ --Daring Tact, gives +1 mult for every spread and bloom trigger this run
-    key = "tact",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 4, y = 4 },
-    atlas = 'j_umas',
-    config = { extra = { increment = 1, current = 0, race = {
-        r1 = 5,
-        r2 = 1,
-        r3 = 3,
-        rt = 13
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.uma_global_counts then
-            card.ability.extra.current = (G.GAME.uma_global_counts.spread + G.GAME.uma_global_counts.bloom) * card.ability.extra.increment
-        else
-            card.ability.extra.current = 0
-        end
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            card.ability.extra.increment,
-            card.ability.extra.current
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        if context.joker_main then
-            card.ability.extra.current = (G.GAME.uma_global_counts.spread + G.GAME.uma_global_counts.bloom) * card.ability.extra.increment
-            return {
-                mult = card.ability.extra.current
-            }
-        end
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
 SMODS.Joker{ --Gold City, spend 10 dollars to draw X amount of cards to ur hand
     key = "g_city",
     blueprint_compat = false,
@@ -2210,26 +2235,3 @@ Matthew ideas:
 		every card held in hand gives $3 at end of round but you recieve no interest
 		maybe put a card that says every queen scored has a 1 in 2 chance to give $4
 ]]--
-
-SMODS.Joker{ --Spacer
-    key = "spacer",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 9, y = 5 },
-    display_size = { w = 71, h = 95 * 1.5 },
-    atlas = 'j_umas',
-    config = {},
-
-    loc_vars = function(self, info_queue, card)
-        return nil
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
