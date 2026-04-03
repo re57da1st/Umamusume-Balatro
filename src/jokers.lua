@@ -2191,7 +2191,27 @@ SMODS.Joker{ --Admire Groove, Each played club card, value goes up, any other ca
     end,
 
     calculate = function(self, card, context)
-            return nil
+            if context.before then
+                for _, scored_card in ipairs(context.scoring_hand) do
+                    if scored_card:is_suit(card.ability.extra.suit) then
+                        card.ability.extra.basemult = card.ability.extra.basemult + card.ability.extra.addmult
+                        if card.ability.extra.basemult <= 0 then
+                            card.ability.extra.basemult = 0
+                        end
+                    else
+                        card.ability.extra.basemult = card.ability.extra.basemult - card.ability.extra.subtractmult
+                        if card.ability.extra.basemult <= 0 then
+                            card.ability.extra.basemult = 0
+                        end
+                    end
+
+                end
+            end
+            if context.joker_main then
+            return {
+                mult = card.ability.extra.basemult
+            }
+        end
         end,
 
 
