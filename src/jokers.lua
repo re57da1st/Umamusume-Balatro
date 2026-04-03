@@ -1762,6 +1762,64 @@ SMODS.Joker{ --T.M. Opera O, every single blind is a boss blind
     end
 }
 
+SMODS.Joker{ --Admire Groove, Each played club card, value goes up, any other card, value goes down
+    key = "aruvu",
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 6, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { basemult = 0, addmult = 10, subtractmult = 5, suit = 'Clubs', race = {
+        r1 = 8,
+        r2 = 1,
+        r3 = 3,
+        rt = 21
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            card.ability.extra.addmult,
+            card.ability.extra.subtractmult,
+            card.ability.extra.basemult
+        } }
+    end,
+
+    calculate = function(self, card, context)
+            if context.before and not context.blueprint then
+                for _, scored_card in ipairs(context.scoring_hand) do
+                    if scored_card:is_suit(card.ability.extra.suit) then
+                        card.ability.extra.basemult = card.ability.extra.basemult + card.ability.extra.addmult
+                    else
+                        card.ability.extra.basemult = math.max(card.ability.extra.basemult - card.ability.extra.subtractmult, 0)
+                    end
+
+                end
+            end
+            if context.joker_main then
+            return {
+                mult = card.ability.extra.basemult
+            }
+        end
+        end,
+
+
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
 
 
 
@@ -2153,68 +2211,6 @@ SMODS.Joker{ --Gold City, spend 10 dollars to draw X amount of cards to ur hand
     calculate = function(self, card, context)
         return nil
     end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Joker{ --Admire Groove, Each played club card, value goes up, any other card, value goes down
-    key = "aruvu",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 6, y = 3 },
-    atlas = 'j_umas',
-    config = { extra = { basemult = 0, addmult = 10, subtractmult = 5, suit = 'Clubs', race = {
-        r1 = 8,
-        r2 = 1,
-        r3 = 3,
-        rt = 21
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-            if context.before then
-                for _, scored_card in ipairs(context.scoring_hand) do
-                    if scored_card:is_suit(card.ability.extra.suit) then
-                        card.ability.extra.basemult = card.ability.extra.basemult + card.ability.extra.addmult
-                        if card.ability.extra.basemult <= 0 then
-                            card.ability.extra.basemult = 0
-                        end
-                    else
-                        card.ability.extra.basemult = card.ability.extra.basemult - card.ability.extra.subtractmult
-                        if card.ability.extra.basemult <= 0 then
-                            card.ability.extra.basemult = 0
-                        end
-                    end
-
-                end
-            end
-            if context.joker_main then
-            return {
-                mult = card.ability.extra.basemult
-            }
-        end
-        end,
-
-
 
     in_pool = function(self, args)
         return false

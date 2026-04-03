@@ -334,7 +334,10 @@ return {
             j_uma_aruvu = {
                 name = "Admire Groove",
                 text = {
-                    "stuff",
+                    "Gain {C:mult}+#1#{} Mult for each",
+                    "{C:clubs}Club{} card {C:attention}played and scored{},",
+                    "{C:mult}-#2#{} Mult for other suits",
+                    "{C:inactive}(Currently {C:mult}+0 {C:inactive}Mult)",
                 },
             },
         },
