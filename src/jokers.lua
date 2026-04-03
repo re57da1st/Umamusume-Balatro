@@ -1668,6 +1668,100 @@ SMODS.Joker{ --Daring Tact
     end
 }
 
+SMODS.Joker{ --Meisho Doto
+    key = "meisho",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 2, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { basemult = 0, basechips = 0, mult = 10, chips = 25, race = {
+        r1 = 10,
+        r2 = 8,
+        r3 = 2,
+        rt = 27
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return { vars = {
+            card.ability.extra.basechips,
+            card.ability.extra.basemult,
+            card.ability.extra.chips,
+            card.ability.extra.mult
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        if G.GAME.blind.boss and context.end_of_round and context.main_eval then
+            card.ability.extra.basemult = card.ability.extra.basemult + card.ability.extra.mult
+            card.ability.extra.basechips = card.ability.extra.basechips + card.ability.extra.chips
+        end
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.basemult,
+                chips = card.ability.extra.basechips
+            }
+        end
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --T.M. Opera O, every single blind is a boss blind
+    key = "opera",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 5, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 14,
+        r2 = 6,
+        r3 = 3,
+        rt = 26
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.setting_blind then--and context.main_eval then --context.final_scoring_step,,,,maybe
+            G.GAME.blind.boss = true
+        end
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
 
 
 
@@ -1938,97 +2032,6 @@ SMODS.Joker{ --Tamamo Cross
 
     calculate = function(self, card, context)
         return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Joker{ --Meisho Doto, every boss blind defeated, +chips +mult
-    key = "meisho",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 2, y = 3 },
-    atlas = 'j_umas',
-    config = { extra = { basemult = 0, basechips = 0, mult = 10, chips = 25, race = {
-        r1 = 10,
-        r2 = 8,
-        r3 = 2,
-        rt = 27
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        if context.beat_boss and context.end_of_round and context.main_eval then
-            card.ability.extra.basemult = card.ability.extra.basemult + card.ability.extra.mult
-            card.ability.extra.basechips = card.ability.extra.basechips + card.ability.extra.chips
-        end
-        if context.joker_main then
-            return {
-                mult = card.ability.extra.basemult,
-                chips = card.ability.extra.basechips
-            }
-        end
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Joker{ --T.M. Opera O, every single blind is considered a boss blind
-    key = "opera",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 5, y = 3 },
-    atlas = 'j_umas',
-    config = { extra = { race = {
-        r1 = 14,
-        r2 = 6,
-        r3 = 3,
-        rt = 26
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        if context.end_of_round and context.main_eval then --context.final_scoring_step,,,,maybe
-            context.beat_boss = true
-        end
     end,
 
     in_pool = function(self, args)

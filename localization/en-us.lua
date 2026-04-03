@@ -235,7 +235,9 @@ return {
             j_uma_meisho = {
                 name = "Meisho Doto",
                 text = {
-                    "stuff",
+                    "Gives {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+                    "Increases by {C:chips}+#3#{} and {C:mult}+#4#{}",
+                    "when {C:attention}Boss Blind{} defeated"
                 },
             },
 
@@ -290,7 +292,7 @@ return {
                 name = "Daring Tact",
                 text = {
                     "Gives {C:mult}+#1#{} Mult for",
-                    "every {C:uma_turf}spread{} and {C:uma_blossom}bloom{}",
+                    "every {C:uma_turf}Spread{} and {C:uma_blossom}Bloom{}",
                     "triggered this run",
                     "{C:inactive}(currently {C:mult}+#2#{C:inactive} Mult)",
                 },
@@ -299,16 +301,17 @@ return {
             j_uma_opera = {
                 name = "T.M. Opera O",
                 text = {
-                    "T.M. Opera O!",
-                    "Let's hear it now for T.M. Opera O!",
-                    "The most powerful, beautiful, ",
-                    "glorious ray of light in the world!",
+                    "All blinds are considered {C:attention}Boss Blinds",
+                    "{C:inactive}T.M. Opera O!",
+                    "{C:inactive}Let's hear it now for T.M. Opera O!",
+                    "{C:inactive}The most powerful, beautiful, ",
+                    "{C:inactive}glorious ray of light in the world!",
 
-                    "I bring my unlimited love to you, as well!",
-                    "That is my fate as king...",
-                    "The fate of T.M. Opera O!",
+                    "{C:inactive}I bring my unlimited love to you, as well!",
+                    "{C:inactive}That is my fate as king...",
+                    "{C:inactive}The fate of T.M. Opera O!",
 
-                    "T.M. Opera O!",
+                    "{C:inactive}T.M. Opera O!",
                 },
             },
 
