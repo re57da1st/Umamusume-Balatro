@@ -337,7 +337,7 @@ return {
                     "Gain {C:mult}+#1#{} Mult for each",
                     "{C:clubs}Club{} card {C:attention}played and scored{},",
                     "{C:mult}-#2#{} Mult for other suits",
-                    "{C:inactive}(Currently {C:mult}+0 {C:inactive}Mult)",
+                    "{C:inactive}(Currently {C:mult}+#3# {C:inactive}Mult)",
                 },
             },
         },
