@@ -1713,10 +1713,6 @@ SMODS.Joker{ --Meisho Doto
                 chips = card.ability.extra.basechips
             }
         end
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
@@ -1755,10 +1751,6 @@ SMODS.Joker{ --T.M. Opera O, every single blind is a boss blind
         if context.setting_blind then--and context.main_eval then --context.final_scoring_step,,,,maybe
             G.GAME.blind.boss = true
         end
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
@@ -1796,27 +1788,21 @@ SMODS.Joker{ --Admire Groove, Each played club card, value goes up, any other ca
     end,
 
     calculate = function(self, card, context)
-            if context.before and not context.blueprint then
-                for _, scored_card in ipairs(context.scoring_hand) do
-                    if scored_card:is_suit(card.ability.extra.suit) then
-                        card.ability.extra.basemult = card.ability.extra.basemult + card.ability.extra.addmult
-                    else
-                        card.ability.extra.basemult = math.max(card.ability.extra.basemult - card.ability.extra.subtractmult, 0)
-                    end
-
+        if context.before and not context.blueprint then
+            for _, scored_card in ipairs(context.scoring_hand) do
+                if scored_card:is_suit(card.ability.extra.suit) then
+                    card.ability.extra.basemult = card.ability.extra.basemult + card.ability.extra.addmult
+                else
+                    card.ability.extra.basemult = math.max(card.ability.extra.basemult - card.ability.extra.subtractmult, 0)
                 end
+
             end
-            if context.joker_main then
+        end
+        if context.joker_main then
             return {
                 mult = card.ability.extra.basemult
             }
         end
-        end,
-
-
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
