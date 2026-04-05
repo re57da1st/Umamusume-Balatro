@@ -1675,7 +1675,7 @@ SMODS.Joker{ --Meisho Doto
     cost = 3,
     pos = { x = 2, y = 3 },
     atlas = 'j_umas',
-    config = { extra = { basemult = 0, basechips = 0, mult = 10, chips = 25, race = {
+    config = { extra = { basemult = 3, basechips = 15, mult = 3, chips = 15, race = {
         r1 = 10,
         r2 = 8,
         r3 = 2,
@@ -1761,7 +1761,7 @@ SMODS.Joker{ --Admire Groove, Each played club card, value goes up, any other ca
     cost = 3,
     pos = { x = 6, y = 3 },
     atlas = 'j_umas',
-    config = { extra = { basemult = 0, addmult = 10, subtractmult = 5, suit = 'Clubs', race = {
+    config = { extra = { basemult = 0, addmult = 3, subtractmult = 2, suit = 'Clubs', race = {
         r1 = 8,
         r2 = 1,
         r3 = 3,
