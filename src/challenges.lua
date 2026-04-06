@@ -1,10 +1,17 @@
 SMODS.Challenge {--Choose your Uma!
     key = 'horse',
     rules = {
+        modifiers = {
+            { id = 'consumable_slots', value = 7 }
+        }
     },
     jokers = {
     },
     consumeables = {
+        {id = 'c_uma_ssr_ticket'},
+        {id = 'c_uma_ssr_ticket'},
+        {id = 'c_uma_ssr_ticket'},
+        {id = 'c_uma_ssr_ticket'},
         {id = 'c_uma_ssr_ticket'}
     },
     vouchers = {

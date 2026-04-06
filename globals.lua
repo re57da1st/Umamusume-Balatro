@@ -214,7 +214,7 @@ function SMODS.current_mod.calculate(self, context)
                             v:set_ability('m_uma_turf', nil, true)
                         end
                         G.GAME.uma_global_counts.spread = G.GAME.uma_global_counts.spread + 1
-                        print(G.GAME.uma_global_counts)
+                        --print(G.GAME.uma_global_counts)
                         return {
                             message = localize('uma_spread'),
                             colour = G.C.UMA.TURF,

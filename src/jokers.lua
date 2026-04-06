@@ -811,7 +811,7 @@ SMODS.Joker{ --Sakura Chiyono O
                                 if target == 0 then
                                     v:set_ability('m_uma_blossom', nil, true)
                                     G.GAME.uma_global_counts.bloom = G.GAME.uma_global_counts.bloom + 1
-                                    print(G.GAME.uma_global_counts)
+                                    --print(G.GAME.uma_global_counts)
                                     return {
                                         message = localize('uma_bloom'),
                                         colour = G.C.UMA.BLOSSOM,
@@ -2212,18 +2212,19 @@ To do list:
         uper eek
         air goove
         ice ature
-        aruzensky
         udolf
         tamtsi
-        MEISHO DOTOOOOO
         robo horse
         mayano top gun
+        old ity
         bel-woah
+    Ideas:
+        Gains +1/3/5 mult for each small/big/boss blind beaten
+        smth with percentage of enhanced cards in deck
 
     Joel:
     Potential horses:
-        Vivlos
-        Daring Tact
+    idk man!
 
     Joker Display:
         whoever else we've made man idk
