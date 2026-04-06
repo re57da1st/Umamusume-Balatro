@@ -200,16 +200,19 @@ SMODS.ObjectType({
 })
 
 --Hooks
+
+--Agnes Hook to make sure cards don't get undairly debuffed
 local oldgfuncsplaycardsfromhighlighted = G.FUNCS.play_cards_from_highlighted
-G.FUNCS.play_cards_from_highlighted = function(e) --Agnes Hook to make sure cards don't get undairly debuffed
+G.FUNCS.play_cards_from_highlighted = function(e)
     for _, v in pairs(G.hand.highlighted) do
         v.ability.uma = v.ability.played_this_ante
     end
     return oldgfuncsplaycardsfromhighlighted(e)
 end
 
+--Hook for cards to stop negative sell values from dropping your max money below the minimum
 local card_can_sell_card_ref = Card.can_sell_card
-function Card:can_sell_card(context) --Hook for cards to stop negative sell values from dropping your max money below the minimum
+function Card:can_sell_card(context)
     local check = card_can_sell_card_ref(self, context)
     if check and self.sell_cost < 0 then
         return G.GAME.dollars + self.sell_cost >= G.GAME.bankrupt_at
@@ -217,8 +220,9 @@ function Card:can_sell_card(context) --Hook for cards to stop negative sell valu
     return check
 end
 
+--Add each uma joker into the shop pool a 2nd time (2x more common) on URA deck
 local oldgetcurrentpool = get_current_pool
-function get_current_pool(_type, _rarity, _legendary, _append) --Add each uma joker into the shop pool a 2nd time (2x more common) on URA deck
+function get_current_pool(_type, _rarity, _legendary, _append)
     local g, _pool_key = oldgetcurrentpool(_type, _rarity, _legendary, _append)
     if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_ura' then
         for _, v in pairs(copy_table(g)) do
@@ -230,8 +234,9 @@ function get_current_pool(_type, _rarity, _legendary, _append) --Add each uma jo
     return g, _pool_key
 end
 
+--If the run was left mid-blind, retrigger all bakushin timers upon entering again
 local oldstartrun = Game.start_run
-function Game:start_run(args) --If the run was left mid-blind, retrigger all bakushin timers upon entering again
+function Game:start_run(args)
     local g = oldstartrun(self, args)
 
     if G.jokers.cards then
