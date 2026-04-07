@@ -292,6 +292,11 @@ function SMODS.current_mod.calculate(self, context)
         end
     end
 
+    --Code that allows for joker re-triggers
+    if context.retrigger_joker_check and context.other_card.ability and context.other_card.ability.uma_retriggers then
+        return { repetitions = context.other_card.ability.uma_retriggers }
+    end
+
 end
 
 

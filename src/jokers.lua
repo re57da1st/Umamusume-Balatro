@@ -843,27 +843,16 @@ SMODS.Joker{ --Norn Ace
     rarity = 1,
     cost = 5,
     pos = { x = 4, y = 1 },
-    config = { extra = { dollars = 3, uma_count = 0, race = {
-        r1 = 2,
-        r2 = 2,
-        r3 = 2,
-        rt = 40,
-        name = "Ace Brown"
-    } } },
+    config = { extra = { dollars = 3, uma_count = 0 } },
     atlas = 'j_umas',
 
     loc_vars = function(self, info_queue, card)
         if G.GAME.show_placings then
             info_queue[#info_queue+1] = {
                 set = "Other",
-                key = "uma_race_stats_renamed",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt,
-                    card.ability.extra.race.name
-                } }
+                key = "uma_race_stats_no_record",
+                vars = { }
+            }
         end
         return { vars = {
             card.ability.extra.dollars,
@@ -1872,6 +1861,8 @@ SMODS.Joker{ --Belno Light, takes a blind before choosing a blueprint_compat jok
     end,
 
     calculate = function(self, card, context)
+        --v = the card you want to add a retrigger to
+        --v.ability.uma_retriggers = (v.ability.uma_retriggers and v.ability.uma_retriggers or 0) + 1
         return nil
     end,
 
@@ -2221,6 +2212,8 @@ To do list:
     Ideas:
         Gains +1/3/5 mult for each small/big/boss blind beaten
         smth with percentage of enhanced cards in deck
+        Every even # round do smth every odd # round do smth
+        Utilize G.GAME.uma_money_mod to multiply incoming money
 
     Joel:
     Potential horses:
