@@ -258,7 +258,10 @@ return {
             j_uma_belno = {
                 name = "Belno Light",
                 text = {
-                    "stuff",
+                    "Every {C:attention}#1#{} rounds, adds",
+                    "a {C:attention}retrigger{} to a random",
+                    "{C:blue}blueprint compatible{} joker",
+                    "{C:inactive}({C:attention}#2# {C:inactive}rounds left)"
                 },
             },
 

@@ -1795,6 +1795,77 @@ SMODS.Joker{ --Admire Groove, Each played club card, value goes up, any other ca
     end
 }
 
+SMODS.Joker{ --Belno Light, takes a blind before choosing a blueprint_compat joker and giving it a perma +1 retrigger, can choose the same joker twice, nyat her dough
+    key = "belno",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 0, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { rounds = 3, round_reset = 3, race = {
+        r1 = 10,
+        r2 = 11,
+        r3 = 3,
+        rt = 45,
+        name = "Twin Bee"
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats_renamed",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt,
+                    card.ability.extra.race.name
+                } }
+        end
+        return {vars = {
+            card.ability.extra.round_reset,
+            card.ability.extra.rounds
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.round_eval then
+            card.ability.extra.rounds = card.ability.extra.rounds - 1
+            --print("rounds left: "..card.ability.extra.rounds)
+            if card.ability.extra.rounds <= 0 then
+                local rando = 0
+                for _, v in ipairs(G.jokers.cards) do
+                    if v.config.center.blueprint_compat == true then--and v.config.center.key ~= "j_uma_belno" then
+                        rando = rando + 1
+                    end
+                end
+                --print("found "..rando.." jokers")
+                if rando > 0 then
+                    rando = pseudorandom('belno_choose', 1, rando)
+                    --print("random # is "..rando)
+                    for _, v in ipairs(G.jokers.cards) do
+                        if v.config.center.blueprint_compat == true then--and v.config.center.key ~= "j_uma_belno" then
+                            rando = rando - 1
+                            if rando == 0 then
+                                v.ability.uma_retriggers = (v.ability.uma_retriggers and v.ability.uma_retriggers or 0) + 1
+                                --print("added retrigger to "..v.config.center.key)
+                                card.ability.extra.rounds = card.ability.extra.round_reset
+                                --print("rounds left: "..card.ability.extra.rounds)
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end,
+        --v = the card you want to add a retrigger to
+        --v.ability.uma_retriggers = (v.ability.uma_retriggers and v.ability.uma_retriggers or 0) + 1
+    in_pool = function(self, args)
+        return false
+    end
+}
+
 
 
 
@@ -1823,72 +1894,6 @@ SMODS.Joker{ --Spacer
 }
 
 
-
-
-
---In progress Jokers
-SMODS.Joker{ --Belno Light, takes a blind before choosing a blueprint_compat joker and giving it a perma +1 retrigger, can choose the same joker twice, nyat her dough
-    key = "belno",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 0, y = 4 },
-    atlas = 'j_umas',
-    config = { extra = { rounds = 2, rand = 0, race = {
-        r1 = 10,
-        r2 = 11,
-        r3 = 3,
-        rt = 45,
-        name = "Twin Bee"
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats_renamed",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt,
-                    card.ability.extra.race.name
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        if context.round_eval then
-            card.ability.extra.rounds = card.ability.extra.rounds - 1
-            if card.ability.extra.rounds == 0 then
-                for _, v in ipairs(G.jokers.cards) do
-                    if v.config.center.blueprint_compat == true and v.config.center.key ~= "j_uma_belno" then
-                        card.ability.extra.rando = card.ability.extra.rando + 1
-                    end
-                end
-                    if card.ability.extra.rando > 0 then
-                        card.ability.extra.rando = pseudorandom('belno_choose', 1, card.ability.extra.rando)
-                        for _, v in ipairs(G.jokers.cards) do
-                            if v.config.center.blueprint_compat == true and v.config.center.key ~= "j_uma_belno" then
-                                card.ability.extra.rando = card.ability.extra.rando - 1
-                                if card.ability.extra.rando == 0 then
-                                    v.ability.uma_retriggers = (v.ability.uma_retriggers and v.ability.uma_retriggers or 0) + 1
-                                end
-                            end
-                        end
-                    end
-            end
-        end
-    end,
-        --v = the card you want to add a retrigger to
-        --v.ability.uma_retriggers = (v.ability.uma_retriggers and v.ability.uma_retriggers or 0) + 1
-    in_pool = function(self, args)
-        return false
-    end
-}
 
 
 
