@@ -1883,7 +1883,7 @@ SMODS.Joker{ --Belno Light, takes a blind before choosing a blueprint_compat jok
             end
         end
     end,
-        --v = the card you want to add a retrigger to,,,,,,,,,,,,,,,,,for _, v in ipairs(SMODS.find_card('j_uma_belno', true)) do
+        --v = the card you want to add a retrigger to
         --v.ability.uma_retriggers = (v.ability.uma_retriggers and v.ability.uma_retriggers or 0) + 1
     in_pool = function(self, args)
         return false
