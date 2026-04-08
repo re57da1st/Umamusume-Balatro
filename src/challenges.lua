@@ -55,6 +55,7 @@ SMODS.Challenge {--Unstable Income
         {id = 'j_uma_neo'},
         {id = 'j_uma_vivlos'},
         {id = 'j_uma_tact'},
+        {id = 'j_uma_belno'},
 
         {id = 'j_uma_spacer'},
 
@@ -75,7 +76,6 @@ SMODS.Challenge {--Unstable Income
 
         {id = 'j_uma_spacer'},
 
-        {id = 'j_uma_belno'},
         {id = 'j_uma_creek'},
         {id = 'j_uma_air'},
         {id = 'j_uma_nature'},

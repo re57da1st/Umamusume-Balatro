@@ -41,6 +41,15 @@ SMODS.Gradient {
     cycle = 5
 }
 
+SMODS.Gradient {
+    key = "retrigger",
+    colours = {
+        HEX("A284EC"),
+        HEX("BEA1F3")
+    },
+    cycle = 2
+}
+
 --Colors Definition 2
 local loc_colour_ref = loc_colour
 function loc_colour(_c, _default)
@@ -293,8 +302,8 @@ function SMODS.current_mod.calculate(self, context)
     end
 
     --Code that allows for joker re-triggers
-    if context.retrigger_joker_check and context.other_card.ability and context.other_card.ability.uma_retriggers then
-        return { repetitions = context.other_card.ability.uma_retriggers }
+    if context.retrigger_joker_check and context.other_card.config.uma_retrigger then
+        return { repetitions = context.other_card.config.uma_retrigger }
     end
 
 end

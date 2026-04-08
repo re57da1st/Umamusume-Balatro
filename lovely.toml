@@ -1,0 +1,16 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = "for _, v in ipairs(info_queue) do"
+position = 'before'
+match_indent = true
+payload = '''
+if _c.set == 'Joker' and card.ability.uma_retriggers then
+    localize{type = 'descriptions', key = (card.ability.uma_retriggers == 1 and "j_uma_retrigger" or "j_uma_retriggers"), set = _c.set, nodes = desc_nodes, vars = {card.ability.uma_retriggers} }
+end
+'''

@@ -259,7 +259,7 @@ return {
                 name = "Belno Light",
                 text = {
                     "Every {C:attention}#1#{} rounds, adds",
-                    "a {C:attention}retrigger{} to a random",
+                    "a {C:uma_retrigger}retrigger{} to a random",
                     "{C:blue}blueprint compatible{} joker",
                     "{C:inactive}({C:attention}#2# {C:inactive}rounds left)"
                 },
@@ -341,6 +341,20 @@ return {
                     "{C:clubs}Club{} card {C:attention}played and scored{},",
                     "{C:mult}-#2#{} Mult for other suits",
                     "{C:inactive}(Currently {C:mult}+#3# {C:inactive}Mult)",
+                },
+            },
+
+            j_uma_retrigger = {
+                name = "Retrigger",
+                text = {
+                    "{C:uma_retrigger}#1# extra trigger",
+                },
+            },
+
+            j_uma_retriggers = {
+                name = "Retriggers",
+                text = {
+                    "{C:uma_retrigger}#1# extra triggers",
                 },
             },
         },
@@ -992,6 +1006,13 @@ return {
                     "that is {C:attention}only {C:hearts}hearts{},",
                     "and nothing else",
                     ]]
+                }
+            },
+
+            uma_retriggers = {
+                name = "Retriggers",
+                text = {
+                    "#1#"
                 }
             },
 

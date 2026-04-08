@@ -1798,11 +1798,11 @@ SMODS.Joker{ --Admire Groove, Each played club card, value goes up, any other ca
 SMODS.Joker{ --Belno Light, takes a blind before choosing a blueprint_compat joker and giving it a perma +1 retrigger, can choose the same joker twice, nyat her dough
     key = "belno",
     blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
+    rarity = 2,
+    cost = 6,
     pos = { x = 0, y = 4 },
     atlas = 'j_umas',
-    config = { extra = { rounds = 3, round_reset = 3, race = {
+    config = { extra = { rounds = 4, round_reset = 4, race = {
         r1 = 10,
         r2 = 11,
         r3 = 3,
@@ -1832,26 +1832,21 @@ SMODS.Joker{ --Belno Light, takes a blind before choosing a blueprint_compat jok
     calculate = function(self, card, context)
         if context.round_eval then
             card.ability.extra.rounds = card.ability.extra.rounds - 1
-            --print("rounds left: "..card.ability.extra.rounds)
             if card.ability.extra.rounds <= 0 then
                 local rando = 0
                 for _, v in ipairs(G.jokers.cards) do
-                    if v.config.center.blueprint_compat == true then--and v.config.center.key ~= "j_uma_belno" then
+                    if v.config.center.blueprint_compat == true then
                         rando = rando + 1
                     end
                 end
-                --print("found "..rando.." jokers")
                 if rando > 0 then
                     rando = pseudorandom('belno_choose', 1, rando)
-                    --print("random # is "..rando)
                     for _, v in ipairs(G.jokers.cards) do
-                        if v.config.center.blueprint_compat == true then--and v.config.center.key ~= "j_uma_belno" then
+                        if v.config.center.blueprint_compat == true then
                             rando = rando - 1
                             if rando == 0 then
                                 v.ability.uma_retriggers = (v.ability.uma_retriggers and v.ability.uma_retriggers or 0) + 1
-                                --print("added retrigger to "..v.config.center.key)
                                 card.ability.extra.rounds = card.ability.extra.round_reset
-                                --print("rounds left: "..card.ability.extra.rounds)
                             end
                         end
                     end
