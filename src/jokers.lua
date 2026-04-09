@@ -2045,7 +2045,29 @@ SMODS.Joker{ --Symboli Rudolf, scales off of rounds passed and bosses passed, sm
     end,
 
     calculate = function(self, card, context)
-        return nil
+        if context.round_eval then
+            card.ability.extra.rounds = card.ability.extra.rounds - 1
+            if card.ability.extra.rounds <= 0 then
+                local rando = 0
+                for _, v in ipairs(G.jokers.cards) do
+                    if v.config.center.blueprint_compat == true then
+                        rando = rando + 1
+                    end
+                end
+                if rando > 0 then
+                    rando = pseudorandom('belno_choose', 1, rando)
+                    for _, v in ipairs(G.jokers.cards) do
+                        if v.config.center.blueprint_compat == true then
+                            rando = rando - 1
+                            if rando == 0 then
+                                v.ability.uma_retriggers = (v.ability.uma_retriggers and v.ability.uma_retriggers or 0) + 1
+                                card.ability.extra.rounds = card.ability.extra.round_reset
+                            end
+                        end
+                    end
+                end
+            end
+        end
     end,
 
     in_pool = function(self, args)
