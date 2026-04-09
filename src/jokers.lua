@@ -1743,7 +1743,7 @@ SMODS.Joker{ --T.M. Opera O, every single blind is a boss blind
     end
 }
 
-SMODS.Joker{ --Admire Groove, Each played club card, value goes up, any other card, value goes down
+SMODS.Joker{ --Admire Groove
     key = "aruvu",
     blueprint_compat = true,
     rarity = 1,
@@ -1795,7 +1795,7 @@ SMODS.Joker{ --Admire Groove, Each played club card, value goes up, any other ca
     end
 }
 
-SMODS.Joker{ --Belno Light, takes a blind before choosing a blueprint_compat joker and giving it a perma +1 retrigger, can choose the same joker twice, nyat her dough
+SMODS.Joker{ --Belno Light
     key = "belno",
     blueprint_compat = false,
     rarity = 2,
@@ -2232,7 +2232,7 @@ To do list:
         Gains +1/3/5 mult for each small/big/boss blind beaten
         smth with percentage of enhanced cards in deck
         Every even # round do smth every odd # round do smth
-        Utilize G.GAME.uma_money_mod to multiply incoming money
+            Utilize G.GAME.uma_money_mod to multiply incoming money
 
     Joel:
     Potential horses:
