@@ -258,7 +258,7 @@ jd_def["j_uma_lilac"] = { --Lucky Lilac
     end
 }
 
-jd_def["j_uma_ebeyan"] = {
+jd_def["j_uma_ebeyan"] = { --Forever Young
     text = {
         {
             border_nodes = {
@@ -291,7 +291,7 @@ jd_def["j_uma_ebeyan"] = {
     end
 }
 
-jd_def["j_uma_haru"] = {
+jd_def["j_uma_haru"] = { --Haru Urara
     text = {
         { ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult" },
         { text = "x retriggers", scale = 0.35 }
@@ -330,4 +330,22 @@ jd_def["j_uma_haru"] = {
         local suit_node = reminder_text and reminder_text.children and reminder_text.children[2]
         if suit_node then suit_node.config.colour = lighten(G.C.UMA.DIRT, 0.35) end
     end
+}
+
+jd_def["j_uma_tact"] = { --Daring Tact
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.MULT },
+    calc_function = function(card)
+        card.joker_display_values.mult = card.ability.extra.current * 1
+    end
+}
+
+jd_def["j_uma_belno"] = { --Belno Light
+    reminder_text = {
+        { ref_table = "card.ability.extra", ref_value = "rounds", colour = SMODS.Gradients.uma_retrigger },
+        { text = " round(s)" }
+    },
 }

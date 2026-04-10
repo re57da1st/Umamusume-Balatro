@@ -1625,10 +1625,8 @@ SMODS.Joker{ --Daring Tact
     } } },
 
     loc_vars = function(self, info_queue, card)
-        if G.GAME.uma_global_counts then
+        if G.GAME.STOP_USE ~= 1 then
             card.ability.extra.current = (G.GAME.uma_global_counts.spread + G.GAME.uma_global_counts.bloom) * card.ability.extra.increment
-        else
-            card.ability.extra.current = 0
         end
         if G.GAME.show_placings then
             info_queue[#info_queue+1] = {
@@ -1648,6 +1646,9 @@ SMODS.Joker{ --Daring Tact
     end,
 
     calculate = function(self, card, context)
+        if G.GAME.STOP_USE ~= 1 or context.drawing_cards then
+            card.ability.extra.current = (G.GAME.uma_global_counts.spread + G.GAME.uma_global_counts.bloom) * card.ability.extra.increment
+        end
         if context.joker_main then
             card.ability.extra.current = (G.GAME.uma_global_counts.spread + G.GAME.uma_global_counts.bloom) * card.ability.extra.increment
             return {
@@ -1832,7 +1833,9 @@ SMODS.Joker{ --Belno Light
     calculate = function(self, card, context)
         if context.round_eval then
             card.ability.extra.rounds = card.ability.extra.rounds - 1
+
             if card.ability.extra.rounds <= 0 then
+                card.ability.extra.rounds = card.ability.extra.round_reset
                 local rando = 0
                 for _, v in ipairs(G.jokers.cards) do
                     if v.config.center.blueprint_compat == true then
@@ -1846,12 +1849,25 @@ SMODS.Joker{ --Belno Light
                             rando = rando - 1
                             if rando == 0 then
                                 v.ability.uma_retriggers = (v.ability.uma_retriggers and v.ability.uma_retriggers or 0) + 1
-                                card.ability.extra.rounds = card.ability.extra.round_reset
+                                return {
+                                    message = localize('uma_trigger_added'),
+                                    colour = SMODS.Gradients.uma_retrigger,
+                                    message_card = v,
+                                    extra = {
+                                        message = tostring(card.ability.extra.rounds).." "..localize(card.ability.extra.rounds == 1 and "uma_round_singular" or "uma_round_plural"),
+                                        colour = SMODS.Gradients.uma_retrigger,
+                                        message_card = card
+                                    }
+                                }
                             end
                         end
                     end
                 end
             end
+            return {
+                message = tostring(card.ability.extra.rounds).." "..localize(card.ability.extra.rounds == 1 and "uma_round_singular" or "uma_round_plural"),
+                colour = SMODS.Gradients.uma_retrigger
+            }
         end
     end,
         --v = the card you want to add a retrigger to

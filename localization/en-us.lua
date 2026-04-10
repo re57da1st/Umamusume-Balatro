@@ -1148,6 +1148,9 @@ return {
             uma_bloom = "Bloom!",
             uma_twin_turbo_trigger = 'Upgrade + Level Up!',
             uma_mini = 'Blind reduced!',
+            uma_trigger_added ="+1 Trigger!",
+            uma_round_singular = "round",
+            uma_round_plural = "rounds",
             
             uma_goldship_no_effect = "No effect currently",
             uma_goldship_effect1 = "Flips and shuffles jokers",

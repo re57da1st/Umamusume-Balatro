@@ -223,7 +223,6 @@ function SMODS.current_mod.calculate(self, context)
                             v:set_ability('m_uma_turf', nil, true)
                         end
                         G.GAME.uma_global_counts.spread = G.GAME.uma_global_counts.spread + 1
-                        --print(G.GAME.uma_global_counts)
                         return {
                             message = localize('uma_spread'),
                             colour = G.C.UMA.TURF,
@@ -302,7 +301,7 @@ function SMODS.current_mod.calculate(self, context)
     end
 
     --Code that allows for joker re-triggers
-    if context.retrigger_joker_check and context.other_card.ability.uma_retrigger then
+    if context.retrigger_joker_check and context.other_card.ability and context.other_card.ability.uma_retrigger then
         return { repetitions = context.other_card.ability.uma_retrigger }
     end
 
@@ -335,6 +334,8 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.uma_global_counts = {}
         G.GAME.uma_global_counts.spread = 0
         G.GAME.uma_global_counts.bloom = 0
+
+        G.GAME.uma_state = 0
     end
 
 end
