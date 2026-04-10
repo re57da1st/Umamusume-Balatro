@@ -2279,6 +2279,8 @@ To do list:
     Joker Display:
         whoever else we've made man idk
 
+    Do messages  for cards that need it
+
     Texturing:
         The rest of the horses (prioritize complete jokers)
         Turf Cards
