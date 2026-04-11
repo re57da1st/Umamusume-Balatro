@@ -24,6 +24,7 @@ G.C.UMA = {
     DIRT = HEX("AA6F40"),
     CHULT = HEX("D002F0"),
     WEALTH = HEX("EFAD29"),
+    DOTO = HEX("595DDB"),
 }
 
 SMODS.Gradient {
@@ -77,6 +78,7 @@ function loc_colour(_c, _default)
     G.ARGS.LOC_COLOURS.uma_dirt = G.C.UMA.DIRT
     G.ARGS.LOC_COLOURS.chult = G.C.UMA.CHULT
     G.ARGS.LOC_COLOURS.wealth = G.C.UMA.WEALTH
+    G.ARGS.LOC_COLOURS.doto = G.C.UMA.DOTO
     return loc_colour_ref(_c, _default)
 end
 
@@ -178,6 +180,17 @@ function Uma_Challenge_ban(challenge, bans)
     SMODS.Challenge:take_ownership(challenge, old_data, true)
 end
 
+function Uma_Tact_refresh()
+    for k, v in ipairs(G.jokers.cards) do
+        if v.config.center_key == "j_uma_tact" then
+            v.ability.extra.current = (G.GAME.uma_global_counts.spread + G.GAME.uma_global_counts.bloom) * v.ability.extra.increment
+
+            SMODS.calculate_effect({ message = localize('k_upgrade_ex'), colour = lighten(G.C.BLUE, 0.35) }, v)
+
+        end
+    end
+end
+
 
 
 --Constantly running code for other required effects
@@ -223,12 +236,8 @@ function SMODS.current_mod.calculate(self, context)
                             v:set_ability('m_uma_turf', nil, true)
                         end
                         G.GAME.uma_global_counts.spread = G.GAME.uma_global_counts.spread + 1
-                        return {
-                            message = localize('uma_spread'),
-                            colour = G.C.UMA.TURF,
-                            message_card = v,
-                            delay = 1
-                        }
+                        SMODS.calculate_effect({message = localize('uma_spread'), colour = G.C.UMA.TURF, delay = 1}, v)
+                        Uma_Tact_refresh()
                     end
                 end
             end

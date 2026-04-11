@@ -247,7 +247,7 @@ jd_def["j_uma_lilac"] = { --Lucky Lilac
         end
         card.joker_display_values.count = count
         card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { (G.GAME and G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
-        card.joker_display_values.localized_text = "Lucky Cards"
+        card.joker_display_values.localized_text = localize("uma_lucky_cards")
     end
 }
 
@@ -341,4 +341,25 @@ jd_def["j_uma_belno"] = { --Belno Light
         { ref_table = "card.ability.extra", ref_value = "rounds", colour = SMODS.Gradients.uma_retrigger },
         { text = " round(s)" }
     },
+}
+
+jd_def["j_uma_doto"] = { --Meisho Doto
+    text = {
+        { text = "+", colour = G.C.CHIPS },
+        { ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "chips", colour = G.C.CHIPS },
+        { text = " +", colour = G.C.MULT },
+        { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult", colour = G.C.MULT },
+    },
+        reminder_text = {
+        { text = "(" },
+        { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = lighten(G.C.FILTER, 0.35) },
+        { text = ")" }
+    },
+    calc_function = function(card)
+        card.joker_display_values.chips = card.ability.extra.basechips
+        card.joker_display_values.mult = card.ability.extra.basemult
+    end,
+    style_function = function(card, text, reminder_text, extra)
+        card.joker_display_values.localized_text = localize("uma_doto_boss")
+    end
 }

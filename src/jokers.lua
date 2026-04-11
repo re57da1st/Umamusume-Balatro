@@ -817,12 +817,8 @@ SMODS.Joker{ --Sakura Chiyono O
                                             return true
                                         end
                                     }))
-                                    return {
-                                        message = localize('uma_bloom'),
-                                        colour = G.C.UMA.BLOSSOM,
-                                        message_card = v,
-                                        delay = 1
-                                    }
+                                    SMODS.calculate_effect({message = localize('uma_bloom'), colour = G.C.UMA.BLOSSOM, delay = 1}, v)
+                                    Uma_Tact_refresh()
                                 end
                             end
                         end
@@ -1282,7 +1278,8 @@ SMODS.Joker { --Haru Urara
         if context.repetition and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_uma_dirt')
             and SMODS.pseudorandom_probability(card, 'uma_haru', 1, card.ability.extra.odds) then
             return {
-                repetitions = card.ability.extra.repetitions
+                repetitions = card.ability.extra.repetitions,
+                colour = G.C.UMA.DIRT
             }
         end
     end,
@@ -1618,6 +1615,10 @@ SMODS.Joker{ --Vivlos
                         return true
                     end
                 }))
+                return {
+                    message = localize("uma_wealth"),
+                    colour = G.C.UMA.WEALTH
+                }
             end
         end
         return nil
@@ -1673,7 +1674,7 @@ SMODS.Joker{ --Daring Tact
 }
 
 SMODS.Joker{ --Meisho Doto
-    key = "meisho",
+    key = "doto",
     blueprint_compat = false,
     rarity = 1,
     cost = 3,
@@ -1710,6 +1711,7 @@ SMODS.Joker{ --Meisho Doto
         if G.GAME.blind.boss and context.end_of_round and context.main_eval then
             card.ability.extra.basemult = card.ability.extra.basemult + card.ability.extra.mult
             card.ability.extra.basechips = card.ability.extra.basechips + card.ability.extra.chips
+            SMODS.calculate_effect({message = localize('k_upgrade_ex'), colour = G.C.UMA.DOTO}, card)
         end
         if context.joker_main then
             return {

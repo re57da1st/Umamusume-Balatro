@@ -117,6 +117,10 @@ SMODS.ObjectType({
         j_uma_ebeyan = true,
         j_uma_vivlos = true,
         j_uma_tact = true,
+        j_uma_doto = true,
+        j_uma_opera = true,
+        j_uma_aruvu = true,
+        j_uma_belno = true,
 
         --Move above once complete
         j_uma_creek = true,
@@ -124,13 +128,9 @@ SMODS.ObjectType({
         j_uma_nature = true,
         j_uma_rudolf = true,
         j_uma_tamamo = true,
-        j_uma_meisho = true,
         j_uma_bourbon = true,
         j_uma_mayano = true,
-        j_uma_belno = true,
-        j_uma_opera = true,
         j_uma_g_city = true,
-        j_uma_aruvu = true,
     }
 })
 

@@ -81,7 +81,7 @@ SMODS.Challenge {--Unstable Income
         {id = 'j_uma_nature'},
         {id = 'j_uma_rudolf'},
         {id = 'j_uma_tamamo'},
-        {id = 'j_uma_meisho'},
+        {id = 'j_uma_doto'},
         {id = 'j_uma_opera'},
         {id = 'j_uma_bourbon'},
         {id = 'j_uma_mayano'},

@@ -258,7 +258,7 @@ return {
                 },
             },
 
-            j_uma_meisho = {
+            j_uma_doto = {
                 name = "Meisho Doto",
                 text = {
                     "Gives {C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
@@ -1181,6 +1181,9 @@ return {
             uma_debuff_plural = "debuffs",
             uma_left = "left",
             uma_restore = "Restored!",
+            uma_lucky_cards = "Lucky cards",
+            uma_wealth = "Wealth!",
+            uma_doto_boss = "Boss Blinds",
             
             uma_goldship_no_effect = "No effect currently",
             uma_goldship_effect1 = "Flips and shuffles jokers",
