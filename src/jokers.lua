@@ -811,7 +811,12 @@ SMODS.Joker{ --Sakura Chiyono O
                                 if target == 0 then
                                     v:set_ability('m_uma_blossom', nil, true)
                                     G.GAME.uma_global_counts.bloom = G.GAME.uma_global_counts.bloom + 1
-                                    --print(G.GAME.uma_global_counts)
+                                    G.E_MANAGER:add_event(Event({
+                                        func = function()
+                                            card:juice_up()
+                                            return true
+                                        end
+                                    }))
                                     return {
                                         message = localize('uma_bloom'),
                                         colour = G.C.UMA.BLOSSOM,
@@ -962,7 +967,7 @@ SMODS.Joker{ --Matikanefukukitaru
                             return true
                         end
                     }))
-                    SMODS.calculate_effect({ message = localize('k_plus_tarot'), colour = G.C.PURPLE },
+                    SMODS.calculate_effect({ message = localize('k_plus_tarot'), colour = G.C.UMA.BETTER_TAROT },
                         context.blueprint_card or card)
                     return true
                 end)
@@ -982,7 +987,7 @@ SMODS.Joker{ --Matikanefukukitaru
                             return true
                         end
                     }))
-                    SMODS.calculate_effect({ message = localize('k_plus_tarot'), colour = G.C.PURPLE },
+                    SMODS.calculate_effect({ message = localize('k_plus_tarot'), colour = G.C.UMA.WORSE_TAROT },
                         context.blueprint_card or card)
                     return true
                 end)
@@ -1054,7 +1059,8 @@ SMODS.Joker{ --Still in Love
 
         if context.repetition and context.cardarea == G.play and context.other_card:is_suit("Hearts") then
             return {
-                repetitions = card.ability.extra.repetitions
+                repetitions = card.ability.extra.repetitions,
+                colour = G.C.UMA.RED
             }
         end
 
@@ -1221,6 +1227,14 @@ SMODS.Joker{ --Tokai Teio
                 card.ability.extra.hospital = card.ability.extra.recovery
                 --print(card.ability.extra.hospital)
                 SMODS.debuff_card(card, true, 'breakLeg')
+                return {
+                    message = localize('k_disabled_ex'),
+                    colour = G.C.RED
+                }
+            elseif card.ability.extra.maxBuff > 0 then
+                return {
+                    message = localize('k_safe_ex')
+                }
             end
         end
 
@@ -1374,7 +1388,7 @@ SMODS.Joker{ --Neo Universe
                             return true
                         end
                     }))
-                    SMODS.calculate_effect({ message = localize('k_plus_planet'), colour = G.C.WHITE },
+                    SMODS.calculate_effect({ message = localize('k_plus_planet'), colour = G.C.PLANET },
                         context.blueprint_card or card)
                     return true
                 end)
@@ -2279,7 +2293,7 @@ To do list:
     Joker Display:
         whoever else we've made man idk
 
-    Do messages  for cards that need it
+    Do messages for cards that need it
 
     Texturing:
         The rest of the horses (prioritize complete jokers)

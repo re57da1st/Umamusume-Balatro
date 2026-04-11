@@ -162,10 +162,36 @@ return {
                 name = "Tokai Teio",
                 text = {
                     "{X:mult,C:white}X#5#{} Mult",
+                    "{C:green}#1# in #2#{} chance to {C:red}self-debuff{}",
+                    "restores after {C:attention}2 {}blinds",
+                    "value multiplies by {X:mult,C:white}X#6#",
+                    "{C:inactive}({C:attention}#4# {C:inactive}debuffs left)",
+
+                    --[[
+                    "X2.5 Mult",
+                    "1 in 8 chance to debuff herself",
+                    "un-debuffs after 2 blinds",
+                    "and multiplies by X2",
+                    "(2 debuffs left)",
+
+                    "{X:mult,C:white}X#5#{} Mult",
                     "{C:green}#1# in #2#{} chance to debuff herself",
                     "un-debuffs after {C:attention}#3# {}blinds",
                     "and multiplies by {X:mult,C:white}X#6#",
                     "{C:inactive}({C:attention}#4# {C:inactive}debuffs left)",
+
+                    "X2.5 Mult",
+                    "1 in 8 chance to self-debuff",
+                    "restores after 2 blinds",
+                    "comes back X2 as strong",
+                    "(2 debuffs left)",
+
+                    "{X:mult,C:white}X#5#{} Mult",
+                    "{C:green}#1# in #2#{} chance to {C:red}self-debuff{}",
+                    "restores after {C:attention}2 {}blinds",
+                    "comes back {X:mult,C:white}X#6# {}as strong",
+                    "{C:inactive}({C:attention}#4# {C:inactive}debuffs left)",
+                    ]]
                 },
             },
 
@@ -1151,6 +1177,10 @@ return {
             uma_trigger_added ="+1 Trigger!",
             uma_round_singular = "round",
             uma_round_plural = "rounds",
+            uma_debuff_singular = "debuff",
+            uma_debuff_plural = "debuffs",
+            uma_left = "left",
+            uma_restore = "Restored!",
             
             uma_goldship_no_effect = "No effect currently",
             uma_goldship_effect1 = "Flips and shuffles jokers",

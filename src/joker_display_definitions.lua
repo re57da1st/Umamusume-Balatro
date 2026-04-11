@@ -170,24 +170,11 @@ jd_def["j_uma_norn"] = { --Norn Ace
 --Still in Love's joker display definition is inside her joker definition, due to a priority issue with dynamic text loading
 
 jd_def["j_uma_vodka"] = { --Vodka
-    text = {
-        { text = "+", colour = G.C.CHIPS },
-        { ref_table = "card.ability.extra", ref_value = "chips", colour = G.C.CHIPS },
-
-        { text = " " },
-
-        { text = "+", colour = G.C.MULT },
-        { ref_table = "card.ability.extra", ref_value = "mult", colour = G.C.MULT },
-    },
     reminder_text = {
         { text = "(" },
         { text = "Queens", colour = lighten(G.C.FILTER, 0.35) },
         { text = ")" }
-    },
-    calc_function = function(card)
-        card.joker_display_values.mult = card.ability.extra.mult
-        card.joker_display_values.chips = card.ability.extra.chips
-    end
+    }
 }
 
 jd_def["j_uma_teio"] = { --Tokai Teio
@@ -202,19 +189,25 @@ jd_def["j_uma_teio"] = { --Tokai Teio
     reminder_text = {
         { text = "(" },
         { ref_table = "card.joker_display_values", ref_value = "maxBuff", colour = lighten(G.C.FILTER, 0.35) },
-        { text = " debuffs left)" }
+        { text = " " },
+        { ref_table = "card.joker_display_values", ref_value = "debuff_left" },
+        { text = " " },
+        { ref_table = "card.joker_display_values", ref_value = "left" },
+        { text = ")" },
     },
     extra = {
         {
             { text = "(" },
             { ref_table = "card.joker_display_values", ref_value = "odds" },
-            { text = " debuff)" },
+            { text = ")" },
         }
     },
     extra_config = { colour = G.C.GREEN, scale = 0.3 },
     calc_function = function(card)
-        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { (G.GAME and G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+        card.joker_display_values.odds = localize{ type = 'variable', key = "jdis_odds", vars = { (G.GAME and G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
         card.joker_display_values.maxBuff = card.ability.extra.maxBuff
+        card.joker_display_values.debuff_left = localize( card.ability.extra.maxBuff == 1 and "uma_debuff_singular" or "uma_debuff_plural" )
+        card.joker_display_values.left = localize( "uma_left" )
     end
 }
 

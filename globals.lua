@@ -23,7 +23,7 @@ G.C.UMA = {
     BLOSSOM = HEX("EFA7CD"),
     DIRT = HEX("AA6F40"),
     CHULT = HEX("D002F0"),
-    WEALTH = HEX("EFAD29")
+    WEALTH = HEX("EFAD29"),
 }
 
 SMODS.Gradient {
@@ -241,7 +241,7 @@ function SMODS.current_mod.calculate(self, context)
         for _, v in ipairs(SMODS.find_card('j_uma_teio', true)) do
             --print('teio found')
             v.ability.extra.hospital = v.ability.extra.hospital - 1
-            if v.ability.extra.hospital == 0 then
+            if v.ability.extra.hospital == -1 then
                 SMODS.debuff_card(v, false, 'breakLeg')
                 v.ability.extra.maxBuff = v.ability.extra.maxBuff - 1
                 v.ability.extra.Xmult = v.ability.extra.Xmult * v.ability.extra.Xmult_mod
