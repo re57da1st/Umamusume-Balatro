@@ -40,13 +40,17 @@ SMODS.Challenge {--Unstable Income
     rules = {
     },
     jokers = {
+
+        --Commons
         {id = 'j_uma_norn'},
         {id = 'j_uma_haru'},
         {id = 'j_uma_lilac'},
         {id = 'j_uma_mini'},
+        {id = 'j_uma_doto'},
 
+
+        --Uncommons
         {id = 'j_uma_spacer'},
-
         {id = 'j_uma_turbo'},
         {id = 'j_uma_chiyono'},
         {id = 'j_uma_obey'},
@@ -56,9 +60,12 @@ SMODS.Challenge {--Unstable Income
         {id = 'j_uma_vivlos'},
         {id = 'j_uma_tact'},
         {id = 'j_uma_belno'},
+        {id = 'j_uma_aruvu'},
+        {id = 'j_uma_opera'},
 
+
+        --Rares
         {id = 'j_uma_spacer'},
-
         {id = 'j_uma_agnes'},
         {id = 'j_uma_goldship'},
         {id = 'j_uma_oguri'},
@@ -69,24 +76,23 @@ SMODS.Challenge {--Unstable Income
         {id = 'j_uma_maruzensky'},
         {id = 'j_uma_ebeyan'},
 
-        {id = 'j_uma_spacer'},
 
+        --Legendaries
+        {id = 'j_uma_spacer'},
         {id = 'j_uma_helios'},
         {id = 'j_uma_daiwa'},
 
-        {id = 'j_uma_spacer'},
 
+        --Unknown
+        {id = 'j_uma_spacer'},
         {id = 'j_uma_creek'},
         {id = 'j_uma_air'},
         {id = 'j_uma_nature'},
         {id = 'j_uma_rudolf'},
         {id = 'j_uma_tamamo'},
-        {id = 'j_uma_doto'},
-        {id = 'j_uma_opera'},
         {id = 'j_uma_bourbon'},
         {id = 'j_uma_mayano'},
         {id = 'j_uma_g_city'},
-        {id = 'j_uma_aruvu'}
     },
     consumeables = {
     },

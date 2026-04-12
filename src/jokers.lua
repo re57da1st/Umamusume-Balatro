@@ -1677,10 +1677,10 @@ SMODS.Joker{ --Meisho Doto
     key = "doto",
     blueprint_compat = false,
     rarity = 1,
-    cost = 3,
+    cost = 5,
     pos = { x = 2, y = 3 },
     atlas = 'j_umas',
-    config = { extra = { basemult = 0, basechips = 0, mult = 10, chips = 25, race = {
+    config = { extra = { basemult = 3, basechips = 8, mult = 3, chips = 8, race = {
         r1 = 10,
         r2 = 8,
         r3 = 2,
@@ -1725,8 +1725,8 @@ SMODS.Joker{ --Meisho Doto
 SMODS.Joker{ --T.M. Opera O, every single blind is a boss blind
     key = "opera",
     blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
+    rarity = 2,
+    cost = 7,
     pos = { x = 5, y = 3 },
     atlas = 'j_umas',
     config = { extra = { race = {
@@ -1763,11 +1763,11 @@ SMODS.Joker{ --T.M. Opera O, every single blind is a boss blind
 SMODS.Joker{ --Admire Groove
     key = "aruvu",
     blueprint_compat = true,
-    rarity = 1,
-    cost = 3,
+    rarity = 2,
+    cost = 6,
     pos = { x = 6, y = 3 },
     atlas = 'j_umas',
-    config = { extra = { basemult = 0, addmult = 10, subtractmult = 5, suit = 'Clubs', race = {
+    config = { extra = { basemult = 0, addmult = 2, subtractmult = 2, suit = 'Clubs', race = {
         r1 = 8,
         r2 = 1,
         r3 = 3,
@@ -1796,10 +1796,20 @@ SMODS.Joker{ --Admire Groove
     calculate = function(self, card, context)
         if context.before and not context.blueprint then
             for _, scored_card in ipairs(context.scoring_hand) do
+
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        scored_card:juice_up(0.3, 0.3)
+                        return true
+                    end
+                }))
+
                 if scored_card:is_suit(card.ability.extra.suit) then
                     card.ability.extra.basemult = card.ability.extra.basemult + card.ability.extra.addmult
+                    SMODS.calculate_effect({message = "+"..card.ability.extra.addmult, colour = G.C.MULT}, card)
                 else
                     card.ability.extra.basemult = math.max(card.ability.extra.basemult - card.ability.extra.subtractmult, 0)
+                    SMODS.calculate_effect({message = "-"..card.ability.extra.subtractmult, colour = G.C.MULT}, card)
                 end
 
             end

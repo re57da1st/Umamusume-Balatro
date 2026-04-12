@@ -180,6 +180,7 @@ function Uma_Challenge_ban(challenge, bans)
     SMODS.Challenge:take_ownership(challenge, old_data, true)
 end
 
+--Refreshes Daring Tact's values
 function Uma_Tact_refresh()
     for k, v in ipairs(G.jokers.cards) do
         if v.config.center_key == "j_uma_tact" then

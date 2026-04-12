@@ -363,3 +363,14 @@ jd_def["j_uma_doto"] = { --Meisho Doto
         card.joker_display_values.localized_text = localize("uma_doto_boss")
     end
 }
+
+jd_def["j_uma_aruvu"] = { --Admire Groove
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.MULT },
+    calc_function = function(card)
+        card.joker_display_values.mult = card.ability.extra.basemult
+    end
+}
