@@ -1641,7 +1641,10 @@ SMODS.Joker{ --Daring Tact
 
     loc_vars = function(self, info_queue, card)
         if G.GAME.STOP_USE ~= 1 then
-            card.ability.extra.current = (G.GAME.uma_global_counts.spread + G.GAME.uma_global_counts.bloom) * card.ability.extra.increment
+            card.ability.extra.current = (
+            (G.GAME.uma_global_counts and G.GAME.uma_global_counts.spread or 0) +
+            (G.GAME.uma_global_counts and G.GAME.uma_global_counts.bloom or 0)
+            ) * card.ability.extra.increment
         end
         if G.GAME.show_placings then
             info_queue[#info_queue+1] = {
