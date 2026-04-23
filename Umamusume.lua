@@ -263,3 +263,10 @@ function ease_dollars(mod, instant)
     g = old_ease_dollars(mod, instant)
     return g
 end
+
+--Hook to make probability ALWAYS occur under certain circumstances
+local old_get_probability_vars = SMODS.get_probability_vars
+function SMODS.get_probability_vars(trigger_obj, base_numerator, base_denominator, identifier, from_roll, no_mod)
+    if 1 == 0 then return base_denominator, base_denominator end
+    return old_get_probability_vars(trigger_obj, base_numerator, base_denominator, identifier, from_roll, no_mod)
+end
