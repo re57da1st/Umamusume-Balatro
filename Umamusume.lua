@@ -132,6 +132,8 @@ SMODS.ObjectType({
         j_uma_bourbon = true,
         j_uma_mayano = true,
         j_uma_g_city = true,
+        j_uma_rickey = true,
+        j_uma_almond = true,
     }
 })
 

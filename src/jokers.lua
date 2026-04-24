@@ -2317,7 +2317,85 @@ SMODS.Joker{ --Gold City, spend 10 dollars to draw X amount of cards to ur hand
     end
 }
 
+SMODS.Joker{ --Copano Rickey
+    key = "rickey",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 7, y = 2 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 16,
+        r2 = 3,
+        r3 = 3,
+        rt = 33
+    } } },
 
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Almond Eye
+    key = "almond",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 7, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 11,
+        r2 = 2,
+        r3 = 1,
+        rt = 15
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
 
 --[[
 

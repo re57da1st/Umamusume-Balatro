@@ -392,6 +392,20 @@ return {
                     "{C:inactive}(ex: {C:green}1 in 7{C:inactive} -> {C:green}7 in 7{C:inactive})",
                 },
             },
+
+            j_uma_rickey = {
+                name = "Copano Rickey",
+                text = {
+                    "stuff",
+                },
+            },
+
+            j_uma_almond = {
+                name = "Almond Eye",
+                text = {
+                    "stuff",
+                },
+            },
         },
 
         Planet = {

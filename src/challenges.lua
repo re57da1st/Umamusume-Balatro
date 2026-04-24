@@ -94,6 +94,8 @@ SMODS.Challenge {--Unstable Income
         {id = 'j_uma_bourbon'},
         {id = 'j_uma_mayano'},
         {id = 'j_uma_g_city'},
+        {id = 'j_uma_g_rickey'},
+        {id = 'j_uma_g_almond'},
     },
     consumeables = {
     },
