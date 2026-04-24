@@ -1906,6 +1906,43 @@ SMODS.Joker{ --Belno Light
     end
 }
 
+SMODS.Joker { --Agnes Tachyon
+    key = "tachyon",
+    blueprint_compat = false,
+    rarity = 3,
+    cost = 10,
+    pos = { x = 5, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 4,
+        r2 = 0,
+        r3 = 0,
+        rt = 4
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+    end,
+
+    calculate = function(self, card, context)
+        if context.fix_probability and not context.blueprint then
+            return {
+                numerator = context.denominator
+            }
+        end
+    end
+}
+
 
 
 
@@ -2279,6 +2316,8 @@ SMODS.Joker{ --Gold City, spend 10 dollars to draw X amount of cards to ur hand
         return false
     end
 }
+
+
 
 --[[
 

@@ -383,6 +383,15 @@ return {
                     "{C:uma_retrigger}#1# extra triggers",
                 },
             },
+
+            j_uma_tachyon = {
+                name = "Agnes Tachyon",
+                text = {
+                    "Guarantees all {C:attention}listed",
+                    "{C:green,E:1,S:1.1}probabilities",
+                    "{C:inactive}(ex: {C:green}1 in 7{C:inactive} -> {C:green}7 in 7{C:inactive})",
+                },
+            },
         },
 
         Planet = {

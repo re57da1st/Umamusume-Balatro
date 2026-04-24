@@ -75,6 +75,7 @@ SMODS.Challenge {--Unstable Income
         {id = 'j_uma_love'},
         {id = 'j_uma_maruzensky'},
         {id = 'j_uma_ebeyan'},
+        {id = 'j_uma_tachyon'},
 
 
         --Legendaries

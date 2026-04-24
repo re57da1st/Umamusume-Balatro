@@ -204,7 +204,8 @@ jd_def["j_uma_teio"] = { --Tokai Teio
     },
     extra_config = { colour = G.C.GREEN, scale = 0.3 },
     calc_function = function(card)
-        card.joker_display_values.odds = localize{ type = 'variable', key = "jdis_odds", vars = { (G.GAME and G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'teio')
+        card.joker_display_values.odds = localize{ type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
         card.joker_display_values.maxBuff = card.ability.extra.maxBuff
         card.joker_display_values.debuff_left = localize( card.ability.extra.maxBuff == 1 and "uma_debuff_singular" or "uma_debuff_plural" )
         card.joker_display_values.left = localize( "uma_left" )
@@ -245,8 +246,9 @@ jd_def["j_uma_lilac"] = { --Lucky Lilac
         else
             count = 3
         end
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'lilac')
+        card.joker_display_values.odds = localize{ type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
         card.joker_display_values.count = count
-        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { (G.GAME and G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
         card.joker_display_values.localized_text = localize("uma_lucky_cards")
     end
 }
@@ -314,9 +316,8 @@ jd_def["j_uma_haru"] = { --Haru Urara
             end
         end
         card.joker_display_values.count = count
-        local numerator, denominator = 1, card.ability.extra.odds
-        if SMODS then numerator, denominator = SMODS.get_probability_vars(card, numerator, denominator, 'bloodstone') end
-        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'haru')
+        card.joker_display_values.odds = localize{ type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
         card.joker_display_values.localized_text = "Dirt"
     end,
     style_function = function(card, text, reminder_text, extra)
