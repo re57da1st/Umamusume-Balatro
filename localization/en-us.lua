@@ -86,10 +86,10 @@ return {
                 name = "Sakura Bakushin O",
                 text = {
                     
-                    "{C:uma_col_bakushin}+#3# Potential Mult{} at round begin,",
-                    "lose {C:uma_col_bakushin}-#4# Potential Mult{} every {C:attention}#7#{} second(s).",
-                    "Becomes real {C:mult}Mult{} at end of round.",
-                    "{C:inactive}(Mult: {C:mult}+#1#{C:inactive}, Potential Mult: {C:uma_col_bakushin}#6##2#{C:inactive})",
+                    "{C:uma_col_bakushin}+#3# Speed{} at round begin,",
+                    "lose {C:uma_col_bakushin}-#4# Speed{} every {C:attention}#6#{} second(s).",
+                    "Add {C:uma_col_bakushin}Speed{} to {C:mult}Mult{} at round end.",
+                    "{C:inactive}(Mult: {C:mult}+#1#{C:inactive}, Speed: {C:uma_col_bakushin}#2#{C:inactive})",
                 },
             },
 
@@ -404,6 +404,28 @@ return {
                 name = "Almond Eye",
                 text = {
                     "stuff",
+                },
+            },
+
+            j_uma_XYZ = {
+                name = "XYZ",
+                text = {
+                    --"Once per round, you can {C:attention}swap",
+                    --"the number of {C:blue}hands{} and {C:red}discards",
+                    --"you have left. Automatically triggers",
+                    --"if you have {C:attention}0 {C:blue}hands{} left and",
+                    --"haven't passed the round goal",
+
+                    --"Once per round, you can {C:attention}swap{} the number of {C:blue}hands{} and {C:red}discards you have left.",
+                    --"Automatically triggers if you have {C:attention}0 {C:blue}hands{} left and haven't passed the round goal",
+
+                    --"Once per round, you can swap the number of hands and discards you have left.",
+                    --"Automatically triggers if you have 0 hands left and haven't passed the round goal",
+
+                    "Swap {C:blue}hands{} and {C:red}discards{} left",
+                    "{C:attention}Automatically{} triggers",
+                    "to prevent death",
+                    "{C:inactive}(once per blind)",
                 },
             },
         },
