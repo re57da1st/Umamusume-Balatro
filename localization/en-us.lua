@@ -421,11 +421,11 @@ return {
 
                     --"Once per round, you can swap the number of hands and discards you have left.",
                     --"Automatically triggers if you have 0 hands left and haven't passed the round goal",
-
-                    "Swap {C:blue}hands{} and {C:red}discards{} left",
+                    'Once per blind, {C:attention}"Swap"{} to',
+                    "swap {C:blue}hands{} and {C:red}discards{} left",
                     "{C:attention}Automatically{} triggers",
                     "to prevent death",
-                    "{C:inactive}(once per blind)",
+                    --"{C:inactive}(once per blind)",
                 },
             },
         },
