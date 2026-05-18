@@ -410,22 +410,19 @@ return {
             j_uma_XYZ = {
                 name = "XYZ",
                 text = {
-                    --"Once per round, you can {C:attention}swap",
-                    --"the number of {C:blue}hands{} and {C:red}discards",
-                    --"you have left. Automatically triggers",
-                    --"if you have {C:attention}0 {C:blue}hands{} left and",
-                    --"haven't passed the round goal",
-
-                    --"Once per round, you can {C:attention}swap{} the number of {C:blue}hands{} and {C:red}discards you have left.",
-                    --"Automatically triggers if you have {C:attention}0 {C:blue}hands{} left and haven't passed the round goal",
-
-                    --"Once per round, you can swap the number of hands and discards you have left.",
-                    --"Automatically triggers if you have 0 hands left and haven't passed the round goal",
                     'Once per blind, {C:attention}"Swap"{} to',
                     "swap {C:blue}hands{} and {C:red}discards{} left",
                     "{C:attention}Automatically{} triggers",
                     "to prevent death",
-                    --"{C:inactive}(once per blind)",
+                },
+            },
+
+            j_uma_festa = {
+                name = "Nakayama Festa",
+                text = {
+                    "Beating a {C:attention}Boss Blind",
+                    "changes the ante",
+                    "by either {C:attention}0{} or {C:attention}2"
                 },
             },
         },

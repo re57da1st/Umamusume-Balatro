@@ -2399,8 +2399,8 @@ SMODS.Joker{ --Almond Eye
 SMODS.Joker{ --XYZ
     key = "XYZ",
     blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
+    rarity = 2,
+    cost = 6,
     pos = { x = 9, y = 4 },
     atlas = 'j_umas',
     config = { extra = { active = true, race = {
@@ -2466,13 +2466,13 @@ SMODS.Joker{ --Nakayama Festa
     blueprint_compat = false,
     rarity = 1,
     cost = 3,
-    pos = { x = 4, y = 3 },
+    pos = { x = 6, y = 4 },
     atlas = 'j_umas',
     config = { extra = { odds = 2, race = {
-        r1 = 8,
-        r2 = 4,
-        r3 = 5,
-        rt = 21
+        r1 = 5,
+        r2 = 3,
+        r3 = 0,
+        rt = 15
     } } },
 
     loc_vars = function(self, info_queue, card)
@@ -2493,11 +2493,15 @@ SMODS.Joker{ --Nakayama Festa
     end,
 
     calculate = function(self, card, context)
-        if context.modify_ante then
+        if context.ante_end then
             if SMODS.pseudorandom_probability(card, 'festa', 1, card.ability.extra.odds) then
-                modify = 0
+                return {
+                    modify = 0
+                }
             elseif SMODS.pseudorandom_probability(card, 'festa', 2, card.ability.extra.odds) then
-                modify = 2
+                return {
+                    modify = 2
+                }
             end
         end
     end,
