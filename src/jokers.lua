@@ -1758,6 +1758,7 @@ SMODS.Joker{ --T.M. Opera O, every single blind is a boss blind
             local base_chips = get_blind_amount(ante)
             G.GAME.blind.chips = base_chips * multiplier
             G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            G.GAME.blind.dollars = 5
         end
     end
 }
