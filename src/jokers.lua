@@ -1753,6 +1753,11 @@ SMODS.Joker{ --T.M. Opera O, every single blind is a boss blind
     calculate = function(self, card, context)
         if context.setting_blind then--and context.main_eval then --context.final_scoring_step,,,,maybe
             G.GAME.blind.boss = true
+            local multiplier = 2
+            local ante = G.GAME.round_resets.ante
+            local base_chips = get_blind_amount(ante)
+            G.GAME.blind.chips = base_chips * multiplier
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
         end
     end
 }
@@ -2456,6 +2461,51 @@ SMODS.Joker{ --XYZ
     end
 }
 
+SMODS.Joker{ --Nakayama Festa
+    key = "festa",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 4, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { odds = 2, race = {
+        r1 = 8,
+        r2 = 4,
+        r3 = 5,
+        rt = 21
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.modify_ante then
+            if SMODS.pseudorandom_probability(card, 'festa', 1, card.ability.extra.odds) then
+                modify = 0
+            elseif SMODS.pseudorandom_probability(card, 'festa', 2, card.ability.extra.odds) then
+                modify = 2
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
 --[[
 
 To do list:
