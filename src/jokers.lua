@@ -2509,15 +2509,15 @@ SMODS.Joker{ --Almond Eye
 SMODS.Joker{ --Mejiro Dober
     key = "dober",
     blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 3, y = 3 },
+    rarity = 2,
+    cost = 5,
+    pos = { x = 7, y = 4 },
     atlas = 'j_umas',
     config = { extra = { Xmult = 6, race = {
-        r1 = 7,
-        r2 = 1,
-        r3 = 0,
-        rt = 8
+        r1 = 10,
+        r2 = 3,
+        r3 = 1,
+        rt = 21
     } } },
 
     loc_vars = function(self, info_queue, card)
@@ -2551,10 +2551,6 @@ SMODS.Joker{ --Mejiro Dober
                 }
             end
         end
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
