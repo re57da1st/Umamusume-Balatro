@@ -1752,13 +1752,15 @@ SMODS.Joker{ --T.M. Opera O, every single blind is a boss blind
 
     calculate = function(self, card, context)
         if context.setting_blind then--and context.main_eval then --context.final_scoring_step,,,,maybe
-            G.GAME.blind.boss = true
-            local multiplier = 2
-            local ante = G.GAME.round_resets.ante
-            local base_chips = get_blind_amount(ante)
-            G.GAME.blind.chips = base_chips * multiplier
-            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-            G.GAME.blind.dollars = 5
+            if not G.GAME.blind.boss then
+                local multiplier = 2
+                local ante = G.GAME.round_resets.ante
+                local base_chips = get_blind_amount(ante)
+                G.GAME.blind.chips = base_chips * multiplier
+                G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                G.GAME.blind.boss = true
+            end
+            G.GAME.blind.dollars = math.max(5, G.GAME.blind.dollars)
         end
     end
 }
@@ -2001,10 +2003,6 @@ SMODS.Joker{ --XYZ
             card.ability.extra.active = false
         end
 
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
@@ -2051,10 +2049,6 @@ SMODS.Joker{ --Nakayama Festa
                 }
             end
         end
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 

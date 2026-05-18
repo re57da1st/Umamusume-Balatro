@@ -330,7 +330,10 @@ return {
             j_uma_opera = {
                 name = "T.M. Opera O",
                 text = {
-                    "All blinds are considered {C:attention}Boss Blinds",
+                    "All blinds are",
+                    "considered {C:attention}Boss Blinds",
+                    "({C:red}2X{} Base size, {C:money}$5{} payout)",
+                    --[[
                     "{C:inactive}T.M. Opera O!",
                     "{C:inactive}Let's hear it now for T.M. Opera O!",
                     "{C:inactive}The most powerful, beautiful, ",
@@ -341,6 +344,7 @@ return {
                     "{C:inactive}The fate of T.M. Opera O!",
 
                     "{C:inactive}T.M. Opera O!",
+                    ]]--
                 },
             },
 
