@@ -122,6 +122,8 @@ SMODS.ObjectType({
         j_uma_aruvu = true,
         j_uma_belno = true,
         j_uma_tachyon = true,
+        j_uma_XYZ = true,
+        j_uma_festa = true,
 
         --Move above once complete
         j_uma_creek = true,
