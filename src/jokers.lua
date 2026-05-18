@@ -2003,10 +2003,6 @@ SMODS.Joker{ --XYZ
             card.ability.extra.active = false
         end
 
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
@@ -2053,10 +2049,6 @@ SMODS.Joker{ --Nakayama Festa
                 }
             end
         end
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
