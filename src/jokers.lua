@@ -1942,6 +1942,121 @@ SMODS.Joker { --Agnes Tachyon
     end
 }
 
+SMODS.Joker{ --XYZ
+    key = "XYZ",
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 6,
+    pos = { x = 9, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { active = true, race = {
+        r1 = 0,
+        r2 = 0,
+        r3 = 0,
+        rt = 0
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+
+        if context.setting_blind then
+            card.ability.extra.active = true
+        end
+
+        if context.first_hand_drawn then
+            local eval = function() return card.ability.extra.active and not G.RESET_JIGGLES end
+            juice_card_until(card, eval, true)
+        end
+
+        if context.after
+        and ((G.GAME.chips + (hand_chips * mult)) / G.GAME.blind.chips < 1)
+        and G.GAME.current_round.hands_left == 0
+        and not (G.GAME.current_round.discards_left == 0)
+        and card.ability.extra.active then
+            SMODS.calculate_effect({ message = "Swapped!" }, card)
+            card.ability.extra.active = false
+            local temp = G.GAME.current_round.hands_left
+            G.GAME.current_round.hands_left = G.GAME.current_round.discards_left
+            G.GAME.current_round.discards_left = temp
+        end
+
+        if context.end_of_round then
+            card.ability.extra.active = false
+        end
+
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Nakayama Festa
+    key = "festa",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 6, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { odds = 2, race = {
+        r1 = 5,
+        r2 = 3,
+        r3 = 0,
+        rt = 15
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.ante_end then
+            if SMODS.pseudorandom_probability(card, 'festa', 1, card.ability.extra.odds) then
+                return {
+                    modify = 0
+                }
+            elseif SMODS.pseudorandom_probability(card, 'festa', 2, card.ability.extra.odds) then
+                return {
+                    modify = 2
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
 
 
 
@@ -2396,120 +2511,7 @@ SMODS.Joker{ --Almond Eye
     end
 }
 
-SMODS.Joker{ --XYZ
-    key = "XYZ",
-    blueprint_compat = false,
-    rarity = 2,
-    cost = 6,
-    pos = { x = 9, y = 4 },
-    atlas = 'j_umas',
-    config = { extra = { active = true, race = {
-        r1 = 0,
-        r2 = 0,
-        r3 = 0,
-        rt = 0
-    } } },
 
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-
-        if context.setting_blind then
-            card.ability.extra.active = true
-        end
-
-        if context.first_hand_drawn then
-            local eval = function() return card.ability.extra.active and not G.RESET_JIGGLES end
-            juice_card_until(card, eval, true)
-        end
-
-        if context.after
-        and ((G.GAME.chips + (hand_chips * mult)) / G.GAME.blind.chips < 1)
-        and G.GAME.current_round.hands_left == 0
-        and not (G.GAME.current_round.discards_left == 0)
-        and card.ability.extra.active then
-            SMODS.calculate_effect({ message = "Swapped!" }, card)
-            card.ability.extra.active = false
-            local temp = G.GAME.current_round.hands_left
-            G.GAME.current_round.hands_left = G.GAME.current_round.discards_left
-            G.GAME.current_round.discards_left = temp
-        end
-
-        if context.end_of_round then
-            card.ability.extra.active = false
-        end
-
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Joker{ --Nakayama Festa
-    key = "festa",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 6, y = 4 },
-    atlas = 'j_umas',
-    config = { extra = { odds = 2, race = {
-        r1 = 5,
-        r2 = 3,
-        r3 = 0,
-        rt = 15
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        if context.ante_end then
-            if SMODS.pseudorandom_probability(card, 'festa', 1, card.ability.extra.odds) then
-                return {
-                    modify = 0
-                }
-            elseif SMODS.pseudorandom_probability(card, 'festa', 2, card.ability.extra.odds) then
-                return {
-                    modify = 2
-                }
-            end
-        end
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
 --[[
 
 To do list:
