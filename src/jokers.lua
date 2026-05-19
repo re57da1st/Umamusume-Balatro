@@ -2679,7 +2679,7 @@ SMODS.Joker{ --Gentildonna
     end,
 
     calculate = function(self, card, context)
-        if G.jokers then
+        if G.jokers and context.press_play then
             for _, v in ipairs(G.jokers.cards) do
                 if v.config.center.pools and v.config.center.pools['uma_jokers'] then
                     if SMODS.pseudorandom_probability(card, 'donna', 1, card.ability.extra.odds) then
