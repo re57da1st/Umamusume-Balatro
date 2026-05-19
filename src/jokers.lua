@@ -2111,7 +2111,7 @@ SMODS.Joker{ --Orfevre
     cost = 8,
     pos = { x = 8, y = 4 },
     atlas = 'j_umas',
-    config = { extra = { Xmult=0, chips=0, mult=0, race = {
+    config = { extra = { race = {
         r1 = 12,
         r2 = 6,
         r3 = 1,
@@ -2131,31 +2131,29 @@ SMODS.Joker{ --Orfevre
                 } }
         end
 
-        card.ability.extra.chips = 0
-        card.ability.extra.mult = 0
-        card.ability.extra.Xmult = 0
+        local chips, mult, xmult = 0, 0, 0
 
-        if G and G.GAME and G.GAME.jokers then
+        if G.jokers then
             for _, v in ipairs(G.jokers.cards) do
                 if v.ability.extra and v.ability.extra.race then
                     local top3ratio = (v.ability.extra.race.r1 + v.ability.extra.race.r2 + v.ability.extra.race.r3) / v.ability.extra.race.rt
                     if top3ratio == 1 then
-                        card.ability.extra.Xmult = card.ability.extra.Xmult + 5
+                        xmult = xmult + 5
                     elseif top3ratio >= 0.5 then
-                        card.ability.extra.mult = card.ability.extra.mult + 20
+                        mult = mult + 20
                     else
-                        card.ability.extra.chips = card.ability.extra.chips + 100
+                        chips = chips + 100
                     end
                 end
             end
         end
 
-        card.ability.extra.Xmult = math.max(card.ability.extra.Xmult, 1)
+        xmult = math.max(xmult, 1)
 
         return { vars = {
-            card.ability.extra.chips,
-            card.ability.extra.mult,
-            card.ability.extra.Xmult
+            chips,
+            mult,
+            xmult
         } }
     end,
 
@@ -2170,27 +2168,30 @@ SMODS.Joker{ --Orfevre
     calculate = function(self, card, context)
 
         if context.joker_main then
-            card.ability.extra.chips = 0
-            card.ability.extra.mult = 0
-            card.ability.extra.Xmult = 0
+
+            local chips, mult, xmult = 0, 0, 0
+
             for _, v in ipairs(G.jokers.cards) do
                 if v.ability.extra and v.ability.extra.race then
                     local top3ratio = (v.ability.extra.race.r1 + v.ability.extra.race.r2 + v.ability.extra.race.r3) / v.ability.extra.race.rt
                     if top3ratio == 1 then
-                        card.ability.extra.Xmult = card.ability.extra.Xmult + 5
+                        xmult = xmult + 5
                     elseif top3ratio >= 0.5 then
-                        card.ability.extra.mult = card.ability.extra.mult + 20
+                        mult = mult + 20
                     else
-                        card.ability.extra.chips = card.ability.extra.chips + 100
+                        chips = chips + 100
                     end
                 end
             end
-            card.ability.extra.Xmult = math.max(card.ability.extra.Xmult, 1)
+
+            xmult = math.max(xmult, 1)
+
             return {
-                chips = card.ability.extra.chips,
-                mult = card.ability.extra.mult,
-                xmult = card.ability.extra.Xmult
+                chips = chips,
+                mult = mult,
+                xmult = xmult
             }
+
         end
     end
 }
