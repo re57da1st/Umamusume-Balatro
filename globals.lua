@@ -315,6 +315,9 @@ function SMODS.current_mod.calculate(self, context)
         return { repetitions = context.other_card.ability.uma_retrigger }
     end
 
+    --Enable showing race placings if certain cards are in play
+    G.GAME.show_placings = (G.GAME.placing_req > 0)
+
 end
 
 
@@ -344,11 +347,11 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.uma_global_counts = {}
         G.GAME.uma_global_counts.spread = 0
         G.GAME.uma_global_counts.bloom = 0
+        G.GAME.placing_req = 0
 
         G.GAME.uma_state = 0
 
-
-        if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_ura' then
+        if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_legendary' then
             SMODS.ObjectTypes["Joker"].rarities[1].weight = 0.85
             SMODS.ObjectTypes["Joker"].rarities[2].weight = 0.11
             SMODS.ObjectTypes["Joker"].rarities[3].weight = 0.03

@@ -2159,13 +2159,20 @@ SMODS.Joker{ --Orfevre
         } }
     end,
 
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.placing_req = G.GAME.placing_req + 1
+    end,
+
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.placing_req = G.GAME.placing_req - 1
+    end,
+
     calculate = function(self, card, context)
 
         if context.joker_main then
             card.ability.extra.chips = 0
             card.ability.extra.mult = 0
             card.ability.extra.Xmult = 0
-
             for _, v in ipairs(G.jokers.cards) do
                 if v.ability.extra and v.ability.extra.race then
                     local top3ratio = (v.ability.extra.race.r1 + v.ability.extra.race.r2 + v.ability.extra.race.r3) / v.ability.extra.race.rt
@@ -2614,6 +2621,86 @@ SMODS.Joker{ --Almond Eye
         r2 = 2,
         r3 = 1,
         rt = 15
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Gentildonna
+    key = "donna",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 9, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 10,
+        r2 = 4,
+        r3 = 1,
+        rt = 19
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+SMODS.Joker{ --Transcend
+    key = "transcend",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 0, y = 5 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 10,
+        r2 = 5,
+        r3 = 1,
+        rt = 24
     } } },
 
     loc_vars = function(self, info_queue, card)

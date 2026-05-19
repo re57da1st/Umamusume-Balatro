@@ -8,6 +8,17 @@ return {
                     "appear {C:attention}2X{} more often"
                 }
             },
+
+            b_uma_legendary = {
+                name = "Legendary deck",
+                text = {
+                    "{C:common}Common{} jokers are",
+                    "{C:red}3X{} as common",
+                    "{C:legendary}Legendary{} jokers can",
+                    "appear in the shop",
+                    --"{C:common}84{}/{C:uncommon}10{}/{C:rare}4{}/{C:legendary}2",
+                }
+            },
         },
 
         Joker = {
@@ -442,6 +453,20 @@ return {
                 name = "Orfevre",
                 text = {
                     "{C:chips}+#1# {C:mult}+#2# {X:mult,C:white}X#3#"
+                },
+            },
+
+            j_uma_donna = {
+                name = "Gentildonna",
+                text = {
+                    "stuff"
+                },
+            },
+
+            j_uma_transcend = {
+                name = "Transcend",
+                text = {
+                    "stuff"
                 },
             },
         },
