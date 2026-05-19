@@ -2611,10 +2611,6 @@ SMODS.Joker{ --Orfevre
                 xmult = card.ability.extra.Xmult
             }
         end
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
