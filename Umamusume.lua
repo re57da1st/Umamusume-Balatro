@@ -137,6 +137,8 @@ SMODS.ObjectType({
         j_uma_g_city = true,
         j_uma_rickey = true,
         j_uma_almond = true,
+        j_uma_donna = true,
+        j_uma_transcend = true,
     }
 })
 
