@@ -2681,7 +2681,7 @@ SMODS.Joker{ --Gentildonna
     calculate = function(self, card, context)
         if G.jokers and context.press_play then
             for _, v in ipairs(G.jokers.cards) do
-                if v.config.center.pools and v.config.center.pools['uma_jokers'] then
+                if v.config.center.pools and v.config.center.pools['uma_jokers'] and v.config.center_key ~= 'j_uma_donna' then
                     if SMODS.pseudorandom_probability(card, 'donna', 1, card.ability.extra.odds) then
                         SMODS.destroy_cards(v)
                     end
