@@ -352,10 +352,10 @@ local function nature_button_ui(card)
             }
         },
         config = {
-            align = 'cr', -- position relative to the card, meaning "center left". Follow the SMODS UI guide for more alignment options
+            align = 'mb', -- position relative to the card, meaning "center left". Follow the SMODS UI guide for more alignment options
             major = card,
             parent = card,
-            offset = { x = -0.2, y = 0.8 } -- depends on the alignment you want, without an offset the button will look as if floating next to the card, instead of behind it
+            offset = { x = 0, y = -0.2 } -- depends on the alignment you want, without an offset the button will look as if floating next to the card, instead of behind it
         }
     }
 end
@@ -363,8 +363,6 @@ end
 -- Will be called whenever the button is clicked
 G.FUNCS.uma_nature_button_click = function(e)
     local card = e.config.ref_table -- access the card this button was on
-
-    G.GAME.banned_keys[card.config.center_key] = true
 
     local rarity = nil
     for i = 1, #G.jokers.cards do
@@ -381,6 +379,7 @@ G.FUNCS.uma_nature_button_click = function(e)
     end
 
     if rarity then
+        G.GAME.banned_keys[card.config.center_key] = true
         print("Killed something of rarity "..rarity.."!")
     end
 end
@@ -400,7 +399,7 @@ end
 
 SMODS.DrawStep {
     key = 'nature_button',
-    order = -30, -- before the Card is drawn
+    order = (JokerDisplay and 9999 or -30), -- before the Card is drawn
     func = function(card, layer)
         if card.children.uma_nature_button then
             card.children.uma_nature_button:draw()
