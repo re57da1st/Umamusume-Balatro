@@ -1,3 +1,4 @@
+---@diagnostic disable: cast-local-type
 --Joker definitions
 SMODS.Joker{ --Daitaku Helios
     key = "helios",
@@ -2196,6 +2197,64 @@ SMODS.Joker{ --Orfevre
     end
 }
 
+SMODS.Joker{ --Symboli Rudolf, scales off of rounds passed and bosses passed, smth like every roung passed gives X chips while everyboss gives 2X chips or mult wtv
+    key = "rudolf",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 0, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { chips = 0, chips_add = 5, chips_mult = 2, race = {
+        r1 = 13,
+        r2 = 1,
+        r3 = 1,
+        rt = 16
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            card.ability.extra.chips
+        } }
+    end,
+
+    add_to_deck = function(self, card, from_debuff)
+        if card.ability.extra.chips == 0 then
+            card.ability.extra.chips = G.GAME.round * card.ability.extra.chips_add
+        end
+    end,
+
+    calculate = function(self, card, context)
+
+        if context.setting_blind then
+            card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_add
+        end
+
+        if G.GAME.blind.boss and context.end_of_round and context.main_eval then
+            card.ability.extra.chips = card.ability.extra.chips * card.ability.extra.chips_mult
+        end
+
+        if context.joker_main then
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
 
 
 
@@ -2341,65 +2400,6 @@ SMODS.Joker{ --Nice Nature, scales on debuffed cards (still in love synergy. . .
 
     calculate = function(self, card, context)
         return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Joker{ --Symboli Rudolf, scales off of rounds passed and bosses passed, smth like every roung passed gives X chips while everyboss gives 2X chips or mult wtv
-    key = "rudolf",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 0, y = 3 },
-    atlas = 'j_umas',
-    config = { extra = { chips = 0, chips_add = 5, chips_mult = 2, race = {
-        r1 = 13,
-        r2 = 1,
-        r3 = 1,
-        rt = 16
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            card.ability.extra.chips
-        } }
-    end,
-
-    add_to_deck = function(self, card, from_debuff)
-        if card.ability.extra.chips == 0 then
-            card.ability.extra.chips = G.GAME.round * card.ability.extra.chips_add
-        end
-    end,
-
-    calculate = function(self, card, context)
-
-        if context.setting_blind then
-            card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_add
-        end
-
-        if G.GAME.blind.boss and context.end_of_round and context.main_eval then
-            card.ability.extra.chips = card.ability.extra.chips * card.ability.extra.chips_mult
-        end
-
-        if context.joker_main then
-            return {
-                chips = card.ability.extra.chips
-            }
-        end
     end,
 
     in_pool = function(self, args)
@@ -2654,7 +2654,7 @@ SMODS.Joker{ --Gentildonna
     cost = 3,
     pos = { x = 9, y = 4 },
     atlas = 'j_umas',
-    config = { extra = { race = {
+    config = { extra = { odds = 4, race = {
         r1 = 10,
         r2 = 4,
         r3 = 1,
@@ -2679,7 +2679,15 @@ SMODS.Joker{ --Gentildonna
     end,
 
     calculate = function(self, card, context)
-        return nil
+        if G.jokers then
+            for _, v in ipairs(G.jokers.cards) do
+                if v.config.center.pools and v.config.center.pools['uma_jokers'] then
+                    if SMODS.pseudorandom_probability(card, 'donna', 1, card.ability.extra.odds) then
+                        SMODS.destroy_cards(v)
+                    end
+                end
+            end
+        end
     end,
 
     in_pool = function(self, args)
