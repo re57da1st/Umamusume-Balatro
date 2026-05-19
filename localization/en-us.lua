@@ -429,6 +429,21 @@ return {
                     "by either {C:attention}0{} or {C:attention}2"
                 },
             },
+
+            j_uma_dober = {
+                name = "Mejiro Dober",
+                text = {
+                    "{X:mult,C:white}X6{} Mult if {C:attention}all{} jokers",
+                    "are {C:uma_rainbow}Uma{} jokers",
+                },
+            },
+
+            j_uma_orfevre = {
+                name = "Orfevre",
+                text = {
+                    "{C:chips}+#1# {C:mult}+#2# {X:mult,C:white}X#3#"
+                },
+            },
         },
 
         Planet = {

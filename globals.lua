@@ -346,6 +346,19 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.uma_global_counts.bloom = 0
 
         G.GAME.uma_state = 0
+
+
+        if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_ura' then
+            SMODS.ObjectTypes["Joker"].rarities[1].weight = 0.85
+            SMODS.ObjectTypes["Joker"].rarities[2].weight = 0.11
+            SMODS.ObjectTypes["Joker"].rarities[3].weight = 0.03
+            SMODS.ObjectTypes["Joker"].rarities[4].weight = 0.01
+        else
+            SMODS.ObjectTypes["Joker"].rarities[1].weight = 0.70
+            SMODS.ObjectTypes["Joker"].rarities[2].weight = 0.25
+            SMODS.ObjectTypes["Joker"].rarities[3].weight = 0.05
+            SMODS.ObjectTypes["Joker"].rarities[4].weight = 0
+        end
     end
 
 end
