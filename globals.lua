@@ -319,9 +319,12 @@ function SMODS.current_mod.calculate(self, context)
         G.GAME.uma_bosses_beaten = G.GAME.uma_bosses_beaten + 1
     end
 
-
     --Enable showing race placings if certain cards are in play
     G.GAME.show_placings = (G.GAME.uma_placing_req > 0)
+
+    if G.uma_g_city_button and G.uma_g_city_button.states then
+        G.uma_g_city_button.states.visible = (#find_joker("j_uma_g_city") ~= 0)
+    end
 
 end
 

@@ -411,6 +411,35 @@ SMODS.DrawStep {
 SMODS.draw_ignore_keys.uma_nature_button = true
 
 
+-- Will be called whenever the button is clicked
+G.FUNCS.uma_g_city_button_click = function(e)
+    ease_dollars(-1 * G.P_CENTERS.j_uma_g_city.config.extra.cost, true)
+    SMODS.draw_cards(1)
+end
+
+-- Will run every frame while the button exists
+G.FUNCS.uma_g_city_button_func = function(e)
+    -- In vanilla, this is generally used to define when the button can be used, for example:
+    local can_use = #G.hand.cards > 0 and G.GAME.dollars >= (G.P_CENTERS.j_uma_g_city.config.extra.cost + G.GAME.bankrupt_at) and #G.deck.cards > 0 -- can be any condition you want
+
+    -- Removes the button when the card can't be used, otherwise makes it use the previously defined button click
+    e.config.button = can_use and 'uma_g_city_button_click' or nil
+    -- Changes the color of the button depending on whether it can be used or not
+    e.config.colour = can_use and G.C.RED or G.C.UI.BACKGROUND_INACTIVE
+end
+
+--[[
+SMODS.DrawStep {
+    key = 'g_city_button',
+    order = -30, -- before the Card is drawn
+    func = function(card, layer)
+        if card.children.uma_nature_button then
+            card.children.uma_nature_button:draw()
+        end
+    end
+}
+]]
+
 
 
 

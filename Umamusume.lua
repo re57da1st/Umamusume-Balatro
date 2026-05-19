@@ -271,3 +271,71 @@ function ease_dollars(mod, instant)
     g = old_ease_dollars(mod, instant)
     return g
 end
+
+local oldgamestartrun = Game.start_run
+function Game:start_run(args)
+    oldgamestartrun(self, args)
+
+    self.uma_g_city_button = UIBox {
+        definition = {
+            n = G.UIT.ROOT,
+            config = {
+                colour = G.C.CLEAR
+            },
+            nodes = {
+                {
+                    n = G.UIT.C,
+                    config = {
+                        align = 'cm',
+                        padding = 0.15,
+                        r = 0.08,
+                        hover = true,
+                        shadow = true,
+                        colour = SMODS.Gradients.uma_rainbow, -- color of the button background
+                        button = 'uma_g_city_button_click', -- function in G.FUNCS that will run when this button is clicked
+                        func = 'uma_g_city_button_func', -- function in G.FUNCS that will run every frame this button exists (optional)
+                    },
+                    nodes = {
+                        {
+                            n = G.UIT.R,
+                            nodes = {
+                                {
+                                    n = G.UIT.T,
+                                    config = {
+                                        text = 'Draw Card',
+                                        colour = G.C.UI.TEXT_LIGHT, -- color of the button text
+                                        scale = 0.4,
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            n = G.UIT.R,
+                            config = {
+                                align = 'cm'
+                            },
+                            nodes = {
+                                {
+                                    n = G.UIT.T,
+                                    config = {
+                                        text = '$'..G.P_CENTERS.j_uma_g_city.config.extra.cost,
+                                        colour = G.C.UI.TEXT_LIGHT, -- color of the button text
+                                        scale = 0.4,
+                                    }
+                                },
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        config = {
+            align = 'tm', -- position relative to the card, meaning "center left". Follow the SMODS UI guide for more alignment options
+            major = G.deck,
+            bond = 'weak',
+            offset = { x = 0.2, y = -0.4 } -- depends on the alignment you want, without an offset the button will look as if floating next to the card, instead of behind it
+        }
+    }
+    self.uma_g_city_button.states.visible = false
+
+end

@@ -333,7 +333,9 @@ return {
             j_uma_g_city = {
                 name = "Gold City",
                 text = {
-                    "stuff",
+                    "Pay {C:money}$#1#{} to",
+                    "add a card",
+                    "to your hand",
                 },
             },
 
