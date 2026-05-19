@@ -2735,6 +2735,45 @@ SMODS.Joker{ --Transcend
     end
 }
 
+SMODS.Joker{ --Fenomeno, takes no joker space, has the chance to make other jokers not trigger
+    key = "feno",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 0, y = 5 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 10,
+        r2 = 5,
+        r3 = 1,
+        rt = 24
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
 
 
 
