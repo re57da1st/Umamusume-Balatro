@@ -315,8 +315,13 @@ function SMODS.current_mod.calculate(self, context)
         return { repetitions = context.other_card.ability.uma_retrigger }
     end
 
+    if G.GAME.blind.boss and context.end_of_round and context.main_eval then
+        G.GAME.uma_bosses_beaten = G.GAME.uma_bosses_beaten + 1
+    end
+
+
     --Enable showing race placings if certain cards are in play
-    G.GAME.show_placings = (G.GAME.placing_req > 0)
+    G.GAME.show_placings = (G.GAME.uma_placing_req > 0)
 
 end
 
@@ -347,7 +352,8 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.uma_global_counts = {}
         G.GAME.uma_global_counts.spread = 0
         G.GAME.uma_global_counts.bloom = 0
-        G.GAME.placing_req = 0
+        G.GAME.uma_placing_req = 0
+        G.GAME.uma_bosses_beaten = 0
 
         G.GAME.uma_state = 0
 

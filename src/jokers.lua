@@ -2158,11 +2158,11 @@ SMODS.Joker{ --Orfevre
     end,
 
     add_to_deck = function(self, card, from_debuff)
-        G.GAME.placing_req = G.GAME.placing_req + 1
+        G.GAME.uma_placing_req = G.GAME.uma_placing_req + 1
     end,
 
     remove_from_deck = function(self, card, from_debuff)
-        G.GAME.placing_req = G.GAME.placing_req - 1
+        G.GAME.uma_placing_req = G.GAME.uma_placing_req - 1
     end,
 
     calculate = function(self, card, context)
@@ -2355,7 +2355,7 @@ SMODS.Joker{ --Symboli Rudolf, scales off of rounds passed and bosses passed, sm
     cost = 3,
     pos = { x = 0, y = 3 },
     atlas = 'j_umas',
-    config = { extra = { race = {
+    config = { extra = { chips = 0, chips_add = 5, chips_mult = 2, race = {
         r1 = 13,
         r2 = 1,
         r3 = 1,
@@ -2375,14 +2375,29 @@ SMODS.Joker{ --Symboli Rudolf, scales off of rounds passed and bosses passed, sm
                 } }
         end
         return {vars = {
-            nil
+            card.ability.extra.chips
         } }
     end,
 
+    add_to_deck = function(self, card, from_debuff)
+        if card.ability.extra.chips == 0 then
+            card.ability.extra.chips = G.GAME.round * card.ability.extra.chips_add
+        end
+    end,
+
     calculate = function(self, card, context)
+
+        if context.setting_blind then
+            card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_add
+        end
+
+        if G.GAME.blind.boss and context.end_of_round and context.main_eval then
+            card.ability.extra.chips = card.ability.extra.chips * card.ability.extra.chips_mult
+        end
+
         if context.joker_main then
             return {
-                chips = G.GAME.round * 5
+                chips = card.ability.extra.chips
             }
         end
     end,

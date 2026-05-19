@@ -177,32 +177,6 @@ return {
                     "restores after {C:attention}2 {}blinds",
                     "value multiplies by {X:mult,C:white}X#6#",
                     "{C:inactive}({C:attention}#4# {C:inactive}debuffs left)",
-
-                    --[[
-                    "X2.5 Mult",
-                    "1 in 8 chance to debuff herself",
-                    "un-debuffs after 2 blinds",
-                    "and multiplies by X2",
-                    "(2 debuffs left)",
-
-                    "{X:mult,C:white}X#5#{} Mult",
-                    "{C:green}#1# in #2#{} chance to debuff herself",
-                    "un-debuffs after {C:attention}#3# {}blinds",
-                    "and multiplies by {X:mult,C:white}X#6#",
-                    "{C:inactive}({C:attention}#4# {C:inactive}debuffs left)",
-
-                    "X2.5 Mult",
-                    "1 in 8 chance to self-debuff",
-                    "restores after 2 blinds",
-                    "comes back X2 as strong",
-                    "(2 debuffs left)",
-
-                    "{X:mult,C:white}X#5#{} Mult",
-                    "{C:green}#1# in #2#{} chance to {C:red}self-debuff{}",
-                    "restores after {C:attention}2 {}blinds",
-                    "comes back {X:mult,C:white}X#6# {}as strong",
-                    "{C:inactive}({C:attention}#4# {C:inactive}debuffs left)",
-                    ]]
                 },
             },
 
@@ -258,7 +232,7 @@ return {
             j_uma_rudolf = {
                 name = "Symboli Rudolf",
                 text = {
-                    "stuff",
+                    "{C:chips}+#1#",
                 },
             },
 
@@ -344,18 +318,6 @@ return {
                     "All blinds are",
                     "considered {C:attention}Boss Blinds",
                     "({C:red}2X{} Base size, {C:money}$5{} payout)",
-                    --[[
-                    "{C:inactive}T.M. Opera O!",
-                    "{C:inactive}Let's hear it now for T.M. Opera O!",
-                    "{C:inactive}The most powerful, beautiful, ",
-                    "{C:inactive}glorious ray of light in the world!",
-
-                    "{C:inactive}I bring my unlimited love to you, as well!",
-                    "{C:inactive}That is my fate as king...",
-                    "{C:inactive}The fate of T.M. Opera O!",
-
-                    "{C:inactive}T.M. Opera O!",
-                    ]]--
                 },
             },
 
@@ -452,7 +414,10 @@ return {
             j_uma_orfevre = {
                 name = "Orfevre",
                 text = {
-                    "{C:chips}+#1# {C:mult}+#2# {X:mult,C:white}X#3#"
+                    "Gives {C:chips}+100{} Chips and {C:mult}+20 {X:mult,C:white}X5{} Mult",
+                    "for every {C:uma_rainbow}Uma{} joker that has placed",
+                    "{C:attention}Top 3{} in {C:chips}<50%{}/{C:mult}>50%{}/{X:mult,C:white}100%{} of their races",
+                    "{C:inactive}(Currently {C:chips}+#1# {C:mult}+#2# {X:mult,C:white}X#3#{C:inactive})"
                 },
             },
 
