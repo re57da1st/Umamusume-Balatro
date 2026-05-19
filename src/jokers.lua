@@ -2052,6 +2052,57 @@ SMODS.Joker{ --Nakayama Festa
     end
 }
 
+SMODS.Joker{ --Mejiro Dober
+    key = "dober",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 3, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { Xmult = 6, race = {
+        r1 = 7,
+        r2 = 1,
+        r3 = 0,
+        rt = 8
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        local allUmas = true
+        for _, v in ipairs(G.jokers.cards) do
+            if not (v.config.center.pools and v.config.center.pools['uma_jokers']) then
+                allUmas = false
+            end
+        end
+        if context.joker_main then
+            if allUmas == true then
+                return {
+                    xmult = card.ability.extra.Xmult
+                }
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
 
 
 
@@ -2506,18 +2557,18 @@ SMODS.Joker{ --Almond Eye
     end
 }
 
-SMODS.Joker{ --Mejiro Dober
-    key = "dober",
+SMODS.Joker{ --Orfevre
+    key = "orfevre",
     blueprint_compat = false,
     rarity = 1,
     cost = 3,
-    pos = { x = 3, y = 3 },
+    pos = { x = 4, y = 3 },
     atlas = 'j_umas',
-    config = { extra = { Xmult = 6, race = {
-        r1 = 7,
-        r2 = 1,
-        r3 = 0,
-        rt = 8
+    config = { extra = { Xmult=0, chips=0, mult=0, race = {
+        r1 = 8,
+        r2 = 4,
+        r3 = 5,
+        rt = 21
     } } },
 
     loc_vars = function(self, info_queue, card)
@@ -2538,18 +2589,27 @@ SMODS.Joker{ --Mejiro Dober
     end,
 
     calculate = function(self, card, context)
-        local allUmas = true
+        card.ability.extra.chips = 0
+        card.ability.extra.mult = 0
+        card.ability.extra.Xmult = 0
         for _, v in ipairs(G.jokers.cards) do
-            if not (v.config.center.pools and v.config.center.pools['uma_jokers']) then
-                allUmas = false
+            if v.ability.extra and v.ability.extra.race then
+                local top3ratio = (v.ability.extra.race.r1 + v.ability.extra.race.r2 + v.ability.extra.race.r3) / v.ability.extra.race.rt
+                if top3ratio == 1 then
+                    card.ability.extra.Xmult = card.ability.extra.Xmult + 5
+                elseif top3ratio >= 0.5 then
+                    card.ability.extra.mult = card.ability.extra.mult + 20
+                else
+                    card.ability.extra.chips = card.ability.extra.chips + 100
+                end
             end
         end
-        if context.joker_main then
-            if allUmas == true then
-                return {
-                    xmult = card.ability.extra.Xmult
-                }
-            end
+                if context.joker_main then
+            return {
+                chips = card.ability.extra.chips,
+                mult = card.ability.extra.mult,
+                xmult = card.ability.extra.Xmult
+            }
         end
     end,
 
@@ -2557,6 +2617,7 @@ SMODS.Joker{ --Mejiro Dober
         return false
     end
 }
+
 
 --[[
 
