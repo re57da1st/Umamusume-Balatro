@@ -35,7 +35,7 @@ SMODS.Challenge {--Unstable Income
     }
 }
 
-SMODS.Challenge {--Unstable Income
+SMODS.Challenge {--All the horses
     key = 'all_horses',
     rules = {
     },
@@ -47,6 +47,9 @@ SMODS.Challenge {--Unstable Income
         {id = 'j_uma_lilac'},
         {id = 'j_uma_mini'},
         {id = 'j_uma_doto'},
+        {id = 'j_uma_festa'},
+        {id = 'j_uma_donna'},
+        {id = 'j_uma_nature'},
 
 
         --Uncommons
@@ -62,6 +65,9 @@ SMODS.Challenge {--Unstable Income
         {id = 'j_uma_belno'},
         {id = 'j_uma_aruvu'},
         {id = 'j_uma_opera'},
+        {id = 'j_uma_XYZ'},
+        {id = 'j_uma_dober'},
+        {id = 'j_uma_rudolf'},
 
 
         --Rares
@@ -76,6 +82,7 @@ SMODS.Challenge {--Unstable Income
         {id = 'j_uma_maruzensky'},
         {id = 'j_uma_ebeyan'},
         {id = 'j_uma_tachyon'},
+        {id = 'j_uma_orfevre'},
 
 
         --Legendaries
@@ -88,14 +95,13 @@ SMODS.Challenge {--Unstable Income
         {id = 'j_uma_spacer'},
         {id = 'j_uma_creek'},
         {id = 'j_uma_air'},
-        {id = 'j_uma_nature'},
-        {id = 'j_uma_rudolf'},
         {id = 'j_uma_tamamo'},
         {id = 'j_uma_bourbon'},
         {id = 'j_uma_mayano'},
         {id = 'j_uma_g_city'},
         {id = 'j_uma_rickey'},
         {id = 'j_uma_almond'},
+        {id = 'j_uma_transcend'},
     },
     consumeables = {
     },

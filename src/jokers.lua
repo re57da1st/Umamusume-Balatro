@@ -2056,8 +2056,8 @@ SMODS.Joker{ --Nakayama Festa
 SMODS.Joker{ --Mejiro Dober
     key = "dober",
     blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
+    rarity = 2,
+    cost = 6,
     pos = { x = 7, y = 4 },
     atlas = 'j_umas',
     config = { extra = { Xmult = 6, race = {
@@ -2200,8 +2200,8 @@ SMODS.Joker{ --Orfevre
 SMODS.Joker{ --Symboli Rudolf, scales off of rounds passed and bosses passed, smth like every roung passed gives X chips while everyboss gives 2X chips or mult wtv
     key = "rudolf",
     blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
+    rarity = 2,
+    cost = 6,
     pos = { x = 0, y = 3 },
     atlas = 'j_umas',
     config = { extra = { chips = 0, chips_add = 5, chips_mult = 2, race = {
