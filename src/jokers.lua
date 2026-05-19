@@ -2447,7 +2447,7 @@ SMODS.Joker{ --Tamamo Cross
     end
 }
 
-SMODS.Joker{ --Mihono Bourbon
+SMODS.Joker{ --Mihono Bourbon rounds 2 da nearest wtv
     key = "bourbon",
     blueprint_compat = false,
     rarity = 1,
