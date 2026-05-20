@@ -192,6 +192,28 @@ function Uma_Tact_refresh()
     end
 end
 
+---@param horse string Pass in the card object here
+---@return string name Returns the key of the card
+---@return integer r1 Returns 1st place win count
+---@return integer r2 Returns 2nd place win count
+---@return integer r3 Returns 3rd place win count
+---@return integer rt Returns the total race count
+function uma_get_data(horse)
+    local name = G.P_CENTERS[horse].key
+    local r1 = G.P_CENTERS[horse].config.extra.race.r1
+    local r2 = G.P_CENTERS[horse].config.extra.race.r2
+    local r3 = G.P_CENTERS[horse].config.extra.race.r3
+    local rt = G.P_CENTERS[horse].config.extra.race.rt
+    return name, r1, r2, r3, rt
+end
+
+---@param numerator integer The set of races you want to include
+---@param denominator integer Usually the total number of races
+---@return number output the percentage out of 100 for the given ratio
+function uma_ratio(numerator, denominator)
+    return (math.floor(((numerator)/denominator)*10000)/100)
+end
+
 
 
 --Constantly running code for other required effects

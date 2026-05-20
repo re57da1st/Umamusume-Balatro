@@ -44,7 +44,13 @@ local uma_list = {
     "j_uma_transcend",
 }
 
-function getUmaData(horse)
+---@param horse string Pass in the card object here
+---@return string name Returns the key of the card
+---@return integer r1 Returns 1st place win count
+---@return integer r2 Returns 2nd place win count
+---@return integer r3 Returns 3rd place win count
+---@return integer rt Returns the total race count
+function uma_get_data(horse)
     local name = G.P_CENTERS[horse].key
     local r1 = G.P_CENTERS[horse].config.extra.race.r1
     local r2 = G.P_CENTERS[horse].config.extra.race.r2
@@ -53,18 +59,21 @@ function getUmaData(horse)
     return name, r1, r2, r3, rt
 end
 
-function UmaRatio(numerator, denominator)
+---@param numerator integer The set of races you want to include
+---@param denominator integer Usually the total number of races
+---@return number output the percentage out of 100 for the given ratio
+function uma_ratio(numerator, denominator)
     return (math.floor(((numerator)/denominator)*10000)/100)
 end
 
-local name, r1, r2, r3, rt = getUmaData("j_uma_donna")
-local donnaRatio = UmaRatio(r1+r2,rt)
+local name, r1, r2, r3, rt = uma_get_data("j_uma_donna")
+local donnaRatio = uma_ratio(r1+r2,rt)
 
 local pass, fail = 0, 0
 for i = 1, #uma_list do
     if G.P_CENTERS[uma_list[i]].config.extra.race then
-        local name, r1, r2, r3, rt = getUmaData(uma_list[i])
-        local testRatio = UmaRatio(r1+r2,rt)
+        local name, r1, r2, r3, rt = uma_get_data(uma_list[i])
+        local testRatio = uma_ratio(r1+r2,rt)
         if testRatio >= donnaRatio then
             pass = pass + 1
         else 
