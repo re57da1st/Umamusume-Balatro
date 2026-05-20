@@ -2296,7 +2296,58 @@ SMODS.Joker{ --Gold City
     end
 }
 
+SMODS.Joker{ --Red Desire, makes things undebuffable, any card that would be deleted instead gets duped
+    key = "desire",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 2, y = 5 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 10,
+        r2 = 5,
+        r3 = 1,
+        rt = 24
+    } } },
 
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
+                return { prevent_debuff = true }
+        end
+        if context.remove_playing_cards then
+            for _, removed_card in ipairs(context.removed) do
+                    local _card = copy_card(removed_card, nil, nil, G.playing_card)
+                    _card:add_to_deck()
+                    G.deck.config.card_limit = G.deck.config.card_limit + 2
+                    table.insert(G.playing_cards, _card)
+                    table.insert(G.playing_cards, _card)
+                    G.deck:emplace(_card)
+                    G.deck:emplace(_card)
+            end
+        end
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
 
 
 
@@ -2776,56 +2827,6 @@ SMODS.Joker{ --Fenomeno, takes no joker space, has the chance to make other joke
     end
 }
 
-SMODS.Joker{ --Red Desire, makes things undebuffable, any card that would be deleted instead gets duped
-    key = "desire",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 2, y = 5 },
-    atlas = 'j_umas',
-    config = { extra = { race = {
-        r1 = 10,
-        r2 = 5,
-        r3 = 1,
-        rt = 24
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        if context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
-                return { prevent_debuff = true }
-        end
-        if context.remove_playing_cards then
-            for _, removed_card in ipairs(context.removed) do
-                    local _card = copy_card(removed_card, nil, nil, G.playing_card)
-                    _card:add_to_deck()
-                    G.deck.config.card_limit = G.deck.config.card_limit + 1
-                    table.insert(G.playing_cards, _card)
-                    G.deck:emplace(_card)
-            end
-        end
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
 
 
 --[[
