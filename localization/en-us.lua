@@ -232,7 +232,12 @@ return {
             j_uma_rudolf = {
                 name = "Symboli Rudolf",
                 text = {
-                    "{C:chips}+#1#",
+                    "Gains {C:chips}+#1#{} chips for",
+                    "every {C:attention}round{} passed",
+                    "Beating a {C:attention}Boss Blind",
+                    "multiplies stored chips",
+                    "by {C:attention}X#2#{}",
+                    "{C:inactive}(currently {C:chips}+#3#{C:inactive})",
                 },
             },
 
@@ -432,6 +437,20 @@ return {
 
             j_uma_transcend = {
                 name = "Transcend",
+                text = {
+                    "stuff"
+                },
+            },
+
+            j_uma_feno = {
+                name = "Fenomeno",
+                text = {
+                    "stuff"
+                },
+            },
+
+            j_uma_desire = {
+                name = "Red Desire",
                 text = {
                     "stuff"
                 },

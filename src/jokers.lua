@@ -2224,6 +2224,8 @@ SMODS.Joker{ --Symboli Rudolf, scales off of rounds passed and bosses passed, sm
                 } }
         end
         return {vars = {
+            card.ability.extra.chips_add,
+            card.ability.extra.chips_mult,
             card.ability.extra.chips
         } }
     end,
