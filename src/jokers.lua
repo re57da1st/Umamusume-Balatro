@@ -2813,8 +2813,11 @@ SMODS.Joker{ --Red Desire, makes things undebuffable, any card that would be del
         end
         if context.remove_playing_cards then
             for _, removed_card in ipairs(context.removed) do
-                    local _card = copy_card(removed_card, 2)
+                    local _card = copy_card(removed_card, nil, nil, G.playing_card)
                     _card:add_to_deck()
+                    G.deck.config.card_limit = G.deck.config.card_limit + 1
+                    table.insert(G.playing_cards, _card)
+                    G.deck:emplace(_card)
             end
         end
     end,
