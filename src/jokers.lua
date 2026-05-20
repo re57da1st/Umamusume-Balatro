@@ -2808,7 +2808,15 @@ SMODS.Joker{ --Red Desire, makes things undebuffable, any card that would be del
     end,
 
     calculate = function(self, card, context)
-        return nil
+        if context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
+                return { prevent_debuff = true }
+        end
+        if context.remove_playing_cards then
+            for _, removed_card in ipairs(context.removed) do
+                    local _card = copy_card(removed_card, 2)
+                    _card:add_to_deck()
+            end
+        end
     end,
 
     in_pool = function(self, args)
