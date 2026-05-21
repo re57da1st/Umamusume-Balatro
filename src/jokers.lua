@@ -1556,10 +1556,6 @@ SMODS.Joker{ --Forever Young
         if next(EbeyanEventBuffer) ~= nil then
             return EbeyanEventBuffer
         end
-    end,
-
-    in_pool = function(self, args)
-        return true
     end
 }
 
@@ -1719,7 +1715,7 @@ SMODS.Joker{ --Meisho Doto
     end
 }
 
-SMODS.Joker{ --T.M. Opera O, every single blind is a boss blind
+SMODS.Joker{ --T.M. Opera O
     key = "opera",
     blueprint_compat = false,
     rarity = 2,
@@ -1900,11 +1896,6 @@ SMODS.Joker{ --Belno Light
                 colour = SMODS.Gradients.uma_retrigger
             }
         end
-    end,
-        --v = the card you want to add a retrigger to
-        --v.ability.uma_retriggers = (v.ability.uma_retriggers and v.ability.uma_retriggers or 0) + 1
-    in_pool = function(self, args)
-        return false
     end
 }
 
@@ -2097,10 +2088,6 @@ SMODS.Joker{ --Mejiro Dober
                 }
             end
         end
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
@@ -2196,7 +2183,7 @@ SMODS.Joker{ --Orfevre
     end
 }
 
-SMODS.Joker{ --Symboli Rudolf, scales off of rounds passed and bosses passed, smth like every roung passed gives X chips while everyboss gives 2X chips or mult wtv
+SMODS.Joker{ --Symboli Rudolf
     key = "rudolf",
     blueprint_compat = false,
     rarity = 2,
@@ -2250,10 +2237,6 @@ SMODS.Joker{ --Symboli Rudolf, scales off of rounds passed and bosses passed, sm
                 chips = card.ability.extra.chips
             }
         end
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
@@ -2290,14 +2273,10 @@ SMODS.Joker{ --Gold City
 
     calculate = function(self, card, context)
         return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
-SMODS.Joker{ --Red Desire, makes things undebuffable, any card that would be deleted instead gets duped
+SMODS.Joker{ --Red Desire
     key = "desire",
     blueprint_compat = false,
     rarity = 1,
@@ -2343,10 +2322,6 @@ SMODS.Joker{ --Red Desire, makes things undebuffable, any card that would be del
                     G.deck:emplace(_card)
             end
         end
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
@@ -2383,10 +2358,6 @@ SMODS.Joker{ --Nice Nature
 
     calculate = function(self, card, context)
         return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
@@ -2465,10 +2436,6 @@ SMODS.Joker{ --Air Groove
         else
             G.GAME.uma_enhanced_rate = 0
         end
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 

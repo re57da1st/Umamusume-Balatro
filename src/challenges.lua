@@ -50,6 +50,7 @@ SMODS.Challenge {--All the horses
         {id = 'j_uma_festa'},
         {id = 'j_uma_donna'},
         {id = 'j_uma_nature'},
+        {id = 'j_uma_air'},
 
 
         --Uncommons
@@ -68,6 +69,7 @@ SMODS.Challenge {--All the horses
         {id = 'j_uma_XYZ'},
         {id = 'j_uma_dober'},
         {id = 'j_uma_rudolf'},
+        {id = 'j_uma_mayano'},
 
 
         --Rares
@@ -94,14 +96,13 @@ SMODS.Challenge {--All the horses
         --Unknown
         {id = 'j_uma_spacer'},
         {id = 'j_uma_creek'},
-        {id = 'j_uma_air'},
         {id = 'j_uma_tamamo'},
         {id = 'j_uma_bourbon'},
-        {id = 'j_uma_mayano'},
         {id = 'j_uma_g_city'},
         {id = 'j_uma_rickey'},
         {id = 'j_uma_almond'},
         {id = 'j_uma_transcend'},
+        {id = 'j_uma_feno'},
     },
     consumeables = {
     },
