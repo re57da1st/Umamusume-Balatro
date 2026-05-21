@@ -122,25 +122,25 @@ SMODS.ObjectType({
         j_uma_aruvu = true,
         j_uma_belno = true,
         j_uma_tachyon = true,
-        j_uma_XYZ = true,
+        j_uma_mayano = true,
         j_uma_festa = true,
         j_uma_dober = true,
+        j_uma_orfevre = true,
+        j_uma_rudolf = true,
+        j_uma_g_city = true,
+        j_uma_desire = true,
+        j_uma_nature = true,
+        j_uma_air = true,
 
         --Move above once complete
         j_uma_creek = true,
-        j_uma_air = true,
-        j_uma_nature = true,
-        j_uma_rudolf = true,
         j_uma_tamamo = true,
         j_uma_bourbon = true,
-        j_uma_mayano = true,
-        j_uma_g_city = true,
         j_uma_rickey = true,
         j_uma_almond = true,
         j_uma_donna = true,
         j_uma_transcend = true,
         j_uma_feno = true,
-        j_uma_desire = true,
     }
 })
 
