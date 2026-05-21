@@ -25,6 +25,7 @@ G.C.UMA = {
     CHULT = HEX("D002F0"),
     WEALTH = HEX("EFAD29"),
     DOTO = HEX("595DDB"),
+    BANISH = HEX("990000")
 }
 
 SMODS.Gradient {
@@ -76,9 +77,10 @@ function loc_colour(_c, _default)
     G.ARGS.LOC_COLOURS.uma_turf = G.C.UMA.TURF
     G.ARGS.LOC_COLOURS.uma_blossom = G.C.UMA.BLOSSOM
     G.ARGS.LOC_COLOURS.uma_dirt = G.C.UMA.DIRT
-    G.ARGS.LOC_COLOURS.chult = G.C.UMA.CHULT
-    G.ARGS.LOC_COLOURS.wealth = G.C.UMA.WEALTH
-    G.ARGS.LOC_COLOURS.doto = G.C.UMA.DOTO
+    G.ARGS.LOC_COLOURS.uma_chult = G.C.UMA.CHULT
+    G.ARGS.LOC_COLOURS.uma_wealth = G.C.UMA.WEALTH
+    G.ARGS.LOC_COLOURS.uma_doto = G.C.UMA.DOTO
+    G.ARGS.LOC_COLOURS.uma_banish = G.C.UMA.BANISH
     return loc_colour_ref(_c, _default)
 end
 
@@ -379,6 +381,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.uma_global_counts.bloom = 0
         G.GAME.uma_placing_req = 0
         G.GAME.uma_bosses_beaten = 0
+        G.GAME.uma_enhanced_rate = 0
 
         G.GAME.uma_state = 0
 

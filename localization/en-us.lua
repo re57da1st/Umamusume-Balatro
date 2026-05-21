@@ -210,14 +210,19 @@ return {
             j_uma_air = {
                 name = "Air Groove",
                 text = {
-                    "stuff",
+                    "If your full deck is >{C:attention}#1#%{}/{X:attention,C:white}#2#%{}",
+                    "{C:enhanced}Enhanced{} cards, new Playing cards",
+                    "will be {C:enhanced}Enhanced{} {C:attention}#3#%{}/{X:attention,C:white}#4#%{} more often",
+                    "{C:inactive}(Currently {V:1,B:2}#5#{C:inactive}/#6#)"
                 },
             },
 
             j_uma_nature = {
                 name = "Nice Nature",
                 text = {
-                    "stuff",
+                    "Allows you to {C:uma_banish,E:1}Banish{}",
+                    "bought jokers, which will",
+                    "no longer appear normally",
                 },
             },
 
@@ -285,7 +290,7 @@ return {
                 name = "Vivlos",
                 text = {
                     "All scoring cards gain",
-                    "a {C:wealth}Wealth{} sticker",
+                    "a {C:uma_wealth}Wealth{} sticker",
                 },
             },
 

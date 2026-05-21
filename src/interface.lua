@@ -321,7 +321,7 @@ local function nature_button_ui(card)
                         r = 0.08,
                         hover = true,
                         shadow = true,
-                        colour = SMODS.Gradients.uma_rainbow, -- color of the button background
+                        colour = G.C.UMA.BANISH, -- color of the button background
                         button = 'uma_nature_button_click', -- function in G.FUNCS that will run when this button is clicked
                         func = 'uma_nature_button_func', -- function in G.FUNCS that will run every frame this button exists (optional)
                         ref_table = card,
@@ -380,7 +380,6 @@ G.FUNCS.uma_nature_button_click = function(e)
 
     if rarity then
         G.GAME.banned_keys[card.config.center_key] = true
-        print("Killed something of rarity "..rarity.."!")
     end
 end
 
@@ -393,7 +392,7 @@ G.FUNCS.uma_nature_button_func = function(e)
     -- Removes the button when the card can't be used, otherwise makes it use the previously defined button click
     e.config.button = can_use and 'uma_nature_button_click' or nil
     -- Changes the color of the button depending on whether it can be used or not
-    e.config.colour = can_use and SMODS.Gradients.uma_rainbow or G.C.UI.BACKGROUND_INACTIVE
+    e.config.colour = can_use and G.C.UMA.BANISH or G.C.UI.BACKGROUND_INACTIVE
 
 end
 
@@ -428,17 +427,6 @@ G.FUNCS.uma_g_city_button_func = function(e)
     e.config.colour = can_use and G.C.RED or G.C.UI.BACKGROUND_INACTIVE
 end
 
---[[
-SMODS.DrawStep {
-    key = 'g_city_button',
-    order = -30, -- before the Card is drawn
-    func = function(card, layer)
-        if card.children.uma_nature_button then
-            card.children.uma_nature_button:draw()
-        end
-    end
-}
-]]
 
 
 

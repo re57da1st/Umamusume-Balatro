@@ -1,4 +1,3 @@
----@diagnostic disable: cast-local-type
 --Joker definitions
 SMODS.Joker{ --Daitaku Helios
     key = "helios",
@@ -2428,7 +2427,7 @@ SMODS.Joker{ --Air Groove
     cost = 3,
     pos = { x = 2, y = 2 },
     atlas = 'j_umas',
-    config = { extra = { race = {
+    config = { extra = { percent1 = 0.25, percent2 = 0.5, rate1 = 0.5, rate2 = 1, race = {
         r1 = 9,
         r2 = 5,
         r3 = 3,
@@ -2447,13 +2446,55 @@ SMODS.Joker{ --Air Groove
                     card.ability.extra.race.rt
                 } }
         end
+
+        local Enhance_tally, Total_tally = 0, 52
+        local state = 1
+        if G.playing_cards then
+            Total_tally = #G.playing_cards
+            for _, playing_card in pairs(G.playing_cards or {}) do
+                if next(SMODS.get_enhancements(playing_card) or {}) then Enhance_tally = Enhance_tally + 1 end
+            end
+
+            local ratio = Enhance_tally / Total_tally
+            if ratio >= card.ability.extra.percent2 then
+                state = 3
+            elseif ratio >= card.ability.extra.percent1 then
+                state = 2
+            end
+
+        end
+
+        local C1 = {G.C.INACTIVE, G.C.IMPORTANT, G.C.WHITE}
+        local C2 = {{0, 0, 0, 0}, {0, 0, 0, 0}, G.C.IMPORTANT}
+
         return {vars = {
-            nil
+            100 * card.ability.extra.percent1,
+            100 * card.ability.extra.percent2,
+            100 * card.ability.extra.rate1,
+            100 * card.ability.extra.rate2,
+            Enhance_tally,
+            Total_tally,
+            colours = {
+                C1[state],
+                C2[state]
+            }
         } }
     end,
 
     calculate = function(self, card, context)
-        return nil
+        local Enhance_tally = 0
+        local Total_tally = #G.playing_cards
+        for _, playing_card in pairs(G.playing_cards or {}) do
+            if next(SMODS.get_enhancements(playing_card) or {}) then Enhance_tally = Enhance_tally + 1 end
+        end
+        local ratio = Enhance_tally / Total_tally
+        if ratio >= card.ability.extra.percent2 then
+            G.GAME.uma_enhanced_rate = card.ability.extra.rate2
+        elseif ratio >= card.ability.extra.percent1 then
+            G.GAME.uma_enhanced_rate = card.ability.extra.rate1
+        else
+            G.GAME.uma_enhanced_rate = 0
+        end
     end,
 
     in_pool = function(self, args)

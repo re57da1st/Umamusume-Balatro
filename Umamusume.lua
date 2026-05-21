@@ -274,9 +274,9 @@ function ease_dollars(mod, instant)
     return g
 end
 
-local oldgamestartrun = Game.start_run
+local old_game_start_run = Game.start_run
 function Game:start_run(args)
-    oldgamestartrun(self, args)
+    old_game_start_run(self, args)
 
     self.uma_g_city_button = UIBox {
         definition = {
@@ -340,4 +340,13 @@ function Game:start_run(args)
     }
     self.uma_g_city_button.states.visible = false
 
+end
+
+local old_create_card = SMODS.create_card
+function SMODS.create_card(t)
+    if t.set == "Base" and pseudorandom("uma_enhancedd_rate") <= G.GAME.uma_enhanced_rate then
+        t.set = "Enhanced"
+    end
+    local card = old_create_card(t)
+    return card
 end
