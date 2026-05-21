@@ -269,13 +269,6 @@ return {
                 },
             },
 
-            j_uma_mayano = {
-                name = "Mayano Top Gun",
-                text = {
-                    "stuff",
-                },
-            },
-
             j_uma_belno = {
                 name = "Belno Light",
                 text = {
@@ -396,8 +389,8 @@ return {
                 },
             },
 
-            j_uma_XYZ = {
-                name = "XYZ",
+            j_uma_mayano = {
+                name = "Mayano Top Gun",
                 text = {
                     'Once per blind, {C:attention}"Swap"{} to',
                     "swap {C:blue}hands{} and {C:red}discards{} left",

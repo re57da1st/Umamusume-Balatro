@@ -199,8 +199,8 @@ G.FUNCS.uma_select = function(e)
     end
 end
 
---XYZ button
-local function XYZ_button_ui(card)
+--Mayano Top Gun button
+local function mayano_button_ui(card)
     return UIBox {
         definition = {
             n = G.UIT.ROOT,
@@ -217,8 +217,8 @@ local function XYZ_button_ui(card)
                         hover = true,
                         shadow = true,
                         colour = G.C.RED, -- color of the button background
-                        button = 'uma_XYZ_button_click', -- function in G.FUNCS that will run when this button is clicked
-                        func = 'uma_XYZ_button_func', -- function in G.FUNCS that will run every frame this button exists (optional)
+                        button = 'uma_mayano_button_click', -- function in G.FUNCS that will run when this button is clicked
+                        func = 'uma_mayano_button_func', -- function in G.FUNCS that will run every frame this button exists (optional)
                         ref_table = card,
                     },
                     nodes = {
@@ -256,7 +256,7 @@ local function XYZ_button_ui(card)
 end
 
 -- Will be called whenever the button is clicked
-G.FUNCS.uma_XYZ_button_click = function(e)
+G.FUNCS.uma_mayano_button_click = function(e)
     local card = e.config.ref_table -- access the card this button was on
 
     card.ability.extra.active = false
@@ -269,31 +269,31 @@ G.FUNCS.uma_XYZ_button_click = function(e)
 end
 
 -- Will run every frame while the button exists
-G.FUNCS.uma_XYZ_button_func = function(e)
+G.FUNCS.uma_mayano_button_func = function(e)
     local card = e.config.ref_table -- access the card this button was on (unused here, but you can access it)
 
     -- In vanilla, this is generally used to define when the button can be used, for example:
     local can_use = card.ability.extra.active and not (G.GAME.current_round.discards_left == 0) -- can be any condition you want
 
     -- Removes the button when the card can't be used, otherwise makes it use the previously defined button click
-    e.config.button = can_use and 'uma_XYZ_button_click' or nil
+    e.config.button = can_use and 'uma_mayano_button_click' or nil
     -- Changes the color of the button depending on whether it can be used or not
     e.config.colour = can_use and G.C.MULT or G.C.UI.BACKGROUND_INACTIVE
 
 end
 
 SMODS.DrawStep {
-    key = 'XYZ_button',
+    key = 'mayano_button',
     order = -30, -- before the Card is drawn
     func = function(card, layer)
-        if card.children.uma_XYZ_button then
-            card.children.uma_XYZ_button:draw()
+        if card.children.uma_mayano_button then
+            card.children.uma_mayano_button:draw()
         end
     end
 }
 
 -- make sure SMODS doesn't draw the button after the card is drawn
-SMODS.draw_ignore_keys.uma_XYZ_button = true
+SMODS.draw_ignore_keys.uma_mayano_button = true
 
 
 
@@ -438,11 +438,11 @@ end
 
 local highlight_ref = Card.highlight
 function Card.highlight(self, is_highlighted)
-    if is_highlighted and self.ability.set == "Joker" and self.config.center_key == "j_uma_XYZ" and self.area == G.jokers then
-        self.children.uma_XYZ_button = XYZ_button_ui(self)
-    elseif self.children.uma_XYZ_button then
-        self.children.uma_XYZ_button:remove()
-        self.children.uma_XYZ_button = nil
+    if is_highlighted and self.ability.set == "Joker" and self.config.center_key == "j_uma_mayano" and self.area == G.jokers then
+        self.children.uma_mayano_button = mayano_button_ui(self)
+    elseif self.children.uma_mayano_button then
+        self.children.uma_mayano_button:remove()
+        self.children.uma_mayano_button = nil
     end
 
     if is_highlighted and self.ability.set == "Joker" and self.area == G.jokers and (#find_joker('j_uma_nature') > 0) then

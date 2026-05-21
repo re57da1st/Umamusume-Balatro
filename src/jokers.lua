@@ -1397,7 +1397,7 @@ SMODS.Joker{ --Mini the Lady
     pos = { x = 0, y = 2 },
     display_size = { w = 71 * 0.7, h = 95 * 0.7 },
     atlas = 'j_umas',
-    config = { extra = { reduction = 10, percent = 50 } },
+    config = { extra = { reduction = 25, percent = 50 } },
 
     loc_vars = function(self, info_queue, card)
         if G.GAME.show_placings then
@@ -1945,18 +1945,18 @@ SMODS.Joker { --Agnes Tachyon
     end
 }
 
-SMODS.Joker{ --XYZ
-    key = "XYZ",
+SMODS.Joker{ --Mayano Top Gun
+    key = "mayano",
     blueprint_compat = false,
     rarity = 2,
     cost = 6,
-    pos = { x = 9, y = 4 },
+    pos = { x = 4, y = 3 },
     atlas = 'j_umas',
     config = { extra = { active = true, race = {
-        r1 = 0,
-        r2 = 0,
-        r3 = 0,
-        rt = 1
+        r1 = 8,
+        r2 = 4,
+        r3 = 5,
+        rt = 21
     } } },
 
     loc_vars = function(self, info_queue, card)
@@ -2350,48 +2350,18 @@ SMODS.Joker{ --Red Desire, makes things undebuffable, any card that would be del
     end
 }
 
-
-
-SMODS.Joker{ --Spacer
-    key = "spacer",
+SMODS.Joker{ --Nice Nature
+    key = "nature",
     blueprint_compat = false,
     rarity = 1,
-    cost = 3,
-    pos = { x = 9, y = 5 },
-    display_size = { w = 71, h = 95 * 1.1 },
-    atlas = 'j_umas',
-    config = {},
-
-    loc_vars = function(self, info_queue, card)
-        return nil
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-
-
-
-
---Definitions for when they're ready
-SMODS.Joker{ --Super Creek
-    key = "creek",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 1, y = 2 },
+    cost = 4,
+    pos = { x = 3, y = 2 },
     atlas = 'j_umas',
     config = { extra = { race = {
-        r1 = 8,
-        r2 = 2,
-        r3 = 2,
-        rt = 16
+        r1 = 7,
+        r2 = 6,
+        r3 = 8,
+        rt = 41
     } } },
 
     loc_vars = function(self, info_queue, card)
@@ -2424,7 +2394,7 @@ SMODS.Joker{ --Air Groove
     key = "air",
     blueprint_compat = false,
     rarity = 1,
-    cost = 3,
+    cost = 5,
     pos = { x = 2, y = 2 },
     atlas = 'j_umas',
     config = { extra = { percent1 = 0.25, percent2 = 0.5, rate1 = 0.5, rate2 = 1, race = {
@@ -2502,18 +2472,50 @@ SMODS.Joker{ --Air Groove
     end
 }
 
-SMODS.Joker{ --Nice Nature, scales on debuffed cards (still in love synergy. . . x x)
-    key = "nature",
+
+
+
+
+SMODS.Joker{ --Spacer
+    key = "spacer",
     blueprint_compat = false,
     rarity = 1,
     cost = 3,
-    pos = { x = 3, y = 2 },
+    pos = { x = 9, y = 5 },
+    display_size = { w = 71, h = 95 * 1.1 },
+    atlas = 'j_umas',
+    config = {},
+
+    loc_vars = function(self, info_queue, card)
+        return nil
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
+
+
+
+
+--Definitions for when they're ready
+SMODS.Joker{ --Super Creek
+    key = "creek",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 1, y = 2 },
     atlas = 'j_umas',
     config = { extra = { race = {
-        r1 = 7,
-        r2 = 6,
-        r3 = 8,
-        rt = 41
+        r1 = 8,
+        r2 = 2,
+        r3 = 2,
+        rt = 16
     } } },
 
     loc_vars = function(self, info_queue, card)
@@ -2594,46 +2596,6 @@ SMODS.Joker{ --Mihono Bourbon rounds 2 da nearest wtv
         r2 = 1,
         r3 = 0,
         rt = 8
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Joker{ --Mayano Top Gun
-    key = "mayano",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 4, y = 3 },
-    atlas = 'j_umas',
-    config = { extra = { race = {
-        r1 = 8,
-        r2 = 4,
-        r3 = 5,
-        rt = 21
     } } },
 
     loc_vars = function(self, info_queue, card)
