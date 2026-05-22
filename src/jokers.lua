@@ -2135,7 +2135,7 @@ SMODS.Joker{ --Orfevre
             end
         end
 
-        xmult = math.max(xmult, 1)
+        xmult = (xmult > 1) and xmult or 1
 
         return { vars = {
             chips,
