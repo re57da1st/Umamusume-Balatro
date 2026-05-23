@@ -1990,6 +1990,10 @@ SMODS.Joker{ --Mayano Top Gun
             G.GAME.current_round.discards_left = temp
         end
 
+        if card.ability.extra.active and G.GAME.current_round.discards_left == 0 then
+            card.ability.extra.active = false
+        end
+
         if context.end_of_round then
             card.ability.extra.active = false
         end
@@ -2766,7 +2770,7 @@ SMODS.Joker{ --Fenomeno, takes no joker space, has the chance to make other joke
     cost = 3,
     pos = { x = 1, y = 5 },
     atlas = 'j_umas',
-    config = { extra = { race = {
+    config = { card_limit = 1, extra = { race = {
         r1 = 10,
         r2 = 5,
         r3 = 1,
