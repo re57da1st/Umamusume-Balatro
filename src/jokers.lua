@@ -2443,6 +2443,125 @@ SMODS.Joker{ --Air Groove
     end
 }
 
+SMODS.Joker{ --Fenomeno
+    key = "feno",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 1, y = 5 },
+    atlas = 'j_umas',
+    config = { card_limit = 1, extra = { odds = 4, race = {
+        r1 = 10,
+        r2 = 5,
+        r3 = 1,
+        rt = 24
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = {
+            set = "Other",
+            key = "uma_scare",
+        }
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.press_play then
+            for _, v in ipairs(G.jokers.cards) do
+                if v.config.center.pools and v.config.center.pools['uma_jokers'] and v.config.center_key ~= "j_uma_feno" then
+                    if SMODS.pseudorandom_probability(card, 'feno', 1, card.ability.extra.odds) then
+                        SMODS.calculate_effect({message = "Intimidated!", colour = G.C.RED}, v)
+                        SMODS.debuff_card(v, true, 'feno')
+                    end
+                end
+            end
+        end
+
+        if context.hand_drawn and not context.first_hand_drawn then
+            for _, v in ipairs(G.jokers.cards) do
+                SMODS.debuff_card(v, false, 'feno')
+            end
+        end
+    end
+}
+
+SMODS.Joker{ --Almond Eye
+    key = "almond",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 7, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { xmult = 1, reset = 1, gain = 0.25, race = {
+        r1 = 11,
+        r2 = 2,
+        r3 = 1,
+        rt = 15
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            card.ability.extra.gain,
+            card.ability.extra.xmult
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.before then
+            for k in pairs(G.GAME.uma_hidden_hands) do
+                local name = G.GAME.uma_hidden_hands[k]
+                if context.scoring_name == name then
+                    card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.gain
+                    return {
+                        message = localize('k_upgrade_ex')
+                    }
+                end
+            end
+
+            card.ability.extra.xmult = card.ability.extra.reset
+            return {
+                message = localize('k_reset'),
+                colour = G.C.RED
+            }
+
+        end
+
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
 
 
 
@@ -2635,47 +2754,7 @@ SMODS.Joker{ --Copano Rickey
     end
 }
 
-SMODS.Joker{ --Almond Eye
-    key = "almond",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 7, y = 3 },
-    atlas = 'j_umas',
-    config = { extra = { race = {
-        r1 = 11,
-        r2 = 2,
-        r3 = 1,
-        rt = 15
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Joker{ --Gentildonna
+SMODS.Joker{ --Gentildonna --Add smth positive to her effect???
     key = "donna",
     blueprint_compat = false,
     rarity = 1,
@@ -2706,20 +2785,26 @@ SMODS.Joker{ --Gentildonna
         } }
     end,
 
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.uma_placing_req = G.GAME.uma_placing_req + 1
+    end,
+
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.uma_placing_req = G.GAME.uma_placing_req - 1
+    end,
+
     calculate = function(self, card, context)
         if G.jokers and context.press_play then
             for _, v in ipairs(G.jokers.cards) do
                 if v.config.center.pools and v.config.center.pools['uma_jokers'] and v.config.center_key ~= 'j_uma_donna' then
-                    if SMODS.pseudorandom_probability(card, 'donna', 1, card.ability.extra.odds) then
-                        SMODS.destroy_cards(v)
+                    if uma_compare({v.config.center_key, "j_uma_donna"}, {1,1,1}) == 2 then
+                        if SMODS.pseudorandom_probability(card, 'donna', 1, card.ability.extra.odds) then
+                            SMODS.destroy_cards(v)
+                        end
                     end
                 end
             end
         end
-    end,
-
-    in_pool = function(self, args)
-        return false
     end
 }
 
@@ -2731,46 +2816,6 @@ SMODS.Joker{ --Transcend
     pos = { x = 0, y = 5 },
     atlas = 'j_umas',
     config = { extra = { race = {
-        r1 = 10,
-        r2 = 5,
-        r3 = 1,
-        rt = 24
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Joker{ --Fenomeno, takes no joker space, has the chance to make other jokers not trigger
-    key = "feno",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 1, y = 5 },
-    atlas = 'j_umas',
-    config = { card_limit = 1, extra = { race = {
         r1 = 10,
         r2 = 5,
         r3 = 1,

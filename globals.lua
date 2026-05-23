@@ -25,7 +25,8 @@ G.C.UMA = {
     CHULT = HEX("D002F0"),
     WEALTH = HEX("EFAD29"),
     DOTO = HEX("595DDB"),
-    BANISH = HEX("990000")
+    BANISH = HEX("990000"),
+    FENO = HEX("544178")
 }
 
 SMODS.Gradient {
@@ -81,6 +82,7 @@ function loc_colour(_c, _default)
     G.ARGS.LOC_COLOURS.uma_wealth = G.C.UMA.WEALTH
     G.ARGS.LOC_COLOURS.uma_doto = G.C.UMA.DOTO
     G.ARGS.LOC_COLOURS.uma_banish = G.C.UMA.BANISH
+    G.ARGS.LOC_COLOURS.uma_feno = G.C.UMA.FENO
     return loc_colour_ref(_c, _default)
 end
 
@@ -194,19 +196,15 @@ function Uma_Tact_refresh()
     end
 end
 
----@param horse string Pass in the card object here
----@return string name Returns the key of the card
----@return integer r1 Returns 1st place win count
----@return integer r2 Returns 2nd place win count
----@return integer r3 Returns 3rd place win count
----@return integer rt Returns the total race count
+---@param horse string Pass in the card key here
+---@return table stats Name, #1st, #2nd, #3rd, #total
 function uma_get_data(horse)
     local name = G.P_CENTERS[horse].key
     local r1 = G.P_CENTERS[horse].config.extra.race.r1
     local r2 = G.P_CENTERS[horse].config.extra.race.r2
     local r3 = G.P_CENTERS[horse].config.extra.race.r3
     local rt = G.P_CENTERS[horse].config.extra.race.rt
-    return name, r1, r2, r3, rt
+    return {name, r1, r2, r3, rt}
 end
 
 ---@param numerator integer The set of races you want to include
@@ -216,6 +214,31 @@ function uma_ratio(numerator, denominator)
     return (math.floor(((numerator)/denominator)*10000)/100)
 end
 
+---@param umas table List of Uma keys to compare
+---@param values table list of 1st, 2nd, 3rd places to compare (I.E. {1,1,0} for 1st and 2nd place)
+---@return integer output Lists the uma with the best stats (equal to their order in 'umas' input)
+function uma_compare(umas, values)
+    local ratios = {}
+    for i = 1, #umas do
+        local uma = uma_get_data(umas[i])
+        print(uma)
+        ratios[i] = uma_ratio(uma[2]*values[1] + uma[3]*values[2] + uma[4]*values[3] , uma[5])
+        print(ratios[i])
+    end
+
+    local best_uma = 0
+    local best_ratio = 0
+
+    for i = 1, #ratios do
+        if ratios[i] > best_ratio then
+            best_uma = i
+            best_ratio = ratios[i]
+        end
+    end
+
+    print(best_uma)
+    return best_uma
+end
 
 
 --Constantly running code for other required effects
@@ -395,6 +418,14 @@ function SMODS.current_mod.reset_game_globals(run_start)
             SMODS.ObjectTypes["Joker"].rarities[2].weight = 0.25
             SMODS.ObjectTypes["Joker"].rarities[3].weight = 0.05
             SMODS.ObjectTypes["Joker"].rarities[4].weight = 0
+        end
+
+        --Count every hand that is hidden by default and add it to a list
+        G.GAME.uma_hidden_hands = {}
+        for k in pairs(G.GAME.hands) do
+            if not G.GAME.hands[k].visible then
+                G.GAME.uma_hidden_hands[#G.GAME.uma_hidden_hands + 1] = k
+            end
         end
     end
 

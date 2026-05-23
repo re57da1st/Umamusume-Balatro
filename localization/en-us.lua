@@ -385,7 +385,10 @@ return {
             j_uma_almond = {
                 name = "Almond Eye",
                 text = {
-                    "stuff",
+                    "This Joker gains {X:red,C:white}X#1#{} Mult when",
+                    "playing a {C:attention}Hidden hand{}, resets",
+                    " when playing a {C:attention}Normal hand{}",
+                    "{C:inactive}(Currently {X:red,C:white}X#2#{C:inactive} Mult)"
                 },
             },
 
@@ -429,7 +432,10 @@ return {
             j_uma_donna = {
                 name = "Gentildonna",
                 text = {
-                    "stuff"
+                    "{C:green}1 in 4{} chance to {C:attention}destroy",
+                    "an {C:uma_rainbow}Uma{} joker who has",
+                    "a worse {C:attention}Top 3{} ratio",
+                    "than herself"
                 },
             },
 
@@ -443,7 +449,10 @@ return {
             j_uma_feno = {
                 name = "Fenomeno",
                 text = {
-                    "stuff"
+                    "{C:negative}+1{} Joker slot",
+                    "{C:green}1 in 4{} chance to",
+                    "{X:uma_feno,C:white}Intimidate{} each",
+                    "{C:uma_rainbow}Uma{} joker"
                 },
             },
 
@@ -1096,6 +1105,20 @@ return {
                     "#1#",
                     "#2# {C:attention}#3# {C:hearts}#4#{},",
                     "#5#",
+                    
+                    --[[
+                    "A playing card",
+                    "that is {C:attention}only {C:hearts}hearts{},",
+                    "and nothing else",
+                    ]]
+                }
+            },
+
+            uma_scare = {
+                name = "{X:uma_feno,C:white}Intimidate",
+                text = {
+                    "A debuff that",
+                    "only lasts 1 hand",
                     
                     --[[
                     "A playing card",

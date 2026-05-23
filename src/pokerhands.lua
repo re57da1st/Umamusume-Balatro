@@ -1,7 +1,7 @@
 --Perfect Pair
 SMODS.PokerHand {
     key = "perfect_pair",
-    visible = true,
+    visible = false,
     mult = 10,
     chips = 100,
     l_mult = 3,
@@ -23,7 +23,7 @@ SMODS.PokerHand {
                 local t = {}
                 local suit = suits[j]
                 local flush_count = 0
-                for i=1, #SMODS.merge_lists(parts._2) do
+                for i = 1, #SMODS.merge_lists(parts._2) do
                     if SMODS.merge_lists(parts._2)[i]:is_suit(suit, nil, true) then flush_count = flush_count + 1;  t[#t+1] = SMODS.merge_lists(parts._2)[i] end 
                 end
                 if flush_count >= 4 then

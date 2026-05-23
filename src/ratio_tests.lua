@@ -85,3 +85,16 @@ for i = 1, #uma_list do
 end
 
 print("Passes: "..pass.. " Fails: "..fail)
+
+
+
+
+local hidden_hands = {}
+
+for k in pairs(G.GAME.hands) do
+    if not G.GAME.hands[k].visible then
+        hidden_hands[#hidden_hands + 1] = k
+    end
+end
+
+print(hidden_hands)
