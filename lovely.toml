@@ -3,6 +3,7 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
+# Add 'retrigger' description to jokers that have extra triggers on them
 [[patches]]
 [patches.pattern]
 target = 'functions/common_events.lua'
@@ -14,3 +15,17 @@ if _c.set == 'Joker' and card.ability.uma_retriggers then
     localize{type = 'descriptions', key = (card.ability.uma_retriggers == 1 and "j_uma_retrigger" or "j_uma_retriggers"), set = _c.set, nodes = desc_nodes, vars = {card.ability.uma_retriggers} }
 end
 '''
+
+# Add Legendary to Joker ObjectType
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/game_object.lua"]'''
+pattern = '''
+{ key = "Common" },
+{ key = "Uncommon" },
+{ key = "Rare" },
+'''
+position = "after"
+payload = '''{ key = "Legendary" }, '''
+match_indent = true
+times = 1
