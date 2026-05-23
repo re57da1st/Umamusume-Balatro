@@ -373,6 +373,25 @@ function SMODS.current_mod.calculate(self, context)
         G.uma_g_city_button.states.visible = (#find_joker("j_uma_g_city") ~= 0)
     end
 
+    if G.GAME.uma_all_commons > 0 and G.GAME.uma_all_commons_check == false then
+        G.GAME.uma_all_commons_check = true
+
+        --Make it all commons
+        for i = 1, #SMODS.ObjectTypes['Joker'].rarities do
+            G.GAME.uma_stored_rarities[i] = SMODS.ObjectTypes['Joker'].rarities[i].weight
+            SMODS.ObjectTypes['Joker'].rarities[i].weight = (i == 1 and 1 or 0)
+        end
+    end
+
+    if G.GAME.uma_all_commons == 0 and G.GAME.uma_all_commons_check == true then
+        G.GAME.uma_all_commons_check = false
+
+        --Restore original
+        for i = 1, #SMODS.ObjectTypes['Joker'].rarities do
+            SMODS.ObjectTypes['Joker'].rarities[i].weight = G.GAME.uma_stored_rarities[i]
+        end
+    end
+
 end
 
 
@@ -405,6 +424,9 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.uma_placing_req = 0
         G.GAME.uma_bosses_beaten = 0
         G.GAME.uma_enhanced_rate = 0
+        G.GAME.uma_all_commons = 0
+        G.GAME.uma_all_commons_check = false
+        G.GAME.uma_stored_rarities = {}
 
         G.GAME.uma_state = 0
 
