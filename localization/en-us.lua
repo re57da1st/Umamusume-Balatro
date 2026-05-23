@@ -462,6 +462,15 @@ return {
                     "stuff"
                 },
             },
+
+            j_uma_XYZ = {
+                name = "XYZ",
+                text = {
+                    "{C:negative}+5{} Joker slots",
+                    "All jokers in the",
+                    "shop are {C:common}Common"
+                },
+            },
         },
 
         Planet = {

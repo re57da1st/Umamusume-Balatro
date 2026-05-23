@@ -1559,6 +1559,7 @@ SMODS.Joker{ --Forever Young
     end
 }
 
+--Might be broken???
 SMODS.Joker{ --Vivlos
     key = "vivlos",
     blueprint_compat = false,

@@ -369,10 +369,12 @@ function SMODS.current_mod.calculate(self, context)
     --Enable showing race placings if certain cards are in play
     G.GAME.show_placings = (G.GAME.uma_placing_req > 0)
 
+    --Enable GHold city's draw button if she is present
     if G.uma_g_city_button and G.uma_g_city_button.states then
         G.uma_g_city_button.states.visible = (#find_joker("j_uma_g_city") ~= 0)
     end
 
+    --Force all jokers to be common if certain conditions are met
     if G.GAME.uma_all_commons > 0 and G.GAME.uma_all_commons_check == false then
         G.GAME.uma_all_commons_check = true
 
@@ -383,6 +385,7 @@ function SMODS.current_mod.calculate(self, context)
         end
     end
 
+    --Return jokers to their original rarities
     if G.GAME.uma_all_commons == 0 and G.GAME.uma_all_commons_check == true then
         G.GAME.uma_all_commons_check = false
 
@@ -424,12 +427,15 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.uma_placing_req = 0
         G.GAME.uma_bosses_beaten = 0
         G.GAME.uma_enhanced_rate = 0
+
+        --Global values used to force jokers to be common
         G.GAME.uma_all_commons = 0
         G.GAME.uma_all_commons_check = false
         G.GAME.uma_stored_rarities = {}
 
         G.GAME.uma_state = 0
 
+        --Set up special rarity weights for the legendary desk
         if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_legendary' then
             SMODS.ObjectTypes["Joker"].rarities[1].weight = 0.85
             SMODS.ObjectTypes["Joker"].rarities[2].weight = 0.11

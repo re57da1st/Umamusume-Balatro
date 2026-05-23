@@ -350,3 +350,9 @@ function SMODS.create_card(t)
     local card = old_create_card(t)
     return card
 end
+
+local old_destroy_cards = SMODS.destroy_cards
+function SMODS.destroy_cards(cards, bypass_eternal, immediate, skip_anim)
+    print("Destroying!!!")
+    old_destroy_cards(cards, bypass_eternal, immediate, skip_anim)
+end
