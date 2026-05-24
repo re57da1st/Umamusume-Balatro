@@ -449,7 +449,7 @@ return {
             j_uma_feno = {
                 name = "Fenomeno",
                 text = {
-                    "{C:negative}+1{} Joker slot",
+                    "{C:dark_edition}+1{} Joker slot",
                     "{C:green}1 in 4{} chance to",
                     "{X:uma_feno,C:white}Intimidate{} each",
                     "{C:uma_rainbow}Uma{} joker"
@@ -466,7 +466,7 @@ return {
             j_uma_XYZ = {
                 name = "XYZ",
                 text = {
-                    "{C:negative}+5{} Joker slots",
+                    "{C:dark_edition}+5{} Joker slots",
                     "All jokers in the",
                     "shop are {C:common}Common"
                 },
