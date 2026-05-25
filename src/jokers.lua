@@ -1072,6 +1072,15 @@ SMODS.Joker{ --Still in Love
                     debuff = true
                 }
             end
+
+            if context.debuff_card.config.center.key == "j_uma_desire" then
+                return {
+                    message = localize('uma_not_aligned'),
+                    colour = G.C.SUITS["Hearts"],
+                    message_card = context.debuff_card,
+                    debuff = true
+                }
+            end
         end
 
         if SMODS.find_card("j_uma_love")  then
@@ -1558,7 +1567,6 @@ SMODS.Joker{ --Forever Young
         end
     end
 }
-
 --Might be broken???
 SMODS.Joker{ --Vivlos
     key = "vivlos",
@@ -1669,7 +1677,7 @@ SMODS.Joker{ --Daring Tact
 
 SMODS.Joker{ --Meisho Doto
     key = "doto",
-    blueprint_compat = false,
+    blueprint_compat = true,
     rarity = 1,
     cost = 5,
     pos = { x = 2, y = 3 },
@@ -1702,7 +1710,7 @@ SMODS.Joker{ --Meisho Doto
     end,
 
     calculate = function(self, card, context)
-        if G.GAME.blind.boss and context.end_of_round and context.main_eval then
+        if G.GAME.blind.boss and context.end_of_round and context.main_eval and not context.blueprint then
             card.ability.extra.basemult = card.ability.extra.basemult + card.ability.extra.mult
             card.ability.extra.basechips = card.ability.extra.basechips + card.ability.extra.chips
             SMODS.calculate_effect({message = localize('k_upgrade_ex'), colour = G.C.UMA.DOTO}, card)
@@ -2098,7 +2106,7 @@ SMODS.Joker{ --Mejiro Dober
 
 SMODS.Joker{ --Orfevre
     key = "orfevre",
-    blueprint_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
     pos = { x = 8, y = 4 },
@@ -2190,7 +2198,7 @@ SMODS.Joker{ --Orfevre
 
 SMODS.Joker{ --Symboli Rudolf
     key = "rudolf",
-    blueprint_compat = false,
+    blueprint_compat = true,
     rarity = 2,
     cost = 6,
     pos = { x = 0, y = 3 },
@@ -2229,11 +2237,11 @@ SMODS.Joker{ --Symboli Rudolf
 
     calculate = function(self, card, context)
 
-        if context.setting_blind then
+        if context.setting_blind and not context.blueprint then
             card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_add
         end
 
-        if G.GAME.blind.boss and context.end_of_round and context.main_eval then
+        if G.GAME.blind.boss and context.end_of_round and context.main_eval and not context.blueprint then
             card.ability.extra.chips = card.ability.extra.chips * card.ability.extra.chips_mult
         end
 
@@ -2281,54 +2289,7 @@ SMODS.Joker{ --Gold City
     end
 }
 
-SMODS.Joker{ --Red Desire
-    key = "desire",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 2, y = 5 },
-    atlas = 'j_umas',
-    config = { extra = { race = {
-        r1 = 10,
-        r2 = 5,
-        r3 = 1,
-        rt = 24
-    } } },
 
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        if context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
-                return { prevent_debuff = true }
-        end
-        if context.remove_playing_cards then
-            for _, removed_card in ipairs(context.removed) do
-                    local _card = copy_card(removed_card, nil, nil, G.playing_card)
-                    _card:add_to_deck()
-                    G.deck.config.card_limit = G.deck.config.card_limit + 2
-                    table.insert(G.playing_cards, _card)
-                    table.insert(G.playing_cards, _card)
-                    G.deck:emplace(_card)
-                    G.deck:emplace(_card)
-            end
-        end
-    end
-}
 
 SMODS.Joker{ --Nice Nature
     key = "nature",
@@ -2446,7 +2407,7 @@ SMODS.Joker{ --Air Groove
 
 SMODS.Joker{ --Fenomeno
     key = "feno",
-    blueprint_compat = false,
+    blueprint_compat = true,
     rarity = 1,
     cost = 3,
     pos = { x = 1, y = 5 },
@@ -2501,9 +2462,9 @@ SMODS.Joker{ --Fenomeno
 
 SMODS.Joker{ --Almond Eye
     key = "almond",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
     pos = { x = 7, y = 3 },
     atlas = 'j_umas',
     config = { extra = { xmult = 1, reset = 1, gain = 0.25, race = {
@@ -2532,7 +2493,7 @@ SMODS.Joker{ --Almond Eye
     end,
 
     calculate = function(self, card, context)
-        if context.before then
+        if context.before and not context.blueprint then
             for k in pairs(G.GAME.uma_hidden_hands) do
                 local name = G.GAME.uma_hidden_hands[k]
                 if context.scoring_name == name then
@@ -2556,10 +2517,104 @@ SMODS.Joker{ --Almond Eye
                 xmult = card.ability.extra.xmult
             }
         end
+    end
+}
+
+SMODS.Joker{ --Gentildonna --Add smth positive to her effect???
+    key = "donna",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 9, y = 4 },
+    atlas = 'j_umas',
+    config = { extra = { odds = 4, race = {
+        r1 = 10,
+        r2 = 4,
+        r3 = 1,
+        rt = 19
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
     end,
 
-    in_pool = function(self, args)
-        return false
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.uma_placing_req = G.GAME.uma_placing_req + 1
+    end,
+
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.uma_placing_req = G.GAME.uma_placing_req - 1
+    end,
+
+    calculate = function(self, card, context)
+        if G.jokers and context.press_play then
+            for _, v in ipairs(G.jokers.cards) do
+                if v.config.center.pools and v.config.center.pools['uma_jokers'] and v.config.center_key ~= 'j_uma_donna' then
+                    if uma_compare({v.config.center_key, "j_uma_donna"}, {1,1,1}) == 2 then
+                        if SMODS.pseudorandom_probability(card, 'donna', 1, card.ability.extra.odds) then
+                            SMODS.destroy_cards(v)
+                        end
+                    end
+                end
+            end
+        end
+    end
+}
+
+SMODS.Joker{ --XYZ
+    key = "XYZ",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 3, y = 5 },
+    atlas = 'j_umas',
+    config = { card_limit = 5, extra = { race = {
+        r1 = 0,
+        r2 = 9,
+        r3 = 0,
+        rt = 0
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.uma_all_commons = G.GAME.uma_all_commons + 1
+    end,
+
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.uma_all_commons = G.GAME.uma_all_commons - 1
+    end,
+
+    calculate = function(self, card, context)
+        return nil
     end
 }
 
@@ -2572,7 +2627,7 @@ SMODS.Joker{ --Spacer
     blueprint_compat = false,
     rarity = 1,
     cost = 3,
-    pos = { x = 9, y = 5 },
+    pos = { x = 9, y = 9 },
     display_size = { w = 71, h = 95 * 1.1 },
     atlas = 'j_umas',
     config = {},
@@ -2755,60 +2810,6 @@ SMODS.Joker{ --Copano Rickey
     end
 }
 
-SMODS.Joker{ --Gentildonna --Add smth positive to her effect???
-    key = "donna",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 9, y = 4 },
-    atlas = 'j_umas',
-    config = { extra = { odds = 4, race = {
-        r1 = 10,
-        r2 = 4,
-        r3 = 1,
-        rt = 19
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    add_to_deck = function(self, card, from_debuff)
-        G.GAME.uma_placing_req = G.GAME.uma_placing_req + 1
-    end,
-
-    remove_from_deck = function(self, card, from_debuff)
-        G.GAME.uma_placing_req = G.GAME.uma_placing_req - 1
-    end,
-
-    calculate = function(self, card, context)
-        if G.jokers and context.press_play then
-            for _, v in ipairs(G.jokers.cards) do
-                if v.config.center.pools and v.config.center.pools['uma_jokers'] and v.config.center_key ~= 'j_uma_donna' then
-                    if uma_compare({v.config.center_key, "j_uma_donna"}, {1,1,1}) == 2 then
-                        if SMODS.pseudorandom_probability(card, 'donna', 1, card.ability.extra.odds) then
-                            SMODS.destroy_cards(v)
-                        end
-                    end
-                end
-            end
-        end
-    end
-}
-
 SMODS.Joker{ --Transcend
     key = "transcend",
     blueprint_compat = false,
@@ -2848,19 +2849,19 @@ SMODS.Joker{ --Transcend
         return false
     end
 }
-
-SMODS.Joker{ --XYZ
-    key = "XYZ",
+--Destroy/Copy effect is broken
+SMODS.Joker{ --Red Desire
+    key = "desire",
     blueprint_compat = false,
     rarity = 1,
     cost = 3,
-    pos = { x = 0, y = 5 },
+    pos = { x = 2, y = 5 },
     atlas = 'j_umas',
-    config = { card_limit = 5, extra = { race = {
-        r1 = 0,
-        r2 = 9,
-        r3 = 0,
-        rt = 0
+    config = { extra = { race = {
+        r1 = 10,
+        r2 = 5,
+        r3 = 1,
+        rt = 24
     } } },
 
     loc_vars = function(self, info_queue, card)
@@ -2880,24 +2881,29 @@ SMODS.Joker{ --XYZ
         } }
     end,
 
-    --SMODS.ObjectTypes["Joker"].rarities
-
-    add_to_deck = function(self, card, from_debuff)
-        G.GAME.uma_all_commons = G.GAME.uma_all_commons + 1
-    end,
-
-    remove_from_deck = function(self, card, from_debuff)
-        G.GAME.uma_all_commons = G.GAME.uma_all_commons - 1
-    end,
-
     calculate = function(self, card, context)
-        return nil
+        if context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
+                return { prevent_debuff = true }
+        end
+        if context.remove_playing_cards then
+            for _, removed_card in ipairs(context.removed) do
+                    local _card = copy_card(removed_card, nil, nil, G.playing_card)
+                    _card:add_to_deck()
+                    G.deck.config.card_limit = G.deck.config.card_limit + 2
+                    table.insert(G.playing_cards, _card)
+                    table.insert(G.playing_cards, _card)
+                    G.deck:emplace(_card)
+                    G.deck:emplace(_card)
+            end
+        end
     end,
 
     in_pool = function(self, args)
         return false
     end
 }
+
+
 
 
 

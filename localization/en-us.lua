@@ -459,7 +459,9 @@ return {
             j_uma_desire = {
                 name = "Red Desire",
                 text = {
-                    "stuff"
+                    "{C:attention}Prevents{} card debuffs",
+                    "Copies cards that are",
+                    "Destroyed {C:attention}2{} times"
                 },
             },
 
@@ -1272,6 +1274,7 @@ return {
             uma_fuku_good = "Good fortune!",
             uma_fuku_bad = "Bad fortune...",
             uma_not_pure = "Not pure!",
+            uma_not_aligned = "Not aligned!",
             uma_spread = "Spread!",
             uma_bloom = "Bloom!",
             uma_twin_turbo_trigger = 'Upgrade + Level Up!',
