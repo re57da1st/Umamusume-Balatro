@@ -1,3 +1,4 @@
+-- New Enhancements
 SMODS.Enhancement { --Turf
     key = 'turf',
     pos = { x = 0, y = 0 },
@@ -100,3 +101,4 @@ SMODS.Enhancement { --Mossy
         return false
     end
 }
+-- New Enhancements

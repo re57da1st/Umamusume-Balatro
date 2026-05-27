@@ -1,5 +1,5 @@
---Perfect Pair
-SMODS.PokerHand {
+-- New Poker Hands
+SMODS.PokerHand { -- Perfect Pair
     key = "perfect_pair",
     visible = false,
     mult = 10,
@@ -35,3 +35,4 @@ SMODS.PokerHand {
         end
     end
 }
+-- New Poker Hands

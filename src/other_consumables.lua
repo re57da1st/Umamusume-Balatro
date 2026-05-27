@@ -1,3 +1,4 @@
+-- [whatever CSS stands for] Settings
 CssAPI = {
     defaults = {
         mambo_rate = 4,
@@ -9,7 +10,13 @@ CssAPI = {
     },
     gamerate = 1
 }
+-- [whatever CSS stands for] Settings
 
+
+
+
+
+-- Consumable Type
 SMODS.ConsumableType {
     key = 'uma_ccs',
     primary_colour = G.C.UMA.MAMBO,
@@ -17,7 +24,13 @@ SMODS.ConsumableType {
     collection_rows = { 3, 4 },
     shop_rate = 0
 }
+-- Consumable Type
 
+
+
+
+
+-- New Rarities
 SMODS.Rarity {
     key = "mambo_rarity",
     default_weight = CssAPI.defaults.mambo_rate,
@@ -29,8 +42,13 @@ SMODS.Rarity {
     default_weight = CssAPI.defaults.family_tree_rate,
     disable_if_empty = true
 }
+-- New Rarities
 
---Mambo Cards
+
+
+
+
+-- Mambo-related Conumables
 SMODS.Consumable { --Mambo Boots
     key = 'mambo_boots',
     rarity = 1,
@@ -117,10 +135,13 @@ SMODS.Consumable { --Mambo Plushie
         badges[#badges + 1] = create_badge(localize('uma_mambo_cards_loc'), G.C.UMA.MAMBO2, G.C.UMA.WHITE, 1.2)
     end
 }
+-- Mambo-related Conumables
 
 
 
---Family Tree Cards
+
+
+-- Family Tree Cards
 SMODS.Consumable { --Posterity
     key = 'posterity',
     rarity = "uma_mambo_rarity",
@@ -137,7 +158,7 @@ SMODS.Consumable { --Posterity
         local hand = G.hand.highlighted
 
         --Get the total value of both cards (aces are considered low)
-        local value = (hand[1]:get_id() + hand[2]:get_id() - (13 * Uma_rank_tally(14, hand)))
+        local value = (hand[1]:get_id() + hand[2]:get_id() - (13 * Uma_rank_tally(14, hand, nil)))
 
         local ranks = {"Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"}
         local suit, enhancement, seal, edition = {}, {}, {}, {}
@@ -176,7 +197,7 @@ SMODS.Consumable { --Posterity
     --You can't combine two cards if their ranks would total up to be higher than 14 (even considering aces low)
     can_use = function(self, card)
         if #G.hand.highlighted == 2 then
-            local value = (G.hand.highlighted[1]:get_id() + G.hand.highlighted[2]:get_id() - (13 * Uma_rank_tally(14, G.hand.highlighted)))
+            local value = (G.hand.highlighted[1]:get_id() + G.hand.highlighted[2]:get_id() - (13 * Uma_rank_tally(14, G.hand.highlighted, nil)))
             if value <= 14 then return true end
             return false
         end
@@ -262,10 +283,13 @@ SMODS.Consumable { --pedigree
         badges[#badges + 1] = create_badge(localize('uma_family_tree_loc'), G.C.UMA.FAMILY_TREE2, G.C.UMA.WHITE, 1.2)
     end
 }
+-- Family Tree Cards
 
 
 
---Uma Creation
+
+
+-- Other
 SMODS.Consumable { --SSR Ticket
     key = 'ssr_ticket',
     cost = 0,
@@ -316,3 +340,4 @@ SMODS.Consumable { --SSR Ticket
         badges[#badges + 1] = create_badge("SSR Ticket", SMODS.Gradients.uma_rainbow, G.C.UMA.WHITE, 1.2)
     end
 }
+-- Other

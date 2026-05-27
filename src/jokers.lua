@@ -1,4 +1,4 @@
---Joker definitions
+-- New Joker definitions
 SMODS.Joker{ --Daitaku Helios
     key = "helios",
     blueprint_compat = true,
@@ -1245,7 +1245,7 @@ SMODS.Joker{ --Tokai Teio
     end
 }
 
-SMODS.Joker { --Haru Urara
+SMODS.Joker{ --Haru Urara
     key = "haru",
     blueprint_compat = true,
     rarity = 1,
@@ -1908,7 +1908,7 @@ SMODS.Joker{ --Belno Light
     end
 }
 
-SMODS.Joker { --Agnes Tachyon
+SMODS.Joker{ --Agnes Tachyon
     key = "tachyon",
     blueprint_compat = false,
     rarity = 3,
@@ -2111,7 +2111,7 @@ SMODS.Joker{ --Orfevre
     cost = 8,
     pos = { x = 8, y = 4 },
     atlas = 'j_umas',
-    config = { extra = { race = {
+    config = { extra = { ratio1 = 0.5, ratio2 = 1, xmult = 5, mult = 20, chips = 100, race = {
         r1 = 12,
         r2 = 6,
         r3 = 1,
@@ -2136,24 +2136,27 @@ SMODS.Joker{ --Orfevre
         if G.jokers then
             for _, v in ipairs(G.jokers.cards) do
                 if v.ability.extra and v.ability.extra.race then
-                    local top3ratio = (v.ability.extra.race.r1 + v.ability.extra.race.r2 + v.ability.extra.race.r3) / v.ability.extra.race.rt
-                    if top3ratio == 1 then
-                        xmult = xmult + 5
-                    elseif top3ratio >= 0.5 then
-                        mult = mult + 20
+                    local top3ratio = uma_ratio(v.ability.extra.race.r1 + v.ability.extra.race.r2 + v.ability.extra.race.r3, v.ability.extra.race.rt, nil)
+                    if top3ratio >= card.ability.extra.ratio2 then
+                        xmult = xmult + card.ability.extra.xmult
+                    elseif top3ratio >= card.ability.extra.ratio1 then
+                        mult = mult + card.ability.extra.mult
                     else
-                        chips = chips + 100
+                        chips = chips + card.ability.extra.chips
                     end
                 end
             end
         end
 
-        xmult = (xmult > 1) and xmult or 1
-
         return { vars = {
+            card.ability.extra.chips,
+            card.ability.extra.mult,
+            card.ability.extra.xmult,
+            card.ability.extra.ratio1 * 100,
+            card.ability.extra.ratio2 * 100,
             chips,
             mult,
-            xmult
+            (xmult > 1) and xmult or 1
         } }
     end,
 
@@ -2173,13 +2176,13 @@ SMODS.Joker{ --Orfevre
 
             for _, v in ipairs(G.jokers.cards) do
                 if v.ability.extra and v.ability.extra.race then
-                    local top3ratio = (v.ability.extra.race.r1 + v.ability.extra.race.r2 + v.ability.extra.race.r3) / v.ability.extra.race.rt
-                    if top3ratio == 1 then
-                        xmult = xmult + 5
-                    elseif top3ratio >= 0.5 then
-                        mult = mult + 20
+                    local top3ratio = uma_ratio(v.ability.extra.race.r1 + v.ability.extra.race.r2 + v.ability.extra.race.r3, v.ability.extra.race.rt, nil)
+                    if top3ratio >= card.ability.extra.ratio2 then
+                        xmult = xmult + card.ability.extra.xmult
+                    elseif top3ratio >= card.ability.extra.ratio1 then
+                        mult = mult + card.ability.extra.mult
                     else
-                        chips = chips + 100
+                        chips = chips + card.ability.extra.chips
                     end
                 end
             end
@@ -2288,8 +2291,6 @@ SMODS.Joker{ --Gold City
         return nil
     end
 }
-
-
 
 SMODS.Joker{ --Nice Nature
     key = "nature",
@@ -2617,6 +2618,7 @@ SMODS.Joker{ --XYZ
         return nil
     end
 }
+-- New Joker definitions
 
 
 
@@ -2649,7 +2651,7 @@ SMODS.Joker{ --Spacer
 
 
 
---Definitions for when they're ready
+-- WIP Joker definitions
 SMODS.Joker{ --Super Creek
     key = "creek",
     blueprint_compat = false,
@@ -2902,12 +2904,13 @@ SMODS.Joker{ --Red Desire
         return false
     end
 }
+-- WIP Joker definitions
 
 
 
 
 
---[[
+--[[ NOTES
 
 To do list:
     Frisk:

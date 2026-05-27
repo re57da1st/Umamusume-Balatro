@@ -1,14 +1,17 @@
+-- Consumable Definition
 SMODS.ConsumableType { --Fuku Cards
     key = 'fuku_cards',
     primary_colour = G.C.UMA.BETTER_TAROT,
     secondary_colour = G.C.UMA.BETTER_TAROT2,
     collection_rows = { 5, 6, 5 },
 }
+-- Consumable Definition
 
 
 
---BETTER TAROTS
---Check compatibility with Fortune Teller
+
+
+-- Tarot+ Cards (Good)
 SMODS.Consumable { --The Fool
     key = 'better_fool',
     set = 'fuku_cards',
@@ -621,11 +624,13 @@ SMODS.Consumable { --Judgement
         badges[#badges + 1] = create_badge(localize('uma_tarot_plus'), G.C.UMA.BETTER_TAROT2, G.C.UMA.WHITE, 1.2)
     end
 }
+-- Tarot+ Cards (Good)
 
 
 
---WORSE TAROTS
 
+
+-- Tarot- Cards (Bad)
 SMODS.Consumable { --The Magician
     key = 'worse_magician',
     set = 'fuku_cards',
@@ -1680,11 +1685,13 @@ SMODS.Consumable { --The World
         badges[#badges + 1] = create_badge(localize('uma_tarot_minus'), G.C.UMA.WORSE_TAROT2, G.C.UMA.WHITE, 1.2)
     end
 }
+-- Tarot- Cards (Bad)
 
 
 
---Better Planet Cards
 
+
+-- Planet+ Cards (Good)
 SMODS.Consumable {--Better Mercury
     key = "better_mercury",
     set = 'fuku_cards',
@@ -2104,7 +2111,13 @@ SMODS.Consumable {--Better Twin Moons
         return G.GAME.hands[self.config.hand_type].played > 0
     end
 }
+-- Planet+ Cards (Good)
 
+
+
+
+
+-- Directories
 uma_tarot_plus_directory = {
     "c_uma_better_fool",
     "c_uma_better_magician",
@@ -2161,7 +2174,13 @@ uma_planet_plus_directory = {
     "c_uma_better_eris",
     "c_uma_better_twin_moons"
 }
+-- Directories
 
+
+
+
+
+-- Fuku-related Ownerships
 SMODS.Joker:take_ownership("j_satellite", {
     loc_vars = function(self, info_queue, card)
         local planets_used = 0
@@ -2206,3 +2225,4 @@ SMODS.Joker:take_ownership("j_constellation", {
         end
     end
 }, true)
+-- Fuku-related Ownerships

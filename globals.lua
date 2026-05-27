@@ -1,6 +1,4 @@
--- GLOBALS
-
---Colors Definition 1
+--Color Definitions
 G.C.UMA = {
     RED = HEX("FF0000"),
     BLACK = HEX("000000"),
@@ -53,10 +51,9 @@ SMODS.Gradient {
     cycle = 2
 }
 
---Colors Definition 2
-local loc_colour_ref = loc_colour
+local old_loc_colour = loc_colour
 function loc_colour(_c, _default)
-    if not G.ARGS.LOC_COLOURS then loc_colour_ref() end
+    if not G.ARGS.LOC_COLOURS then old_loc_colour() end
     G.ARGS.LOC_COLOURS.uma_red = G.C.UMA.RED
     G.ARGS.LOC_COLOURS.uma_black = G.C.UMA.BLACK
     G.ARGS.LOC_COLOURS.uma_blue = G.C.UMA.BLUE
@@ -83,14 +80,225 @@ function loc_colour(_c, _default)
     G.ARGS.LOC_COLOURS.uma_doto = G.C.UMA.DOTO
     G.ARGS.LOC_COLOURS.uma_banish = G.C.UMA.BANISH
     G.ARGS.LOC_COLOURS.uma_feno = G.C.UMA.FENO
-    return loc_colour_ref(_c, _default)
+    return old_loc_colour(_c, _default)
 end
+--Color Definitions
+
+
+
+
+
+--Atlas Definitions
+SMODS.Atlas({ --Mod Icon
+    key = "modicon",
+    path = "icon.png",
+    px = 68,
+    py = 68
+})
+
+SMODS.Atlas({ --(J)okers
+    key = "j_umas",
+    path = "j_umas.png",
+    px = 71,
+    py = 95
+})
+
+SMODS.Atlas({ --Test Jokers
+    key = "test",
+    path = "j_umas_test.png",
+    px = 71,
+    py = 95
+})
+
+SMODS.Atlas({ --(C)onsumables
+    key = "c_umas",
+    path = "c_umas.png",
+    px = 71,
+    py = 95
+})
+
+SMODS.Atlas({ --(E)nhancements
+    key = "e_umas",
+    path = "e_umas.png",
+    px = 71,
+    py = 95
+})
+
+SMODS.Atlas({ --Booster (P)acks
+    key = "p_umas",
+    path = "p_umas.png",
+    px = 71,
+    py = 95
+})
+
+SMODS.Atlas({ --Boss (Bl)inds
+    key = "bl_umas",
+    path = "bl_umas.png",
+    px = 34,
+    py = 34,
+    frames = 21,
+    animate = true,
+    atlas_table = "ANIMATION_ATLAS"
+})
+
+SMODS.Atlas({ --Card (B)acks [also known as "decks"]
+    key = "b_umas",
+    path = "b_umas.png",
+    px = 71,
+    py = 95
+})
+
+SMODS.Atlas({ --(St)ickers
+    key = "st_umas",
+    path = "st_umas.png",
+    px = 71,
+    py = 95
+})
+--Atlas Definitions
+
+
+
+
+
+--Pools
+
+--Uma Jokers
+--eval SMODS.add_card({set = "uma_jokers"})
+SMODS.ObjectType({
+    key = "uma_jokers",
+    default = "j_uma_norn",
+    cards = {
+        j_uma_helios = true,
+        j_uma_daiwa = true,
+        j_uma_agnes = true,
+        j_uma_turbo = true,
+        j_uma_goldship = true,
+        j_uma_oguri = true,
+        j_uma_bakushin = true,
+        j_uma_mambo = true,
+        j_uma_chiyono = true,
+        j_uma_norn = true,
+        j_uma_obey = true,
+        j_uma_fuku = true,
+        j_uma_love = true,
+        j_uma_vodka = true,
+        j_uma_teio = true,
+        j_uma_haru = true,
+        j_uma_lilac = true,
+        j_uma_neo = true,
+        j_uma_mini = true,
+        j_uma_maruzensky = true,
+        j_uma_ebeyan = true,
+        j_uma_vivlos = true,
+        j_uma_tact = true,
+        j_uma_doto = true,
+        j_uma_opera = true,
+        j_uma_aruvu = true,
+        j_uma_belno = true,
+        j_uma_tachyon = true,
+        j_uma_mayano = true,
+        j_uma_festa = true,
+        j_uma_dober = true,
+        j_uma_orfevre = true,
+        j_uma_rudolf = true,
+        j_uma_g_city = true,
+        j_uma_desire = true,
+        j_uma_nature = true,
+        j_uma_air = true,
+
+        --Move above once complete
+        j_uma_creek = true,
+        j_uma_tamamo = true,
+        j_uma_bourbon = true,
+        j_uma_rickey = true,
+        j_uma_almond = true,
+        j_uma_donna = true,
+        j_uma_transcend = true,
+        j_uma_feno = true,
+    }
+})
+
+SMODS.ObjectType({
+    key = "uma_tarot_plus",
+    default = "c_uma_better_strength",
+    cards = {
+        c_uma_better_fool = true,
+        c_uma_better_magician = true,
+        c_uma_better_high_priestess = true,
+        c_uma_better_empress = true,
+        c_uma_better_emperor = true,
+        c_uma_better_heirophant = true,
+        c_uma_better_chariot = true,
+        c_uma_better_better_lovers = true,
+        c_uma_better_justice = true,
+        c_uma_better_hermit = true,
+        c_uma_better_wheel_of_fortune = true,
+        c_uma_better_strength = true,
+        c_uma_better_hanged_man = true,
+        c_uma_better_death = true,
+        c_uma_better_devil = true,
+        c_uma_better_tower = true,
+        c_uma_better_judgement = true,
+    }
+})
+
+SMODS.ObjectType({
+    key = "uma_tarot_minus",
+    default = "c_uma_worse_strength",
+    cards = {
+        c_uma_worse_magician = true,
+        c_uma_worse_empress = true,
+        c_uma_worse_emperor = true,
+        c_uma_worse_heirophant = true,
+        c_uma_worse_lovers = true,
+        c_uma_worse_chariot = true,
+        c_uma_worse_justice = true,
+        c_uma_worse_hermit = true,
+        c_uma_worse_wheel_of_fortune = true,
+        c_uma_worse_strength = true,
+        c_uma_worse_hanged_man = true,
+        c_uma_worse_temperance = true,
+        c_uma_worse_devil = true,
+        c_uma_worse_tower = true,
+        c_uma_worse_star = true,
+        c_uma_worse_moon = true,
+        c_uma_worse_sun = true,
+        c_uma_worse_world = true,
+    }
+})
+
+SMODS.ObjectType({
+    key = "uma_planet_plus",
+    default = "c_uma_better_pluto",
+    cards = {
+        c_uma_better_mercury = true,
+        c_uma_better_venus = true,
+        c_uma_better_earth = true,
+        c_uma_better_mars = true,
+        c_uma_better_jupiter = true,
+        c_uma_better_saturn = true,
+        c_uma_better_uranus = true,
+        c_uma_better_neptune = true,
+        c_uma_better_pluto = true,
+        c_uma_better_planet_x = true,
+        c_uma_better_ceres = true,
+        c_uma_better_eris = true,
+        c_uma_better_twin_moons = true,
+    }
+})
+--Pools
+
+
 
 
 
 --Global Functions
 
 --Tally up the amount of a certain rank in the deck
+---@param rank integer Which rank to tally
+---@param area table Area to look at for tallying
+---@param modifier number Value to multiply the total count by
+---@return number return
 function Uma_rank_tally(rank, area, modifier)
     if not area then area = G.playing_cards end
     if not modifier then modifier = 1 end
@@ -104,6 +312,10 @@ function Uma_rank_tally(rank, area, modifier)
 end
 
 --Chooses a random value from {items} based on their assigned {weights}
+---@param items table List of items to choose from
+---@param weights table List of weights that correlate 1:1 to the items
+---@param seed any the seed used for randomization
+---@return any return The item that was chosen
 function Uma_weighted_picker(items, weights, seed)
     local size = math.min(#items, #weights)
     local weight_sum = 0
@@ -118,6 +330,24 @@ function Uma_weighted_picker(items, weights, seed)
     return items[size]
 end
 
+--Utilize the Uma Weighted Function to hold all Enhancement data for all Turf Packs in one place
+---@return any return A random uma-related enhancement
+function Uma_turf_pack_poll()
+    local items = {
+        "m_uma_turf",
+        "m_uma_dirt",
+        "m_uma_mossy",
+        "m_uma_blossom"
+    }
+    local weights = {
+        12,
+        7,
+        5,
+        1
+    }
+    return Uma_weighted_picker(items, weights, "turf_pack")
+end
+
 --Enable/disable different subsets within the "Uma Assorted" set
 function Uma_CSS_check()
     G.GAME.uma_ccs_rate = (
@@ -129,6 +359,7 @@ function Uma_CSS_check()
 end
 
 --Updates the max number of hands you can play, set by G.GAME.uma_max_hands
+---@param max_hands integer Sets the max number of hands you can have at once
 function Uma_update_max_hands(max_hands)
     if max_hands then
         G.hand.config.card_limit = max_hands
@@ -146,6 +377,9 @@ function Uma_update_max_hands(max_hands)
 end
 
 --Checks a provided table to see if the provided string inside
+---@param string string The input string to check for
+---@param table table The input table to check in
+---@return boolean return
 function Uma_check_table_for_string(string, table)
     for i, _ in pairs(table) do
         if string == table[i] then
@@ -156,6 +390,8 @@ function Uma_check_table_for_string(string, table)
 end
 
 --Add bans to pre-existing challenges non-destructively
+---@param challenge string The challenge key you want to modify
+---@param bans table a table of banned items you want to insert
 function Uma_Challenge_ban(challenge, bans)
     local old_data = SMODS.Challenges[challenge]
     if not old_data.restrictions then
@@ -196,8 +432,9 @@ function Uma_Tact_refresh()
     end
 end
 
+--Gets the race data or a provided Uma
 ---@param horse string Pass in the card key here
----@return table stats Name, #1st, #2nd, #3rd, #total
+---@return table stats {Name, #1st, #2nd, #3rd, #total}
 function uma_get_data(horse)
     local name = G.P_CENTERS[horse].key
     local r1 = G.P_CENTERS[horse].config.extra.race.r1
@@ -207,22 +444,26 @@ function uma_get_data(horse)
     return {name, r1, r2, r3, rt}
 end
 
+--Gets the Ratio of 2 numbers, rounded to 2 decimal places
 ---@param numerator integer The set of races you want to include
 ---@param denominator integer Usually the total number of races
----@return number output the percentage out of 100 for the given ratio
-function uma_ratio(numerator, denominator)
-    return (math.floor(((numerator)/denominator)*10000)/100)
+---@param modifier number Multiplies the ratio by the number (I.E. 100)
+---@return number output the percentage, from 0 to 1, for the given ratio
+function uma_ratio(numerator, denominator, modifier)
+    modifier = modifier or 1
+    return (math.floor(((numerator)/denominator)*100*modifier)/modifier)
 end
 
+--Compare the race stats of 2 umas
 ---@param umas table List of Uma keys to compare
----@param values table list of 1st, 2nd, 3rd places to compare (I.E. {1,1,0} for 1st and 2nd place)
+---@param values table list of 1st, 2nd, 3rd places to compare (I.E. {1,1,0} for 1st and 2nd place only)
 ---@return integer output Lists the uma with the best stats (equal to their order in 'umas' input)
 function uma_compare(umas, values)
     local ratios = {}
     for i = 1, #umas do
         local uma = uma_get_data(umas[i])
         print(uma)
-        ratios[i] = uma_ratio(uma[2]*values[1] + uma[3]*values[2] + uma[4]*values[3] , uma[5])
+        ratios[i] = uma_ratio(uma[2]*values[1] + uma[3]*values[2] + uma[4]*values[3] , uma[5], nil)
         print(ratios[i])
     end
 
@@ -239,6 +480,10 @@ function uma_compare(umas, values)
     print(best_uma)
     return best_uma
 end
+--Global Functions
+
+
+
 
 
 --Constantly running code for other required effects
@@ -324,7 +569,7 @@ function SMODS.current_mod.calculate(self, context)
     --Limit your hands if G.GAME.uma_max_hands is set and G.GAME.uma_max_hands_buffer is filled
     if G.GAME.uma_max_hands and G.GAME.current_round.hands_left then
         if G.GAME.current_round.hands_left > G.GAME.uma_max_hands and G.GAME.uma_max_hands_buffer > 0 then
-            Uma_update_max_hands()
+            Uma_update_max_hands(nil)
         end
     end
 
@@ -396,6 +641,9 @@ function SMODS.current_mod.calculate(self, context)
     end
 
 end
+--Constantly running code for other required effects
+
+
 
 
 
@@ -406,7 +654,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
         --Set up max hand values
         G.GAME.uma_max_hands_buffer = 0
         G.GAME.uma_default_hands = G.GAME.round_resets.hands
-        Uma_update_max_hands()
+        Uma_update_max_hands(nil)
 
         --Doubles the size of the consumable rate to make cards 2x more likely on URA Deck
         CssAPI.gamerate = 1
@@ -458,3 +706,153 @@ function SMODS.current_mod.reset_game_globals(run_start)
     end
 
 end
+--Code that runs at the beginning of every run
+
+
+
+
+
+--Hooks
+
+--Agnes Hook to make sure cards don't get undairly debuffed
+local old_g_funcs_play_cards_from_highlighted = G.FUNCS.play_cards_from_highlighted
+G.FUNCS.play_cards_from_highlighted = function(e)
+    for _, v in pairs(G.hand.highlighted) do
+        v.ability.uma = v.ability.played_this_ante
+    end
+    g = old_g_funcs_play_cards_from_highlighted(e)
+    return g
+end
+
+--Hook for cards to stop negative sell values from dropping your max money below the minimum
+local old_card_can_sell_card = Card.can_sell_card
+function Card:can_sell_card(context)
+    local g = old_card_can_sell_card(self, context)
+    if g and self.sell_cost < 0 then
+        return G.GAME.dollars + self.sell_cost >= G.GAME.bankrupt_at
+    end
+    return g
+end
+
+--Add each uma joker into the shop pool a 2nd time (2x more common) on URA deck
+local old_get_currentpool = get_current_pool
+function get_current_pool(_type, _rarity, _legendary, _append)
+    local g, _pool_key = old_get_currentpool(_type, _rarity, _legendary, _append)
+    if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_ura' then
+        for _, v in pairs(copy_table(g)) do
+            if v ~= 'UNAVAILABLE' and G.P_CENTERS[v] and (G.P_CENTERS[v].set == 'Joker' or G.P_CENTERS[v].set == 'Consumeable') and G.P_CENTERS[v].original_mod and G.P_CENTERS[v].original_mod.id == 'uma' then
+                table.insert(g, v)
+            end
+        end
+    end
+    return g, _pool_key
+end
+
+--If the run was left mid-blind, retrigger all bakushin timers upon entering again
+local old_start_run = Game.start_run
+function Game:start_run(args)
+    local g = old_start_run(self, args)
+    if G.jokers.cards then
+        for _, v in ipairs(G.jokers.cards) do
+            if v.label == "j_uma_bakushin" then
+                v.ability.extra.resume = true
+                v.ability.extra.active = false
+            end
+        end
+    end
+    return g
+end
+
+--Multiply money gain based on G.GAME.uma_money_mod
+local old_ease_dollars = ease_dollars
+function ease_dollars(mod, instant)
+    if G.GAME.uma_money_mod and mod > 0 then
+        mod = mod * G.GAME.uma_money_mod
+    end
+    g = old_ease_dollars(mod, instant)
+    return g
+end
+
+local old_game_start_run = Game.start_run
+function Game:start_run(args)
+    old_game_start_run(self, args)
+
+    self.uma_g_city_button = UIBox {
+        definition = {
+            n = G.UIT.ROOT,
+            config = {
+                colour = G.C.CLEAR
+            },
+            nodes = {
+                {
+                    n = G.UIT.C,
+                    config = {
+                        align = 'cm',
+                        padding = 0.15,
+                        r = 0.08,
+                        hover = true,
+                        shadow = true,
+                        colour = SMODS.Gradients.uma_rainbow, -- color of the button background
+                        button = 'uma_g_city_button_click', -- function in G.FUNCS that will run when this button is clicked
+                        func = 'uma_g_city_button_func', -- function in G.FUNCS that will run every frame this button exists (optional)
+                    },
+                    nodes = {
+                        {
+                            n = G.UIT.R,
+                            nodes = {
+                                {
+                                    n = G.UIT.T,
+                                    config = {
+                                        text = 'Draw Card',
+                                        colour = G.C.UI.TEXT_LIGHT, -- color of the button text
+                                        scale = 0.4,
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            n = G.UIT.R,
+                            config = {
+                                align = 'cm'
+                            },
+                            nodes = {
+                                {
+                                    n = G.UIT.T,
+                                    config = {
+                                        text = '$'..G.P_CENTERS.j_uma_g_city.config.extra.cost,
+                                        colour = G.C.UI.TEXT_LIGHT, -- color of the button text
+                                        scale = 0.4,
+                                    }
+                                },
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        config = {
+            align = 'tm', -- position relative to the card, meaning "center left". Follow the SMODS UI guide for more alignment options
+            major = G.deck,
+            bond = 'weak',
+            offset = { x = 0.2, y = -0.4 } -- depends on the alignment you want, without an offset the button will look as if floating next to the card, instead of behind it
+        }
+    }
+    self.uma_g_city_button.states.visible = false
+
+end
+
+local old_create_card = SMODS.create_card
+function SMODS.create_card(t)
+    if t.set == "Base" and pseudorandom("uma_enhancedd_rate") <= G.GAME.uma_enhanced_rate then
+        t.set = "Enhanced"
+    end
+    local card = old_create_card(t)
+    return card
+end
+
+local old_destroy_cards = SMODS.destroy_cards
+function SMODS.destroy_cards(cards, bypass_eternal, immediate, skip_anim)
+    print("Destroying!!!")
+    old_destroy_cards(cards, bypass_eternal, immediate, skip_anim)
+end
+--Hooks

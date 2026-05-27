@@ -1,3 +1,4 @@
+-- Booster Packs
 SMODS.Booster { --Normal Turf Pack
     key = "turf_normal",
     weight = 2,
@@ -180,19 +181,4 @@ SMODS.Booster { --Mega Turf Pack
         }
     end
 }
-
-Uma_turf_pack_poll = function() --Utilize the Uma Weighted Function to hold all Enhancement data for all Turf Packs in one place
-    local items = {
-        "m_uma_turf",
-        "m_uma_dirt",
-        "m_uma_mossy",
-        "m_uma_blossom"
-    }
-    local weights = {
-        12,
-        7,
-        5,
-        1
-    }
-    return Uma_weighted_picker(items, weights, "turf_pack")
-end
+--Booster Packs

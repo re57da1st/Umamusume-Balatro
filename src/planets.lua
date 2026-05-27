@@ -1,4 +1,4 @@
---Planet Cards
+-- New Planet Cards
 SMODS.Consumable { --Twin Moons
     key = "twin_moons",
     set = "Planet",
@@ -25,3 +25,4 @@ SMODS.Consumable { --Twin Moons
             1.2)
     end
 }
+-- New Planet Cards

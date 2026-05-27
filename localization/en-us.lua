@@ -422,10 +422,10 @@ return {
             j_uma_orfevre = {
                 name = "Orfevre",
                 text = {
-                    "Gives {C:chips}+100{} Chips and {C:mult}+20 {X:mult,C:white}X5{} Mult",
+                    "Gives {C:chips}+#1#{} Chips and {C:mult}+#2# {X:mult,C:white}X#3#{} Mult",
                     "for every {C:uma_rainbow}Uma{} joker that has placed",
-                    "{C:attention}Top 3{} in {C:chips}<50%{}/{C:mult}>50%{}/{X:mult,C:white}100%{} of their races",
-                    "{C:inactive}(Currently {C:chips}+#1# {C:mult}+#2# {X:mult,C:white}X#3#{C:inactive})"
+                    "{C:attention}Top 3{} in {C:chips}<#4#%{}/{C:mult}>#4#%{}/{X:mult,C:white}#5#%{} of their races",
+                    "{C:inactive}(Currently {C:chips}+#6# {C:mult}+#7# {X:mult,C:white}X#8#{C:inactive})"
                 },
             },
 

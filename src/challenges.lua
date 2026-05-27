@@ -1,3 +1,4 @@
+-- New Challenges
 SMODS.Challenge {--Choose your Uma!
     key = 'horse',
     rules = {
@@ -109,11 +110,15 @@ SMODS.Challenge {--All the horses
     vouchers = {
     }
 }
+-- New Challenges
 
 
---Example card definition:
---{ s = 'D', r = 'Q', e = 'm_steel', d = 'polychrome', g = 'Red' }
 
+
+
+-- New Challenge Bans
+
+-- "Fragile" Challenge
 Uma_Challenge_ban("c_fragile_1", {
     cards = {
         {id = 'p_uma_turf_normal', ids = {
@@ -126,5 +131,4 @@ Uma_Challenge_ban("c_fragile_1", {
     tags = {},
     other = {}
 })
-
-
+-- New Challenge Bans

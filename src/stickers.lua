@@ -1,3 +1,4 @@
+-- New Sticker Definitions
 SMODS.Sticker { --Wealth Sticker
     key = "wealth",
     atlas = 'st_umas',
@@ -18,3 +19,4 @@ SMODS.Sticker { --Wealth Sticker
         end
     end
 }
+-- New Sticker Definitions
