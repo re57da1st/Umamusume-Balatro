@@ -296,7 +296,7 @@ SMODS.Consumable { --SSR Ticket
     set = 'uma_ccs',
     pos = { x = 13, y = 3 },
     atlas = 'c_umas',
-    --soul_pos = { x = 13, y = 2 },
+    soul_pos = { x = 12, y = 4 },
 
     loc_vars = function(self, info_queue, card)
         return nil
