@@ -685,6 +685,8 @@ function SMODS.current_mod.reset_game_globals(run_start)
 
         --Set up special rarity weights for the legendary desk
         if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_legendary' then
+            --85, 11, 3, 1 for 3x as common
+            --81, 15, 3, 1 for 2x as common
             SMODS.ObjectTypes["Joker"].rarities[1].weight = 0.85
             SMODS.ObjectTypes["Joker"].rarities[2].weight = 0.11
             SMODS.ObjectTypes["Joker"].rarities[3].weight = 0.03

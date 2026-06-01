@@ -694,7 +694,7 @@ SMODS.Consumable { --The Emperor
                 func = function()
                     if G.consumeables.config.card_limit > #G.consumeables.cards then
                         play_sound('timpani')
-                        SMODS.add_card({ set = 'uma_worse_Tarot' })
+                        SMODS.add_card({ set = 'uma_tarot_minus', area = G.consumeables })
                         card:juice_up(0.3, 0.5)
                     end
                     return true
