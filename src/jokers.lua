@@ -2953,7 +2953,19 @@ SMODS.Joker{ --Curren Chan
 --[[ NOTES
 
 To do list:
+
+    GAMBLING HORSE
+
+    Chooses 3 cards randomly in the deck *after* you play a hand (Seals editions enhancements are unique cards)
+
+    if your hand contains 1/2/3 of those cards, smth good happens!
+
+    little slot machine visual underneath
+
+
     Frisk:
+
+
 
     Potential horses:
         uper eek
