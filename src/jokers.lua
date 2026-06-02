@@ -2904,6 +2904,46 @@ SMODS.Joker{ --Red Desire
         return false
     end
 }
+
+SMODS.Joker{ --Transcend
+    key = "curren",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 4, y = 5 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 9,
+        r2 = 3,
+        r3 = 1,
+        rt = 18
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        return nil
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
 -- WIP Joker definitions
 
 

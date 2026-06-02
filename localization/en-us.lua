@@ -473,6 +473,13 @@ return {
                     "shop are {C:common}Common"
                 },
             },
+
+            j_uma_curren = {
+                name = "Curren Chan",
+                text = {
+                    "stuff"
+                },
+            },
         },
 
         Planet = {
