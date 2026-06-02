@@ -2905,7 +2905,7 @@ SMODS.Joker{ --Red Desire
     end
 }
 
-SMODS.Joker{ --Transcend
+SMODS.Joker{ --Curren Chan
     key = "curren",
     blueprint_compat = false,
     rarity = 1,
