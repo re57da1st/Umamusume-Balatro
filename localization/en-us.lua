@@ -480,6 +480,13 @@ return {
                     "stuff"
                 },
             },
+
+            j_uma_slotmachine = {
+                name = "Slot Machine",
+                text = {
+                    "{C:inactive}I can't stop winning!"
+                },
+            },
         },
 
         Planet = {

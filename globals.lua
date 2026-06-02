@@ -614,9 +614,14 @@ function SMODS.current_mod.calculate(self, context)
     --Enable showing race placings if certain cards are in play
     G.GAME.show_placings = (G.GAME.uma_placing_req > 0)
 
-    --Enable GHold city's draw button if she is present
+    --Enable Gold city's draw button if she is present
     if G.uma_g_city_button and G.uma_g_city_button.states then
         G.uma_g_city_button.states.visible = (#find_joker("j_uma_g_city") ~= 0)
+    end
+
+        --Enable Slot Machine if conditions. . .
+    if G.uma_slot_machine_UI and G.uma_slot_machine_UI.states then
+        G.uma_slot_machine_UI.states.visible = (#find_joker("j_uma_slotmachine") ~= 0)
     end
 
     --Force all jokers to be common if certain conditions are met
@@ -841,6 +846,21 @@ function Game:start_run(args)
     }
     self.uma_g_city_button.states.visible = false
 
+self.uma_slot_machine_UI = UIBox {
+        definition = {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.05, colour = G.C.GREEN}, nodes = {
+            {n = G.UIT.C, config = {r = 0.1, minw = 2, minh = 1, align = "m", padding = 0.1, colour = G.C.BLACK}, nodes = {
+                {n = G.UIT.O, config = { object = G.uma_slot_machine }}
+            }}
+    }},
+        config = {
+            align = 'mb',
+            major = G.jokers,
+            --parent = card,
+            offset = { x = 0, y = 0.2 }
+        }
+    }
+    self.uma_slot_machine_UI.states.visible = false
+
 end
 
 local old_create_card = SMODS.create_card
@@ -858,3 +878,25 @@ function SMODS.destroy_cards(cards, bypass_eternal, immediate, skip_anim)
     old_destroy_cards(cards, bypass_eternal, immediate, skip_anim)
 end
 --Hooks
+
+--Card Areas
+
+SMODS.current_mod.custom_card_areas = function(g)
+    g.uma_slot_machine = CardArea(
+        0,
+        0,
+        g.CARD_W * 2.95,-- * 0.33,
+        g.CARD_H * 0.95,-- * 0.33,
+        {
+            card_limit = 3,
+            type = 'title',
+            highlight_limit = 0,
+            bg_colour = g.C.RED,
+            no_card_count = true,
+            align_buttons = true,
+        }
+    )
+end
+
+--Card Areas
+

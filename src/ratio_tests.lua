@@ -106,7 +106,7 @@ print(hidden_hands)
 function my_menu_function(menu_name)
    return {n = G.UIT.ROOT, config = {r = 0.1, minw = 2.5, minh = 1.5, align = "cm", padding = 0.05, colour = G.C.GREEN}, nodes = {
             {n = G.UIT.C, config = {r = 0.1, minw = 2.5, minh = 1.5, align = "m", padding = 0.1, colour = G.C.BLACK}, nodes = {
-                {n = G.UIT.R, config = {r = 0.1, minw = 2.5, minh = 1.5, align = "m", padding = 0.1, colour = G.C.BLACK}, nodes = {
+                {n = G.UIT.O, config = {r = 0.1, minw = 2.5, minh = 1.5, align = "m", padding = 0.1, colour = G.C.BLACK}, nodes = {
                     
                 }}
             }}
