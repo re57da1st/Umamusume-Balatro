@@ -1,3 +1,5 @@
+--[[
+
 local uma_list = {
     "j_uma_helios",
     "j_uma_daiwa",
@@ -71,7 +73,7 @@ local donnaRatio = uma_ratio(r1+r2,rt)
 
 local pass, fail = 0, 0
 for i = 1, #uma_list do
-    if G.P_CENTERS[uma_list[i]].config.extra.race then
+    if G.P_CENTERS[uma_list[i] ].config.extra.race then
         local name, r1, r2, r3, rt = uma_get_data(uma_list[i])
         local testRatio = uma_ratio(r1+r2,rt)
         if testRatio >= donnaRatio then
@@ -98,3 +100,24 @@ for k in pairs(G.GAME.hands) do
 end
 
 print(hidden_hands)
+
+]]
+
+function my_menu_function(menu_name)
+   return {n = G.UIT.ROOT, config = {r = 0.1, minw = 2.5, minh = 1.5, align = "cm", padding = 0.05, colour = G.C.GREEN}, nodes = {
+            {n = G.UIT.C, config = {r = 0.1, minw = 2.5, minh = 1.5, align = "m", padding = 0.1, colour = G.C.BLACK}, nodes = {
+                {n = G.UIT.R, config = {r = 0.1, minw = 2.5, minh = 1.5, align = "m", padding = 0.1, colour = G.C.BLACK}, nodes = {
+                    
+                }}
+            }}
+    }}
+end
+
+-- A simple UIBox being created:
+local my_menu = UIBox({
+   definition = my_menu_function(...),
+   config = {type = "cm"}
+})
+
+-- A UIBox must be placed in an Object node!
+local my_menu_node = {n=G.UIT.O, config={object = my_menu}}
