@@ -480,6 +480,91 @@ function uma_compare(umas, values)
     print(best_uma)
     return best_uma
 end
+
+--Adds a card into a Slot Machine slot of your choice
+---@param card table Card structure to emplace into the Slot Machine
+---@param num integer Which Slot Machine Slot the card goes in (1, 2, or 3)
+---@param delay number how long in seconds / game speed the function waits to start
+function uma_AddSlot(card, num, delay)
+
+    local area = G["uma_slot_machine_"..num]
+
+    G.E_MANAGER:add_event(Event({
+        trigger = "after",
+        delay = delay,
+        func = function()
+            area.cards = {}
+            return true
+        end
+    }))
+
+
+    if not card.uma_empty_area then
+
+        card = SMODS.shallow_copy(card)
+
+        G.E_MANAGER:add_event(Event({
+            trigger = "immediate",
+            func = function()
+                local new = SMODS.create_card(card)
+                area:emplace(new)
+                return true
+            end
+        }))
+
+    end
+
+end
+
+--Choose a random card from an area and simplify the data for the AddSlot function to use
+---@param area table chooses a random card from the area provided
+---@return table data Returns simpified data used to emplace into the Slot Machine (returns {uma_empty_area = true} if the area is empty)
+function uma_random_card(area)
+    if not area then area = G.playing_cards end
+    print(#area)
+
+    if #area ~= 0 then
+
+        local rng = pseudorandom("uma_random_card", 1, #area)
+        local card = area[rng]
+
+        print(card.ability)
+
+        if area == G.uma_slot_backlog then
+            table.remove(area, rng)
+        end
+
+        local returning_card = {
+            rank = card.config.card.value,
+            suit = card.config.card.suit,
+            key = card.config.center_key
+        }
+
+        if card.edition then
+            returning_card.edition = card.edition.key
+        end
+
+        if card.seal then
+            returning_card.seal = card.seal
+        end
+
+        return returning_card
+
+    else
+        return {uma_empty_area = true}
+    end
+end
+
+--Clear out and re-fill the Slot Machine backlog so that duplicate cards can be deleted safely
+function uma_reload_slots()
+
+    G.uma_slot_backlog = {}
+
+    for _, v in ipairs(G.playing_cards) do
+        G.uma_slot_backlog[#G.uma_slot_backlog+1] = v
+    end
+
+end
 --Global Functions
 
 
@@ -887,8 +972,11 @@ function SMODS.destroy_cards(cards, bypass_eternal, immediate, skip_anim)
 end
 --Hooks
 
---Card Areas
 
+
+
+
+--Card Areas
 SMODS.current_mod.custom_card_areas = function(g)
 
     local gamble_scale = 1--0.33
@@ -938,6 +1026,4 @@ SMODS.current_mod.custom_card_areas = function(g)
         }
     )
 end
-
 --Card Areas
-

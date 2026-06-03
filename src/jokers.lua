@@ -2978,7 +2978,13 @@ SMODS.Joker{ --Gambling
 
     calculate = function(self, card, context)
         if context.before and G.GAME.current_round.hands_played == 0 and #context.full_hand == 1 then
-            G.uma_slot_machine_UI:emplace(copy_card(context.full_hand[1], nil, nil, G.playing_card))
+            G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+            local card_copied = copy_card(context.full_hand[1], nil, nil, G.playing_card)
+            card_copied:add_to_deck()
+            G.deck.config.card_limit = G.deck.config.card_limit + 1
+            table.insert(G.playing_cards, card_copied)
+            G.uma:emplace(card_copied)
+            card_copied.states.visible = nil
         end
     end,
 
