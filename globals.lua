@@ -619,9 +619,9 @@ function SMODS.current_mod.calculate(self, context)
         G.uma_g_city_button.states.visible = (#find_joker("j_uma_g_city") ~= 0)
     end
 
-        --Enable Slot Machine if conditions. . .
+    --Enable Slot Machine if conditions. . .
     if G.uma_slot_machine_UI and G.uma_slot_machine_UI.states then
-        G.uma_slot_machine_UI.states.visible = (#find_joker("j_uma_slotmachine") ~= 0)
+        G.uma_slot_machine_UI.states.visible = true--(#find_joker("j_uma_slotmachine") ~= 0)
     end
 
     --Force all jokers to be common if certain conditions are met
@@ -846,11 +846,19 @@ function Game:start_run(args)
     }
     self.uma_g_city_button.states.visible = false
 
-self.uma_slot_machine_UI = UIBox {
+    self.uma_slot_machine_UI = UIBox {
         definition = {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.05, colour = G.C.GREEN}, nodes = {
-            {n = G.UIT.C, config = {r = 0.1, minw = 2, minh = 1, align = "m", padding = 0.1, colour = G.C.BLACK}, nodes = {
-                {n = G.UIT.O, config = { object = G.uma_slot_machine }}
-            }}
+            {n = G.UIT.R, config = {r = 0.1, align = "m", padding = 0.1, colour = G.C.BLACK}, nodes = {
+                {n = G.UIT.C, config = {r = 0.1, align = "m", padding = 0.1, colour = lighten(G.C.BLACK, 0.10)}, nodes = {
+                    {n = G.UIT.O, config = { object = G.uma_slot_machine_1 }}
+                }},
+                {n = G.UIT.C, config = {r = 0.1, align = "m", padding = 0.1, colour = lighten(G.C.BLACK, 0.10)}, nodes = {
+                    {n = G.UIT.O, config = { object = G.uma_slot_machine_2 }}
+                }},
+                {n = G.UIT.C, config = {r = 0.1, align = "m", padding = 0.1, colour = lighten(G.C.BLACK, 0.10)}, nodes = {
+                    {n = G.UIT.O, config = { object = G.uma_slot_machine_3 }}
+                }}
+        }}
     }},
         config = {
             align = 'mb',
@@ -882,13 +890,46 @@ end
 --Card Areas
 
 SMODS.current_mod.custom_card_areas = function(g)
-    g.uma_slot_machine = CardArea(
+
+    local gamble_scale = 1--0.33
+
+    g.uma_slot_machine_1 = CardArea(
         0,
         0,
-        g.CARD_W * 2.95,-- * 0.33,
-        g.CARD_H * 0.95,-- * 0.33,
+        g.CARD_W * 0.95 * gamble_scale,
+        g.CARD_H * 0.95 * gamble_scale,
         {
-            card_limit = 3,
+            card_limit = 1,
+            type = 'title',
+            highlight_limit = 0,
+            bg_colour = g.C.RED,
+            no_card_count = true,
+            align_buttons = true,
+        }
+    )
+
+    g.uma_slot_machine_2 = CardArea(
+        0,
+        0,
+        g.CARD_W * 0.95 * gamble_scale,
+        g.CARD_H * 0.95 * gamble_scale,
+        {
+            card_limit = 1,
+            type = 'title',
+            highlight_limit = 0,
+            bg_colour = g.C.RED,
+            no_card_count = true,
+            align_buttons = true,
+        }
+    )
+
+    g.uma_slot_machine_3 = CardArea(
+        0,
+        0,
+        g.CARD_W * 0.95 * gamble_scale,
+        g.CARD_H * 0.95 * gamble_scale,
+        {
+            card_limit = 1,
             type = 'title',
             highlight_limit = 0,
             bg_colour = g.C.RED,
