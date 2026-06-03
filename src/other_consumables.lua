@@ -194,6 +194,18 @@ SMODS.Consumable { --Posterity
         SMODS.destroy_cards(G.hand.highlighted)
     end,
 
+--[[
+
+SMODS.add_card({
+    rank = "Queen",
+    suit = "Clubs",
+    enhancement = "c_base",
+    area = G.uma_slot_machine_UI
+})
+
+]]
+
+
     --You can't combine two cards if their ranks would total up to be higher than 14 (even considering aces low)
     can_use = function(self, card)
         if #G.hand.highlighted == 2 then
