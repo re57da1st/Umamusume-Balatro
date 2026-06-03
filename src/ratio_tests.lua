@@ -121,3 +121,104 @@ local my_menu = UIBox({
 
 -- A UIBox must be placed in an Object node!
 local my_menu_node = {n=G.UIT.O, config={object = my_menu}}
+
+
+SMODS.add_card({
+    rank = "Queen",
+    suit = "Clubs",
+    enhancement = "c_base",
+    area = G.uma_slot_machine_1
+})
+
+
+G.E_MANAGER:add_event(Event({
+    trigger = "after",
+    delay = 1,
+    func = function()
+        SMODS.add_card({
+            rank = "Queen",
+            suit = "Clubs",
+            enhancement = "c_base",
+            area = G.uma_slot_machine_1
+        })
+        return true
+    end
+}))
+
+G.E_MANAGER:add_event(Event({
+    trigger = "after",
+    delay = 1,
+    func = function()
+        SMODS.add_card({
+            rank = "Queen",
+            suit = "Clubs",
+            enhancement = "c_base",
+            area = G.uma_slot_machine_2
+        })
+        return true
+    end
+}))
+
+G.E_MANAGER:add_event(Event({
+    trigger = "after",
+    delay = 1,
+    func = function()
+        SMODS.add_card({
+            rank = "Queen",
+            suit = "Clubs",
+            enhancement = "c_base",
+            area = G.uma_slot_machine_3
+        })
+        return true
+    end
+}))
+
+
+
+
+
+
+local function ClearSlot(num)
+G.E_MANAGER:add_event(Event({
+    trigger = "immediate",
+    func = function()
+        G["uma_slot_machine_"..num].cards = {}
+        return true
+    end
+}))
+end
+
+local function AddSlot(card, num, delay)
+
+    G.E_MANAGER:add_event(Event({
+        trigger = "after",
+        delay = delay,
+        func = function()
+            G["uma_slot_machine_"..num].cards = {}
+            return true
+        end
+    }))
+
+    card.area = G["uma_slot_machine_"..num]
+
+    G.E_MANAGER:add_event(Event({
+        trigger = "immediate",
+        func = function()
+            SMODS.add_card(card)
+            return true
+        end
+    }))
+
+end
+
+local card = {
+    rank = "Queen",
+    suit = "Clubs",
+    enhancement = "c_base"
+}
+
+AddSlot(card, 2, 3)
+AddSlot(card, 2, 3)
+AddSlot(card, 2, 3)
+AddSlot(card, 1, 3)
+AddSlot(card, 2, 3)
