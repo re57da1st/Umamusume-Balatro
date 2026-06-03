@@ -2952,7 +2952,7 @@ SMODS.Joker{ --Gambling
     cost = 3,
     pos = { x = 5, y = 5 },
     atlas = 'j_umas',
-    config = { extra = { race = {
+    config = { extra = { xmult = 1, race = {
         r1 = 1,
         r2 = 2,
         r3 = 3,
@@ -2972,19 +2972,46 @@ SMODS.Joker{ --Gambling
                 } }
         end
         return {vars = {
-            nil
+            card.ability.extra.xmult
         } }
     end,
 
     calculate = function(self, card, context)
-        if context.before and G.GAME.current_round.hands_played == 0 and #context.full_hand == 1 then
-            G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-            local card_copied = copy_card(context.full_hand[1], nil, nil, G.playing_card)
-            card_copied:add_to_deck()
-            G.deck.config.card_limit = G.deck.config.card_limit + 1
-            table.insert(G.playing_cards, card_copied)
-            G.uma:emplace(card_copied)
-            card_copied.states.visible = nil
+        if context.final_scoring_step then
+            uma_reload_slots()
+
+            uma_AddSlot(   uma_random_card(G.uma_slot_backlog)   , 1, 0)
+            uma_AddSlot(   uma_random_card(G.uma_slot_backlog)   , 2, 1)
+            uma_AddSlot(   uma_random_card(G.uma_slot_backlog)   , 3, 1)
+            
+            local xmult = 1
+
+            for i = 1, 3 do
+                local check = false
+                for _, v in ipairs(context.scoring_hand) do
+                    print(v)
+                    v = uma_simplify_card(v)
+                    local match = uma_simplify_card(G["uma_slot_machine_"..i][1])
+                    if v == match then
+                        check = true
+                    end
+                end
+
+                if check then
+                    xmult = xmult + card.abiity.extra.xmult
+                end
+
+
+            end
+
+
+
+
+            uma_reload_slots()
+
+            return {
+                xmult = xmult
+            }
         end
     end,
 

@@ -502,6 +502,7 @@ function uma_AddSlot(card, num, delay)
     if not card.uma_empty_area then
 
         card = SMODS.shallow_copy(card)
+        G.uma_slot_buffer = G.uma_slot_buffer + 1
 
         G.E_MANAGER:add_event(Event({
             trigger = "immediate",
@@ -528,27 +529,11 @@ function uma_random_card(area)
         local rng = pseudorandom("uma_random_card", 1, #area)
         local card = area[rng]
 
-        print(card.ability)
-
         if area == G.uma_slot_backlog then
             table.remove(area, rng)
         end
 
-        local returning_card = {
-            rank = card.config.card.value,
-            suit = card.config.card.suit,
-            key = card.config.center_key
-        }
-
-        if card.edition then
-            returning_card.edition = card.edition.key
-        end
-
-        if card.seal then
-            returning_card.seal = card.seal
-        end
-
-        return returning_card
+        return uma_simplify_card(card)
 
     else
         return {uma_empty_area = true}
@@ -560,10 +545,52 @@ function uma_reload_slots()
 
     G.uma_slot_backlog = {}
 
+    if G.uma_slot_buffer > 0 then
+
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 2,
+            func = function()
+                G.uma_slot_machine_1.cards = {}
+                G.uma_slot_machine_2.cards = {}
+                G.uma_slot_machine_3.cards = {}
+                return true
+            end
+        }))
+
+    end
+
+    G.uma_slot_buffer = 0
+
     for _, v in ipairs(G.playing_cards) do
         G.uma_slot_backlog[#G.uma_slot_backlog+1] = v
     end
 
+end
+
+--Input a card and output a simpler card definition for simple comparison
+---@param card table Input a balatro card definition
+---@return table output Simplified expression of card parts
+function uma_simplify_card(card)
+
+    print(card)
+
+    local simple_card = {
+        
+        rank = card.base.value,
+        suit = card.base.suit,
+        key = card.config.center_key
+    }
+
+    if card.edition then
+        simple_card.edition = card.edition.key
+    end
+
+    if card.seal then
+        simple_card.seal = card.seal
+    end
+
+    return simple_card
 end
 --Global Functions
 
@@ -772,6 +799,8 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.uma_stored_rarities = {}
 
         G.GAME.uma_state = 0
+
+        G.uma_slot_buffer = 0
 
         --Set up special rarity weights for the legendary desk
         if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_legendary' then
