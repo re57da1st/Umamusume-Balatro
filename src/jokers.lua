@@ -2989,23 +2989,40 @@ SMODS.Joker{ --Gambling
             for i = 1, 3 do
                 local check = false
                 for _, v in ipairs(context.scoring_hand) do
-                    print(v)
-                    v = uma_simplify_card(v)
-                    local match = uma_simplify_card(G["uma_slot_machine_"..i][1])
-                    if v == match then
-                        check = true
+                    
+                    local simple_v = uma_simplify_card(v)
+
+                    local slot = G.uma_slot_card_buffer["slot_"..i]
+
+                    print("Slot:")
+                    print(slot)
+                    print("Hand:")
+                    print(simple_v)
+
+                    if #simple_v == #slot then
+
+                        local check2 = true
+                        for k, _ in ipairs(simple_v) do
+                            if simple_v[k] ~= slot[k] then
+                                check2 = false
+                            end
+                        end
+
+                        if check2 then
+                            check = true
+                            print("match!")
+                        end
+
                     end
                 end
 
                 if check then
-                    xmult = xmult + card.abiity.extra.xmult
+                    xmult = xmult + card.ability.extra.xmult
+                    print("xmult: "..xmult)
                 end
 
 
             end
-
-
-
 
             uma_reload_slots()
 
@@ -3091,3 +3108,32 @@ Matthew ideas:
 		every card held in hand gives $3 at end of round but you recieve no interest
 		maybe put a card that says every queen scored has a 1 in 2 chance to give $4
 ]]--
+
+
+
+local simple_v = {
+    suit = "Clubs",
+    key = "c_base",
+    rank = 5
+}
+
+local slot = {
+    suit = "Clubs",
+    key = "c_base",
+    rank = 6
+}
+
+local check2 = true
+for k, _ in ipairs(simple_v) do
+    print("k: "..k)
+    print("simple: "..simple_v[k])
+    print("slot: "..slot[k])
+    if simple_v[k] ~= slot[k] then
+        check2 = false
+        print("false match")
+    else
+        print("match")
+    end
+end
+
+print(check2)

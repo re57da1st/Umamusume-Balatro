@@ -504,6 +504,8 @@ function uma_AddSlot(card, num, delay)
         card = SMODS.shallow_copy(card)
         G.uma_slot_buffer = G.uma_slot_buffer + 1
 
+        G.uma_slot_card_buffer["slot_"..num] = uma_simplify_card(card)
+
         G.E_MANAGER:add_event(Event({
             trigger = "immediate",
             func = function()
@@ -570,27 +572,32 @@ end
 
 --Input a card and output a simpler card definition for simple comparison
 ---@param card table Input a balatro card definition
----@return table output Simplified expression of card parts
+---@return table simple_card Simplified expression of card parts
 function uma_simplify_card(card)
 
-    print(card)
+    if card.base then
 
-    local simple_card = {
-        
-        rank = card.base.value,
-        suit = card.base.suit,
-        key = card.config.center_key
-    }
+        local simple_card = {
 
-    if card.edition then
-        simple_card.edition = card.edition.key
+            rank = card.base.value,
+            suit = card.base.suit,
+            key = card.config.center_key
+        }
+
+        if card.edition then
+            simple_card.edition = card.edition.key
+        end
+
+        if card.seal then
+            simple_card.seal = card.seal
+        end
+
+        return simple_card
+
     end
 
-    if card.seal then
-        simple_card.seal = card.seal
-    end
+    return card
 
-    return simple_card
 end
 --Global Functions
 
@@ -801,6 +808,11 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.uma_state = 0
 
         G.uma_slot_buffer = 0
+        G.uma_slot_card_buffer = {
+            slot_1 = {},
+            slot_2 = {},
+            slot_3 = {}
+        }
 
         --Set up special rarity weights for the legendary desk
         if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_legendary' then
