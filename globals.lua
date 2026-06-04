@@ -486,7 +486,6 @@ end
 ---@param num integer Which Slot Machine Slot the card goes in (1, 2, or 3)
 ---@param delay number how long in seconds / game speed the function waits to start
 function uma_AddSlot(card, num, delay)
-
     local area = G["uma_slot_machine_"..num]
 
     G.E_MANAGER:add_event(Event({
@@ -498,12 +497,10 @@ function uma_AddSlot(card, num, delay)
         end
     }))
 
-
     if not card.uma_empty_area then
 
         card = SMODS.shallow_copy(card)
         G.uma_slot_buffer = G.uma_slot_buffer + 1
-
         G.uma_slot_card_buffer["slot_"..num] = uma_simplify_card(card)
 
         G.E_MANAGER:add_event(Event({
@@ -524,7 +521,6 @@ end
 ---@return table data Returns simpified data used to emplace into the Slot Machine (returns {uma_empty_area = true} if the area is empty)
 function uma_random_card(area)
     if not area then area = G.playing_cards end
-    print(#area)
 
     if #area ~= 0 then
 
@@ -544,7 +540,6 @@ end
 
 --Clear out and re-fill the Slot Machine backlog so that duplicate cards can be deleted safely
 function uma_reload_slots()
-
     G.uma_slot_backlog = {}
 
     if G.uma_slot_buffer > 0 then
@@ -578,7 +573,6 @@ function uma_simplify_card(card)
     if card.base then
 
         local simple_card = {
-
             rank = card.base.value,
             suit = card.base.suit,
             key = card.config.center_key
@@ -736,11 +730,6 @@ function SMODS.current_mod.calculate(self, context)
     --Enable Gold city's draw button if she is present
     if G.uma_g_city_button and G.uma_g_city_button.states then
         G.uma_g_city_button.states.visible = (#find_joker("j_uma_g_city") ~= 0)
-    end
-
-    --Enable Slot Machine if conditions. . .
-    if G.uma_slot_machine_UI and G.uma_slot_machine_UI.states then
-        G.uma_slot_machine_UI.states.visible = true--(#find_joker("j_uma_slotmachine") ~= 0)
     end
 
     --Force all jokers to be common if certain conditions are met

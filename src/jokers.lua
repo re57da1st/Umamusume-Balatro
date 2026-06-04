@@ -2980,37 +2980,50 @@ SMODS.Joker{ --Gambling
         if context.final_scoring_step then
             uma_reload_slots()
 
+            G.E_MANAGER:add_event(Event({
+                trigger = "immediate",
+                func = function()
+                    G.uma_slot_machine_UI.states.visible = true
+                    return true
+                end
+            }))
+
             uma_AddSlot(   uma_random_card(G.uma_slot_backlog)   , 1, 0)
             uma_AddSlot(   uma_random_card(G.uma_slot_backlog)   , 2, 1)
             uma_AddSlot(   uma_random_card(G.uma_slot_backlog)   , 3, 1)
-            
+
             local xmult = 1
 
             for i = 1, 3 do
                 local check = false
-                for _, v in ipairs(context.scoring_hand) do
-                    
-                    local simple_v = uma_simplify_card(v)
 
+                for _, v in ipairs(context.scoring_hand) do
+                    local simple_v = uma_simplify_card(v)
                     local slot = G.uma_slot_card_buffer["slot_"..i]
 
-                    print("Slot:")
-                    print(slot)
-                    print("Hand:")
-                    print(simple_v)
-
                     if #simple_v == #slot then
-
                         local check2 = true
-                        for k, _ in ipairs(simple_v) do
+
+                        for k, _ in pairs(simple_v) do
+
                             if simple_v[k] ~= slot[k] then
                                 check2 = false
                             end
+
                         end
 
                         if check2 then
                             check = true
-                            print("match!")
+
+                            G.E_MANAGER:add_event(Event({
+                                trigger = "after",
+                                delay = 1,
+                                func = function()
+                                    G["uma_slot_machine_"..i].cards[1]:juice_up()
+                                    return true
+                                end
+                            }))
+
                         end
 
                     end
@@ -3018,17 +3031,27 @@ SMODS.Joker{ --Gambling
 
                 if check then
                     xmult = xmult + card.ability.extra.xmult
-                    print("xmult: "..xmult)
                 end
 
 
             end
 
-            uma_reload_slots()
-
             return {
                 xmult = xmult
             }
+        end
+
+        if context.after then
+
+            G.E_MANAGER:add_event(Event({
+                trigger = "immediate",
+                func = function()
+                    G.uma_slot_machine_UI.states.visible = false
+                    uma_reload_slots()
+                    return true
+                end
+            }))
+
         end
     end,
 
