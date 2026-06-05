@@ -159,7 +159,6 @@ SMODS.Consumable { --Posterity
 
         --Get the total value of both cards (aces are considered low)
         local value = (hand[1]:get_id() + hand[2]:get_id() - (13 * Uma_rank_tally(14, hand, nil)))
-
         local ranks = {"Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"}
         local suit, enhancement, seal, edition = {}, {}, {}, {}
 
@@ -167,29 +166,36 @@ SMODS.Consumable { --Posterity
         if hand[1].base.suit then suit[#suit + 1] = hand[1].base.suit end
         if hand[2].base.suit then suit[#suit + 1] = hand[2].base.suit end
 
+        local new_card = {
+            set = "Base",
+            rank = ranks[value],
+            suit = suit[pseudorandom('suit', 1, #suit)],
+        }
+
         --Adds the enhancements of the 1st and 2nd card to a list to randomly pick from (will always have at least one enhancement)
         if hand[1].config.center.key ~= 'c_base' then enhancement[#enhancement + 1] = hand[1].config.center.key end
         if hand[2].config.center.key ~= 'c_base' then enhancement[#enhancement + 1] = hand[2].config.center.key end
-        if #enhancement == 0 then enhancement[#enhancement + 1] = 'c_base' end
+        if #enhancement > 0 then
+            new_card.enhancement = enhancement[pseudorandom('enhancement', 1, #enhancement)]
+        end
 
         --Adds the seals of the 1st and 2nd card to a list to randomly pick from (left blank if none)
         if hand[1].seal then seal[#seal + 1] = hand[1].seal end
         if hand[2].seal then seal[#seal + 1] = hand[2].seal end
+        if #seal > 0 then
+            new_card.seal = seal[pseudorandom('seal', 1, #seal)]
+        end
 
         --Adds the editions of the 1st and 2nd card to a list to randomly pick from (left blank if none)
         if hand[1].edition then edition[#edition + 1] = hand[1].edition.key end
         if hand[2].edition then edition[#edition + 1] = hand[2].edition.key end
+        if #edition > 0 then
+            new_card.edition = edition[pseudorandom('edition', 1, #edition)]
+        end
 
+        print(card)
         --Add a card to your hand based on
-        SMODS.add_card(
-            {
-                rank = ranks[value], --The rank totaled earlier
-                suit = ((#suit > 0) and suit[pseudorandom('suit', 1, #suit)] or nil), --A random suit from earlier
-                enhancement = (enhancement[pseudorandom('enhancement', 1, #enhancement)]), --A random enhancement from earlier
-                seal = ((#seal > 0) and seal[pseudorandom('seal', 1, #seal)] or nil), --A random seal from earlier (if more than one was present)
-                edition = ((#edition > 0) and edition[pseudorandom('edition', 1, #edition)] or nil) --A random edition from earlier (if more than one was present)
-            }
-        )
+        SMODS.add_card(new_card)
         --Destroy the two parents cards
         SMODS.destroy_cards(G.hand.highlighted)
     end,
