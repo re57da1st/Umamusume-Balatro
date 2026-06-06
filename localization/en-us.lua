@@ -484,7 +484,10 @@ return {
             j_uma_slotmachine = {
                 name = "Slot Machine",
                 text = {
-                    "{C:inactive}I can't stop winning!"
+                    "Rolls {C:attention}3{} cards from your deck",
+                    "Gives {X:mult,C:white}X1{} extra mult for each",
+                    "scoring card that matches",
+                    "{C:inactive}(Default {X:mult,C:white}X1{C:inactive})"
                 },
             },
         },
