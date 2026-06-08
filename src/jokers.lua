@@ -2618,6 +2618,159 @@ SMODS.Joker{ --XYZ
         return nil
     end
 }
+
+SMODS.Joker{ --Gambling
+    key = "slotmachine",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 5, y = 5 },
+    atlas = 'j_umas',
+    config = { extra = { xmult = 1, race = {
+        r1 = 1,
+        r2 = 2,
+        r3 = 3,
+        rt = 6
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            card.ability.extra.xmult
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.final_scoring_step then
+            uma_reload_slots()
+
+            G.E_MANAGER:add_event(Event({
+                trigger = "immediate",
+                func = function()
+                    G.uma_slot_machine_UI.states.visible = true
+                    return true
+                end
+            }))
+
+            uma_AddSlot(   uma_random_card(G.uma_slot_backlog)   , 1, 0)
+            uma_AddSlot(   uma_random_card(G.uma_slot_backlog)   , 2, 1)
+            uma_AddSlot(   uma_random_card(G.uma_slot_backlog)   , 3, 1)
+
+            local xmult = 1
+
+            for i = 1, 3 do
+                local check = false
+
+                for _, v in ipairs(context.scoring_hand) do
+                    local simple_v = uma_simplify_card(v)
+                    local slot = G.uma_slot_card_buffer["slot_"..i]
+
+                    if #simple_v == #slot then
+                        local check2 = true
+
+                        for k, _ in pairs(simple_v) do
+
+                            if simple_v[k] ~= slot[k] then
+                                check2 = false
+                            end
+
+                        end
+
+                        if check2 then
+                            check = true
+
+                            G.E_MANAGER:add_event(Event({
+                                trigger = "after",
+                                delay = 1,
+                                func = function()
+                                    G["uma_slot_machine_"..i].cards[1]:juice_up()
+                                    return true
+                                end
+                            }))
+
+                        end
+
+                    end
+                end
+
+                if check then
+                    xmult = xmult + card.ability.extra.xmult
+                end
+
+
+            end
+
+            return {
+                xmult = xmult
+            }
+        end
+
+        if context.after then
+
+            G.E_MANAGER:add_event(Event({
+                trigger = "immediate",
+                func = function()
+                    G.uma_slot_machine_UI.states.visible = false
+                    uma_reload_slots()
+                    return true
+                end
+            }))
+
+        end
+    end
+}
+
+SMODS.Joker{ --Copano Rickey
+    key = "rickey",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 7, y = 2 },
+    atlas = 'j_umas',
+    config = { extra = { repetitions = 1, race = {
+        r1 = 16,
+        r2 = 3,
+        r3 = 3,
+        rt = 33
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play
+        and (SMODS.has_enhancement(context.other_card, 'm_lucky') or SMODS.has_enhancement(context.other_card, 'm_gold'))
+        and (context.other_card ~= context.scoring_hand[1] and context.other_card ~= context.scoring_hand[#context.scoring_hand]) then
+            return {
+                repetitions = card.ability.extra.repetitions
+            }
+        end
+    end
+}
 -- New Joker definitions
 
 
@@ -2744,46 +2897,6 @@ SMODS.Joker{ --Mihono Bourbon rounds 2 da nearest wtv
         r2 = 1,
         r3 = 0,
         rt = 8
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
-
-SMODS.Joker{ --Copano Rickey
-    key = "rickey",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 7, y = 2 },
-    atlas = 'j_umas',
-    config = { extra = { race = {
-        r1 = 16,
-        r2 = 3,
-        r3 = 3,
-        rt = 33
     } } },
 
     loc_vars = function(self, info_queue, card)
@@ -2944,121 +3057,6 @@ SMODS.Joker{ --Curren Chan
         return false
     end
 }
-
-SMODS.Joker{ --Gambling
-    key = "slotmachine",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 5, y = 5 },
-    atlas = 'j_umas',
-    config = { extra = { xmult = 1, race = {
-        r1 = 1,
-        r2 = 2,
-        r3 = 3,
-        rt = 6
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            card.ability.extra.xmult
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        if context.final_scoring_step then
-            uma_reload_slots()
-
-            G.E_MANAGER:add_event(Event({
-                trigger = "immediate",
-                func = function()
-                    G.uma_slot_machine_UI.states.visible = true
-                    return true
-                end
-            }))
-
-            uma_AddSlot(   uma_random_card(G.uma_slot_backlog)   , 1, 0)
-            uma_AddSlot(   uma_random_card(G.uma_slot_backlog)   , 2, 1)
-            uma_AddSlot(   uma_random_card(G.uma_slot_backlog)   , 3, 1)
-
-            local xmult = 1
-
-            for i = 1, 3 do
-                local check = false
-
-                for _, v in ipairs(context.scoring_hand) do
-                    local simple_v = uma_simplify_card(v)
-                    local slot = G.uma_slot_card_buffer["slot_"..i]
-
-                    if #simple_v == #slot then
-                        local check2 = true
-
-                        for k, _ in pairs(simple_v) do
-
-                            if simple_v[k] ~= slot[k] then
-                                check2 = false
-                            end
-
-                        end
-
-                        if check2 then
-                            check = true
-
-                            G.E_MANAGER:add_event(Event({
-                                trigger = "after",
-                                delay = 1,
-                                func = function()
-                                    G["uma_slot_machine_"..i].cards[1]:juice_up()
-                                    return true
-                                end
-                            }))
-
-                        end
-
-                    end
-                end
-
-                if check then
-                    xmult = xmult + card.ability.extra.xmult
-                end
-
-
-            end
-
-            return {
-                xmult = xmult
-            }
-        end
-
-        if context.after then
-
-            G.E_MANAGER:add_event(Event({
-                trigger = "immediate",
-                func = function()
-                    G.uma_slot_machine_UI.states.visible = false
-                    uma_reload_slots()
-                    return true
-                end
-            }))
-
-        end
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
 -- WIP Joker definitions
 
 
@@ -3131,32 +3129,3 @@ Matthew ideas:
 		every card held in hand gives $3 at end of round but you recieve no interest
 		maybe put a card that says every queen scored has a 1 in 2 chance to give $4
 ]]--
-
-
-
-local simple_v = {
-    suit = "Clubs",
-    key = "c_base",
-    rank = 5
-}
-
-local slot = {
-    suit = "Clubs",
-    key = "c_base",
-    rank = 6
-}
-
-local check2 = true
-for k, _ in ipairs(simple_v) do
-    print("k: "..k)
-    print("simple: "..simple_v[k])
-    print("slot: "..slot[k])
-    if simple_v[k] ~= slot[k] then
-        check2 = false
-        print("false match")
-    else
-        print("match")
-    end
-end
-
-print(check2)

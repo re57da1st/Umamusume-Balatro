@@ -185,7 +185,7 @@ return {
                 text = {
                     "{C:green}#1# in #2#{} chance",
                     "to retrigger each",
-                    "played {C:attention}dirt{} card",
+                    "played {C:attention}Dirt{} card",
                 },
             },
 
@@ -300,7 +300,7 @@ return {
                 name = "Lucky Lilac",
                 text = {
                     "{C:green}#1# in #2#{} chance for",
-                    "{C:attention}lucky{} cards to give",
+                    "{C:attention}Lucky{} cards to give",
                     "{C:blue}#3#{} Chips when scored",
                 },
             },
@@ -378,7 +378,10 @@ return {
             j_uma_rickey = {
                 name = "Copano Rickey",
                 text = {
-                    "stuff",
+                    "Retriggers {C:attention}Lucky{} and {C:attention}Gold",
+                    "Cards if they aren't",
+                    "the {C:attention}First{} or {C:attention}Last{} card",
+                    "in your hand",
                 },
             },
 
