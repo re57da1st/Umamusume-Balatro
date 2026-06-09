@@ -2771,6 +2771,67 @@ SMODS.Joker{ --Copano Rickey
         end
     end
 }
+
+SMODS.Joker{ --Red Desire
+    key = "desire",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 2, y = 5 },
+    atlas = 'j_umas',
+    config = { extra = { count = 2, race = {
+        r1 = 10,
+        r2 = 5,
+        r3 = 1,
+        rt = 24
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            card.ability.extra.count
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
+                return { prevent_debuff = true }
+        end
+        if context.remove_playing_cards then
+            for _, removed_card in ipairs(context.removed) do
+
+                for i = 1, card.ability.extra.count do
+                    G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+                    G.deck.config.card_limit = G.deck.config.card_limit + 1
+                    if i == 1 then SMODS.calculate_effect({message = "Saved!"}, removed_card) end
+
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            
+                            local card_copied = copy_card(removed_card, nil, nil, G.playing_card)
+                            card_copied:add_to_deck()
+                            table.insert(G.playing_cards, card_copied)
+                            G.deck:emplace(card_copied)
+
+                            return true
+
+                        end
+                    }))
+                end
+            end
+        end
+    end
+}
 -- New Joker definitions
 
 
@@ -2964,59 +3025,6 @@ SMODS.Joker{ --Transcend
         return false
     end
 }
---Destroy/Copy effect is broken
-SMODS.Joker{ --Red Desire
-    key = "desire",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 2, y = 5 },
-    atlas = 'j_umas',
-    config = { extra = { race = {
-        r1 = 10,
-        r2 = 5,
-        r3 = 1,
-        rt = 24
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        if context.debuff_card and context.debuff_card.area ~= G.jokers and not context.blueprint then
-                return { prevent_debuff = true }
-        end
-        if context.remove_playing_cards then
-            for _, removed_card in ipairs(context.removed) do
-                    local _card = copy_card(removed_card, nil, nil, G.playing_card)
-                    _card:add_to_deck()
-                    G.deck.config.card_limit = G.deck.config.card_limit + 2
-                    table.insert(G.playing_cards, _card)
-                    table.insert(G.playing_cards, _card)
-                    G.deck:emplace(_card)
-                    G.deck:emplace(_card)
-            end
-        end
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
 
 SMODS.Joker{ --Curren Chan
     key = "curren",
@@ -3067,47 +3075,47 @@ SMODS.Joker{ --Curren Chan
 
 To do list:
 
-    GAMBLING HORSE
-
-    Chooses 3 cards randomly in the deck *after* you play a hand (Seals editions enhancements are unique cards)
-
-    if your hand contains 1/2/3 of those cards, smth good happens!
-
-    little slot machine visual underneath
-
+    For each Joker made, evaluate the following:
+        The balancing of the joker (Either changing numbers or rarity to match)
+            Vodka's numbers down?
+            Dober's numbers down?
+            Orfevre's numbers down?
+            Address the Rudolf situation
+            Nice Nature rarity?
+            Air Groove rarity?
+            Add another Gentildonna effect?
+            Joker Slots Rarity?
+            Slot Machine rarity/balancing?
+            Red Desire rarity?
+        The Price of the joker (Based on the balancing above)
+        Does the joker need/benefit from a Joker display?
+        Does the joker need extra messages/sounds to  feel complete?
+        How well do umas fit their joker's effect? Is there a better uma to be used alongside certain effects?
+            Remove Festa's current effect and make her the slot machine? 
 
     Frisk:
 
-
-
     Potential horses:
-        uper eek
-        air goove
-        ice ature
-        udolf
-        tamtsi
-        robo horse
-        mayano top gun
-        old ity
-        bel-woah
+        Super Creek
+        Tamamo Cross
+        Mihono Bourbon
+        Transcend
+        Curren Chan
     Ideas:
         Gains +1/3/5 mult for each small/big/boss blind beaten
-        smth with percentage of enhanced cards in deck
-        Every even # round do smth every odd # round do smth
+        Every even # round do [thing 1] every odd # round do [thing 1]
             Utilize G.GAME.uma_money_mod to multiply incoming money
 
     Joel:
     Potential horses:
-    idk man!
-
-    Joker Display:
-        whoever else we've made man idk
-
-    Do messages for cards that need it
+        Helios Rework?
+            Feels too simple
+            Effectively weaker triboulet for a larger card pool
+            Feels like a copy
 
     Texturing:
         The rest of the horses (prioritize complete jokers)
-        Turf Cards
+        Enhancements:
             Dirt
         Boosters:
             Add Booster variation
@@ -3119,9 +3127,6 @@ To do list:
 Checklist
 
 ADD QUEEN RELATED JOKERS
-
-Twin Turbo: Perfect Pair
-    Fix perfect pair to trigger properly when wild cards are in play
 
 Matthew ideas:
 	Other:

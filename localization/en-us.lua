@@ -464,12 +464,12 @@ return {
                 text = {
                     "{C:attention}Prevents{} card debuffs",
                     "Copies cards that are",
-                    "Destroyed {C:attention}2{} times"
+                    "Destroyed {C:attention}#1#{} times"
                 },
             },
 
             j_uma_XYZ = {
-                name = "XYZ",
+                name = "Joker Slots (PLACEHOLDER)",
                 text = {
                     "{C:dark_edition}+5{} Joker slots",
                     "All jokers in the",
@@ -485,7 +485,7 @@ return {
             },
 
             j_uma_slotmachine = {
-                name = "Slot Machine",
+                name = "Slot Machine (PLACEHOLDER)",
                 text = {
                     "Rolls {C:attention}3{} cards from your deck",
                     "Gives {X:mult,C:white}X1{} extra mult for each",
