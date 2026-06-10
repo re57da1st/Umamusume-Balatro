@@ -2818,6 +2818,7 @@ SMODS.Joker{ --Red Desire
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             
+                            card:juice_up()
                             local card_copied = copy_card(removed_card, nil, nil, G.playing_card)
                             card_copied:add_to_deck()
                             table.insert(G.playing_cards, card_copied)
@@ -3091,7 +3092,7 @@ To do list:
         Does the joker need/benefit from a Joker display?
         Does the joker need extra messages/sounds to  feel complete?
         How well do umas fit their joker's effect? Is there a better uma to be used alongside certain effects?
-            Remove Festa's current effect and make her the slot machine? 
+            Remove Festa's current effect and make her the slot machine?
 
     Frisk:
 
