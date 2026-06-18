@@ -222,8 +222,8 @@ SMODS.Consumable { --pedigree
         local value = hand[1]:get_id()
 
         local new_card_1, new_card_2 =
-            { set = "Base", suit = hand[1].base.suit },
-            { set = "Base", suit = hand[1].base.suit }
+            { set = "Base", suit = hand[1].base.suit},
+            { set = "Base", suit = hand[1].base.suit}
 
         new_card_1.rank_num = pseudorandom('pull', 1, value - 1)
         new_card_2.rank_num = value - new_card_1.rank_num

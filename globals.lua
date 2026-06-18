@@ -499,7 +499,10 @@ function uma_AddSlot(card, num, delay)
 
     if not card.uma_empty_area then
 
+        local gamble_scale = 0.7
+        
         card = SMODS.shallow_copy(card)
+        card.scale = { w = gamble_scale, h = gamble_scale }
         G.uma_slot_buffer = G.uma_slot_buffer + 1
         G.uma_slot_card_buffer["slot_"..num] = uma_simplify_card(card)
 
@@ -796,6 +799,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
 
         G.GAME.uma_state = 0
 
+        G.uma_gamble_scale = 0.7
         G.uma_slot_buffer = 0
         G.uma_slot_card_buffer = {
             slot_1 = {},
@@ -1003,7 +1007,7 @@ end
 --Card Areas
 SMODS.current_mod.custom_card_areas = function(g)
 
-    local gamble_scale = 1--0.33
+    local gamble_scale = 0.7
 
     g.uma_slot_machine_1 = CardArea(
         0,
@@ -1012,9 +1016,8 @@ SMODS.current_mod.custom_card_areas = function(g)
         g.CARD_H * 0.95 * gamble_scale,
         {
             card_limit = 1,
-            type = 'title',
+            type = 'joker',
             highlight_limit = 0,
-            bg_colour = g.C.RED,
             no_card_count = true,
             align_buttons = true,
         }
@@ -1027,9 +1030,8 @@ SMODS.current_mod.custom_card_areas = function(g)
         g.CARD_H * 0.95 * gamble_scale,
         {
             card_limit = 1,
-            type = 'title',
+            type = 'joker',
             highlight_limit = 0,
-            bg_colour = g.C.RED,
             no_card_count = true,
             align_buttons = true,
         }
@@ -1042,9 +1044,8 @@ SMODS.current_mod.custom_card_areas = function(g)
         g.CARD_H * 0.95 * gamble_scale,
         {
             card_limit = 1,
-            type = 'title',
+            type = 'joker',
             highlight_limit = 0,
-            bg_colour = g.C.RED,
             no_card_count = true,
             align_buttons = true,
         }
