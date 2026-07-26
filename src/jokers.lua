@@ -2575,62 +2575,18 @@ SMODS.Joker{ --Gentildonna --Add smth positive to her effect???
     end
 }
 
-SMODS.Joker{ --XYZ
-    key = "XYZ",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 3, y = 5 },
-    atlas = 'j_umas',
-    config = { card_limit = 5, extra = { race = {
-        r1 = 0,
-        r2 = 9,
-        r3 = 0,
-        rt = 0
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    add_to_deck = function(self, card, from_debuff)
-        G.GAME.uma_all_commons = G.GAME.uma_all_commons + 1
-    end,
-
-    remove_from_deck = function(self, card, from_debuff)
-        G.GAME.uma_all_commons = G.GAME.uma_all_commons - 1
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end
-}
-
-SMODS.Joker{ --Gambling
-    key = "slotmachine",
-    blueprint_compat = false,
+SMODS.Joker{ --Casino Drive
+    key = "casino",
+    blueprint_compat = true,
     rarity = 1,
     cost = 3,
     pos = { x = 5, y = 5 },
     atlas = 'j_umas',
-    config = { extra = { xmult = 1, race = {
-        r1 = 1,
-        r2 = 2,
-        r3 = 3,
-        rt = 6
+    config = { extra = { xmult = 1, lower_deck_bound = 16, race = {
+        r1 = 4,
+        r2 = 1,
+        r3 = 1,
+        rt = 11
     } } },
 
     loc_vars = function(self, info_queue, card)
@@ -2646,13 +2602,18 @@ SMODS.Joker{ --Gambling
                 } }
         end
         return {vars = {
-            card.ability.extra.xmult
+            card.ability.extra.xmult,
+            card.ability.extra.lower_deck_bound
         } }
     end,
 
     calculate = function(self, card, context)
-        if context.final_scoring_step then
-            uma_reload_slots()
+
+        if context.final_scoring_step and #G.playing_cards >= card.ability.extra.lower_deck_bound then
+            if not G.uma_slot_reloaded then
+                G.uma_slot_reloaded = true
+                uma_reload_slots()
+            end
 
             G.E_MANAGER:add_event(Event({
                 trigger = "immediate",
@@ -2662,9 +2623,9 @@ SMODS.Joker{ --Gambling
                 end
             }))
 
-            uma_AddSlot(   uma_random_card(G.uma_slot_backlog)   , 1, 0)
-            uma_AddSlot(   uma_random_card(G.uma_slot_backlog)   , 2, 1)
-            uma_AddSlot(   uma_random_card(G.uma_slot_backlog)   , 3, 1)
+            uma_AddSlot( uma_random_card(G.uma_slot_backlog), 1, 0)
+            uma_AddSlot( uma_random_card(G.uma_slot_backlog), 2, 1)
+            uma_AddSlot( uma_random_card(G.uma_slot_backlog), 3, 1)
 
             local xmult = 1
 
@@ -2675,7 +2636,7 @@ SMODS.Joker{ --Gambling
                     local simple_v = uma_simplify_card(v)
                     local slot = G.uma_slot_card_buffer["slot_"..i]
 
-                    if #simple_v == #slot then
+                    if tablelength(simple_v) + 1 == tablelength(slot) then
                         local check2 = true
 
                         for k, _ in pairs(simple_v) do
@@ -2693,7 +2654,7 @@ SMODS.Joker{ --Gambling
                                 trigger = "after",
                                 delay = 1,
                                 func = function()
-                                    G["uma_slot_machine_"..i].cards[1]:juice_up()
+                                    if G["uma_slot_machine_"..i].cards[1] then G["uma_slot_machine_"..i].cards[1]:juice_up() end
                                     return true
                                 end
                             }))
@@ -2833,6 +2794,50 @@ SMODS.Joker{ --Red Desire
         end
     end
 }
+
+SMODS.Joker{ --Super Creek
+    key = "creek",
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 3,
+    pos = { x = 1, y = 2 },
+    atlas = 'j_umas',
+    config = { card_limit = 5, extra = { race = {
+        r1 = 8,
+        r2 = 2,
+        r3 = 2,
+        rt = 16
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.uma_all_commons = G.GAME.uma_all_commons + 1
+    end,
+
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.uma_all_commons = G.GAME.uma_all_commons - 1
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
 -- New Joker definitions
 
 
@@ -2867,45 +2872,6 @@ SMODS.Joker{ --Spacer
 
 
 -- WIP Joker definitions
-SMODS.Joker{ --Super Creek
-    key = "creek",
-    blueprint_compat = false,
-    rarity = 1,
-    cost = 3,
-    pos = { x = 1, y = 2 },
-    atlas = 'j_umas',
-    config = { extra = { race = {
-        r1 = 8,
-        r2 = 2,
-        r3 = 2,
-        rt = 16
-    } } },
-
-    loc_vars = function(self, info_queue, card)
-        if G.GAME.show_placings then
-            info_queue[#info_queue+1] = {
-                set = "Other",
-                key = "uma_race_stats",
-                vars = {
-                    card.ability.extra.race.r1,
-                    card.ability.extra.race.r2,
-                    card.ability.extra.race.r3,
-                    card.ability.extra.race.rt
-                } }
-        end
-        return {vars = {
-            nil
-        } }
-    end,
-
-    calculate = function(self, card, context)
-        return nil
-    end,
-
-    in_pool = function(self, args)
-        return false
-    end
-}
 
 SMODS.Joker{ --Tamamo Cross
     key = "tamamo",
@@ -3066,6 +3032,77 @@ SMODS.Joker{ --Curren Chan
         return false
     end
 }
+
+SMODS.Joker{ --Seeking The Peark
+    key = "seek",
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 3,
+    pos = { x = 3, y = 5 },
+    atlas = 'j_umas',
+    config = { extra = { odds = 4, race = {
+        r1 = 8,
+        r2 = 2,
+        r3 = 3,
+        rt = 19
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'seek')
+        return {vars = {
+            numerator, denominator
+        }}
+    end,
+
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.pearl_subset = true
+        Uma_CSS_check()
+    end,
+
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.pearl_subset = (#SMODS.find_card("j_uma_seek") > 0) and true or false
+        Uma_CSS_check()
+    end,
+
+    calculate = function(self, card, context)
+        if context.end_of_round and context.main_eval and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit
+        and SMODS.pseudorandom_probability(card, 'seek', 1, card.ability.extra.odds) then
+            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+            G.E_MANAGER:add_event(Event({
+                func = (function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            SMODS.add_card {
+                                key = 'c_uma_pearl',
+                                area = G.consumeables
+                            }
+                            G.GAME.consumeable_buffer = 0
+                            return true
+                        end
+                    }))
+                    --SMODS.calculate_effect({ message = localize('k_plus_tarot'), colour = G.C.UMA.BETTER_TAROT }, context.blueprint_card or card)
+                    return true
+                end)
+            }))
+            return nil, true -- This is for Joker retrigger purposes
+        end
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
 -- WIP Joker definitions
 
 
@@ -3102,6 +3139,11 @@ To do list:
         Mihono Bourbon
         Transcend
         Curren Chan
+        Seeking the pearl
+            after every round 1 in 4 chance to give a pearl consumable (always negative, can also be bought in shop)
+                pearls give +3 mult when held (like observatory), or used for [effect].
+                having 10 pearls condenses to golden pearl
+                golden pearls give x3 mult when held (like observatory), or used for [effect]
     Ideas:
         Gains +1/3/5 mult for each small/big/boss blind beaten
         Every even # round do [thing 1] every odd # round do [thing 1]
@@ -3112,7 +3154,7 @@ To do list:
         Helios Rework?
             Feels too simple
             Effectively weaker triboulet for a larger card pool
-            Feels like a copy
+            Feels like a cop-out
 
     Texturing:
         The rest of the horses (prioritize complete jokers)

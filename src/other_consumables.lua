@@ -3,6 +3,7 @@ CssAPI = {
     defaults = {
         mambo_rate = 4,
         family_tree_rate = 1.25,
+        pearl_rate = 1,
         turf_pack_rate = {
             normal = 2,
             jumbo = 1,
@@ -21,7 +22,7 @@ SMODS.ConsumableType {
     key = 'uma_ccs',
     primary_colour = G.C.UMA.MAMBO,
     secondary_colour = G.C.UMA.MAMBO2,
-    collection_rows = { 3, 4 },
+    collection_rows = { 4, 4 },
     shop_rate = 0
 }
 -- Consumable Type
@@ -31,15 +32,25 @@ SMODS.ConsumableType {
 
 
 -- New Rarities
+
+--Mambo
 SMODS.Rarity {
     key = "mambo_rarity",
     default_weight = CssAPI.defaults.mambo_rate,
     disable_if_empty = true
 }
 
+--Family Tree
 SMODS.Rarity {
     key = "family_tree_rarity",
     default_weight = CssAPI.defaults.family_tree_rate,
+    disable_if_empty = true
+}
+
+--Pearl
+SMODS.Rarity {
+    key = "pearl_rarity",
+    default_weight = CssAPI.defaults.pearl_rate,
     disable_if_empty = true
 }
 -- New Rarities
@@ -144,7 +155,7 @@ SMODS.Consumable { --Mambo Plushie
 -- Family Tree Cards
 SMODS.Consumable { --Posterity
     key = 'posterity',
-    rarity = "uma_mambo_rarity",
+    rarity = 2,
     set = 'uma_ccs',
     pos = { x = 12, y = 0 },
     atlas = 'c_umas',
@@ -257,6 +268,73 @@ SMODS.Consumable { --pedigree
     end
 }
 -- Family Tree Cards
+
+
+
+
+
+--Pearl cards
+SMODS.Consumable { --Pearl
+    key = 'pearl',
+    rarity = 3,
+    set = 'uma_ccs',
+    pos = { x = 14, y = 0 },
+    atlas = 'c_umas',
+    config = { card_limit = 1, extra = { mult = 3 } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            card.ability.extra.mult
+        } }
+    end,
+
+    use = function(self, card, area, copier)
+    end,
+
+    can_use = function(self, card)
+        return true
+    end,
+
+    in_pool = function(self, args)
+        return G.GAME.pearl_subset
+    end,
+
+    set_card_type_badge = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('uma_pearl_cards_loc'), G.C.UMA.MAMBO2, G.C.UMA.WHITE, 1.2)
+    end
+}
+
+SMODS.Consumable { --Golden Pearl
+    key = 'golden_pearl',
+    set = 'uma_ccs',
+    pos = { x = 14, y = 1 },
+    atlas = 'c_umas',
+    config = { card_limit = 1, extra = { xmult = 3 } },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {
+            card.ability.extra.xmult
+        } }
+    end,
+
+    use = function(self, card, area, copier)
+    end,
+
+    can_use = function(self, card)
+        return true
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end,
+
+    set_card_type_badge = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('uma_pearl_cards_loc'), G.C.UMA.MAMBO2, G.C.UMA.WHITE, 1.2)
+    end
+}
+
+
+--Pearl cards
 
 
 

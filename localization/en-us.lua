@@ -199,14 +199,6 @@ return {
                 },
             },
 
-            j_uma_creek = {
-                name = "Super Creek",
-                text = {
-                    "BIIIIIIIG stuff",
-                    "{C:inactive}This message was brought to you by Frisk{}"
-                },
-            },
-
             j_uma_air = {
                 name = "Air Groove",
                 text = {
@@ -468,8 +460,8 @@ return {
                 },
             },
 
-            j_uma_XYZ = {
-                name = "Joker Slots (PLACEHOLDER)",
+            j_uma_creek = {
+                name = "Super Creek",
                 text = {
                     "{C:dark_edition}+5{} Joker slots",
                     "All jokers in the",
@@ -484,15 +476,27 @@ return {
                 },
             },
 
-            j_uma_slotmachine = {
-                name = "Slot Machine (PLACEHOLDER)",
+            j_uma_casino = {
+                name = "Casino Drive",
                 text = {
+                    "If you have at least {C:attention}#2#{}",
+                    "cards in your full deck:",
                     "Rolls {C:attention}3{} cards from your deck",
-                    "Gives {X:mult,C:white}X1{} extra mult for each",
+                    "Gives {X:mult,C:white}X#1#{} extra mult for each",
                     "scoring card that matches",
                     "{C:inactive}(Default {X:mult,C:white}X1{C:inactive})"
                 },
             },
+
+            j_uma_seek = {
+                name = "Seeking the Pearl",
+                text = {
+                    "{C:green}#1# in #2#{} chance to give",
+                    "a {C:attention}pearl{} at end of round",
+                    "pearls can also be",
+                    "found in the {C:attention}shop"
+                },
+            }
         },
 
         Planet = {
@@ -1067,6 +1071,24 @@ return {
                     "{C:inactive}(Must have room){}"
                 },
             },
+
+
+
+
+
+            c_uma_pearl = {
+                name = "Pearl",
+                text = {
+                    "Gives {C:mult}+#1#{} Mult when {C:attention}held"
+                },
+            },
+
+            c_uma_golden_pearl = {
+                name = "Golden Pearl",
+                text = {
+                    "Gives {X:mult,C:white}X#1#{} Mult when {C:attention}held"
+                },
+            },
         },
 
         Enhanced = {
@@ -1357,6 +1379,7 @@ return {
             uma_X_planet_plus = "Planet+?",
             uma_twin_moon_plus = "Moon(s)+",
             uma_mambo_cards_loc = "Mambo's things",
+            uma_pearl_cards_loc = "Pearl",
             uma_family_tree_loc = "Family Tree",
 
             b_fuku_cards_cards = "Vanilla+",

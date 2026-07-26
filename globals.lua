@@ -353,7 +353,8 @@ function Uma_CSS_check()
     G.GAME.uma_ccs_rate = (
         (
             (G.GAME.mambo_subset and CssAPI.defaults.mambo_rate or 0) +
-            (G.GAME.family_tree_subset and CssAPI.defaults.family_tree_rate or 0)
+            (G.GAME.family_tree_subset and CssAPI.defaults.family_tree_rate or 0) +
+            (G.GAME.pearl_subset and CssAPI.defaults.pearl_rate or 0)
         ) * CssAPI.gamerate
     )
 end
@@ -488,16 +489,16 @@ end
 function uma_AddSlot(card, num, delay)
     local area = G["uma_slot_machine_"..num]
 
-    G.E_MANAGER:add_event(Event({
-        trigger = "after",
-        delay = delay,
-        func = function()
-            area.cards = {}
-            return true
-        end
-    }))
-
     if not card.uma_empty_area then
+
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = delay,
+            func = function()
+                area.cards = {}
+                return true
+            end
+        }))
 
         local gamble_scale = 0.7
         
@@ -515,6 +516,14 @@ function uma_AddSlot(card, num, delay)
             end
         }))
 
+    else
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            func = function()
+                G["uma_slot_machine_"..num].cards = {}
+                return true
+            end
+        }))
     end
 
 end
@@ -525,31 +534,40 @@ end
 function uma_random_card(area)
     if not area then area = G.playing_cards end
 
-    if #area ~= 0 then
-
-        local rng = pseudorandom("uma_random_card", 1, #area)
-        local card = area[rng]
-
-        if area == G.uma_slot_backlog then
-            table.remove(area, rng)
+    if #area == 0 then
+        uma_reload_slots(true)
+        area = G.uma_slot_backlog
         end
 
-        return uma_simplify_card(card)
+    local rng = pseudorandom("uma_random_card", 1, #area)
+    local card = area[rng]
 
-    else
-        return {uma_empty_area = true}
+    if area == G.uma_slot_backlog then
+        table.remove(area, rng)
     end
+
+    return uma_simplify_card(card)
+
 end
 
---Clear out and re-fill the Slot Machine backlog so that duplicate cards can be deleted safely
-function uma_reload_slots()
+--Clear out and re-fill the Slot Machine backlog so that re-used cards can be deleted safely
+function uma_reload_slots(mid_round)
+
+    if mid_round then
+        G.uma_slot_backlog = {}
+        for _, v in ipairs(G.playing_cards) do
+            G.uma_slot_backlog[#G.uma_slot_backlog+1] = v
+        end
+
+        return
+    end
+
     G.uma_slot_backlog = {}
 
     if G.uma_slot_buffer > 0 then
 
         G.E_MANAGER:add_event(Event({
             trigger = "after",
-            delay = 2,
             func = function()
                 G.uma_slot_machine_1.cards = {}
                 G.uma_slot_machine_2.cards = {}
@@ -595,6 +613,12 @@ function uma_simplify_card(card)
 
     return card
 
+end
+
+function tablelength(T)
+  local count = 0
+  for _ in pairs(T) do count = count + 1 end
+  return count
 end
 --Global Functions
 
@@ -705,6 +729,20 @@ function SMODS.current_mod.calculate(self, context)
         end
     end
 
+    if context.other_consumeable and context.other_consumeable.config.center_key == "c_uma_pearl" then
+        return {
+            mult = G.P_CENTERS.c_uma_pearl.config.extra.mult,
+            message_card = context.other_consumeable
+        }
+    end
+
+    if context.other_consumeable and context.other_consumeable.config.center_key == "c_uma_golden_pearl" then
+        return {
+            xmult = G.P_CENTERS.c_uma_golden_pearl.config.extra.xmult,
+            message_card = context.other_consumeable
+        }
+    end
+
     --Updates the status of Wealth stickers at end of round based on their "safe" marking
     if context.end_of_round and context.main_eval then
         for _, v in ipairs(G.playing_cards) do
@@ -754,6 +792,10 @@ function SMODS.current_mod.calculate(self, context)
         for i = 1, #SMODS.ObjectTypes['Joker'].rarities do
             SMODS.ObjectTypes['Joker'].rarities[i].weight = G.GAME.uma_stored_rarities[i]
         end
+    end
+
+    if context.before then
+        G.uma_slot_reloaded = false
     end
 
 end
@@ -806,6 +848,8 @@ function SMODS.current_mod.reset_game_globals(run_start)
             slot_2 = {},
             slot_3 = {}
         }
+
+        G.uma_slot_reloaded = false
 
         --Set up special rarity weights for the legendary desk
         if G.GAME and G.GAME.selected_back and G.GAME.selected_back.effect.center.key == 'b_uma_legendary' then
