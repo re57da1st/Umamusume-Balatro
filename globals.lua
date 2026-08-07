@@ -215,6 +215,7 @@ SMODS.ObjectType({
         j_uma_donna = true,
         j_uma_transcend = true,
         j_uma_feno = true,
+        j_uma_bouquetd = true,
     }
 })
 

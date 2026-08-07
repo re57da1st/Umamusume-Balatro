@@ -2873,6 +2873,54 @@ SMODS.Joker{ --Spacer
 
 -- WIP Joker definitions
 
+SMODS.Joker{ --Curren Bouquetd'or only face cards can score but dey always score
+    key = "bouquetd",
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 3,
+    pos = { x = 1, y = 3 },
+    atlas = 'j_umas',
+    config = { extra = { race = {
+        r1 = 9,
+        r2 = 3,
+        r3 = 2,
+        rt = 18
+    } } },
+
+    loc_vars = function(self, info_queue, card)
+        if G.GAME.show_placings then
+            info_queue[#info_queue+1] = {
+                set = "Other",
+                key = "uma_race_stats",
+                vars = {
+                    card.ability.extra.race.r1,
+                    card.ability.extra.race.r2,
+                    card.ability.extra.race.r3,
+                    card.ability.extra.race.rt
+                } }
+        end
+        return {vars = {
+            nil
+        } }
+    end,
+
+    calculate = function(self, card, context)
+        if context.modify_scoring_hand and (context.other_card:get_id() == 12 or context.other_card:get_id() == 13 or context.other_card:get_id() == 11) then
+            return {
+                add_to_hand = true
+            }
+        else
+            return {
+            remove_from_hand = true
+            }
+        end
+    end,
+
+    in_pool = function(self, args)
+        return false
+    end
+}
+
 SMODS.Joker{ --Tamamo Cross
     key = "tamamo",
     blueprint_compat = false,
@@ -3129,7 +3177,6 @@ To do list:
         Does the joker need/benefit from a Joker display?
         Does the joker need extra messages/sounds to  feel complete?
         How well do umas fit their joker's effect? Is there a better uma to be used alongside certain effects?
-            Remove Festa's current effect and make her the slot machine?
 
     Frisk:
 
@@ -3137,8 +3184,9 @@ To do list:
         Super Creek
         Tamamo Cross
         Mihono Bourbon
-        Transcend
-        Curren Chan
+        Curren Bouquetd'or only face cards can score but dey always score
+        Transcend face cards!!!!!!!!!!!!!!!!!!
+        Curren Chan FACE CARDS!!!!!!!!!!!!!!!!!!!!!!!!!!
         Seeking the pearl
             after every round 1 in 4 chance to give a pearl consumable (always negative, can also be bought in shop)
                 pearls give +3 mult when held (like observatory), or used for [effect].
