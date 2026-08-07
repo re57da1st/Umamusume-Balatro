@@ -496,6 +496,14 @@ return {
                     "pearls can also be",
                     "found in the {C:attention}shop"
                 },
+            },
+
+            j_uma_bouquetd = {
+                name = "Curren Bouquetd'or",
+                text = {
+                    "{C:attention}Face{} cards {C:green}Always{} score",
+                    "Other cards {C:red}Never{} score"
+                }
             }
         },
 
