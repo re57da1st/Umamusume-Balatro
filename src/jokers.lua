@@ -2874,7 +2874,7 @@ SMODS.Joker{ --Curren Bouquetd'or only face cards can score but dey always score
     cost = 3,
     pos = { x = 6, y = 5 },
     atlas = 'j_umas',
-    config = { extra = { race = {
+    config = { extra = { odds = 2, race = {
         r1 = 2,
         r2 = 7,
         r3 = 3,
@@ -2899,6 +2899,15 @@ SMODS.Joker{ --Curren Bouquetd'or only face cards can score but dey always score
     end,
 
     calculate = function(self, card, context)
+        if context.before then
+            for _, v in ipairs(context.scoring_hand) do
+                if SMODS.pseudorandom_probability(card, 'bouquetd', 1, card.ability.extra.odds) then
+                    if not next(SMODS.get_enhancements(v) or {}) then
+                        v:set_ability('m_glass', nil, true)
+                    end
+                end
+            end
+        end
         if context.modify_scoring_hand then
             if context.other_card:is_face() then
                 return { add_to_hand = true }
