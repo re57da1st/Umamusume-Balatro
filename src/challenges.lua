@@ -2,9 +2,6 @@
 SMODS.Challenge {--Choose your Uma!
     key = 'horse',
     rules = {
-        modifiers = {
-            { id = 'consumable_slots', value = 7 }
-        }
     },
     jokers = {
     },

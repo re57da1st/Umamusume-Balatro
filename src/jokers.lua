@@ -2893,9 +2893,10 @@ SMODS.Joker{ --Curren Bouquetd'or only face cards can score but dey always score
                     card.ability.extra.race.rt
                 } }
         end
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'bouquet')
         return {vars = {
-            nil
-        } }
+            numerator, denominator
+        }}
     end,
 
     calculate = function(self, card, context)
