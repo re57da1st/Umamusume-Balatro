@@ -102,3 +102,18 @@ SMODS.Enhancement { --Mossy
     end
 }
 -- New Enhancements
+
+SMODS.Enhancement:take_ownership('m_glass',{
+    config = { Xmult = 2, extra = { odds = 4 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'glass')
+        return { vars = { card.ability.Xmult, numerator, denominator } }
+    end,
+    calculate = function(self, card, context)
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and
+            SMODS.pseudorandom_probability(card, 'glass', 1, card.ability.extra.odds) then
+            card.glass_trigger = true -- SMODS addition
+            return { remove = true }
+        end
+    end
+},true)

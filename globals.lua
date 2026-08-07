@@ -1043,6 +1043,16 @@ function SMODS.create_card(t)
     local card = old_create_card(t)
     return card
 end
+
+local old_get_probability_vars = SMODS.get_probability_vars
+function SMODS.get_probability_vars(trigger_obj, base_numerator, base_denominator, identifier, from_roll, no_mod)
+    if identifier == "glass" and #SMODS.find_card("j_uma_curren") > 0 then
+        base_numerator = 0
+    end
+    local numerator, denominator = old_get_probability_vars(trigger_obj, base_numerator, base_denominator, identifier, from_roll, no_mod)
+    return numerator, denominator
+end
+
 --Hooks
 
 
