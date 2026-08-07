@@ -116,6 +116,33 @@ SMODS.Joker{ --Agnes Digital
     end,
 
     calculate = function(self, card, context)
+
+        if context.evaluate_poker_hand then
+
+            for _, v in pairs(context.full_hand) do
+                v.digitan_change = false
+            end
+
+            for _, v in pairs(context.scoring_hand) do
+                v.digitan_change = (v:get_id() == 11 or v:get_id() == 13)
+            end
+        end
+
+        if context.press_play then
+            for _, v in pairs(G.hand.highlighted) do
+                if v.digitan_change then
+                    assert(SMODS.change_base(v, nil, "Queen"))
+                end
+            end
+        end
+
+
+
+
+
+
+
+        --[[
         if context.press_play and not context.blueprint then
             local queens = 0
             for _, card in ipairs(next(find_joker('Splash')) and G.hand.highlighted or select(4,G.FUNCS.get_poker_hand_info(G.hand.highlighted))) do
@@ -139,6 +166,7 @@ SMODS.Joker{ --Agnes Digital
                 }
             end
         end
+        ]]
     end
 }
 
@@ -2872,7 +2900,6 @@ SMODS.Joker{ --Curren Bouquetd'or only face cards can score but dey always score
 
     calculate = function(self, card, context)
         if context.modify_scoring_hand then
-            print(context.other_card)
             if context.other_card:is_face() then
                 return { add_to_hand = true }
             else
