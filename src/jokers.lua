@@ -2900,15 +2900,6 @@ SMODS.Joker{ --Curren Bouquetd'or only face cards can score but dey always score
     end,
 
     calculate = function(self, card, context)
-        if context.before then
-            for _, v in ipairs(context.scoring_hand) do
-                if SMODS.pseudorandom_probability(card, 'bouquetd', 1, card.ability.extra.odds) then
-                    if not next(SMODS.get_enhancements(v) or {}) then
-                        v:set_ability('m_glass', nil, true)
-                    end
-                end
-            end
-        end
         if context.modify_scoring_hand then
             if context.other_card:is_face() then
                 return { add_to_hand = true }
@@ -3044,7 +3035,7 @@ SMODS.Joker{ --Transcend for each face card in full deck makes scored face cards
     cost = 3,
     pos = { x = 0, y = 5 },
     atlas = 'j_umas',
-    config = { extra = { total_face = 0, race = {
+    config = { extra = { total_face = 0, deck = 52, race = {
         r1 = 10,
         r2 = 5,
         r3 = 1,
@@ -3067,11 +3058,18 @@ SMODS.Joker{ --Transcend for each face card in full deck makes scored face cards
             nil
         } }
     end,
-
+    
     calculate = function(self, card, context)
-         for _, v in pairs(context.full_hand) do
-            
-         end
+        if context.before then
+            card.ability.extra.total_face = Uma_rank_tally(12, nil, 1) + Uma_rank_tally(11, nil, 1) + Uma_rank_tally(13, nil, 1)
+            for _, v in ipairs(context.scoring_hand) do
+                if SMODS.pseudorandom_probability(card, 'transcend', card.ability.extra.total_face, card.ability.extra.deck) and v:is_face() then
+                    if not next(SMODS.get_enhancements(v) or {}) then
+                        v:set_ability('m_glass', nil, true)
+                    end
+                end
+            end
+        end
     end,
 
     in_pool = function(self, args)
