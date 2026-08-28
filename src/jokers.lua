@@ -3037,14 +3037,14 @@ SMODS.Joker{ --Mihono Bourbon rounds 2 da nearest wtv
     end
 }
 
-SMODS.Joker{ --Transcend
+SMODS.Joker{ --Transcend for each face card in full deck makes scored face cards have x/52 chance to become glass
     key = "transcend",
     blueprint_compat = false,
     rarity = 1,
     cost = 3,
     pos = { x = 0, y = 5 },
     atlas = 'j_umas',
-    config = { extra = { race = {
+    config = { extra = { total_face = 0, race = {
         r1 = 10,
         r2 = 5,
         r3 = 1,
@@ -3069,7 +3069,9 @@ SMODS.Joker{ --Transcend
     end,
 
     calculate = function(self, card, context)
-        return nil
+         for _, v in pairs(context.full_hand) do
+            
+         end
     end,
 
     in_pool = function(self, args)
@@ -3077,7 +3079,7 @@ SMODS.Joker{ --Transcend
     end
 }
 
-SMODS.Joker{ --Curren Chan
+SMODS.Joker{ --Curren Chan scales on glass face cards
     key = "curren",
     blueprint_compat = false,
     rarity = 1,
