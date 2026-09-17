@@ -40,67 +40,58 @@ SMODS.Challenge {--All the horses
     jokers = {
 
         --Commons
-        {id = 'j_uma_norn'},
-        {id = 'j_uma_haru'},
-        {id = 'j_uma_lilac'},
-        {id = 'j_uma_mini'},
-        {id = 'j_uma_doto'},
-        {id = 'j_uma_festa'},
-        {id = 'j_uma_donna'},
-        {id = 'j_uma_nature'},
-        {id = 'j_uma_air'},
-
-
-        --Uncommons
-        {id = 'j_uma_spacer'},
-        {id = 'j_uma_turbo'},
-        {id = 'j_uma_chiyono'},
-        {id = 'j_uma_obey'},
-        {id = 'j_uma_vodka'},
-        {id = 'j_uma_teio'},
-        {id = 'j_uma_neo'},
-        {id = 'j_uma_vivlos'},
-        {id = 'j_uma_tact'},
-        {id = 'j_uma_belno'},
-        {id = 'j_uma_aruvu'},
-        {id = 'j_uma_opera'},
-        {id = 'j_uma_XYZ'},
-        {id = 'j_uma_dober'},
-        {id = 'j_uma_rudolf'},
-        {id = 'j_uma_mayano'},
-
-
-        --Rares
-        {id = 'j_uma_spacer'},
+        {id = 'j_uma_helios'},
+        {id = 'j_uma_daiwa'},
         {id = 'j_uma_agnes'},
+        {id = 'j_uma_turbo'},
         {id = 'j_uma_goldship'},
         {id = 'j_uma_oguri'},
         {id = 'j_uma_bakushin'},
         {id = 'j_uma_mambo'},
+        {id = 'j_uma_chiyono'},
+        {id = 'j_uma_norn'},
+        {id = 'j_uma_obey'},
         {id = 'j_uma_fuku'},
         {id = 'j_uma_love'},
+        {id = 'j_uma_vodka'},
+        {id = 'j_uma_teio'},
+        {id = 'j_uma_haru'},
+        {id = 'j_uma_lilac'},
+        {id = 'j_uma_neo'},
+        {id = 'j_uma_mini'},
         {id = 'j_uma_maruzensky'},
         {id = 'j_uma_ebeyan'},
+        {id = 'j_uma_vivlos'},
+        {id = 'j_uma_tact'},
+        {id = 'j_uma_doto'},
+        {id = 'j_uma_opera'},
+        {id = 'j_uma_aruvu'},
+        {id = 'j_uma_belno'},
         {id = 'j_uma_tachyon'},
+        {id = 'j_uma_mayano'},
+        {id = 'j_uma_festa'},
+        {id = 'j_uma_dober'},
         {id = 'j_uma_orfevre'},
-
-
-        --Legendaries
-        {id = 'j_uma_spacer'},
-        {id = 'j_uma_helios'},
-        {id = 'j_uma_daiwa'},
-
-
-        --Unknown
-        {id = 'j_uma_spacer'},
+        {id = 'j_uma_rudolf'},
+        {id = 'j_uma_g_city'},
+        {id = 'j_uma_desire'},
+        {id = 'j_uma_nature'},
+        {id = 'j_uma_air'},
         {id = 'j_uma_creek'},
         {id = 'j_uma_tamamo'},
+        {id = 'j_uma_7_5'},
         {id = 'j_uma_bourbon'},
-        {id = 'j_uma_g_city'},
         {id = 'j_uma_rickey'},
         {id = 'j_uma_almond'},
+        {id = 'j_uma_donna'},
         {id = 'j_uma_transcend'},
         {id = 'j_uma_feno'},
+        {id = 'j_uma_bouquetd'},
+        {id = 'j_uma_casino'},
+        {id = 'j_uma_curren'},
+        {id = 'j_uma_seek'}
+
+
     },
     consumeables = {
     },

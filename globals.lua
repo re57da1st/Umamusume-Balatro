@@ -209,6 +209,7 @@ SMODS.ObjectType({
         --Move above once complete
         j_uma_creek = true,
         j_uma_tamamo = true,
+        j_uma_7_5 = true,
         j_uma_bourbon = true,
         j_uma_rickey = true,
         j_uma_almond = true,
@@ -216,6 +217,9 @@ SMODS.ObjectType({
         j_uma_transcend = true,
         j_uma_feno = true,
         j_uma_bouquetd = true,
+        j_uma_casino = true,
+        j_uma_curren = true,
+        j_uma_seek = true,
     }
 })
 
