@@ -154,6 +154,13 @@ SMODS.Atlas({ --(St)ickers
     px = 71,
     py = 95
 })
+
+SMODS.Atlas({ --(R)ank chips
+    key = "r_umas",
+    path = "r_umas.png",
+    px = 34,
+    py = 34
+})
 --Atlas Definitions
 
 
