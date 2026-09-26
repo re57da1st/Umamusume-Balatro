@@ -2964,9 +2964,9 @@ SMODS.Joker{ --Spacer
     blueprint_compat = false,
     rarity = 1,
     cost = 3,
-    pos = { x = 9, y = 9 },
-    display_size = { w = 71, h = 95 * 1.1 },
-    atlas = 'j_umas',
+    pos = { x = 24, y = 16 },
+    display_size = { w = 68, h = 68 },
+    atlas = 'r_umas',
     config = {},
 
     loc_vars = function(self, info_queue, card)
