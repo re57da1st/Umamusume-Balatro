@@ -637,7 +637,7 @@ function tablelength(T)
 end
 
 --Input a rank and reviece its "r_umas" atlass coordinates
----@param rank string|table The rank given. Can be in string format: "SS+", "LG14" or table format: {"SS", "+"}, {"L", "G", 14} 
+---@param rank string|table|number The rank given. Can be in string format: "SS+", "LG14" table format: {"SS", "+"}, {"L", "G", 14}, or integer format: 0 0
 ---@return table coordinates The coordinates provided are in atlas format (I.E. {x = n, y = m}, where n and m are integers)
 function uma_getRank(rank)
 
@@ -648,6 +648,23 @@ function uma_getRank(rank)
         letter = rank[1]
         mod1 = rank[2]
         mod2 = rank[3]
+
+    elseif (type(rank) == "number") then
+
+        local X, Y
+
+        if rank <= 18 then
+            X = rank - 1
+            Y = 0
+        elseif rank <= 98 then
+            X = ((rank - 19) % 10)
+            Y = math.floor( (rank - 19) / 10 ) + 1
+        else
+            X = ((rank - 99) % 25)
+            Y = math.floor( (rank - 99) / 25 ) + 9
+        end
+
+        return {x = X, y = Y}
 
     elseif (type(rank) == "string") then
 
