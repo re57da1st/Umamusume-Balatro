@@ -637,7 +637,7 @@ function tablelength(T)
 end
 
 --Input a rank and reviece its "r_umas" atlass coordinates
----@param rank string|table|number The rank given. Can be in string format: "SS+", "LG14" table format: {"SS", "+"}, {"L", "G", 14}, or integer format: 0 0
+---@param rank string|table|number The rank given. Can be in string format: "SS+", "LG14" table format: {"SS", "+"}, {"L", "G", 14}, or integer format: 18, 113
 ---@return table coordinates The coordinates provided are in atlas format (I.E. {x = n, y = m}, where n and m are integers)
 function uma_getRank(rank)
 
