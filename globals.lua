@@ -742,6 +742,14 @@ function uma_searchList(list, val)
     end
 
 end
+
+function uma_changerank(rank)
+    for k, v in ipairs(G.jokers.cards) do
+        if v.config.center_key == "j_uma_spacer" then
+            v.children.center:set_sprite_pos(uma_getRank(rank))
+        end
+    end
+end
 --Global Functions
 
 
