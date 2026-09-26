@@ -627,10 +627,120 @@ function uma_simplify_card(card)
 
 end
 
+--Specifically, counts the number of pairs() in a table given
+---@param T table Input a table to parse
+---@return integer length The length of table T
 function tablelength(T)
   local count = 0
   for _ in pairs(T) do count = count + 1 end
   return count
+end
+
+--Input a rank and reviece its "r_umas" atlass coordinates
+---@param rank string|table The rank given. Can be in string format: "SS+", "LG14" or table format: {"SS", "+"}, {"L", "G", 14} 
+---@return table coordinates The coordinates provided are in atlas format (I.E. {x = n, y = m}, where n and m are integers)
+function uma_getRank(rank)
+
+    local letter, mod1, mod2
+
+    if (type(rank) == "table") then
+
+        letter = rank[1]
+        mod1 = rank[2]
+        mod2 = rank[3]
+
+    elseif (type(rank) == "string") then
+
+        local scan = {}
+        local checklist = {"U", "L"}
+
+        for k, v in pairs(checklist) do
+            if string.match(rank, checklist[k]) ~= nil then
+                table.insert(scan, string.match(rank, checklist[k]))
+            end
+        end
+
+        local checklist = {"SS", "G", "F", "E", "D", "C", "B", "A", "S"}
+
+        for k, v in pairs(checklist) do
+            if string.match(rank, checklist[k]) ~= nil then
+                table.insert(scan, string.match(rank, checklist[k]))
+                break
+            end
+        end
+
+        local checklist = {"+"}
+
+        for k, v in pairs(checklist) do
+            if string.match(rank, checklist[k]) ~= nil then
+                table.insert(scan, string.match(rank, checklist[k]))
+            end
+        end
+
+        if scan[3] == nil then
+            scan[3] = tonumber(string.gsub(rank, "%D+", ""), 10)
+        end
+
+        letter = scan[1]
+        mod1 = scan[2]
+        mod2 = scan[3]
+    end
+
+    local letterval = {
+        {val = "G",  x = 0,  y = 0},
+        {val = "F",  x = 2,  y = 0},
+        {val = "E",  x = 4,  y = 0},
+        {val = "D",  x = 6,  y = 0},
+        {val = "C",  x = 8,  y = 0},
+        {val = "B",  x = 10, y = 0},
+        {val = "A",  x = 12, y = 0},
+        {val = "S",  x = 14, y = 0},
+        {val = "SS", x = 16, y = 0},
+        {val = "U",  x = 0,  y = 1},
+        {val = "L",  x = 0,  y = 9},
+    }
+
+    local mod1val = {
+        {val = "+", x = 1, y = 0},
+        {val = "G", x = 0, y = 0},
+        {val = "F", x = 0, y = 1},
+        {val = "E", x = 0, y = 2},
+        {val = "D", x = 0, y = 3},
+        {val = "C", x = 0, y = 4},
+        {val = "B", x = 0, y = 5},
+        {val = "A", x = 0, y = 6},
+        {val = "S", x = 0, y = 7}
+    }
+
+    local mod2val = mod2 or 0
+    local index = {0, 0}
+
+    local x, y = uma_searchList(letterval, letter)
+    index = {index[1] + x, index[2] + y}
+
+    if mod1 ~= nil then
+        local x, y = uma_searchList(mod1val, mod1)
+        index = {index[1] + x, index[2] + y}
+    end
+
+    index = {index[1] + mod2val, index[2]}
+    return {x = index[1], y = index[2]}
+end
+
+--This function only exists so i didn't have to type it out twice in the uma_getRank function
+---@param list table The table we want to search (must have an item called "val" to search through on each element)
+---@return integer x_coordinate the x coordinate provided for the item that matches val 
+---@return integer y_coordinate the y_coordinate provided for the item that matches val
+function uma_searchList(list, val)
+
+    for k, v in pairs(list) do
+
+        if list[k].val == val then
+            return list[k].x, list[k].y
+        end
+
+    end
+
 end
 --Global Functions
 
