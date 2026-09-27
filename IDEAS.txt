@@ -1,0 +1,81 @@
+Uma Rank medals:
+    Shows at the end of your run, judges how good your run is
+
+    Ideas for good rank criteria:
+        Total rounds passed (issue with skipping blinds)
+        Ante (Issue with rewind vouchers)
+        Total chips scored
+        Percentage of overkill chips scored (scoring 450 chips total on a 300 chip blind gives 50% overkill)
+        Deck quality (Having more enhancements, seals, or editions)
+        Hands used (the lower the better)
+        Using more Uma jokers and less standard jokers
+
+Jimbo:
+    Sometimes replace the jimbo art with Tazuna Hayakawa / Yayoi Akikawa
+    Maybe also add custom jimbo quotes relating to umamusume when they appear
+
+Joker Ideas:
+    Daitaku Helios
+        Complete rework
+        Feels too simple
+        Effectively weaker triboulet for a larger card pool
+        Feels like a cop-out
+    Tamamo Cross
+        Nothing
+    Mihono Bourbon
+        Nothing
+    Curron Bouquetd'or
+        Face cards always score, other cards never score
+    Transcend
+        For each face card in full deck makes scored face cards have x/52 chance to become glass
+    Curren Chan
+        Scales on glass face cards
+    Gentildonna
+        Needs a positive effect
+    Seeking the Pearl
+        after every round 1 in 4 chance to give a pearl consumable (always negative, can also be bought in shop)
+        pearls give +3 mult when held (like observatory), or used for [effect].
+        having 10 pearls condenses to golden pearl
+        golden pearls give x3 mult when held (like observatory), or used for [effect]
+
+General Ideas (not yet linked to a joker):
+    Things queen-related
+    Gains +1/3/5 mult for each small/big/boss blind beaten
+    Every even # round do [thing 1] every odd # round do [thing 2]
+    Utilize G.GAME.uma_money_mod to multiply incoming money
+
+Texturing changes:
+    The rest of the horses (prioritize complete jokers)
+    Enhancements:
+        Dirt
+    Boosters:
+        Add Booster variation
+
+(WARNING) Matthew ideas:
+    Every queen scored increases this joker by +2 chips
+    Every card held in hand gives $3 at end of round but you recieve no interest
+    Maybe put a card that says every queen scored has a 1 in 2 chance to give $4
+
+Balancing Changes:
+    Vodka
+        Lower numbers
+    Mejiro Dober
+        Lower numbers
+    Orfevre
+        Lower numbers
+    Symboli Rudolf
+        Change scaling entirely
+    Nice Nature
+        Rarity
+    Air Groove
+        Rarity
+    Super Creek
+        Rarity
+    Casino Drive
+        Rarity
+
+Evaluation:
+    Evaluate if the price of the joker is worth iteration
+    Check if the joker would benefit from a joker display addition
+    Check if the joker would benefit from extra/custom sounds
+    Check if the effect matches the Uma well

@@ -3232,71 +3232,10 @@ SMODS.Joker{ --Seeking The Pearl
 
 
 
---[[ NOTES
-
-To do list:
-
-    For each Joker made, evaluate the following:
-        The balancing of the joker (Either changing numbers or rarity to match)
-            Vodka's numbers down?
-            Dober's numbers down?
-            Orfevre's numbers down?
-            Address the Rudolf situation
-            Nice Nature rarity?
-            Air Groove rarity?
-            Add another Gentildonna effect?
-            Joker Slots Rarity?
-            Slot Machine rarity/balancing?
-            Red Desire rarity?
-        The Price of the joker (Based on the balancing above)
-        Does the joker need/benefit from a Joker display?
-        Does the joker need extra messages/sounds to  feel complete?
-        How well do umas fit their joker's effect? Is there a better uma to be used alongside certain effects?
-
-    Frisk:
-
-    Potential horses:
-        Super Creek
-        Tamamo Cross
-        Mihono Bourbon
-        Curren Bouquetd'or only face cards can score but dey always score
-        Transcend face cards!!!!!!!!!!!!!!!!!!
-        Curren Chan FACE CARDS!!!!!!!!!!!!!!!!!!!!!!!!!!
-        Seeking the pearl
-            after every round 1 in 4 chance to give a pearl consumable (always negative, can also be bought in shop)
-                pearls give +3 mult when held (like observatory), or used for [effect].
-                having 10 pearls condenses to golden pearl
-                golden pearls give x3 mult when held (like observatory), or used for [effect]
-    Ideas:
-        Gains +1/3/5 mult for each small/big/boss blind beaten
-        Every even # round do [thing 1] every odd # round do [thing 1]
-            Utilize G.GAME.uma_money_mod to multiply incoming money
-
-    Joel:
-    Potential horses:
-        Helios Rework?
-            Feels too simple
-            Effectively weaker triboulet for a larger card pool
-            Feels like a cop-out
-
-    Texturing:
-        The rest of the horses (prioritize complete jokers)
-        Enhancements:
-            Dirt
-        Boosters:
-            Add Booster variation
-
-    Fix all bugs stated
 
 
 
-Checklist
 
-ADD QUEEN RELATED JOKERS
 
-Matthew ideas:
-	Other:
-		every queen scored increases this joker by +2 chips
-		every card held in hand gives $3 at end of round but you recieve no interest
-		maybe put a card that says every queen scored has a 1 in 2 chance to give $4
-]]--
+--All ideas have been moved to the "IDEAS.txt" file located in the "Umamusume" directory.
+--This is because not all suggestions are purely joker-related and should not live in this file.
